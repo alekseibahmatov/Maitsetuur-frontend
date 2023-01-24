@@ -1,0 +1,157 @@
+.rightBlock1 {
+    width: 100%;
+    background-color: #F7F7FC;
+    border-left: 2px solid rgba(235, 235, 235, .8);
+    min-height: 1200px;
+}
+
+.waitersHeader {
+    padding: 40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.typeOfRestaurant {
+    display: flex;
+}
+
+.leftBlockRestaurants {
+    width: 70%;
+    background-color: white;
+    margin: 10px;
+}
+
+.searchAndDots1 {
+    padding: 40px;
+}
+
+.search {
+    width: 95%;
+    position: relative;
+    display: flex;
+}
+
+.searchButton {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    border: none;
+    text-align: center;
+    color: grey;
+    background-color: #F7F7FC;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 6px;
+    margin-left: 5px;
+}
+
+.searchTerm {
+    width: 100%;
+    color: black;
+    background-color: #F7F7FC;
+    border: none;
+    padding: 15px 50px;
+    font-size: 14px;
+}
+
+.searchTerm:focus {
+    color: #00B4CC;
+}
+
+.typeButtonSingle {
+    color: #11142D;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #DBD7F4;
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.typeButtonSingleChoosen {
+    color: #11142D;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #5541D7;
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.listOfRestaurants {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 256px);
+    gap: 40px;
+    justify-content: center;
+}
+
+.singleRestaurant {
+    border: 1px solid #DBD7F4;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.restaurantName {
+    color: #11142D;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.restaurantAvgBill {
+    color: #42BDA1;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.rightBlockRestaurantsHeader {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #E1E1FB;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.nameOfResto {
+    font-weight: bold;
+    align-self: center;
+}
+
+.singleItemResto {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.singleItemRestoTittle {
+    font-weight: bold;
+    align-self: center;
+}
+
+.singleItemRestoItems {
+    font-weight: bold;
+    align-self: center;
+    color: #92929D;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.allRestoItems{
+    height: 360px;
+    overflow-y: auto;
+}
+.allRestoItems::-webkit-scrollbar{
+    width: 5px;
+    height: 2em
+}
+.allRestoItems::-webkit-scrollbar-track{
+    background-color: #E2E2EA;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 400px;
+}
+.allRestoItems::-webkit-scrollbar-thumb{
+    background: #5541D7;
+    border-radius: 400px;
+}
