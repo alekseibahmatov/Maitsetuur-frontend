@@ -126,6 +126,7 @@
     margin: 20px;
 }
 .couponListHeader{
+    padding-top: 40px;
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
@@ -137,7 +138,6 @@
 }
 
 table {
-    table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
 
@@ -406,6 +406,7 @@ thead{
     font-size: 16px;
     margin-bottom: 30px;
     resize: none;
+    font-weight: normal;
 }
 .input{
     margin-bottom:0;

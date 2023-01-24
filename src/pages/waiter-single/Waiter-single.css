@@ -1,0 +1,55 @@
+.waitersMain{
+    padding: 0px 20px;
+}
+.overflownContent{
+    overflow: hidden;
+    overflow-x: auto;
+}
+.modal-content1{
+    width: 659px;
+    height: 439px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    z-index: 2;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 20px;
+    text-align: center;
+}
+.sausages{
+    padding: 40px 80px;
+}
+.sumbitAction{
+    font-size: 25px;
+    padding: 20px;
+}
+.doAction{
+    background-color: #5541D7;
+    color: #ffffff;
+    padding: 20px 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.doAction:hover{
+    color: #11142D;
+    transition: 0.5s;
+}
+.goBack{
+    background-color: #ffffff;
+    border: 1px solid #D81159;
+    color: #D81159;
+    padding: 20px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.goBack:hover{
+    transition: 0.5s;
+    color: #11142D;
+}
