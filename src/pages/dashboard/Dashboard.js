@@ -7,9 +7,10 @@ import {SideBar} from "../../ui-components/sidebar/SideBar";
 import {TypesOfRestaurants} from "../admin/types-of-restaurants/TypesOfRestaurants";
 import {ListOfWaiters} from "../restaurant/list-of-waiters/ListOfWaiters";
 import {useLocation} from 'react-router-dom'
-import {LIST_OF_WAITERS, MAIN_DASHBOARD, RESTO_BUSINESS_INFO, TYPES_OF_RESTO} from "../../routes";
+import {LIST_OF_COUPONS, LIST_OF_WAITERS, MAIN_DASHBOARD, RESTO_BUSINESS_INFO, TYPES_OF_RESTO} from "../../routes";
 import {MainStats} from "../admin/main-stats/MainStats";
 import {RestaurantBusinessInformation} from "../admin/resto-business-info/RestaurantBusinessInformation";
+import {LostOfCoupons} from "../admin/list-of-coupons/LostOfCoupons";
 
 export const Dashboard = () => {
     const [activeChild, setActiveChild] = useState(MAIN_DASHBOARD);
@@ -38,6 +39,8 @@ export const Dashboard = () => {
                                     return <MainStats key={MAIN_DASHBOARD}/>
                                 case RESTO_BUSINESS_INFO:
                                     return <RestaurantBusinessInformation key={RESTO_BUSINESS_INFO}/>
+                                case LIST_OF_COUPONS:
+                                    return <LostOfCoupons key={LIST_OF_COUPONS}/>
                             }
                         })()
                     }

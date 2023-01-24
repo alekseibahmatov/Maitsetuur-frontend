@@ -8,7 +8,7 @@ import vector from "../../assets/img/vector111.png";
 import group from "../../assets/img/Group (1).png";
 import icon from "../../assets/img/icon.png";
 import {useNavigate, useLocation} from "react-router-dom";
-import {LIST_OF_WAITERS, MAIN_DASHBOARD, RESTO_BUSINESS_INFO, TYPES_OF_RESTO} from "../../routes";
+import {LIST_OF_COUPONS, LIST_OF_WAITERS, MAIN_DASHBOARD, RESTO_BUSINESS_INFO, TYPES_OF_RESTO} from "../../routes";
 
 export const SideBar = () => {
     const navigate = useNavigate();
@@ -69,14 +69,14 @@ export const SideBar = () => {
                             'buttonImageSelected': path === RESTO_BUSINESS_INFO
                         })}/>
                     </div>
-                    <div onClick={() => handleClick(5)}
+                    <div onClick={() => handleClick(LIST_OF_COUPONS)}
                          className={classnames({
                              'singleButton': true,
-                             'selected': path === 5
+                             'selected': path === LIST_OF_COUPONS
                          })}>
                         <img src={group} alt="" className={classnames({
                             'buttonImage': true,
-                            'buttonImageSelected': path === 5
+                            'buttonImageSelected': path === LIST_OF_COUPONS
                         })}/>
                     </div>
                     <div onClick={() => handleClick(6)}
