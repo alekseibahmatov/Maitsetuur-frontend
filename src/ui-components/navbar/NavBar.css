@@ -1,0 +1,68 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 2px solid rgba(235, 235, 235, .8);
+}
+
+.logoAndName {
+    display: flex;
+    gap: 20px;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.scanAndUser {
+    display: flex;
+    gap: 40px;
+    padding-right: 40px;
+}
+
+.user {
+    display: flex;
+    gap: 20px;
+}
+
+.scan {
+    color: #5541D7;
+    text-align: center;
+    align-self: center;
+    border: 2px solid #5541D7;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 7px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.scan:hover {
+    background-color: #5541D7;
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+.userImg {
+    border-radius: 50%;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.userUsername {
+    color: #11142D;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.userDescription {
+    color: #9A9AB0;
+    font-size: 12px;
+}
+

@@ -317,7 +317,7 @@ export const App = () => {
                 </div>
             </div>
 
-            <div className="main2">
+            <div className="main">
 
                 <div className="sideBar">
                     <div className="sideButtons">
@@ -836,62 +836,7 @@ export const App = () => {
                             </div>
 
                         </div>;
-                        case 5: return <div className='rightBlock1'>
-                            <div className="waitersButton">
-                                <div className="waitersHeader">
-                                    List of all coupons
-                                </div>
-                            </div>
-
-                            <div className="waitersMain">
-                                <div className="searchAndDots">
-                                    <div className="search">
-                                        <button type="submit" className="searchButton">
-                                            <i className="fa fa-search"></i>
-                                        </button>
-                                        <input type="text" className="searchTerm"
-                                               onChange={(e) => setSearch(e.target.value)}
-                                               placeholder="What are you looking for?"/>
-
-                                    </div>
-                                    <div className="dots">
-                                        <img src={dots} alt="dots"/>
-                                    </div>
-                                </div>
-
-                                <table>
-
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Certificate Revenue</th>
-                                        <th scope="col">Value</th>
-                                        <th scope="col">Bill</th>
-                                        <th scope="col">Date</th>
-                                        <th scope='col'>Resto Name</th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-
-                                    {table.filter((item) => {
-                                        return search.toLowerCase() === '' ? item : (item.id.includes(search) || item.id.toLowerCase().includes(search))
-                                    }).map((item, i) => (
-
-                                        <tr>
-                                            <th scope="row">{item.id}</th>
-                                            <td>{item.revenue}</td>
-                                            <td>{item.quantity}</td>
-                                            <td>{item.netProfit}</td>
-                                            <td>{item.date}</td>
-                                            <td>{item.name}</td>
-                                        </tr>
-                                    ))}
-                                    </tbody>
-
-                                </table>
-                            </div>
-                        </div>;
+                        case 5: return <div>Content 5</div>;
                         case 6: return <div>Content 6</div>;
                         default: return <div>Choose button</div>;
                     }
