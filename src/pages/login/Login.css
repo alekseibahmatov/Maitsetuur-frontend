@@ -1,0 +1,52 @@
+html {
+    background-color: #F7F7FC;
+}
+.loginContent{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+.loginHeader{
+    text-align: center;
+    font-size: 31px;
+    padding-bottom: 40px;
+}
+.loginFormForm{
+    display: flex;
+    justify-content: center;
+
+}
+.loginForm{
+    background-color: #ffffff;
+    width: 608px;
+    height: 468px;
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.loginFormHeader{
+    text-align: center;
+    color: #92929D;
+}
+
+.inputAuthenticationInput{
+    width: 100%;
+    border: 1px solid #5541D7;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+.inputHeader{
+    padding-bottom: 5px;
+    padding-left: 20px;
+}
+.loginButton{
+    background-color: #5541D7;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+
