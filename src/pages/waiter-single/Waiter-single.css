@@ -19,6 +19,9 @@
     border-radius: 20px;
     text-align: center;
 }
+.waitersMain{
+    padding-top: 20px;
+}
 .sausages{
     padding: 40px 80px;
 }
@@ -52,4 +55,10 @@
 .goBack:hover{
     transition: 0.5s;
     color: #11142D;
+}
+.halfContent{
+    width: 49.5%;
+}
+.purple{
+    background-color: #F7F7FC;
 }

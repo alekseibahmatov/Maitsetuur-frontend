@@ -9,6 +9,8 @@ import WaiterSingle from "./pages/waiter-single/Waiter-single";
 import Login from "./pages/login/Login";
 import Reset from "./pages/reset/Reset";
 import Error from "./pages/error/Error";
+import CouponSingle from "./pages/coupon-single/Coupon-single";
+import CreateWaiter from "./pages/create-waiter/Create-waiter";
 
 export const App = () => {
 
@@ -22,6 +24,8 @@ export const App = () => {
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/reset' element={<Reset/>}/>
                 <Route path='/error' element={<Error/>}/>
+                <Route path='/couponsingle' element={<CouponSingle/>}/>
+                <Route path='/createwaiter' element={<CreateWaiter/>}/>
                 {/* ВОТ СЮДА ДОБАВЛЯЙ НОВЫЕ РУТЫ КАК ЛЕНДОС (ВНУТРИ LAYOUT)*/}
                 {/*<Route path="landing" element={<Landing/>}/>*/}
             </Route>

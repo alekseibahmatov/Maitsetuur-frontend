@@ -14,6 +14,7 @@
     justify-content: space-between;
     padding: 20px 40px;
     border-bottom: 2px solid rgba(235,235,235,.8);
+    background-color: #ffffff;
 }
 .logoAndName{
     display: flex;
@@ -98,7 +99,7 @@
 .buttonImageSelected{
     filter: brightness(0) invert(1);
 }
-.main{
+.main2{
     display: flex;
 }
 .blockHeader{
@@ -207,28 +208,36 @@ table {
 thead th:nth-child(1) {
     width: 5%;
     text-align: center;
+    min-width: 60px;
 }
 thead th:nth-child(2) {
     width: 15%;
+    min-width: 200px;
 }
 
 thead th:nth-child(3) {
     width: 10%;
+    min-width: 100px;
 }
 thead th:nth-child(4) {
     width: 10%;
+    min-width: 100px;
 }thead th:nth-child(5) {
      width: 7%;
+     min-width: 100px;
  }
 
 thead th:nth-child(6) {
     width: 7%;
+    min-width: 100px;
 }
 thead th:nth-child(7) {
     width: 7%;
+    min-width: 100px;
 }
 thead th:nth-child(8) {
     width: 3%;
+    min-width: 30px;
 }th,
  td {
      padding: 20px;

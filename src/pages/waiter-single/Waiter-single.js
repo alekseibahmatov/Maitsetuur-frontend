@@ -66,7 +66,6 @@ export const WaiterSingle = () =>{
                 </div>
                 <div className="waitersMain">
                 <div className="businessName">
-
                     <div className="businessFormHeader">
                         Business Name
                     </div>
@@ -99,6 +98,16 @@ export const WaiterSingle = () =>{
                             </div>
                             <div className="businessInput">
                                 <input type="phone" className='businessInputInput half' value='228 1488 1337'/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mailPhone">
+                        <div className="halfContent">
+                            <div className="businessFormHeader">
+                                Resto name
+                            </div>
+                            <div className="businessInput">
+                                <input type="text" className='businessInputInput half purple' value='R14' readOnly={true}/>
                             </div>
                         </div>
                     </div>
