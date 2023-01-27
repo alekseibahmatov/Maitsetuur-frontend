@@ -155,35 +155,25 @@ export default function Landing() {
             open: false
         },
         {
-            question: 'Is Alex Bashmakob gay?',
+            question: 'What is a FAQ section?',
             answer: 'OF COURSE',
             open: false
         },
         {
-            question: 'Is Alex Bashmakob gay?',
+            question: 'What is a FAQ section?',
             answer: 'OF COURSE',
             open: false
         },
         {
-            question: 'Is Alex Bashmakob gay?',
+            question: 'What is a FAQ section?',
             answer: 'OF COURSE',
             open: false
         },
         {
-            question: 'Is Alex Bashmakob gay?',
+            question: 'What is a FAQ section?',
             answer: 'OF COURSE',
             open: false
-        },
-        {
-            question: 'Is Alex Bashmakob gay?',
-            answer: 'OF COURSE',
-            open: false
-        },
-        {
-            question: 'Is Alex Bashmakob gay?',
-            answer: 'OF COURSE',
-            open: false
-        },
+        }
     ]);
 
     const toggleFAQ = index => {
@@ -206,7 +196,7 @@ export default function Landing() {
                                 <img src={burx} className='burx_img'></img>
                             </div>
                             <div className="logo">
-                                present perfect
+                                MENU
                             </div>
                             <div className="share">
                                 <div className="share_text">
@@ -268,7 +258,7 @@ export default function Landing() {
                                     <img src={waiter} className='section_ion_img'></img>
                                 </div>
                                 <div className="section_text">
-                                    More than 100 restaurants, cafes and bars in Moscow. We add new ones every week.
+                                    More than 100 restaurants, cafes and bars in Tallinn. We add new ones every week.
                                 </div>
                             </div>
                         </div>
@@ -309,8 +299,8 @@ export default function Landing() {
                                     ref={el => (reactSwipeEl = el)}
                                 >
                                     <div><div className="explain">
-                                        Bashmack loxBashmack loxBashmack loxBashmack loxBashmack lox
-                                        Bashmack loxBashmack loxBashmack loxBashmack loxBashmack lox
+                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
                                     </div>
                                         <div className="choose">
                                             Choose your own nominal
@@ -358,7 +348,7 @@ export default function Landing() {
                                                         <div className="blockHeader">
                                                             gift certificate
                                                         </div>
-                                                        <div className="blockName">
+                                                        <div className="blockName1">
                                                             To the best restaurants in Tallinn
                                                         </div>
                                                         <div className="nominalAndDate">
@@ -369,7 +359,7 @@ export default function Landing() {
                                                                 Valid until
                                                             </div>
                                                         </div>
-                                                        <div className="values">
+                                                        <div className="values1">
                                                             <div className="nominalValue" id='1'>
                                                                 {}
                                                             </div>
@@ -382,7 +372,8 @@ export default function Landing() {
                                             </div>
                                         </div></div>
                                     <div><div className="explain3">
-                                        German pidorGerman pidorGerman pidorGerman pidorGerman pidorGerman pidorGerman pidorGerman pidorGerman pidor
+                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
                                     </div>
                                         <div className="main1">
                                             <div className="left">
@@ -438,9 +429,9 @@ export default function Landing() {
                             Certificate gives an opportunity to visit the most popular and breathtaking restaurants of Tallinn
                         </div>
                         <div className="carouselMain">
-                            <ImageCarousel images={images} interval={5000}></ImageCarousel>
-                            <ImageCarousel images={images} interval={5000}></ImageCarousel>
-                            <ImageCarousel images={images} interval={5000}></ImageCarousel>
+                            <ImageCarousel images={images} interval={1000}></ImageCarousel>
+                            <ImageCarousel images={images} interval={2000}></ImageCarousel>
+                            <ImageCarousel images={images} interval={4000}></ImageCarousel>
                         </div>
                         <div className="allRestaurants">
                             Whole restaurants list
@@ -465,7 +456,7 @@ export default function Landing() {
                                 </div>
                             </div>
                             <div className="singleAdvantage">
-                                <div className="advantageImg">
+                                <div className="advantageImg1">
                                 </div>
                                 <div className="advantageDescription">
                                     <div className="advHeader">
@@ -477,7 +468,7 @@ export default function Landing() {
                                 </div>
                             </div>
                             <div className="singleAdvantage">
-                                <div className="advantageImg">
+                                <div className="advantageImg2">
                                 </div>
                                 <div className="advantageDescription">
                                     <div className="advHeader">
@@ -607,10 +598,10 @@ export default function Landing() {
                     <div className="who">
                         <div className="leftWho">
                             <div className="company1">
-                                OOO Pidori
+                                MustVorst OÜ
                             </div>
                             <div className="company1">
-                                MMM GaySex
+                                Kiirki 2/3
                             </div>
                             <div className="company1">
                                 Reg. No 2281337
@@ -621,7 +612,7 @@ export default function Landing() {
                                 372 5887 8456
                             </div>
                             <div className="zaebali">
-                                ooonaebsiki@gollandskishturval.ee
+                                must@vorst.ee
                             </div>
                         </div>
                     </div>

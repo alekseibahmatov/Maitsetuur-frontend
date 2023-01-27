@@ -20,6 +20,12 @@ export const MainStats = () => {
             borderRadius: '10px',
             fontWeight: 'bold',
             cursor: 'pointer',
+            "@media only screen and (max-width: 600px)" : {
+                ...defaultStyles["@media only screen and (max-width: 600px)"],
+                padding: "0px 0px",
+                fontWeight: 'normal',
+                fontSize: '14px',
+            }
 
         }),
 
@@ -29,6 +35,8 @@ export const MainStats = () => {
             marginLeft: '20px',
         }),
         singleValue: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
+
+
     };
 
 
@@ -82,7 +90,7 @@ export const MainStats = () => {
                     <div className="earningsOrdersValue">
                         $50.000
                     </div>
-                    <div className="earningsOrdersValue">
+                    <div className="earningsOrdersValue1">
                         1050
                     </div>
                 </div>
@@ -90,7 +98,7 @@ export const MainStats = () => {
                     <div className="earningsOrdersDescription">
                         Earning Overtime
                     </div>
-                    <div className="earningsOrdersDescription">
+                    <div className="earningsOrdersDescription1">
                         Total Order
                     </div>
                 </div>
@@ -112,7 +120,7 @@ export const MainStats = () => {
                     <img src={dots} alt="features"/>
                 </div>
             </div>
-
+            <div className="overflownContent">
             <table>
 
                 <thead>
@@ -145,7 +153,7 @@ export const MainStats = () => {
                 </tbody>
 
             </table>
-
+            </div>
         </div>
 
 

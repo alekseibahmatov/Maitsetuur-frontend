@@ -305,7 +305,6 @@
 .main{
     display: flex;
     justify-content: space-between;
-
 }
 .main1{
     display: flex;
@@ -387,10 +386,9 @@
     display: flex;
     justify-content: space-between;
 }
-.values{
+.values1{
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
 }
 .blockHeader{
     text-transform: uppercase;
@@ -462,7 +460,25 @@
 
 }
 .advantageImg{
-    background-image: linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url("../../assets/img/ad1.png");
+    background-image: linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url("../../assets/img/l1.png");
+    background-size: cover;
+    background-position: 50% 20%;
+    width: 100%;
+    height: 300px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.advantageImg1{
+    background-image: linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url("../../assets/img/l2.png");
+    background-size: cover;
+    background-position: 50% 20%;
+    width: 100%;
+    height: 300px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.advantageImg2{
+    background-image: linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url("../../assets/img/l3.png");
     background-size: cover;
     background-position: 50% 20%;
     width: 100%;
@@ -627,7 +643,7 @@
     font-size: 30px;
     margin-top: 10px;
 }
-@media (max-width: 1028px) {
+@media (max-width: 1024px) {
 
     .explain1{
         width: 100%;

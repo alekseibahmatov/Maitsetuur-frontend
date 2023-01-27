@@ -1,7 +1,6 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 20px 40px;
     border-bottom: 2px solid rgba(235, 235, 235, .8);
 }
 
@@ -27,6 +26,7 @@
 }
 
 .scan {
+    margin-right: 20px;
     color: #5541D7;
     text-align: center;
     align-self: center;
@@ -65,4 +65,41 @@
     color: #9A9AB0;
     font-size: 12px;
 }
+@media (max-width: 1160px){
+    .name{
+        font-size: 20px;
+    }
+}
 
+@media (max-width: 1024px) {
+    .navbar{
+        display: block;
+    }
+    .logoAndName{
+        display: none;
+    }
+    .scanAndUser{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        padding-right: 0;
+        gap: 0;
+    }
+    .userImg{
+        display: none;
+    }
+    .userInfo{
+        margin-left: 50px;
+    }
+
+}
+@media (max-width: 400px) {
+
+    .scan{
+        font-size: 16px;
+        padding: 3px 15px;
+    }
+    .user{
+        gap: 10px;
+    }
+
+}

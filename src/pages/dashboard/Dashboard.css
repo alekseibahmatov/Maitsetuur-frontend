@@ -12,11 +12,11 @@
 .navbar{
     display: flex;
     justify-content: space-between;
-    padding: 20px 40px;
     border-bottom: 2px solid rgba(235,235,235,.8);
     background-color: #ffffff;
 }
 .logoAndName{
+    padding: 20px 40px;
     display: flex;
     gap: 20px;
 }
@@ -27,7 +27,7 @@
 .scanAndUser{
     display: flex;
     gap: 40px;
-    padding-right: 40px;
+    padding: 20px 40px;
 }
 .user{
     display: flex;
@@ -71,6 +71,7 @@
     width: 112px;
     height: 100%;
     padding-top: 40px;
+    padding: 20px;
 }
 .rightBlock1{
     width: 100%;
@@ -81,15 +82,36 @@
 .sideButtons{
     display: flex;
     flex-direction: column;
-    gap: 20px;
     align-items: center;
-}
-.singleButton{
-    background-color: #ffffff;
-    padding: 18px 22px;
+    background-color: white;
     border-radius: 10px;
+    height: 100%;
+}
+
+.singleButton{
+
+    padding: 18px 22px;
     transition: 0.3s;
     cursor: pointer;
+
+}
+.sideBar1{
+    height: 100%;
+}
+.singleButton1{
+    background-color: #ffffff;
+    padding: 20px 22px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+   gap: 20px;
+    width: 100%;
+
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+.singleButton1:hover{
+    background-color: #78A4F8;
+    transition: 0.3s;
 }
 
 .selected{
@@ -110,13 +132,16 @@
     width: 100%;
 }
 .singleBlock{
-    width: 292px;
     height: 100%;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     background-color: white;
     border-radius: 10px;
+}
+.overflownContent{
+    overflow: hidden;
+    overflow-x: auto;
 }
 .leftSide{
     display: flex;
@@ -178,7 +203,16 @@
     font-weight: bold;
     font-size: 24px;
 }
+.earningsOrdersValue1{
+    font-weight: bold;
+    font-size: 24px;
+}
 .earningsOrdersDescription{
+    font-size: 14px;
+    color: #92929D;
+    padding-top: 10px;
+}
+.earningsOrdersDescription1{
     font-size: 14px;
     color: #92929D;
     padding-top: 10px;
@@ -663,3 +697,91 @@ body.no-scroll {
     color: #92929D;
     text-align: center;
 }
+@media (max-width: 860px) {
+
+    .blockHeader{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .blockMain{
+        padding: 20px;
+    }
+    .couponList{
+        padding: 20px;
+    }
+
+}
+@media (max-width: 550px) {
+
+    .blockHeader{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+}
+@media (max-width: 600px) {
+
+    .features{
+        display: none;
+    }
+    .blockMainHeader{
+        padding-bottom: 0;
+        border: none;
+    }
+    .income{
+        padding: 0;
+    }
+    .earningsOrdersValue1{
+        display: none;
+    }
+    .earningsOrdersValue{
+        font-size: 14px;
+    }
+    .earningsOrdersDescription1{
+        display: none;
+    }
+    .earningsOrdersDescription{
+        display: none;
+    }
+}
+
+
+.contentBurger {
+    position: fixed;
+    left: -100%;
+    transform: translateY(-110%);
+    width: 15%;
+    transition: left 0.5s ease-in-out;
+    z-index: 100;
+    margin-top: 40px;
+    min-width: 250px;
+}
+
+.contentBurger.open {
+    left: 0;
+
+}
+.burgerMenu{
+    display: none;
+}
+@media (max-width: 1024px){
+    .blockName{
+        font-size: 14px;
+    }
+    .blockValue{
+        font-size: 14px;
+    }
+    .burgerMenu{
+        display: block;
+    }
+    .sideBar{
+        display: none;
+    }
+    .logo{
+        display: none;
+    }
+    .name{
+        margin-left: 40px;
+    }
+}
+
