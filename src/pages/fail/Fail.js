@@ -14,11 +14,10 @@ export const Fail = () =>{
                 </div>
 
                 <div className="scanSuccess">
-                    Success
+                    Oops...
                 </div>
                 <div className="scanDescription">
-                    You’ve successfully activated
-                    our certificate
+                    Certificate is not valid anymore
                 </div>
 
                 <div className="confirmQrButton">
