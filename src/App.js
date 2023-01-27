@@ -11,6 +11,10 @@ import Reset from "./pages/reset/Reset";
 import Error from "./pages/error/Error";
 import CouponSingle from "./pages/coupon-single/Coupon-single";
 import CreateWaiter from "./pages/create-waiter/Create-waiter";
+import Qrcode from "./pages/qrcode/Qrcode";
+import Qrcodesuccess from "./pages/qrcodesuccess/Qrcodesuccess";
+import Success from "./pages/success/Success";
+import Fail from "./pages/fail/Fail";
 
 export const App = () => {
 
@@ -26,6 +30,10 @@ export const App = () => {
                 <Route path='/error' element={<Error/>}/>
                 <Route path='/couponsingle' element={<CouponSingle/>}/>
                 <Route path='/createwaiter' element={<CreateWaiter/>}/>
+                <Route path='/qrcode' element={<Qrcode/>}/>
+                <Route path='/qrcodesuccess' element={<Qrcodesuccess/>}/>
+                <Route path='/success' element={<Success/>}/>
+                <Route path='/fail' element={<Fail/>}/>
                 {/* ВОТ СЮДА ДОБАВЛЯЙ НОВЫЕ РУТЫ КАК ЛЕНДОС (ВНУТРИ LAYOUT)*/}
                 {/*<Route path="landing" element={<Landing/>}/>*/}
             </Route>
