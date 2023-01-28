@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import contract from "../../../assets/img/contract.png";
+import manager from '../../../assets/img/Businessman.png'
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import {sellers, typeOfResto} from "./data";
@@ -76,11 +77,13 @@ export const RestaurantBusinessInformation = () => {
             <div className="businessHeader1">
                 Restaurant Business Information
             </div>
+            <div className="bugFix">
             <div className="buttonSample">
                 Submit
             </div>
             <div className="buttonSample red">
                 Delete
+            </div>
             </div>
         </div>
 
@@ -96,7 +99,7 @@ export const RestaurantBusinessInformation = () => {
                         <div className="buttonHeader">
                             Upload photo
                         </div>
-                        <div className="buttonSample"
+                        <div className="buttonSample1"
                              onClick={() => document.getElementById("inputFile").click()}>
                             Browse
                         </div>
@@ -119,7 +122,20 @@ export const RestaurantBusinessInformation = () => {
                         <div className="buttonHeader">
                             Upload contract
                         </div>
-                        <div className="buttonSample">
+                        <div className="buttonSample1">
+                            Browse
+                        </div>
+                    </div>
+                </div>
+                <div className="businessSingleBlock">
+                    <div className="businessSingleBlockImage">
+                        <img src={manager} alt="businessPhoto"/>
+                    </div>
+                    <div className="buttonInfo">
+                        <div className="buttonHeader">
+                            Manager Information
+                        </div>
+                        <div className="buttonSample1">
                             Browse
                         </div>
                     </div>
@@ -178,7 +194,7 @@ export const RestaurantBusinessInformation = () => {
                         <div className="businessFormHeader">
                             Country
                         </div>
-                        <div className="businessInput">
+                        <div className="businessInput1">
                             <Select className='myselect' options={sellers}
                                     defaultValue={sellers[0]} styles={customStyles}
                                     components={{IndicatorSeparator: () => null}}/>

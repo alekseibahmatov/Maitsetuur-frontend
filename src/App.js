@@ -15,6 +15,10 @@ import Qrcode from "./pages/qrcode/Qrcode";
 import Qrcodesuccess from "./pages/qrcodesuccess/Qrcodesuccess";
 import Success from "./pages/success/Success";
 import Fail from "./pages/fail/Fail";
+import ResetSuccess from "./pages/reset-success/Reset-success";
+import AuthStep1 from "./pages/auth-step-1/Auth-step-1";
+import AuthStep2 from "./pages/auth-step-2/Auth-step-2";
+import AuthStep3 from "./pages/auth-step-3/Auth-step-3";
 
 export const App = () => {
 
@@ -24,7 +28,7 @@ export const App = () => {
                 <Route path="" element={<Landing/>}/>
                 <Route path="/kolbaska" element={<LandingKolbaska/>}/>
                 <Route path="/dashboard/*" element={<Dashboard/>}/>
-                <Route path='/admin/singlewaiter' element={<WaiterSingle/>}/>
+                <Route path='/dashboard/singlewaiter' element={<WaiterSingle/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/reset' element={<Reset/>}/>
                 <Route path='/error' element={<Error/>}/>
@@ -34,6 +38,10 @@ export const App = () => {
                 <Route path='/qrcodesuccess' element={<Qrcodesuccess/>}/>
                 <Route path='/success' element={<Success/>}/>
                 <Route path='/fail' element={<Fail/>}/>
+                <Route path='/resetsuccess' element={<ResetSuccess/>}/>
+                <Route path='/authstep1' element={<AuthStep1/>}/>
+                <Route path='/authstep2' element={<AuthStep2/>}/>
+                <Route path='/authstep3' element={<AuthStep3/>}/>
                 {/* ВОТ СЮДА ДОБАВЛЯЙ НОВЫЕ РУТЫ КАК ЛЕНДОС (ВНУТРИ LAYOUT)*/}
                 {/*<Route path="landing" element={<Landing/>}/>*/}
             </Route>

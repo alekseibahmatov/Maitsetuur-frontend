@@ -2,20 +2,20 @@ import resto from "../../../assets/img/Image Placeholder.png";
 import small from "../../../assets/img/small.png";
 
 export const restaurants = [{
-    id: 1, title: 'Sashimi', genre: 'Asia', image: <img src={resto} alt='resto'/>, price: '$22'
+    id: 1, title: 'Sashimi', genre: 'Asia', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}} alt='resto'/>, price: '$22'
 }, {
-    id: 2, title: 'Unagi', genre: 'Russian', image: <img src={resto} alt='resto'/>, price: '$22'
+    id: 2, title: 'Unagi', genre: 'Russian', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'
 }, {
-    id: 3, title: 'R14', genre: 'China', image: <img src={resto} alt='resto'/>, price: '$22'
-}, {id: 4, title: 'Miso', genre: 'China', image: <img src={resto} alt='resto'/>, price: '$22'}, {
-    id: 5, title: 'Bruxx', genre: 'Italian', image: <img src={resto} alt='resto'/>, price: '$22'
-}, {id: 6, title: 'Gaysex', genre: 'Asia', image: <img src={resto} alt='resto'/>, price: '$22'}, {
-    id: 7, title: 'Sashimi', genre: 'Asia', image: <img src={resto} alt='resto'/>, price: '$22'
-}, {id: 8, title: 'Unagi', genre: 'Russian', image: <img src={resto} alt='resto'/>, price: '$22'}, {
-    id: 9, title: 'R14', genre: 'China', image: <img src={resto} alt='resto'/>, price: '$22'
-}, {id: 10, title: 'Miso', genre: 'China', image: <img src={resto} alt='resto'/>, price: '$22'}, {
-    id: 11, title: 'Bruxx', genre: 'Italian', image: <img src={resto} alt='resto'/>, price: '$22'
-}, {id: 12, title: 'Gaysex', genre: 'Asia', image: <img src={resto} alt='resto'/>, price: '$22'},];
+    id: 3, title: 'R14', genre: 'China', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'
+}, {id: 4, title: 'Miso', genre: 'China', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'}, {
+    id: 5, title: 'Bruxx', genre: 'Italian', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'
+}, {id: 6, title: 'Gaysex', genre: 'Asia', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'}, {
+    id: 7, title: 'Sashimi', genre: 'Asia', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'
+}, {id: 8, title: 'Unagi', genre: 'Russian', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'}, {
+    id: 9, title: 'R14', genre: 'China', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'
+}, {id: 10, title: 'Miso', genre: 'China', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'}, {
+    id: 11, title: 'Bruxx', genre: 'Italian', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'
+}, {id: 12, title: 'Gaysex', genre: 'Asia', image: <img src={resto} style={{width: '100%', maxWidth: '256px'}}  alt='resto'/>, price: '$22'},];
 
 export const sellers = [{value: 'best', label: 'Best Sellers'}, {value: 'cock', label: 'Cock suckers'}, {
     value: 'dick', label: 'Dick lickers'

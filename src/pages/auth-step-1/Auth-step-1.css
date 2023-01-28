@@ -1,0 +1,21 @@
+.authNumbers{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+.singleNumber{
+    background-color: #F7F7FC;
+    border-radius: 50%;
+    padding: 15px 20px;
+    color: #C0B8F4;
+    border: 1px solid #C0B8F4;
+}
+.activated{
+    color: #5541D7;
+    border: 1px solid #5541D7;
+}
+.numberLine{
+    border-top: 1px solid #C0B8F4;
+    width: 85px;
+    align-self: center;
+}

@@ -14,6 +14,12 @@ export const customStyles = {
         borderRadius: '10px',
         fontWeight: 'bold',
         cursor: 'pointer',
+        "@media only screen and (max-width: 600px)" : {
+            ...defaultStyles["@media only screen and (max-width: 600px)"],
+            padding: "0px 0px",
+            fontWeight: 'normal',
+            fontSize: '14px',
+        }
 
     }),
 
@@ -38,6 +44,12 @@ export const customStyles2 = {
         borderRadius: '10px',
         fontWeight: 'bold',
         cursor: 'pointer',
+        "@media only screen and (max-width: 600px)" : {
+            ...defaultStyles["@media only screen and (max-width: 600px)"],
+            padding: "0px 0px",
+            fontWeight: 'normal',
+            fontSize: '14px',
+        }
 
     }),
 

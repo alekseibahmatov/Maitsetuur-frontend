@@ -56,12 +56,14 @@ export const WaiterSingle = () =>{
                     <div className="businessHeader1">
                         Waiter’s Account for R14
                     </div>
+                    <div className="bugFix">
                     <div className="buttonSample" onClick={toggleModal}>
                         Submit
                     </div>
                     <PopupSumbit isOpen={isModalOpen} toggleModal={toggleModal} />
                     <div className="buttonSample red">
                         Delete
+                    </div>
                     </div>
                 </div>
                 <div className="waitersMain">

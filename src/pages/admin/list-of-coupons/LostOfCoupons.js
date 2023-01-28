@@ -30,7 +30,7 @@ export const LostOfCoupons = () =>{
                         <img src={dots} alt="dots"/>
                     </div>
                 </div>
-
+                <div className="overflownContent">
                 <table>
 
                     <thead>
@@ -61,6 +61,7 @@ export const LostOfCoupons = () =>{
                     </tbody>
 
                 </table>
+                </div>
             </div>
 
 

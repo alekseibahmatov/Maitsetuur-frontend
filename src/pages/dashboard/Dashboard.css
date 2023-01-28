@@ -471,6 +471,16 @@ thead{
     transition: 0.3s;
     text-align: center;
 }
+.buttonSample1{
+    background-color: #5541D7;
+    color: #ffffff;
+    padding: 8px 25px;
+    border-radius: 10px;
+    font-weight: normal;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
 .red{
     background-color: #D81159;
 }
@@ -761,6 +771,11 @@ body.no-scroll {
     left: 0;
 
 }
+.bugFix{
+    display: flex;
+    gap: 20px;
+
+}
 .burgerMenu{
     display: none;
 }
@@ -784,4 +799,66 @@ body.no-scroll {
         margin-left: 40px;
     }
 }
-
+@media (max-width: 464px){
+    .waitersButton{
+        display: block;
+    }
+    .waitersHeader{
+        padding-bottom: 20px;
+    }
+    .addWaiter{
+        float: none;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+@media (max-width: 900px){
+    .businessMainHeader{
+        display: flex;
+        flex-direction: column;
+    }
+    .businessSingleBlock{
+        display: block;
+        text-align: center;
+    }
+    .buttonInfo{
+     margin-left: 0;
+    }
+    .noFile{
+        margin-top: 5px;
+    }
+    .buttonSample1{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .mailPhone{
+        display: block;
+    }
+    .countryCity{
+        display: block;
+    }
+    .workBill{
+        display: block;
+    }
+    .typeOfRestaurantSelect{
+        width: 100%;
+    }
+    .businessInput1{
+        margin-bottom: 10px;
+    }
+    .halfContent{
+        width: 100%;
+    }
+}
+@media (max-width: 740px){
+    .businessHeader{
+        display: block;
+    }
+    .buttonSample{
+        width: 130px;
+    }
+    .bugFix{
+        margin-top: 20px;
+    }
+}

@@ -38,7 +38,7 @@ export const ListOfWaiters = () => {
                     <img src={dots} alt="dots"/>
                 </div>
             </div>
-
+<div className="overflownContent">
             <table>
 
                 <thead>
@@ -71,6 +71,7 @@ export const ListOfWaiters = () => {
                 </tbody>
 
             </table>
+</div>
         </div>
 
 
