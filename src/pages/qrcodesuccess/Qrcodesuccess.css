@@ -1,0 +1,34 @@
+.qrcodeSuccessHeader{
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+}
+.qrcodeSuccessImage{
+    text-align: center;
+    padding: 20px 0;
+}
+.qrcodeInput{
+    width: 100%;
+    background-color: #F7F7FC;
+    border: 1px solid #4343FF;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10px;
+}
+.qrcodeFormName{
+    margin-left: 10px;
+    margin-bottom: 4px;
+}
+.qrcodeFormBlock{
+    margin-bottom: 20px;
+}
+.confirmQrButton{
+    margin-top: 60px;
+    width: 100%;
+    background-color: #4343FF;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+}

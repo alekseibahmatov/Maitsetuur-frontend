@@ -1,0 +1,15 @@
+.errorContent{
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+.error404{
+    padding-top: 20px;
+    font-size: 100px;
+}
+.permission{
+    padding-top: 20px;
+    font-size: 31px;
+}
