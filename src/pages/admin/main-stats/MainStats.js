@@ -41,7 +41,7 @@ export const MainStats = () => {
 
 
 
-    return <div className='rightBlock1'>
+    return <div className='rightBlock3'>
         <div className="blockHeader">
             {Data.map((item, i) => (<div className="singleBlock">
                 <div className="leftSide">

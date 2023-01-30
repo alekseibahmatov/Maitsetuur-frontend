@@ -1,5 +1,5 @@
-.rightBlock1 {
-    width: 100%;
+.rightBlock3{
+    width: 90%;
     background-color: #F7F7FC;
     border-left: 2px solid rgba(235, 235, 235, .8);
     min-height: 1200px;
@@ -164,6 +164,19 @@
         grid-template-columns: repeat(3,240px);
     }
 }
+
+@media (max-width: 1300px){
+    .leftBlockRestaurants{
+        width: 60%;
+    }
+    .listOfRestaurants{
+        grid-template-columns: repeat(2, 256px);
+    }
+    .rightBlockRestaurants{
+        width: 35%;
+    }
+}
+
 @media (max-width: 1172px){
     .typeOfRestaurant{
         flex-direction: column-reverse;
@@ -221,4 +234,9 @@
         background: #5541D7;
         border-radius: 400px;
 }
+}
+@media (max-width: 1024px){
+    .rightBlock3{
+        width: 100%;
+    }
 }

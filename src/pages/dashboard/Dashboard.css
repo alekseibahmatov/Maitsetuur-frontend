@@ -68,13 +68,12 @@
     font-size: 12px;
 }
 .sideBar{
-    width: 112px;
     height: 100%;
     padding-top: 40px;
-    padding: 20px;
+    margin: 0 auto;
 }
 .rightBlock1{
-    width: 100%;
+    width: 90%;
     background-color: #F7F7FC;
     border-left: 2px solid rgba(235,235,235,.8);
     min-height: 1200px;
@@ -170,7 +169,7 @@
 .blockMain{
     padding: 60px;
     background-color: white;
-    margin: 20px;
+    margin: 20px 20px;
 }
 .blockMainHeader{
     display: flex;
@@ -220,7 +219,7 @@
 .couponList{
     padding: 60px;
     background-color: white;
-    margin: 20px;
+    margin: 20px 20px;
 }
 .couponListHeader{
     padding-top: 40px;
@@ -335,7 +334,6 @@ thead{
     border-bottom: 2px solid rgba(235,235,235,.8);
 }
 .waitersMain{
-    margin: 20px;
     padding: 40px;
     background-color: white;
 }

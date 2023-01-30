@@ -85,6 +85,10 @@ export const Login = () => {
                             onBlur={validateInput} className='inputAuthenticationInput'/>
                         {error.password && <span className='err'>{error.password}</span>}
                     </div>
+
+                </div>
+                <div className="forgetPass">
+                    Forgot password?
                 </div>
                 <div className="loginButton">
                     Login

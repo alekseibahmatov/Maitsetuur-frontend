@@ -42,8 +42,18 @@ html {
     background-color: #5541D7;
     color: white;
     text-align: center;
-    padding: 15px 20px;
+    padding: 15px;
     border-radius: 10px;
+}
+
+
+.forgetPass{
+    font-size: 14px;
+    float: right;
+    color: #9A9AB0;
+    margin-top: 10px;
+    width: 80%;
+    text-align: right;
 }
 
 @media (max-width: 648px){
