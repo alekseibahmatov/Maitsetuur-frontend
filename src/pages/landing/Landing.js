@@ -295,7 +295,7 @@ export default function Landing() {
                             <div>
                                 <ReactSwipe
                                     className="carousel"
-                                    swipeOptions={{ continuous: false }}
+                                    swipeOptions={{ continuous: true }}
                                     ref={el => (reactSwipeEl = el)}
                                 >
                                     <div><div className="explain">
@@ -345,7 +345,7 @@ export default function Landing() {
                                             <div className="right">
                                                 <div className="block">
                                                     <div className="description">
-                                                        <div className="blockHeader">
+                                                        <div className="blockHeader1">
                                                             gift certificate
                                                         </div>
                                                         <div className="blockName1">
@@ -405,10 +405,10 @@ export default function Landing() {
                                             <div className="right">
                                                 <div className="block">
                                                     <div className="description">
-                                                        <div className="blockHeader">
+                                                        <div className="blockHeader1">
                                                             gift certificate
                                                         </div>
-                                                        <div className="blockName">
+                                                        <div className="blockName1">
                                                             To the best restaurants in Tallinn
                                                         </div>
                                                     </div>
@@ -557,7 +557,7 @@ export default function Landing() {
                             <div>
                                 <ReactSwipe
                                     className="carousel"
-                                    swipeOptions={{ continuous: false }}
+                                    swipeOptions={{ continuous: true }}
                                     ref={el => (reactSwipeEl2 = el)}
                                 >
                                     <div><div className="faq">

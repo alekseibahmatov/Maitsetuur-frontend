@@ -293,7 +293,6 @@
 .explain3{
     width: 60%;
     font-weight: bold;
-    margin-left: 20px;
     margin-bottom: 20px;
 }
 .choose{
@@ -309,7 +308,7 @@
 .main1{
     display: flex;
     justify-content: space-between;
-    margin-left: 20px;
+
 }
 .left{
     width: 55%;
@@ -379,19 +378,28 @@
 }
 .description{
     color: white;
-    padding-top: 280px;
+    padding-top: 260px;
 }
 .nominalAndDate{
+    margin-top: 10px;
     display: flex;
-    justify-content: space-between;
+    gap: 50px;
+}
+.validDate{
+    margin-left: 93px;
+    position: fixed;
 }
 .values1{
     display: flex;
-    justify-content: space-between;
+    margin-top: 10px;
 }
-.blockHeader{
+.blockHeader1{
     text-transform: uppercase;
     margin-bottom: 10px;
+    font-size: 14px;
+}
+.blockName1{
+    font-size: 20px;
 }
 .validDate{
     font-size: 20px;
