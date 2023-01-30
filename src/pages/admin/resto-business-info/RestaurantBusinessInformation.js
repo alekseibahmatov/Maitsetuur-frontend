@@ -72,7 +72,7 @@ export const RestaurantBusinessInformation = () => {
         placeholder: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
     };
 
-    return <div className='rightBlock11'>
+    return <div className='rightBlock1'>
         <div className="businessHeader">
             <div className="businessHeader1">
                 Restaurant Business Information
