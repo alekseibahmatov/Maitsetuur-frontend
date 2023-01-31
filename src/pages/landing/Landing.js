@@ -12,7 +12,7 @@ import l1 from '../../assets/img/l1.png';
 import l2 from '../../assets/img/l2.png';
 import l3 from '../../assets/img/l3.png';
 import {click} from "@testing-library/user-event/dist/click";
-import Modal from "../../ui-components/popup/Popup";
+import PopupCertificate from "../../ui-components/popup-certificate/Popup-certificate";
 import ReactSwipe from 'react-swipe';
 
 export default function Landing() {
@@ -27,8 +27,17 @@ export default function Landing() {
     const burgerToggle = () => {
         setIsBurger(current => !current);
     }
+
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
+    }
+    const handleClick123 = event => {
+        if (event.target.className === 'burx_img'){
+            setIsBurger(true)
+        }
+        else {
+            setIsBurger(false)
+        }
     }
 
 
@@ -187,12 +196,12 @@ export default function Landing() {
         }));
     }
     return (
-        <div className='bg'>
+        <div className='bg' onClick={handleClick123}>
             <div className="realBg">
                 <div className='container'>
                     <div className="preview">
                         <div className="header">
-                            <div className="burger" onClick={burgerToggle}>
+                            <div className="burger">
                                 <img src={burx} className='burx_img'></img>
                             </div>
                             <div className="logo">
@@ -206,7 +215,7 @@ export default function Landing() {
                             </div>
                         </div>
                         <div className={isBurger ? 'burger_cont1' : 'burger_cont'}>
-                            <div className="closeBurger" onClick={burgerToggle}>
+                            <div className="closeBurger">
                                 CLOSE
                             </div>
                             <div className="next">
@@ -288,7 +297,7 @@ export default function Landing() {
                             <div className="certificate_example" onClick={toggleModal}>
                                 Example of certificate
                             </div>
-                            <Modal isOpen={isModalOpen} toggleModal={toggleModal} />
+                            <PopupCertificate isOpen={isModalOpen} toggleModal={toggleModal} />
                         </div>
                         <div className="content">
 
