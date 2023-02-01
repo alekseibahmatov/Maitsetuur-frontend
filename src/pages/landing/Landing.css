@@ -308,13 +308,14 @@
 .main1{
     display: flex;
     justify-content: space-between;
-
 }
 .left{
     width: 55%;
+    height: 100%;
 }
 .right{
     width: 45%;
+    height: 100%;
 }
 
 .congrats{
@@ -767,6 +768,8 @@
     }
 }
 
+
+
 @media (max-width: 620px) {
 
     .salutation{
@@ -785,13 +788,13 @@
         font-size: 12px;
     }
     .client{
-        font-size: 14px;
+        font-size: 12px;
     }
     .company{
-        font-size: 14px;
+        font-size: 12px;
     }
     .certificate_example{
-        font-size: 14px;
+        font-size: 12px;
     }
     .explain{
         font-size: 12px;
@@ -819,6 +822,18 @@
     }
     .askInfo1{
         font-size: 15px;
+    }
+}
+
+@media (max-width: 394px){
+    .client{
+        font-size: 10px;
+    }
+    .company{
+        font-size: 10px;
+    }
+    .certificate_example{
+        font-size: 10px;
     }
 }
 
@@ -872,5 +887,6 @@ body.no-scroll {
     background: #5541D7;
     border-radius: 400px;
 }
+
 
 

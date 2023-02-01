@@ -103,3 +103,152 @@
         width: 700px;
     }
 }
+@media (max-width: 768px){
+    .modal-contentCertificate{
+        width: 500px;
+    }
+    .leftCertificatePopup{
+        padding: 20px 20px;
+    }
+    .leftCertificatePopupHeader{
+        font-size: 26px;
+    }
+    .questionAnswerCertificate{
+        margin-top: 5px;
+    }
+    .questionCertificate{
+        font-size: 12px;
+    }
+    .answerCertificate{
+        font-size: 14px;
+    }
+    .qrCodeCertificateImage{
+        width: 120px;
+        height: 120px;
+    }
+    .furtherInfo{
+        font-size: 14px;
+    }
+    .rightCertificatePopup{
+        padding-left: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .crossClose{
+        width: 36px;
+        height: 36px;
+    }
+    .valuesCertificatePopup{
+        font-size: 16px;
+        gap: 50px;
+    }
+    .nominalAndDateCertificatePopup{
+        gap: 50px;
+    }
+    .descriptionCertificatePopup{
+        padding-top: 300px;
+    }
+}
+@media (max-width: 548px){
+    .modal-contentCertificate{
+        width: 400px;
+    }
+    .leftCertificatePopup{
+        padding: 16px 16px;
+    }
+    .leftCertificatePopupHeader{
+        font-size: 20px;
+    }
+    .questionAnswerCertificate{
+        margin-top: 3px;
+    }
+    .questionCertificate{
+        font-size: 10px;
+    }
+    .answerCertificate{
+        font-size: 12px;
+    }
+    .qrCodeCertificateImage{
+        width: 80px;
+        height: 80px;
+    }
+    .furtherInfo{
+        font-size: 12px;
+    }
+    .rightCertificatePopup{
+        padding-left: 16px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+    .crossClose{
+        width: 28px;
+        height: 28px;
+    }
+    .valuesCertificatePopup{
+        font-size: 12px;
+        gap: 36px;
+    }
+    .nominalAndDateCertificatePopup{
+        gap: 36px;
+    }
+    .descriptionCertificatePopup{
+        padding-top: 220px;
+    }
+    .blockNameCertificatePopup{
+        font-size: 16px;
+    }
+}
+@media (max-width: 426px){
+    .modal-contentCertificate{
+        width: 300px;
+    }
+    .leftCertificatePopup{
+        padding: 12px 12px;
+    }
+    .leftCertificatePopupHeader{
+        font-size: 16px;
+    }
+    .questionAnswerCertificate{
+        margin-top: 3px;
+    }
+    .questionCertificate{
+        font-size: 8px;
+    }
+    .answerCertificate{
+        font-size: 10px;
+    }
+    .qrCodeCertificateImage{
+        width: 60px;
+        height: 60px;
+    }
+    .furtherInfo{
+        font-size: 10px;
+    }
+    .rightCertificatePopup{
+        padding-left: 12px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .crossClose{
+        width: 16px;
+        height: 16px;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+    .valuesCertificatePopup{
+        font-size: 8px;
+        gap: 30px;
+    }
+    .nominalAndDateCertificatePopup{
+        gap: 16px;
+        font-size: 7px;
+    }
+    .descriptionCertificatePopup{
+        padding-top: 200px;
+        padding-left: 10px;
+    }
+    .blockNameCertificatePopup{
+        font-size: 14px;
+    }
+
+}
