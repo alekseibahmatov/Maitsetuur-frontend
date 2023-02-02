@@ -287,19 +287,20 @@
 }
 .explain{
     width: 60%;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-weight: normal;
 }
 .explain3{
     width: 60%;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 .choose{
     color: black;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
+    font-size: 18px;
 }
 .main{
     display: flex;
@@ -326,6 +327,7 @@
     border-radius: 10px;
     border: 1px solid rgba(0,0,0,0.5);
     padding: 10px;
+    margin-top: 10px;
 }
 .bashmak{
     font-weight: bold;
@@ -334,6 +336,15 @@
     border: 1px solid rgba(0,0,0,0.5);
     padding: 10px;
     margin-bottom: 10px;
+}
+.bashmak1{
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.5);
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .wordCount{
     font-weight: bold;
@@ -568,7 +579,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
-    margin: 40px 20px auto;
+    margin: 20px 20px auto;
     font-size: 1.2rem;
 
 }
@@ -620,6 +631,9 @@
     justify-content: space-between;
     margin-top: 60px;
     padding-bottom: 60px;
+}
+.infoAsk{
+    padding-top: 30px;
 }
 .company1{
     font-size: 20px;

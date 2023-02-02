@@ -4,6 +4,8 @@ import manager from '../../../assets/img/Businessman.png'
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import {sellers, typeOfResto} from "./data";
+import popupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
+import PopupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
 
 export const RestaurantBusinessInformation = () => {
     const [image, setImage] = useState(null);
@@ -13,6 +15,11 @@ export const RestaurantBusinessInformation = () => {
     const handleChangeImage = e => {
         setFileName(e.target.files[0].name);
         setImage(URL.createObjectURL(e.target.files[0]));
+    }
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
     }
 
     const LimitedTextarea = ({rows, cols, value, limit}) => {
@@ -78,9 +85,10 @@ export const RestaurantBusinessInformation = () => {
                 Restaurant Business Information
             </div>
             <div className="bugFix">
-            <div className="buttonSample">
+            <div className="buttonSample" onClick={toggleModal}>
                 Submit
             </div>
+                <PopupSumbit isOpen={isModalOpen} toggleModal={toggleModal} />
             <div className="buttonSample red">
                 Delete
             </div>

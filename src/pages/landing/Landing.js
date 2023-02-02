@@ -159,28 +159,29 @@ export default function Landing() {
 
     const [faq, setFAQ] = React.useState([
         {
-            question: 'What is a FAQ section?',
-            answer: 'A FAQ (Frequently Asked Questions) section is a list of questions and answers that provides information to visitors of a website.',
+            question: 'How long does the certificate lasts?',
+            answer: 'Certificate lasts for one years after the purchase, it can always be checked on the certificate',
             open: false
         },
         {
-            question: 'What is a FAQ section?',
-            answer: 'OF COURSE',
+            question: 'Can i make my own budget for certificate?',
+            answer: 'With any of your own preferences we are waiting for your email, after what we can provide the best solution',
             open: false
         },
         {
-            question: 'What is a FAQ section?',
-            answer: 'OF COURSE',
+            question: 'How can i check the balance?',
+            answer: 'Balance can be checked via the link on your email, with the name ' +
+                'Check the balance ->',
             open: false
         },
         {
-            question: 'What is a FAQ section?',
-            answer: 'OF COURSE',
+            question: 'Can i buy a few certificates for my company?',
+            answer: 'Of course, by leaving the order we will be able to contact you and make everything you wanted within 2-3 days!',
             open: false
         },
         {
-            question: 'What is a FAQ section?',
-            answer: 'OF COURSE',
+            question: 'How does thw certificate looks like?',
+            answer: <div>You can check by clicking on this link <a className='blue' onClick={toggleModal}>Certificate.pdf</a></div>,
             open: false
         }
     ]);
@@ -308,8 +309,7 @@ export default function Landing() {
                                     ref={el => (reactSwipeEl = el)}
                                 >
                                     <div><div className="explain">
-                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                                        Write a congratulation and indicate the address of the recipient!
                                     </div>
                                         <div className="choose">
                                             Choose your own nominal
@@ -381,23 +381,22 @@ export default function Landing() {
                                             </div>
                                         </div></div>
                                     <div><div className="explain3">
-                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                                        Thank your employees with gift certificates and an unforgettable experience!
                                     </div>
                                         <div className="main1">
                                             <div className="left">
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Name' className='bashmak'></input>
+                                                        <input type='text' placeholder='Name' className='bashmak1'/>
                                                     </div>
                                                     <div className="to_who">
-                                                        <input type='text' placeholder='Company name' className='bashmak'></input>
+                                                        <input type='text' placeholder='Company name' className='bashmak1'/>
                                                     </div>
                                                     <div className="mail">
-                                                        <input type='email' placeholder='Company e-mail' className='bashmak'></input>
+                                                        <input type='email' placeholder='Company e-mail' className='bashmak1'/>
                                                     </div>
                                                     <div className="phone">
-                                                        <input type='tel' placeholder='Phone number' className='bashmak'></input>
+                                                        <input type='tel' placeholder='Phone number' className='bashmak1'/>
                                                     </div>
                                                     <div className="text">
                                                         <LimitedTextarea limit={280} value='' />
@@ -583,7 +582,9 @@ export default function Landing() {
                                             </div>
                                         ))}
                                     </div></div>
-                                    <div><div className="askInfo1">
+                                    <div>
+                                        <div className="infoAsk">
+                                        <div className="askInfo1">
                                         If you have any questions which were not answered yet you can always contact us!
                                     </div>
                                         <div className="askInfo">
@@ -594,6 +595,7 @@ export default function Landing() {
                                         </div>
                                         <div className="askInfo">
                                             Kikri 2/1 Monday-Sunday 24/7
+                                        </div>
                                         </div></div>
 
                                 </ReactSwipe>

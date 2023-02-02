@@ -38,6 +38,12 @@
 }
 .blue{
     color: #00B4CC;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.blue:hover{
+    transition: 0.3s;
+    color: #5541D7;
 }
 .rightCertificatePopup{
     padding-top: 40px;

@@ -72,6 +72,13 @@
     border: 2px solid #4343FF;
     padding: 5px;
     border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.qrcodeScanButton:hover{
+    transition: 0.3s;
+    color: #000098;
+    font-size: 18px ;
 }
 .qrcodeScanButtonText{
     align-self: center;

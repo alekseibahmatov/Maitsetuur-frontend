@@ -44,6 +44,14 @@ html {
     text-align: center;
     padding: 15px;
     border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.loginButton:hover{
+    transition: 0.3s;
+    background-color: #ffffff;
+    color: #5541D7;
+    border: 1px solid #5541D7;
 }
 
 
@@ -52,8 +60,13 @@ html {
     float: right;
     color: #9A9AB0;
     margin-top: 10px;
-    width: 80%;
     text-align: right;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.forgetPass:hover{
+    transition: 0.3s;
+    color: #373a47;
 }
 
 @media (max-width: 648px){
