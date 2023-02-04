@@ -80,12 +80,14 @@ export const CouponSingle = () =>{
                     <div className="businessHeader1">
                         Waiter’s Account for R14
                     </div>
+                    <div className="bugFix">
                     <div className="buttonSample" onClick={toggleModal}>
                         Submit
                     </div>
                     <PopupSumbit isOpen={isModalOpen} toggleModal={toggleModal} />
                     <div className="buttonSample red">
                         Delete
+                    </div>
                     </div>
                 </div>
             <div className="couponsMain">
@@ -100,7 +102,7 @@ export const CouponSingle = () =>{
                             <div className="buttonHeader" >
                                 Upload photo
                             </div>
-                            <div className="buttonSample"  onClick={() => document.getElementById("inputFile").click()}>
+                            <div className="buttonSample1"  onClick={() => document.getElementById("inputFile").click()}>
                                 Browse
                             </div>
                             <div className='noFile'>

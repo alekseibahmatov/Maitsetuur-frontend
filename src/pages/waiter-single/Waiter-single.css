@@ -63,3 +63,10 @@
 .purple{
     background-color: #F7F7FC;
 }
+@media (max-width: 900px){
+
+    .halfContent{
+        width: 100%;
+    }
+
+}

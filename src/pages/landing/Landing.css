@@ -828,6 +828,9 @@
     .faq-item button{
         font-size: 14px;
     }
+    .faq-item p{
+        font-size: 12px;
+    }
     .company1{
         font-size: 10px;
     }
