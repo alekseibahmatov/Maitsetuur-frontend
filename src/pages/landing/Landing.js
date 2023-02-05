@@ -55,7 +55,6 @@ export default function Landing() {
     }
     const handleClick = () => {
         setIsActive(current => !current);
-
     }
 
     function contentNext (){

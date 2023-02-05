@@ -523,8 +523,10 @@
     margin-top: 5px;
 }
 .explain1{
-    margin-top: 100px;
+    padding-top: 100px;
     width: 60%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .explainHeader{
     color: white;
@@ -631,6 +633,8 @@
     justify-content: space-between;
     margin-top: 60px;
     padding-bottom: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .infoAsk{
     padding-top: 30px;
@@ -680,6 +684,7 @@
     }
     .explainButtons{
         justify-content: space-between;
+        padding-bottom: 20px;
     }
     .four_section{
         display: block;
