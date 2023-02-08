@@ -29,12 +29,15 @@
 .questionCertificate{
     color: #D81159;
     font-size: 14px;
+    font-family: 'Raleway', sans-serif;
 }
 .answerCertificate{
     padding: 10px 0;
+    font-family: 'Raleway', sans-serif;
 }
 .furtherInfo{
     margin-top: 20px;
+    font-family: 'Raleway', sans-serif;
 }
 .blue{
     color: #00B4CC;

@@ -300,7 +300,6 @@ export default function Landing() {
                             <PopupCertificate isOpen={isModalOpen} toggleModal={toggleModal} />
                         </div>
                         <div className="content">
-
                             <div>
                                 <ReactSwipe
                                     className="carousel"
@@ -329,16 +328,16 @@ export default function Landing() {
                                                     <div className="from_who">
                                                         <input type='text' placeholder='From...' className='bashmak'></input>
                                                     </div>
-                                                    <div className="to_who">
+                                                    <div className="from_who">
                                                         <input type='text' placeholder='To...' className='bashmak'></input>
                                                     </div>
-                                                    <div className="mail">
+                                                    <div className="from_who">
                                                         <input type='email' placeholder='Recipients e-mail...' className='bashmak'></input>
                                                     </div>
-                                                    <div className="phone">
+                                                    <div className="from_who">
                                                         <input type='tel' placeholder='Recipients phone number...' className='bashmak'></input>
                                                     </div>
-                                                    <div className="text">
+                                                    <div className="from_who">
                                                         <LimitedTextarea limit={280} value='' />
                                                     </div>
                                                 </div>
@@ -388,16 +387,16 @@ export default function Landing() {
                                                     <div className="from_who">
                                                         <input type='text' placeholder='Name' className='bashmak1'/>
                                                     </div>
-                                                    <div className="to_who">
+                                                    <div className="from_who">
                                                         <input type='text' placeholder='Company name' className='bashmak1'/>
                                                     </div>
-                                                    <div className="mail">
+                                                    <div className="from_who">
                                                         <input type='email' placeholder='Company e-mail' className='bashmak1'/>
                                                     </div>
-                                                    <div className="phone">
+                                                    <div className="from_who">
                                                         <input type='tel' placeholder='Phone number' className='bashmak1'/>
                                                     </div>
-                                                    <div className="text">
+                                                    <div className="from_who">
                                                         <LimitedTextarea limit={280} value='' />
                                                     </div>
                                                 </div>
