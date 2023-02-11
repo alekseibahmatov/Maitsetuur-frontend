@@ -73,6 +73,9 @@
     padding-top: 40px;
     margin: 0 auto;
 }
+.overGrey{
+    background-color: rgba(0,0,0,0.2);
+}
 .rightBlock1{
     width: 90%;
     background-color: #F7F7FC;
@@ -514,7 +517,7 @@ thead{
     margin-bottom: 5px;
     padding-left: 15px;
 }
-.businessInputInput{
+.businessInputValue{
     border: 1px solid #DBD7F4;
     padding: 15px 25px;
     width: 100%;
@@ -532,7 +535,7 @@ thead{
     text-align: right;
     font-weight: bold;
 }
-.half{
+.fullWidth{
     width: 100%;
 }
 
@@ -772,7 +775,7 @@ body.no-scroll {
     left: 0;
 
 }
-.bugFix{
+.flexStyleDiv{
     display: flex;
     gap: 20px;
 
@@ -860,7 +863,7 @@ body.no-scroll {
     .buttonSample{
         width: 130px;
     }
-    .bugFix{
+    .flexStyleDiv{
         margin-top: 20px;
     }
 }

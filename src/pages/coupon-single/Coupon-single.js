@@ -154,7 +154,7 @@ export const CouponSingle = () =>{
                             Receivers phone
                         </div>
                         <div className="businessInput">
-                            <input type="tel" className='businessInputInput half' value='+8 800 555 35 35'/>
+                            <input type="tel" className='businessInputInput fullWidth' value='+8 800 555 35 35'/>
                         </div>
                     </div>
                     <div className="rightContent">
@@ -162,7 +162,7 @@ export const CouponSingle = () =>{
                             From who
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='Sanja Shljapik'/>
+                            <input type="text" className='businessInputInput' value='Sanja Shljapik'/>
                         </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@ export const CouponSingle = () =>{
                             Nominal
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='100$'/>
+                            <input type="text" className='businessInputInput' value='100$'/>
                         </div>
                     </div>
                     <div className="rightContent">
@@ -180,7 +180,7 @@ export const CouponSingle = () =>{
                             Submitted in resto
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='R14'/>
+                            <input type="text" className='businessInputInput' value='R14'/>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ export const CouponSingle = () =>{
                             Created at
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='2023-01-03 14:53:23'/>
+                            <input type="text" className='businessInputInput' value='2023-01-03 14:53:23'/>
                         </div>
                     </div>
                     <div className="rightContent">
@@ -198,7 +198,7 @@ export const CouponSingle = () =>{
                             Submitted by
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='German Toome'/>
+                            <input type="text" className='businessInputInput' value='German Toome'/>
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@ export const CouponSingle = () =>{
                             Capable untill
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput half ' value='02.07.2023'/>
+                            <input type="text" className='businessInputInput' value='02.07.2023'/>
                         </div>
                     </div>
                 </div>

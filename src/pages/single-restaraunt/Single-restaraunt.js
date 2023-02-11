@@ -379,16 +379,16 @@ export const SingleRestaraunt = () => {
                                                 </div>
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='From...' className='bashmak'></input>
+                                                        <input type='text' placeholder='From...' className='certificateInputValue'></input>
                                                     </div>
-                                                    <div className="to_who">
-                                                        <input type='text' placeholder='To...' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='text' placeholder='To...' className='certificateInputValue'></input>
                                                     </div>
-                                                    <div className="mail">
-                                                        <input type='email' placeholder='Recipients e-mail...' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='email' placeholder='Recipients e-mail...' className='certificateInputValue'></input>
                                                     </div>
-                                                    <div className="phone">
-                                                        <input type='tel' placeholder='Recipients phone number...' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='tel' placeholder='Recipients phone number...' className='certificateInputValue'></input>
                                                     </div>
                                                     <div className="text">
                                                         <LimitedTextarea limit={280} value='' />
@@ -438,16 +438,16 @@ export const SingleRestaraunt = () => {
                                             <div className="left">
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Name' className='bashmak1'/>
+                                                        <input type='text' placeholder='Name' className='certificateInputValue1'/>
                                                     </div>
-                                                    <div className="to_who">
-                                                        <input type='text' placeholder='Company name' className='bashmak1'/>
+                                                    <div className="from_who">
+                                                        <input type='text' placeholder='Company name' className='certificateInputValue1'/>
                                                     </div>
-                                                    <div className="mail">
-                                                        <input type='email' placeholder='Company e-mail' className='bashmak1'/>
+                                                    <div className="from_who">
+                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue1'/>
                                                     </div>
-                                                    <div className="phone">
-                                                        <input type='tel' placeholder='Phone number' className='bashmak1'/>
+                                                    <div className="from_who">
+                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue1'/>
                                                     </div>
                                                     <div className="text">
                                                         <LimitedTextarea limit={280} value='' />
@@ -492,10 +492,10 @@ export const SingleRestaraunt = () => {
                             </div>
                         </div>
                         <div className="rightWho">
-                            <div className="zaebali">
+                            <div className="numberMail">
                                 372 5887 8456
                             </div>
-                            <div className="zaebali">
+                            <div className="numberMail">
                                 must@vorst.ee
                             </div>
                         </div>

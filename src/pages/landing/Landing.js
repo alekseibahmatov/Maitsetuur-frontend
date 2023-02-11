@@ -185,6 +185,27 @@ export default function Landing() {
         }
     ]);
 
+    const advantages = [
+        {
+           img: l1,
+           header: 'Jopka Jopka',
+           description: 'The recipient is definitely freaking out'
+
+        },
+        {
+            img: l2,
+            header: 'Any holiday',
+            description: 'On any holiday dad will again grapple with grandfather drunk'
+
+        },
+        {
+            img: l3,
+            header: 'Little Choose',
+            description: 'Restaurants in Estonia can be counted on one hand'
+
+        },
+    ]
+
     const toggleFAQ = index => {
         setFAQ(faq.map((item, i) => {
             if (i === index) {
@@ -326,16 +347,16 @@ export default function Landing() {
                                                 </div>
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='From...' className='bashmak'></input>
+                                                        <input type='text' placeholder='From...' className='certificateInputValue'></input>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='To...' className='bashmak'></input>
+                                                        <input type='text' placeholder='To...' className='certificateInputValue'></input>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='email' placeholder='Recipients e-mail...' className='bashmak'></input>
+                                                        <input type='email' placeholder='Recipients e-mail...' className='certificateInputValue'></input>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='tel' placeholder='Recipients phone number...' className='bashmak'></input>
+                                                        <input type='tel' placeholder='Recipients phone number...' className='certificateInputValue'></input>
                                                     </div>
                                                     <div className="from_who">
                                                         <LimitedTextarea limit={280} value='' />
@@ -385,16 +406,16 @@ export default function Landing() {
                                             <div className="left">
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Name' className='bashmak1'/>
+                                                        <input type='text' placeholder='Name' className='certificateInputValue1'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Company name' className='bashmak1'/>
+                                                        <input type='text' placeholder='Company name' className='certificateInputValue1'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='email' placeholder='Company e-mail' className='bashmak1'/>
+                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue1'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='tel' placeholder='Phone number' className='bashmak1'/>
+                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue1'/>
                                                     </div>
                                                     <div className="from_who">
                                                         <LimitedTextarea limit={280} value='' />
@@ -404,7 +425,7 @@ export default function Landing() {
                                                     Order
                                                 </div>
                                                 <div className="confirm">
-                                                    I agree with the <span className="no">Terms of personal data processing</span>.
+                                                    I agree with the <span className="termsLink">Terms of personal data processing</span>.
                                                 </div>
 
                                             </div>
@@ -435,9 +456,9 @@ export default function Landing() {
                             Certificate gives an opportunity to visit the most popular and breathtaking restaurants of Tallinn
                         </div>
                         <div className="carouselMain">
-                            <ImageCarousel images={images} interval={1000}></ImageCarousel>
                             <ImageCarousel images={images} interval={2000}></ImageCarousel>
-                            <ImageCarousel images={images} interval={4000}></ImageCarousel>
+                            <ImageCarousel images={images} interval={2000}></ImageCarousel>
+                            <ImageCarousel images={images} interval={2000}></ImageCarousel>
                         </div>
                         <div className="allRestaurants">
                             Whole restaurants list
@@ -449,42 +470,22 @@ export default function Landing() {
                             Our advantages
                         </div>
                         <div className="advantagesMain">
-                            <div className="singleAdvantage">
-                                <div className="advantageImg">
-                                </div>
-                                <div className="advantageDescription">
-                                    <div className="advHeader">
-                                        Jopka Jopka
+                            {advantages.map((item,i) => (
+                                <div className="singleAdvantage">
+                                    <div className="advantageImg"
+                                         style={{ backgroundImage: `linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url(${item.img})`}}
+                                    >
                                     </div>
-                                    <div className="advDescription">
-                                        The recipient is definitely freaking out
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="singleAdvantage">
-                                <div className="advantageImg1">
-                                </div>
-                                <div className="advantageDescription">
-                                    <div className="advHeader">
-                                        Any holiday
-                                    </div>
-                                    <div className="advDescription">
-                                        On any holiday dad will again grapple with grandfather drunk
+                                    <div className="advantageDescription">
+                                        <div className="advHeader">
+                                            {item.header}
+                                        </div>
+                                        <div className="advDescription">
+                                            {item.description}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="singleAdvantage">
-                                <div className="advantageImg2">
-                                </div>
-                                <div className="advantageDescription">
-                                    <div className="advHeader">
-                                        Little choice
-                                    </div>
-                                    <div className="advDescription">
-                                        Restaurants in Estonia can be counted on one hand
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
@@ -617,10 +618,10 @@ export default function Landing() {
                             </div>
                         </div>
                         <div className="rightWho">
-                            <div className="zaebali">
+                            <div className="numberMail">
                                 372 5887 8456
                             </div>
-                            <div className="zaebali">
+                            <div className="numberMail">
                                 must@vorst.ee
                             </div>
                         </div>

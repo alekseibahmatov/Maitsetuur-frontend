@@ -165,10 +165,10 @@ export const AllRestaraunt = () => {
                                 </div>
                             </div>
                             <div className="rightWho">
-                                <div className="zaebali">
+                                <div className="numberMail">
                                     372 5887 8456
                                 </div>
-                                <div className="zaebali">
+                                <div className="numberMail">
                                     must@vorst.ee
                                 </div>
                             </div>

@@ -11,13 +11,3 @@
     height: 100%;
     background-color: #ffffff;
 }
-.bmoverlay.open{
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    height: 120%;
-    background: rgba(0, 0, 0, 0.3);
-    opacity: 1;
-    transition: opacity 0.3s ease 0s;
-    margin-top: -200px;
-}

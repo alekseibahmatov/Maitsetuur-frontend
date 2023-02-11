@@ -337,7 +337,7 @@
     margin-top: 10px;
     font-family: 'Raleway', sans-serif;
 }
-.bashmak{
+.certificateInputValue{
     font-weight: bold;
     width: 100%;
     border-radius: 5px;
@@ -346,7 +346,7 @@
     margin-bottom: 10px;
     font-family: 'Raleway', sans-serif;
 }
-.bashmak1{
+.certificateInputValue1{
     font-weight: bold;
     width: 100%;
     border-radius: 5px;
@@ -377,12 +377,12 @@
     margin-top: 20px;
     font-weight: bold;
 }
-.no{
+.termsLink{
     color: lightblue;
     transition: 0.3s;
     cursor: pointer;
 }
-.no:hover{
+.termsLink:hover{
     color: blue;
     transition: 0.3s;
 }
@@ -398,7 +398,6 @@
     border: 1px solid white;
     display: flex;
     align-items: flex-end;
-
 }
 .from_who{
     margin: 10px 0;
@@ -433,6 +432,7 @@
 }
 .nominalValue{
     font-size: 20px;
+    position: fixed;
 }
 .infiniteCarousel{
     margin-top: 100px;
@@ -480,6 +480,7 @@
     color: #EEEEEE;
     font-size: 25px;
     margin-top: 100px;
+    font-family: 'Raleway', sans-serif;
 }
 .advantagesMain{
     display: flex;
@@ -495,7 +496,6 @@
 
 }
 .advantageImg{
-    background-image: linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url("../../assets/img/l1.png");
     background-size: cover;
     background-position: 50% 20%;
     width: 100%;
@@ -672,7 +672,7 @@
     margin-top: 5px;
     font-family: 'Raleway', sans-serif;
 }
-.zaebali{
+.numberMail{
     font-size: 20px;
     color: #78A4F8;
     margin-top: 5px;
@@ -744,7 +744,7 @@
         display: block;
         text-align: center;
     }
-    .zaebali{
+    .numberMail{
         text-align: center;
     }
     .header{
@@ -809,9 +809,7 @@
     .singleExplain1{
         padding-bottom: 10px;
     }
-    .knopki{
-        column-gap: 2px;
-    }
+
     .active{
         padding-left: 10px;
         padding-right: 10px;
@@ -874,7 +872,7 @@
     .company1{
         font-size: 10px;
     }
-    .zaebali{
+    .numberMail{
         font-size: 10px;
     }
     .askInfo1{
@@ -891,6 +889,9 @@
     }
     .certificate_example{
         font-size: 10px;
+    }
+    .knopki{
+        column-gap: 2px;
     }
 }
 
