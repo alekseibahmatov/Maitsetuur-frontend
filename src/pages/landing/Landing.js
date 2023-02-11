@@ -14,6 +14,7 @@ import l3 from '../../assets/img/l3.png';
 import {click} from "@testing-library/user-event/dist/click";
 import Modal from "../../ui-components/popup/Popup";
 import ReactSwipe from 'react-swipe';
+import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
 
 export default function Landing() {
     const navigate = useNavigate();
@@ -94,35 +95,6 @@ export default function Landing() {
 
 
     const [isOpen, setIsOpen] = useState(false);
-
-
-
-    const LimitedTextarea = ({ rows, cols, value, limit }) => {
-        const [content, setContent] = React.useState(value.slice(0, limit));
-
-        const setFormattedContent = React.useCallback(
-            text => {
-                setContent(text.slice(0, limit));
-            },
-            [limit, setContent]
-        );
-
-        return (
-            <>
-      <textarea
-          className='congrats'
-          placeholder='Congratulations text...'
-          rows={rows}
-          cols={cols}
-          onChange={event => setFormattedContent(event.target.value)}
-          value={content}
-      />
-                <div className='wordCount'>
-                    {content.length}/{limit}
-                </div>
-            </>
-        );
-    };
 
     let newDate = new Date();
     let date = newDate.getDate() + 1 + '.';
@@ -331,7 +303,7 @@ export default function Landing() {
                                                         <input type='tel' placeholder='Recipients phone number...' className='bashmak'></input>
                                                     </div>
                                                     <div className="text">
-                                                        <LimitedTextarea limit={280} value='' />
+                                                        <LimitedTextArea limit={280} value='' />
                                                     </div>
                                                 </div>
                                                 <div className="pay">
@@ -391,7 +363,7 @@ export default function Landing() {
                                                         <input type='tel' placeholder='Phone number' className='bashmak'></input>
                                                     </div>
                                                     <div className="text">
-                                                        <LimitedTextarea limit={280} value='' />
+                                                        <LimitedTextArea limit={280} value='' />
                                                     </div>
                                                 </div>
                                                 <div className="pay">

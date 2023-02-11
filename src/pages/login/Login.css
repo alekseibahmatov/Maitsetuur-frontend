@@ -44,6 +44,25 @@ html {
     text-align: center;
     padding: 15px 20px;
     border-radius: 10px;
+    width: 100%;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+button:hover {
+    background-color: #664eff;
+    transition: 0.3s;
+}
+
+.error {
+    margin: 10px 0 0 15px;
+    color: red;
 }
 
 @media (max-width: 648px){
