@@ -4,6 +4,8 @@ import manager from '../../../assets/img/Businessman.png'
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import {sellers, typeOfResto} from "./data";
+import popupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
+import PopupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
 
 export const RestaurantBusinessInformation = () => {
     const [image, setImage] = useState(null);
@@ -13,6 +15,11 @@ export const RestaurantBusinessInformation = () => {
     const handleChangeImage = e => {
         setFileName(e.target.files[0].name);
         setImage(URL.createObjectURL(e.target.files[0]));
+    }
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
     }
 
     const LimitedTextarea = ({rows, cols, value, limit}) => {
@@ -28,7 +35,7 @@ export const RestaurantBusinessInformation = () => {
         return (
             <>
       <textarea
-          className='businessInputInput input'
+          className='businessInputValue input'
           placeholder='Resto description...'
           rows={rows}
           cols={cols}
@@ -72,15 +79,16 @@ export const RestaurantBusinessInformation = () => {
         placeholder: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
     };
 
-    return <div className='rightBlock11'>
+    return <div className='rightBlock1'>
         <div className="businessHeader">
             <div className="businessHeader1">
                 Restaurant Business Information
             </div>
-            <div className="bugFix">
-            <div className="buttonSample">
+            <div className="flexStyleDiv">
+            <div className="buttonSample" onClick={toggleModal}>
                 Submit
             </div>
+                <PopupSumbit isOpen={isModalOpen} toggleModal={toggleModal} />
             <div className="buttonSample red">
                 Delete
             </div>
@@ -150,7 +158,7 @@ export const RestaurantBusinessInformation = () => {
                         Business Name
                     </div>
                     <div className="businessInput">
-                        <input type="text" className='businessInputInput'
+                        <input type="text" className='businessInputValue'
                                placeholder='Resto name...'/>
                     </div>
                 </div>
@@ -171,7 +179,7 @@ export const RestaurantBusinessInformation = () => {
                             Email
                         </div>
                         <div className="businessInput">
-                            <input type="email" className='businessInputInput half'
+                            <input type="email" className='businessInputValue'
                                    placeholder='Email...'/>
                         </div>
                     </div>
@@ -182,7 +190,7 @@ export const RestaurantBusinessInformation = () => {
                             Phone Number
                         </div>
                         <div className="businessInput">
-                            <input type="phone" className='businessInputInput half'
+                            <input type="phone" className='businessInputValue'
                                    placeholder='Phone...'/>
                         </div>
                     </div>
@@ -205,7 +213,7 @@ export const RestaurantBusinessInformation = () => {
                             Province
                         </div>
                         <div className="businessInput">
-                            <input type="email" className='businessInputInput half'
+                            <input type="email" className='businessInputValue'
                                    placeholder='Province...'/>
                         </div>
                     </div>
@@ -214,7 +222,7 @@ export const RestaurantBusinessInformation = () => {
                             City
                         </div>
                         <div className="businessInput">
-                            <input type="email" className='businessInputInput half'
+                            <input type="email" className='businessInputValue'
                                    placeholder='City...'/>
                         </div>
                     </div>
@@ -223,7 +231,7 @@ export const RestaurantBusinessInformation = () => {
                             Postal Code
                         </div>
                         <div className="businessInput">
-                            <input type="email" className='businessInputInput half'
+                            <input type="email" className='businessInputValue'
                                    placeholder='Postal Code...'/>
                         </div>
                     </div>
@@ -236,7 +244,7 @@ export const RestaurantBusinessInformation = () => {
                             Working time
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput half'
+                            <input type="text" className='businessInputValue'
                                    placeholder='Working time...'/>
                         </div>
                     </div>
@@ -247,7 +255,7 @@ export const RestaurantBusinessInformation = () => {
                             Average bill
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput half'
+                            <input type="text" className='businessInputValue'
                                    placeholder='Average bill...'/>
                         </div>
                     </div>

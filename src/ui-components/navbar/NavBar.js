@@ -18,7 +18,6 @@ export const NavBar = () => {
                 </div>
                 <div className="burgerMenu">
                     <Burger/>
-
                 </div>
                 <div className="scanAndUser">
                     <div className="scan">

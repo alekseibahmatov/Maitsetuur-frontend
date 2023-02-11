@@ -56,7 +56,7 @@ export const WaiterSingle = () =>{
                     <div className="businessHeader1">
                         Waiter’s Account for R14
                     </div>
-                    <div className="bugFix">
+                    <div className="flexStyleDiv">
                     <div className="buttonSample" onClick={toggleModal}>
                         Submit
                     </div>
@@ -72,7 +72,7 @@ export const WaiterSingle = () =>{
                         Business Name
                     </div>
                     <div className="businessInput">
-                        <input type="text" className='businessInputInput' value='Aleksei Bashma4ok'/>
+                        <input type="text" className='businessInputValue' value='Aleksei Bashma4ok'/>
                     </div>
                 </div>
                     <div className="businessName">
@@ -81,7 +81,7 @@ export const WaiterSingle = () =>{
                             Address
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput' value='Kikri 2/1 Menja ebut v popku'/>
+                            <input type="text" className='businessInputValue' value='Kikri 2/1 Menja ebut v popku'/>
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@ export const WaiterSingle = () =>{
                                 Email
                             </div>
                             <div className="businessInput">
-                                <input type="email" className='businessInputInput half' value='jatupoibashmack@kakaxa.ru'/>
+                                <input type="email" className='businessInputValue' value='jatupoibashmack@kakaxa.ru'/>
                             </div>
                         </div>
                         <div className="rightContent">
@@ -99,7 +99,7 @@ export const WaiterSingle = () =>{
                                 Phone Number
                             </div>
                             <div className="businessInput">
-                                <input type="phone" className='businessInputInput half' value='228 1488 1337'/>
+                                <input type="phone" className='businessInputValue' value='228 1488 1337'/>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@ export const WaiterSingle = () =>{
                                 Resto name
                             </div>
                             <div className="businessInput">
-                                <input type="text" className='businessInputInput half purple' value='R14' readOnly={true}/>
+                                <input type="text" className='businessInputValue purple' value='R14' readOnly={true}/>
                             </div>
                         </div>
                     </div>

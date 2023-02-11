@@ -19,6 +19,9 @@ import ResetSuccess from "./pages/reset-success/Reset-success";
 import AuthStep1 from "./pages/auth-step-1/Auth-step-1";
 import AuthStep2 from "./pages/auth-step-2/Auth-step-2";
 import AuthStep3 from "./pages/auth-step-3/Auth-step-3";
+import SingleRestaraunt from "./pages/single-restaraunt/Single-restaraunt";
+import AllRestaraunt from "./pages/all-restaurant/All-restaraunt";
+import Connect from "./pages/connect/Connect";
 
 export const App = () => {
 
@@ -42,6 +45,10 @@ export const App = () => {
                 <Route path='/authstep1' element={<AuthStep1/>}/>
                 <Route path='/authstep2' element={<AuthStep2/>}/>
                 <Route path='/authstep3' element={<AuthStep3/>}/>
+                <Route path='/singlerestaraunt' element={<SingleRestaraunt/>}/>
+                <Route path='/allrestaraunts' element={<AllRestaraunt/>}/>
+                <Route path='/connect' element={<Connect/>}/>
+
                 {/* ВОТ СЮДА ДОБАВЛЯЙ НОВЫЕ РУТЫ КАК ЛЕНДОС (ВНУТРИ LAYOUT)*/}
                 {/*<Route path="landing" element={<Landing/>}/>*/}
             </Route>

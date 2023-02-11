@@ -24,9 +24,11 @@ export const Dashboard = () => {
     }, [location.pathname]);
 
 
+
+
     return (
         <div className='content'>
-            <NavBar key={'nav'}/>
+            <NavBar key={'nav'} />
             <div className="main">
                 <SideBar/>
                 <>
