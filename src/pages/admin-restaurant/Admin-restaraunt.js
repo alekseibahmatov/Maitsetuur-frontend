@@ -15,11 +15,11 @@ import dots from '../../assets/img/dots.png'
 import 'font-awesome/css/font-awesome.min.css';
 import resto from '../../assets/img/Image Placeholder.png'
 import small from '../../assets/img/small.png'
-import restoImg from '../../assets/img/restoImg.png'
 import contract from '../../assets/img/contract.png'
 import makeAnimated from 'react-select/animated'
 import classnames from 'classnames';
 import PopupAdmin from "../../ui-components/popup-admin/Popup-admin";
+import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
 
 export const App = () => {
 
@@ -40,33 +40,6 @@ export const App = () => {
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     }
-
-    const LimitedTextarea = ({ rows, cols, value, limit }) => {
-        const [content, setContent] = React.useState(value.slice(0, limit));
-
-        const setFormattedContent = React.useCallback(
-            text => {
-                setContent(text.slice(0, limit));
-            },
-            [limit, setContent]
-        );
-
-        return (
-            <>
-      <textarea
-          className='businessInputValue input'
-          placeholder='Resto description...'
-          rows={rows}
-          cols={cols}
-          onChange={event => setFormattedContent(event.target.value)}
-          value={content}
-      />
-                <div className='wordCount'>
-                    {content.length}/{limit}
-                </div>
-            </>
-        );
-    };
 
 
     const handleClick = (id) => {
@@ -735,7 +708,7 @@ export const App = () => {
                                             Business Description (max 100 words)
                                         </div>
                                         <div className="businessInput">
-                                            <LimitedTextarea limit={100} value='' />
+                                            <LimitedTextArea limit={100} value='' />
                                         </div>
                                     </div>
 
@@ -840,7 +813,7 @@ export const App = () => {
                         case 6: return <div>Content 6</div>;
                         default: return <div>Choose button</div>;
                     }
-                })()}
+                })}
 
 
             </div>

@@ -4,8 +4,24 @@ import manager from '../../../assets/img/Businessman.png'
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import {sellers, typeOfResto} from "./data";
-import popupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
+import {WaiterSingleSchema} from "../../waiter-single/WaiterSingleSchema";
+import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
+import {RestaurantBusinessInfoSchema} from "./RestaurantBusinessInfoSchema";
+import {LimitedTextArea} from "../../../ui-components/limited-text-area/LimitedTextArea";
 import PopupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
+
+const initialValues = {
+    restaurantName: "",
+    restaurantDescription: "",
+    email: "",
+    mobilePhone: "",
+    country: "",
+    province: "",
+    city: "",
+    postcode: "",
+    workingTime: "",
+    averageBill: "",
+};
 
 export const RestaurantBusinessInformation = () => {
     const [image, setImage] = useState(null);
@@ -16,38 +32,10 @@ export const RestaurantBusinessInformation = () => {
         setFileName(e.target.files[0].name);
         setImage(URL.createObjectURL(e.target.files[0]));
     }
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     }
-
-    const LimitedTextarea = ({rows, cols, value, limit}) => {
-        const [content, setContent] = React.useState(value.slice(0, limit));
-
-        const setFormattedContent = React.useCallback(
-            text => {
-                setContent(text.slice(0, limit));
-            },
-            [limit, setContent]
-        );
-
-        return (
-            <>
-      <textarea
-          className='businessInputValue input'
-          placeholder='Resto description...'
-          rows={rows}
-          cols={cols}
-          onChange={event => setFormattedContent(event.target.value)}
-          value={content}
-      />
-                <div className='wordCount'>
-                    {content.length}/{limit}
-                </div>
-            </>
-        );
-    };
 
 
     const customStyles = {
@@ -150,10 +138,31 @@ export const RestaurantBusinessInformation = () => {
                 </div>
             </div>
 
-            <div className="businessForm">
 
-                <div className="businessName">
+            <Formik
+                initialValues={initialValues}
+                onSubmit={(values, actions) => {
+                    setTimeout(() => {
+                        console.log(values)
+                        actions.setSubmitting(false);
+                    }, 1000);
+                }}
+                validationSchema={RestaurantBusinessInfoSchema}
+            >
+                {(props: FormikProps<any>) => (
+                    <Form>
+                        <div className="businessForm">
 
+                            <div className="businessName">
+
+                                <div className="businessFormHeader">
+                                    Business Name
+                                </div>
+                                <div className="businessInput">
+                                    <input type="text" className='businessInputValue'
+                                           placeholder='Resto name...'/>
+                                </div>
+                            </div>
                     <div className="businessFormHeader">
                         Business Name
                     </div>
@@ -163,15 +172,15 @@ export const RestaurantBusinessInformation = () => {
                     </div>
                 </div>
 
-                <div className="businessName">
+                            <div className="businessName">
 
-                    <div className="businessFormHeader">
-                        Business Description (max 100 words)
-                    </div>
-                    <div className="businessInput">
-                        <LimitedTextarea limit={100} value=''/>
-                    </div>
-                </div>
+                                <div className="businessFormHeader">
+                                    Business Description (max 100 words)
+                                </div>
+                                <div className="businessInput">
+                                    <LimitedTextArea limit={100} value=''/>
+                                </div>
+                            </div>
 
                 <div className="mailPhone">
                     <div className="leftContent">
@@ -196,7 +205,7 @@ export const RestaurantBusinessInformation = () => {
                     </div>
                 </div>
 
-                <div className="countryCity">
+                            <div className="countryCity">
 
                     <div className="singleCountryBlock">
                         <div className="businessFormHeader">
@@ -236,7 +245,7 @@ export const RestaurantBusinessInformation = () => {
                         </div>
                     </div>
 
-                </div>
+                            </div>
 
                 <div className="workBill">
                     <div className="leftContent">
