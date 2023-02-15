@@ -32,7 +32,7 @@ export const CreateWaiter = () => {
                             Waiters Full Name
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput ' value='Vanja Zalupenko'/>
+                            <input type="text" className='businessInputValue ' value='Vanja Zalupenko'/>
                         </div>
                     </div>
                     <div className="rightContent">
@@ -40,7 +40,7 @@ export const CreateWaiter = () => {
                             Address
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput ' value='Selo Zalupi, 27 street, 10 house'/>
+                            <input type="text" className='businessInputValue ' value='Selo Zalupi, 27 street, 10 house'/>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ export const CreateWaiter = () => {
                             Email
                         </div>
                         <div className="businessInput">
-                            <input type="email" className='businessInputInput ' value='jaParenSZavoda@pizdahuevo.blyat'/>
+                            <input type="email" className='businessInputValue ' value='jaParenSZavoda@pizdahuevo.blyat'/>
                         </div>
                     </div>
                     <div className="rightContent">
@@ -58,7 +58,7 @@ export const CreateWaiter = () => {
                             Phone number
                         </div>
                         <div className="businessInput">
-                            <input type="tel" className='businessInputInput half' value='(228) 555-0112'/>
+                            <input type="tel" className='businessInputValue half' value='(228) 555-0112'/>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ export const CreateWaiter = () => {
                             Resto name
                         </div>
                         <div className="businessInput">
-                            <input type="text" className='businessInputInput  ' value='R14'/>
+                            <input type="text" className='businessInputValue  ' value='R14'/>
                         </div>
                     </div>
                 </div>

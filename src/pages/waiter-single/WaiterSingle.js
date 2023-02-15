@@ -47,7 +47,7 @@ export const WaiterSingle = () => {
                                 <div className="businessHeader1">
                                     Waiter’s Account for R14
                                 </div>
-                                <div className="bugFix">
+                                <div className="flexStyleDiv">
                                     <button type="button" className="buttonSample" onClick={toggleModal}>
                                         Submit
                                     </button>
@@ -65,7 +65,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="fullName"
                                                    placeholder="Input your full name"/>
                                             <div className="error">
@@ -81,7 +81,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput"
+                                            <Field className="businessInputValue"
                                                    type="text"
                                                    name="mobilePhone"
                                                    placeholder="Input your phone number"/>
@@ -98,7 +98,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput"
+                                            <Field className="businessInputValue"
                                                    type="text"
                                                    name="idCode"
                                                    placeholder="Input your ID Code"/>
@@ -115,7 +115,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput"
+                                            <Field className="businessInputValue"
                                                    type="text"
                                                    name="country"
                                                    placeholder="Input your ID Code"/>
@@ -132,7 +132,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput"
+                                            <Field className="businessInputValue"
                                                    type="text"
                                                    name="city"
                                                    placeholder="Input your city"/>
@@ -149,7 +149,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput"
+                                            <Field className="businessInputValue"
                                                    type="text"
                                                    name="state"
                                                    placeholder="Input your city"/>
@@ -166,7 +166,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput"
+                                            <Field className="businessInputValue"
                                                    type="text"
                                                    name="street"
                                                    placeholder="Input your city"/>
@@ -183,7 +183,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput"
+                                            <Field className="businessInputValue"
                                                    type="text"
                                                    name="apartmentNumber"
                                                    placeholder="Input your city"/>
@@ -201,7 +201,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput"
+                                            <Field className="businessInputValue"
                                                    type="text"
                                                    name="postcode"
                                                    placeholder="Input your city"/>
@@ -218,7 +218,7 @@ export const WaiterSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="email"
                                                    placeholder="Input your email"/>
                                             <div className="error">
@@ -233,7 +233,7 @@ export const WaiterSingle = () => {
                                         Resto name
                                     </div>
                                     <div className="businessInput">
-                                        <Field className="businessInputInput half" type="text"
+                                        <Field className="businessInputValue half" type="text"
                                                name="restaurantName"
                                                placeholder="Input your restaurant name"/>
                                         <div className="error">

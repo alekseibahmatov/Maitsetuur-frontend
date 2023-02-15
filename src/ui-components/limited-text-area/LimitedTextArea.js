@@ -13,7 +13,7 @@ export const LimitedTextArea = ({rows, cols, value, limit}) => {
     return (
         <>
       <textarea
-          className='businessInputInput fullHeight'
+          className='businessInputValue fullHeight'
           placeholder='Congratulations text...'
           rows={rows}
           cols={cols}

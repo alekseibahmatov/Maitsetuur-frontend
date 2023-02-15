@@ -8,7 +8,6 @@ import {WaiterSingleSchema} from "../../waiter-single/WaiterSingleSchema";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import {RestaurantBusinessInfoSchema} from "./RestaurantBusinessInfoSchema";
 import {LimitedTextArea} from "../../../ui-components/limited-text-area/LimitedTextArea";
-import PopupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
 
 const initialValues = {
     restaurantName: "",
@@ -31,10 +30,6 @@ export const RestaurantBusinessInformation = () => {
     const handleChangeImage = e => {
         setFileName(e.target.files[0].name);
         setImage(URL.createObjectURL(e.target.files[0]));
-    }
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
     }
 
 
@@ -67,19 +62,18 @@ export const RestaurantBusinessInformation = () => {
         placeholder: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
     };
 
-    return <div className='rightBlock1'>
+    return <div className='rightBlock11'>
         <div className="businessHeader">
             <div className="businessHeader1">
                 Restaurant Business Information
             </div>
             <div className="flexStyleDiv">
-            <div className="buttonSample" onClick={toggleModal}>
-                Submit
-            </div>
-                <PopupSumbit isOpen={isModalOpen} toggleModal={toggleModal} />
-            <div className="buttonSample red">
-                Delete
-            </div>
+                <div className="buttonSample">
+                    Submit
+                </div>
+                <div className="buttonSample red">
+                    Delete
+                </div>
             </div>
         </div>
 
@@ -163,14 +157,6 @@ export const RestaurantBusinessInformation = () => {
                                            placeholder='Resto name...'/>
                                 </div>
                             </div>
-                    <div className="businessFormHeader">
-                        Business Name
-                    </div>
-                    <div className="businessInput">
-                        <input type="text" className='businessInputValue'
-                               placeholder='Resto name...'/>
-                    </div>
-                </div>
 
                             <div className="businessName">
 
@@ -182,107 +168,113 @@ export const RestaurantBusinessInformation = () => {
                                 </div>
                             </div>
 
-                <div className="mailPhone">
-                    <div className="leftContent">
-                        <div className="businessFormHeader">
-                            Email
-                        </div>
-                        <div className="businessInput">
-                            <input type="email" className='businessInputValue'
-                                   placeholder='Email...'/>
-                        </div>
-                    </div>
-                    <div className="rightContent">
+                            <div className="mailPhone">
+                                <div className="leftContent">
+                                    <div className="businessFormHeader">
+                                        Email
+                                    </div>
+                                    <div className="businessInput">
+                                        <input type="email" className='businessInputValue half'
+                                               placeholder='Email...'/>
+                                    </div>
+                                </div>
+                                <div className="rightContent">
 
 
-                        <div className="businessFormHeader">
-                            Phone Number
-                        </div>
-                        <div className="businessInput">
-                            <input type="phone" className='businessInputValue'
-                                   placeholder='Phone...'/>
-                        </div>
-                    </div>
-                </div>
+                                    <div className="businessFormHeader">
+                                        Phone Number
+                                    </div>
+                                    <div className="businessInput">
+                                        <input type="phone" className='businessInputValue half'
+                                               placeholder='Phone...'/>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div className="countryCity">
 
-                    <div className="singleCountryBlock">
-                        <div className="businessFormHeader">
-                            Country
-                        </div>
-                        <div className="businessInput1">
-                            <Select className='myselect' options={sellers}
-                                    defaultValue={sellers[0]} styles={customStyles}
-                                    components={{IndicatorSeparator: () => null}}/>
-                        </div>
-                    </div>
-                    <div className="singleCountryBlock">
-                        <div className="businessFormHeader">
-                            Province
-                        </div>
-                        <div className="businessInput">
-                            <input type="email" className='businessInputValue'
-                                   placeholder='Province...'/>
-                        </div>
-                    </div>
-                    <div className="singleCountryBlock">
-                        <div className="businessFormHeader">
-                            City
-                        </div>
-                        <div className="businessInput">
-                            <input type="email" className='businessInputValue'
-                                   placeholder='City...'/>
-                        </div>
-                    </div>
-                    <div className="singleCountryBlock">
-                        <div className="businessFormHeader">
-                            Postal Code
-                        </div>
-                        <div className="businessInput">
-                            <input type="email" className='businessInputValue'
-                                   placeholder='Postal Code...'/>
-                        </div>
-                    </div>
+                                <div className="singleCountryBlock">
+                                    <div className="businessFormHeader">
+                                        Country
+                                    </div>
+                                    <div className="businessInput1">
+                                        <Select className='myselect' options={sellers}
+                                                defaultValue={sellers[0]} styles={customStyles}
+                                                components={{IndicatorSeparator: () => null}}/>
+                                    </div>
+                                </div>
+
+                                <div className="singleCountryBlock">
+                                    <div className="businessFormHeader">
+                                        Province
+                                    </div>
+                                    <div className="businessInput">
+                                        <input type="email" className='businessInputValue half'
+                                               placeholder='Province...'/>
+                                    </div>
+                                </div>
+
+                                <div className="singleCountryBlock">
+                                    <div className="businessFormHeader">
+                                        City
+                                    </div>
+                                    <div className="businessInput">
+                                        <input type="email" className='businessInputValue half'
+                                               placeholder='City...'/>
+                                    </div>
+                                </div>
+
+                                <div className="singleCountryBlock">
+                                    <div className="businessFormHeader">
+                                        Postal Code
+                                    </div>
+                                    <div className="businessInput">
+                                        <input type="email" className='businessInputValue half'
+                                               placeholder='Postal Code...'/>
+                                    </div>
+                                </div>
 
                             </div>
 
-                <div className="workBill">
-                    <div className="leftContent">
-                        <div className="businessFormHeader">
-                            Working time
-                        </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputValue'
-                                   placeholder='Working time...'/>
-                        </div>
-                    </div>
-                    <div className="rightContent">
+                            <div className="workBill">
+                                <div className="leftContent">
+                                    <div className="businessFormHeader">
+                                        Working time
+                                    </div>
+                                    <div className="businessInput">
+                                        <input type="text" className='businessInputValue half'
+                                               placeholder='Working time...'/>
+                                    </div>
+                                </div>
+                                <div className="rightContent">
 
 
-                        <div className="businessFormHeader">
-                            Average bill
+                                    <div className="businessFormHeader">
+                                        Average bill
+                                    </div>
+                                    <div className="businessInput">
+                                        <input type="text" className='businessInputValue half'
+                                               placeholder='Average bill...'/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="typeOfRestaurantSelect">
+                                <div className="businessFormHeader">
+                                    Type of restaurant
+                                </div>
+                                <Select
+                                    closeMenuOnSelect={true}
+                                    components={animatedComponents}
+                                    isMulti
+                                    className='myselect'
+                                    options={typeOfResto}
+                                    styles={customStyles}
+                                />
+                            </div>
                         </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputValue'
-                                   placeholder='Average bill...'/>
-                        </div>
-                    </div>
-                </div>
-                <div className="typeOfRestaurantSelect">
-                    <div className="businessFormHeader">
-                        Type of restaurant
-                    </div>
-                    <Select
-                        closeMenuOnSelect={true}
-                        components={animatedComponents}
-                        isMulti
-                        className='myselect'
-                        options={typeOfResto}
-                        styles={customStyles}
-                    />
-                </div>
-            </div>
+                    </Form>
+                )}
+            </Formik>
 
         </div>
 

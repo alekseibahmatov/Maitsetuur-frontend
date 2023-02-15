@@ -96,7 +96,7 @@ export const CouponSingle = () => {
                                         </div>
                                         <div className="businessInput">
                                             <div className="businessInputWrapper">
-                                                <Field className="businessInputInput" type="text"
+                                                <Field className="businessInputValue" type="text"
                                                        name="receiverFullName"
                                                        placeholder="Input receiver's full name"/>
                                                 <div className="error">
@@ -111,7 +111,7 @@ export const CouponSingle = () => {
                                         </div>
                                         <div className="businessInput">
                                             <div className="businessInputWrapper">
-                                                <Field className="businessInputInput" type="text"
+                                                <Field className="businessInputValue" type="text"
                                                        name="receiverEmail"
                                                        placeholder="Input receiver's email"/>
                                                 <div className="error">
@@ -144,7 +144,7 @@ export const CouponSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="mobilePhone"
                                                    placeholder="Input receiver's email"/>
                                             <div className="error">
@@ -159,7 +159,7 @@ export const CouponSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="senderFullName"
                                                    placeholder="Input sender's full name"/>
                                             <div className="error">
@@ -176,7 +176,7 @@ export const CouponSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="nominal"
                                                    placeholder="Input nominal"/>
                                             <div className="error">
@@ -191,7 +191,7 @@ export const CouponSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="submittedInRestaurant"
                                                    placeholder="Input restaurant name"/>
                                             <div className="error">
@@ -208,7 +208,7 @@ export const CouponSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="createdAt"
                                                    placeholder="example 12-12-12"/>
                                             <div className="error">
@@ -223,7 +223,7 @@ export const CouponSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="submittedBy"
                                                    placeholder="example 12-12-12"/>
                                             <div className="error">
@@ -240,7 +240,7 @@ export const CouponSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="validUntil"
                                                    placeholder="example 12-12-12"/>
                                             <div className="error">
@@ -257,7 +257,7 @@ export const CouponSingle = () => {
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
-                                            <Field className="businessInputInput" type="text"
+                                            <Field className="businessInputValue" type="text"
                                                    name="submittedAt"
                                                    placeholder="example 12-12-12"/>
                                             <div className="error">

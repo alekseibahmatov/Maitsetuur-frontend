@@ -21,8 +21,8 @@
     "react-select": "^5.7.0",
     "react-swipe": "^6.0.4",
     "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
-    "react-swipe-component": "^3.0.0",
+    "yup": "^0.32.11",
+    "react-swipe-component": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

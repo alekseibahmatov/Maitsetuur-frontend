@@ -39,19 +39,20 @@ html {
     padding-left: 20px;
 }
 .loginButton{
-    background-color: #5541D7;
+    background-color: #5541D7!important;
     color: white;
     text-align: center;
     padding: 15px;
     border-radius: 10px;
     transition: 0.3s;
     cursor: pointer;
+    border: 0;
 }
 .loginButton:hover{
     transition: 0.3s;
     background-color: #ffffff;
     color: #5541D7;
-    border: 1px solid #5541D7;
+    border: 1px solid #5541D7!important;
 }
 
 

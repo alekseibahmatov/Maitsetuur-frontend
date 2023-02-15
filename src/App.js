@@ -20,6 +20,9 @@ import Unauthorized from "./pages/unauthorized/Unauthorized";
 import {TypesOfRestaurants} from "./pages/admin/types-of-restaurants/TypesOfRestaurants";
 import {MainStats} from "./pages/admin/main-stats/MainStats";
 import {RestaurantBusinessInformation} from "./pages/admin/resto-business-info/RestaurantBusinessInformation";
+import SingleRestaraunt from "./pages/single-restaraunt/Single-restaraunt";
+import AllRestaraunt from "./pages/all-restaurant/All-restaraunt";
+import Connect from "./pages/connect/Connect";
 
 const ROLES = {
     'client': 'ROLE_CLIENT',
@@ -64,9 +67,9 @@ export const App = () => {
                     <Route element={<RequireAuth allowedRoles={[ROLES.admin]}/>}>
                         <Route path="" element={<MainStats/>}/>
                         <Route path="resto-business-info" element={<RestaurantBusinessInformation/>}/>
-                        <Route path='/singlerestaraunt' element={<SingleRestaraunt/>}/>
-                        <Route path='/allrestaraunts' element={<AllRestaraunt/>}/>
-                        <Route path='/connect' element={<Connect/>}/>
+                        <Route path='singlerestaraunt' element={<SingleRestaraunt/>}/>
+                        <Route path='allrestaraunts' element={<AllRestaraunt/>}/>
+                        <Route path='connect' element={<Connect/>}/>
                     </Route>
 
                     {/* ERROR HANDLING */}
