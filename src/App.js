@@ -42,6 +42,14 @@ export const App = () => {
                 <Route path='/reset-success' element={<ResetSuccess/>}/>
                 <Route path='/add-personal-info' element={<AddPersonalInfo/>}/>
 
+                {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
+                <Route element={<RequireAuth allowedRoles={[ROLES.waiter, ROLES.client]}/>}>
+                    <Route path='/qrcode' element={<Qrcode/>}/>
+                    <Route path='/qrcode-success' element={<Qrcodesuccess/>}/>
+                    <Route path='/success' element={<Success/>}/>
+                    <Route path='/fail' element={<Fail/>}/>
+                </Route>
+
                 {/* ERROR HANDLING */}
                 <Route path="/*" element={<Error/>}/>
 
@@ -55,12 +63,7 @@ export const App = () => {
                         <Route path='create-waiter' element={<CreateWaiter/>}/>
 
 
-                        <Route element={<RequireAuth allowedRoles={[ROLES.waiter, ROLES.client]}/>}>
-                            <Route path='qrcode' element={<Qrcode/>}/>
-                            <Route path='qrcode-success' element={<Qrcodesuccess/>}/>
-                            <Route path='success' element={<Success/>}/>
-                            <Route path='fail' element={<Fail/>}/>
-                        </Route>
+
                     </Route>
 
                     {/* PRIVATE ROUTES ADMIN */}
