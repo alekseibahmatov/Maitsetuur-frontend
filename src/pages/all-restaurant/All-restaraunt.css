@@ -1,0 +1,99 @@
+.realBg1{
+    background-image:linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(4, 4, 38, 1)95%), url("../../assets/img/R14.jpg");
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+.unrealBg1{
+    background-color: rgba(4,4,38);
+    min-height: 400px;
+}
+.allRestaurantDescription{
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 40px;
+    padding: 10px;
+}
+.searchButton1 {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    border: none;
+    text-align: center;
+    color: grey;
+    background-color: rgba(4, 4, 38, 1);
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 6px;
+    margin-left: 5px;
+}
+.searchTerm1 {
+    width: 100%;
+    color: #ffffff;
+    background-color: rgba(4, 4, 38, 1);
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 10px;
+    font-size: 12px;
+}
+.search1{
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding: 100px 20px;
+}
+.readMoreButton{
+
+}
+.singleRestaurantBlockAll{
+    width: 256px;
+    height: 240px;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 20px;
+    color: white;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+}
+.readMoreButton{
+    background-color: #D81159;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.readMoreButton:hover{
+    transition: 0.3s;
+    color: #11142D;
+}
+.singleRestaurantBlockAllText{
+    font-size: 20px;
+}
+.allRestaurantsList{
+    display: grid;
+    grid-template-columns: repeat(3,256px);
+    gap: 40px;
+    justify-content: center;
+}
+@media (max-width: 866px){
+    .allRestaurantsList{
+        display: grid;
+        grid-template-columns: repeat(2,256px);
+    }
+}
+@media (max-width: 582px){
+    .allRestaurantsList{
+        display: grid;
+        grid-template-columns: repeat(1,256px);
+    }
+}

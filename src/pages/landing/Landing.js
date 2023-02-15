@@ -12,8 +12,9 @@ import l1 from '../../assets/img/l1.png';
 import l2 from '../../assets/img/l2.png';
 import l3 from '../../assets/img/l3.png';
 import {click} from "@testing-library/user-event/dist/click";
-import Modal from "../../ui-components/popup/Popup";
+import PopupCertificate from "../../ui-components/popup-certificate/Popup-certificate";
 import ReactSwipe from 'react-swipe';
+import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
 
 export default function Landing() {
     const navigate = useNavigate();
@@ -27,8 +28,17 @@ export default function Landing() {
     const burgerToggle = () => {
         setIsBurger(current => !current);
     }
+
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
+    }
+    const handleClick123 = event => {
+        if (event.target.className === 'burx_img'){
+            setIsBurger(true)
+        }
+        else {
+            setIsBurger(false)
+        }
     }
 
 
@@ -46,7 +56,6 @@ export default function Landing() {
     }
     const handleClick = () => {
         setIsActive(current => !current);
-
     }
 
     function contentNext (){
@@ -95,35 +104,6 @@ export default function Landing() {
 
     const [isOpen, setIsOpen] = useState(false);
 
-
-
-    const LimitedTextarea = ({ rows, cols, value, limit }) => {
-        const [content, setContent] = React.useState(value.slice(0, limit));
-
-        const setFormattedContent = React.useCallback(
-            text => {
-                setContent(text.slice(0, limit));
-            },
-            [limit, setContent]
-        );
-
-        return (
-            <>
-      <textarea
-          className='congrats'
-          placeholder='Congratulations text...'
-          rows={rows}
-          cols={cols}
-          onChange={event => setFormattedContent(event.target.value)}
-          value={content}
-      />
-                <div className='wordCount'>
-                    {content.length}/{limit}
-                </div>
-            </>
-        );
-    };
-
     let newDate = new Date();
     let date = newDate.getDate() + 1 + '.';
     let month = newDate.getMonth() + 1 + '.';
@@ -150,31 +130,53 @@ export default function Landing() {
 
     const [faq, setFAQ] = React.useState([
         {
-            question: 'What is a FAQ section?',
-            answer: 'A FAQ (Frequently Asked Questions) section is a list of questions and answers that provides information to visitors of a website.',
+            question: 'How long does the certificate lasts?',
+            answer: 'Certificate lasts for one years after the purchase, it can always be checked on the certificate',
             open: false
         },
         {
-            question: 'What is a FAQ section?',
-            answer: 'OF COURSE',
+            question: 'Can i make my own budget for certificate?',
+            answer: 'With any of your own preferences we are waiting for your email, after what we can provide the best solution',
             open: false
         },
         {
-            question: 'What is a FAQ section?',
-            answer: 'OF COURSE',
+            question: 'How can i check the balance?',
+            answer: 'Balance can be checked via the link on your email, with the name ' +
+                'Check the balance ->',
             open: false
         },
         {
-            question: 'What is a FAQ section?',
-            answer: 'OF COURSE',
+            question: 'Can i buy a few certificates for my company?',
+            answer: 'Of course, by leaving the order we will be able to contact you and make everything you wanted within 2-3 days!',
             open: false
         },
         {
-            question: 'What is a FAQ section?',
-            answer: 'OF COURSE',
+            question: 'How does thw certificate looks like?',
+            answer: <div>You can check by clicking on this link <a className='blue' onClick={toggleModal}>Certificate.pdf</a></div>,
             open: false
         }
     ]);
+
+    const advantages = [
+        {
+           img: l1,
+           header: 'Jopka Jopka',
+           description: 'The recipient is definitely freaking out'
+
+        },
+        {
+            img: l2,
+            header: 'Any holiday',
+            description: 'On any holiday dad will again grapple with grandfather drunk'
+
+        },
+        {
+            img: l3,
+            header: 'Little Choose',
+            description: 'Restaurants in Estonia can be counted on one hand'
+
+        },
+    ]
 
     const toggleFAQ = index => {
         setFAQ(faq.map((item, i) => {
@@ -187,12 +189,12 @@ export default function Landing() {
         }));
     }
     return (
-        <div className='bg'>
+        <div className='bg' onClick={handleClick123}>
             <div className="realBg">
                 <div className='container'>
                     <div className="preview">
                         <div className="header">
-                            <div className="burger" onClick={burgerToggle}>
+                            <div className="burger">
                                 <img src={burx} className='burx_img'></img>
                             </div>
                             <div className="logo">
@@ -206,7 +208,7 @@ export default function Landing() {
                             </div>
                         </div>
                         <div className={isBurger ? 'burger_cont1' : 'burger_cont'}>
-                            <div className="closeBurger" onClick={burgerToggle}>
+                            <div className="closeBurger">
                                 CLOSE
                             </div>
                             <div className="next">
@@ -288,19 +290,17 @@ export default function Landing() {
                             <div className="certificate_example" onClick={toggleModal}>
                                 Example of certificate
                             </div>
-                            <Modal isOpen={isModalOpen} toggleModal={toggleModal} />
+                            <PopupCertificate isOpen={isModalOpen} toggleModal={toggleModal} />
                         </div>
                         <div className="content">
-
                             <div>
                                 <ReactSwipe
                                     className="carousel"
-                                    swipeOptions={{ continuous: false }}
+                                    swipeOptions={{ continuous: true }}
                                     ref={el => (reactSwipeEl = el)}
                                 >
                                     <div><div className="explain">
-                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                                        Write a congratulation and indicate the address of the recipient!
                                     </div>
                                         <div className="choose">
                                             Choose your own nominal
@@ -319,19 +319,19 @@ export default function Landing() {
                                                 </div>
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='From...' className='bashmak'></input>
+                                                        <input type='text' placeholder='From...' className='certificateInputValue'></input>
                                                     </div>
-                                                    <div className="to_who">
-                                                        <input type='text' placeholder='To...' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='text' placeholder='To...' className='certificateInputValue'></input>
                                                     </div>
-                                                    <div className="mail">
-                                                        <input type='email' placeholder='Recipients e-mail...' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='email' placeholder='Recipients e-mail...' className='certificateInputValue'></input>
                                                     </div>
-                                                    <div className="phone">
-                                                        <input type='tel' placeholder='Recipients phone number...' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='tel' placeholder='Recipients phone number...' className='certificateInputValue'></input>
                                                     </div>
-                                                    <div className="text">
-                                                        <LimitedTextarea limit={280} value='' />
+                                                    <div className="from_who">
+                                                        <LimitedTextArea limit={280} value='' />
                                                     </div>
                                                 </div>
                                                 <div className="pay">
@@ -345,7 +345,7 @@ export default function Landing() {
                                             <div className="right">
                                                 <div className="block">
                                                     <div className="description">
-                                                        <div className="blockHeader">
+                                                        <div className="blockHeader1">
                                                             gift certificate
                                                         </div>
                                                         <div className="blockName1">
@@ -372,43 +372,42 @@ export default function Landing() {
                                             </div>
                                         </div></div>
                                     <div><div className="explain3">
-                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                                        Thank your employees with gift certificates and an unforgettable experience!
                                     </div>
                                         <div className="main1">
                                             <div className="left">
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Name' className='bashmak'></input>
+                                                        <input type='text' placeholder='Name' className='certificateInputValue1'/>
                                                     </div>
-                                                    <div className="to_who">
-                                                        <input type='text' placeholder='Company name' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='text' placeholder='Company name' className='certificateInputValue1'/>
                                                     </div>
-                                                    <div className="mail">
-                                                        <input type='email' placeholder='Company e-mail' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue1'/>
                                                     </div>
-                                                    <div className="phone">
-                                                        <input type='tel' placeholder='Phone number' className='bashmak'></input>
+                                                    <div className="from_who">
+                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue1'/>
                                                     </div>
-                                                    <div className="text">
-                                                        <LimitedTextarea limit={280} value='' />
+                                                    <div className="from_who">
+                                                        <LimitedTextArea limit={280} value='' />
                                                     </div>
                                                 </div>
                                                 <div className="pay">
                                                     Order
                                                 </div>
                                                 <div className="confirm">
-                                                    I agree with the <span className="no">Terms of personal data processing</span>.
+                                                    I agree with the <span className="termsLink">Terms of personal data processing</span>.
                                                 </div>
 
                                             </div>
                                             <div className="right">
                                                 <div className="block">
                                                     <div className="description">
-                                                        <div className="blockHeader">
+                                                        <div className="blockHeader1">
                                                             gift certificate
                                                         </div>
-                                                        <div className="blockName">
+                                                        <div className="blockName1">
                                                             To the best restaurants in Tallinn
                                                         </div>
                                                     </div>
@@ -429,9 +428,9 @@ export default function Landing() {
                             Certificate gives an opportunity to visit the most popular and breathtaking restaurants of Tallinn
                         </div>
                         <div className="carouselMain">
-                            <ImageCarousel images={images} interval={1000}></ImageCarousel>
                             <ImageCarousel images={images} interval={2000}></ImageCarousel>
-                            <ImageCarousel images={images} interval={4000}></ImageCarousel>
+                            <ImageCarousel images={images} interval={2000}></ImageCarousel>
+                            <ImageCarousel images={images} interval={2000}></ImageCarousel>
                         </div>
                         <div className="allRestaurants">
                             Whole restaurants list
@@ -443,42 +442,22 @@ export default function Landing() {
                             Our advantages
                         </div>
                         <div className="advantagesMain">
-                            <div className="singleAdvantage">
-                                <div className="advantageImg">
-                                </div>
-                                <div className="advantageDescription">
-                                    <div className="advHeader">
-                                        Jopka Jopka
+                            {advantages.map((item,i) => (
+                                <div className="singleAdvantage">
+                                    <div className="advantageImg"
+                                         style={{ backgroundImage: `linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url(${item.img})`}}
+                                    >
                                     </div>
-                                    <div className="advDescription">
-                                        The recipient is definitely freaking out
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="singleAdvantage">
-                                <div className="advantageImg1">
-                                </div>
-                                <div className="advantageDescription">
-                                    <div className="advHeader">
-                                        Any holiday
-                                    </div>
-                                    <div className="advDescription">
-                                        On any holiday dad will again grapple with grandfather drunk
+                                    <div className="advantageDescription">
+                                        <div className="advHeader">
+                                            {item.header}
+                                        </div>
+                                        <div className="advDescription">
+                                            {item.description}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="singleAdvantage">
-                                <div className="advantageImg2">
-                                </div>
-                                <div className="advantageDescription">
-                                    <div className="advHeader">
-                                        Little choice
-                                    </div>
-                                    <div className="advDescription">
-                                        Restaurants in Estonia can be counted on one hand
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
@@ -557,7 +536,7 @@ export default function Landing() {
                             <div>
                                 <ReactSwipe
                                     className="carousel"
-                                    swipeOptions={{ continuous: false }}
+                                    swipeOptions={{ continuous: true }}
                                     ref={el => (reactSwipeEl2 = el)}
                                 >
                                     <div><div className="faq">
@@ -574,7 +553,9 @@ export default function Landing() {
                                             </div>
                                         ))}
                                     </div></div>
-                                    <div><div className="askInfo1">
+                                    <div>
+                                        <div className="infoAsk">
+                                        <div className="askInfo1">
                                         If you have any questions which were not answered yet you can always contact us!
                                     </div>
                                         <div className="askInfo">
@@ -585,6 +566,7 @@ export default function Landing() {
                                         </div>
                                         <div className="askInfo">
                                             Kikri 2/1 Monday-Sunday 24/7
+                                        </div>
                                         </div></div>
 
                                 </ReactSwipe>
@@ -608,10 +590,10 @@ export default function Landing() {
                             </div>
                         </div>
                         <div className="rightWho">
-                            <div className="zaebali">
+                            <div className="numberMail">
                                 372 5887 8456
                             </div>
-                            <div className="zaebali">
+                            <div className="numberMail">
                                 must@vorst.ee
                             </div>
                         </div>

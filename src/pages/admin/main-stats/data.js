@@ -2,7 +2,7 @@ import down from "../../../assets/img/down.png";
 import up from "../../../assets/img/up.png";
 import dots from "../../../assets/img/dots.png";
 
-export    const Data = [
+export const Data = [
     {
         tittle: 'All sold Coupons',
         value: '1000',

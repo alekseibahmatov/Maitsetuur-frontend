@@ -1,37 +1,26 @@
 import React, {useState} from "react";
 import './Coupon-single.css'
-import logo from "../../assets/img/Logo.png";
-import user from "../../assets/img/Container.png";
 import PopupSumbit from "../../ui-components/popup-sumbit/Popup-sumbit";
+import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
+import {CouponSingleSchema} from "./CouponSingleSchema";
+import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
 
+const initialValues = {
+    receiverFullName: "",
+    receiverEmail: "",
+    mobilePhone: "",
+    nominal: "",
+    createdAt: "",
+    validUntil: "",
+    submittedAt: "",
+    congratulations: "",
+    senderFullName: "",
+    submittedInRestaurant: "",
+    submittedBy: "",
+};
 
-export const CouponSingle = () =>{
-    const LimitedTextarea = ({ rows, cols, value, limit }) => {
-        const [content, setContent] = React.useState(value.slice(0, limit));
+export const CouponSingle = () => {
 
-        const setFormattedContent = React.useCallback(
-            text => {
-                setContent(text.slice(0, limit));
-            },
-            [limit, setContent]
-        );
-
-        return (
-            <>
-      <textarea
-          className='businessInputInput fullHeight'
-          placeholder='Congratulations text...'
-          rows={rows}
-          cols={cols}
-          onChange={event => setFormattedContent(event.target.value)}
-          value={content}
-      />
-                <div className='wordCount1'>
-                    {content.length}/{limit}
-                </div>
-            </>
-        );
-    };
 
     const [image, setImage] = useState(null);
     const [fileName, setFileName] = useState("(No file chosen)");
@@ -48,53 +37,36 @@ export const CouponSingle = () =>{
 
     return(
         <div className='content'>
-        <div className="navbar">
-            <div className="logoAndName">
-                <div className="logo">
-                    <img src={logo} alt="logo"/>
-                </div>
-                <div className="name">
-                    Present Perfect Management
-                </div>
-            </div>
-            <div className="scanAndUser">
-                <div className="scan">
-                    Scan QR code
-                </div>
-                <div className="user">
-                    <div className="userImage">
-                        <img src={user} alt="user" className='userImg'/>
-                    </div>
-                    <div className="userInfo">
-                        <div className="userUsername">
-                            Bahsmak
+            <Formik
+                initialValues={initialValues}
+                onSubmit={(values, actions) => {
+                    setTimeout(() => {
+                        console.log(values)
+                        actions.setSubmitting(false);
+                    }, 1000);
+                }}
+                validationSchema={CouponSingleSchema}
+            >
+                {(props: FormikProps<any>) => (
+                    <Form>
+                        <div className="businessHeader">
+                            <div className="businessHeader1">
+                                #ID Coupon Info
+                            </div>
+                            <div className="buttonSample" onClick={toggleModal}>
+                                Submit
+                            </div>
+                            <div className="buttonSample red" onClick={toggleModal}>
+                                Delete
+                            </div>
                         </div>
-                        <div className="userDescription">
-                            Lisik
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-                <div className="businessHeader">
-                    <div className="businessHeader1">
-                        Waiter’s Account for R14
-                    </div>
-                    <div className="buttonSample" onClick={toggleModal}>
-                        Submit
-                    </div>
-                    <PopupSumbit isOpen={isModalOpen} toggleModal={toggleModal} />
-                    <div className="buttonSample red">
-                        Delete
-                    </div>
-                </div>
-            <div className="couponsMain">
+                        <div className="couponsMain">
 
-                <div className="businessMainHeader">
-                    <div className="businessSingleBlock">
-                        <div className="businessSingleBlockImage1">
-                            {image && <img src={image} alt="" className='uploadImage' />}
-                        </div>
+                            <div className="businessMainHeader">
+                                <div className="businessSingleBlock">
+                                    <div className="businessSingleBlockImage1">
+                                        {image && <img src={image} alt="" className='uploadImage'/>}
+                                    </div>
 
                         <div className="buttonInfo">
                             <div className="buttonHeader" >
@@ -116,112 +88,191 @@ export const CouponSingle = () =>{
                     </div>
                 </div>
 
-                <div className="specialBlock">
-                    <div className="leftSideBlock">
-                        <div className="businessName">
-                            <div className="businessFormHeader">
-                                To
+                            <div className="specialBlock">
+                                <div className="leftSideBlock">
+                                    <div className="businessName">
+                                        <div className="businessFormHeader">
+                                            To
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="receiverFullName"
+                                                       placeholder="Input receiver's full name"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="receiverFullName"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="businessName">
+                                        <div className="businessFormHeader">
+                                            Receiver E-mail
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="receiverEmail"
+                                                       placeholder="Input receiver's email"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="receiverEmail"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rightSideBlock">
+                                    <div className="businessName">
+                                        <div className="businessFormHeader">
+                                            Congratulations (max 100 words)
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <LimitedTextArea limit={100} value=''/>
+                                                <div className="error">
+                                                    <ErrorMessage name="congratulations"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="businessInput">
-                                <input type="text" className='businessInputInput' value='Aleksei Bashma4ok'/>
+                            <div className="mailPhone">
+                                <div className="leftContent">
+                                    <div className="businessFormHeader">
+                                        Receivers phone
+                                    </div>
+                                    <div className="businessInput">
+                                        <div className="businessInputWrapper">
+                                            <Field className="businessInputValue" type="text"
+                                                   name="mobilePhone"
+                                                   placeholder="Input receiver's email"/>
+                                            <div className="error">
+                                                <ErrorMessage name="mobilePhone"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rightContent">
+                                    <div className="businessFormHeader">
+                                        From who
+                                    </div>
+                                    <div className="businessInput">
+                                        <div className="businessInputWrapper">
+                                            <Field className="businessInputValue" type="text"
+                                                   name="senderFullName"
+                                                   placeholder="Input sender's full name"/>
+                                            <div className="error">
+                                                <ErrorMessage name="senderFullName"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="businessName">
-                            <div className="businessFormHeader">
-                                Receiver E-mail
+                            <div className="mailPhone">
+                                <div className="leftContent">
+                                    <div className="businessFormHeader">
+                                        Nominal
+                                    </div>
+                                    <div className="businessInput">
+                                        <div className="businessInputWrapper">
+                                            <Field className="businessInputValue" type="text"
+                                                   name="nominal"
+                                                   placeholder="Input nominal"/>
+                                            <div className="error">
+                                                <ErrorMessage name="nominal"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rightContent">
+                                    <div className="businessFormHeader">
+                                        Submitted in resto
+                                    </div>
+                                    <div className="businessInput">
+                                        <div className="businessInputWrapper">
+                                            <Field className="businessInputValue" type="text"
+                                                   name="submittedInRestaurant"
+                                                   placeholder="Input restaurant name"/>
+                                            <div className="error">
+                                                <ErrorMessage name="submittedInRestaurant"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="businessInput">
-                                <input type="text" className='businessInputInput' value='gniloybashmack@japidor.ee'/>
+                            <div className="mailPhone">
+                                <div className="leftContent">
+                                    <div className="businessFormHeader">
+                                        Created at
+                                    </div>
+                                    <div className="businessInput">
+                                        <div className="businessInputWrapper">
+                                            <Field className="businessInputValue" type="text"
+                                                   name="createdAt"
+                                                   placeholder="example 12-12-12"/>
+                                            <div className="error">
+                                                <ErrorMessage name="createdAt"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rightContent">
+                                    <div className="businessFormHeader">
+                                        Submitted by
+                                    </div>
+                                    <div className="businessInput">
+                                        <div className="businessInputWrapper">
+                                            <Field className="businessInputValue" type="text"
+                                                   name="submittedBy"
+                                                   placeholder="example 12-12-12"/>
+                                            <div className="error">
+                                                <ErrorMessage name="submittedBy"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="rightSideBlock">
-                        <div className="businessName">
-                            <div className="businessFormHeader">
-                                Congratulations (max 100 words)
+                            <div className="mailPhone">
+                                <div className="halfContent">
+                                    <div className="businessFormHeader">
+                                        Valid until
+                                    </div>
+                                    <div className="businessInput">
+                                        <div className="businessInputWrapper">
+                                            <Field className="businessInputValue" type="text"
+                                                   name="validUntil"
+                                                   placeholder="example 12-12-12"/>
+                                            <div className="error">
+                                                <ErrorMessage name="validUntil"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="businessInput">
-                                <LimitedTextarea limit={100} value='' />
+                            <div className="mailPhone">
+                                <div className="halfContent">
+                                    <div className="businessFormHeader">
+                                        Submitted at
+                                    </div>
+                                    <div className="businessInput">
+                                        <div className="businessInputWrapper">
+                                            <Field className="businessInputValue" type="text"
+                                                   name="submittedAt"
+                                                   placeholder="example 12-12-12"/>
+                                            <div className="error">
+                                                <ErrorMessage name="submittedAt"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="mailPhone">
-                    <div className="leftContent">
-                        <div className="businessFormHeader">
-                            Receivers phone
-                        </div>
-                        <div className="businessInput">
-                            <input type="tel" className='businessInputInput half' value='+8 800 555 35 35'/>
-                        </div>
-                    </div>
-                    <div className="rightContent">
-                        <div className="businessFormHeader">
-                            From who
-                        </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='Sanja Shljapik'/>
-                        </div>
-                    </div>
-                </div>
-                <div className="mailPhone">
-                    <div className="leftContent">
-                        <div className="businessFormHeader">
-                            Nominal
-                        </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='100$'/>
-                        </div>
-                    </div>
-                    <div className="rightContent">
-                        <div className="businessFormHeader">
-                            Submitted in resto
-                        </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='R14'/>
-                        </div>
-                    </div>
-                </div>
-                <div className="mailPhone">
-                    <div className="leftContent">
-                        <div className="businessFormHeader">
-                            Created at
-                        </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='2023-01-03 14:53:23'/>
-                        </div>
-                    </div>
-                    <div className="rightContent">
-                        <div className="businessFormHeader">
-                            Submitted by
-                        </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputInput half' value='German Toome'/>
-                        </div>
-                    </div>
-                </div>
-                <div className="mailPhone">
-                    <div className="halfContent">
-                        <div className="businessFormHeader">
-                            Capable untill
-                        </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputInput half ' value='02.07.2023'/>
-                        </div>
-                    </div>
-                </div>
-                <div className="mailPhone">
-                    <div className="halfContent">
-                        <div className="businessFormHeader">
-                            Submitted at
-                        </div>
-                        <div className="businessInput">
-                            <input type="text" className='businessInputInput half ' value='2023-02-03 14:53:23'/>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
+                        </div>
+                        <PopupSumbit errors={props.errors} isOpen={isModalOpen} toggleModal={toggleModal}/>
+                    </Form>
+                )}
+            </Formik>
         </div>
 
     )

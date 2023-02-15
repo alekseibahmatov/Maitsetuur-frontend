@@ -1,95 +1,79 @@
-import React, {useState} from "react";
+import React from "react";
 import './Login.css'
+import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
+import * as Yup from "yup";
+import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
+import {login} from "../../actions/auth";
+
+const LoginSchema = Yup.object().shape({
+    email: Yup.string()
+        .required("Email is a required field")
+        .email("Invalid email format"),
+    password: Yup.string()
+        .required("Password is a required field")
+        .min(8, "Password must be at least 8 characters")
+        .max(32, "Password must not exceed 32 characters"),
+})
 
 export const Login = () => {
 
-    const [input, setInput] = useState({
-        username: '',
-        password: '',
-    });
-
-    const [error, setError] = useState({
-        username: '',
-        password: '',
-    })
-
-    const onInputChange = e => {
-        const { name, value } = e.target;
-        setInput(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        validateInput(e);
-    }
-
-    const validateInput = e => {
-        let { name, value } = e.target;
-        setError(prev => {
-            const stateObj = { ...prev, [name]: "" };
-
-            switch (name) {
-                case "username":
-                    if (!value) {
-                        stateObj[name] = "Please enter Email.";
-                    }
-                    break;
-
-                case "password":
-                    if (!value) {
-                        stateObj[name] = "Please enter Password.";
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-
-            return stateObj;
-        });
-    }
-
     return (
-
         <div className='loginContent'>
-
             <div className="loginHeader">
                 Login to Present Perfect
             </div>
             <div className="loginFormForm">
-            <div className="loginForm">
-                <div className="loginFormHeader">
-                    Login to Present Perfect Management
+                <div className="loginForm">
+                    <div className="loginFormHeader">
+                        Login to Present Perfect Management
+                    </div>
+                    <Formik
+                        initialValues={{email: '', password: ''}}
+                        onSubmit={(values, actions) => {
+                            setTimeout(() => {
+                                login(values, actions)
+                            }, 1000);
+                        }}
+                        validationSchema={LoginSchema}
+                    >
+                        {(props: FormikProps<any>) => (
+                            <Form>
+                                <div className="login">
+                                    <div className="form">
+                                        <div className="authentication">
+                                            <div className="inputHeader">
+                                                Your Email
+                                            </div>
+                                            <div className="inputAuthentication">
+                                                <Field className="inputAuthenticationInput" type="email" name="email"
+                                                       placeholder="Email"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="email"/>
+                                                </div>
+                                            </div>
+                                            <div className="inputHeader">
+                                                Your Password
+                                            </div>
+                                            <div className="inputAuthentication">
+                                                <Field className="inputAuthenticationInput" type="password"
+                                                       name="password" placeholder="Password"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="password"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="forgetPass">
+                                            Forgot password?
+                                        </div>
+                                        <button disabled={props.isSubmitting} className="loginButton" type="submit">
+                                            {props.isSubmitting ? <LoadingAnimation/> : 'Login'}
+                                        </button>
+                                    </div>
+                                </div>
+                            </Form>
+                        )}
+                    </Formik>
                 </div>
-                <div className="authentication">
-                    <div className="inputHeader">
-                        Your Email
-                    </div>
-                    <div className="inputAuthentication">
-                        <input type="text"
-                               name="username"
-                               placeholder='Enter your Email'
-                               value={input.username}
-                               onChange={onInputChange}
-                               onBlur={validateInput} className='inputAuthenticationInput'/>
-                        {error.username && <span className='err'>{error.username}</span>}
-                    </div>
-                    <div className="inputHeader">
-                        Your Password
-                    </div>
-                    <div className="inputAuthentication">
-                        <input type="password"
-                            name="password"
-                            placeholder='Enter your Password'
-                            value={input.password}
-                            onChange={onInputChange}
-                            onBlur={validateInput} className='inputAuthenticationInput'/>
-                        {error.password && <span className='err'>{error.password}</span>}
-                    </div>
-                </div>
-                <div className="loginButton">
-                    Login
-                </div>
-            </div>
             </div>
         </div>
 

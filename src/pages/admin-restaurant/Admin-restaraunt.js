@@ -15,11 +15,11 @@ import dots from '../../assets/img/dots.png'
 import 'font-awesome/css/font-awesome.min.css';
 import resto from '../../assets/img/Image Placeholder.png'
 import small from '../../assets/img/small.png'
-import restoImg from '../../assets/img/restoImg.png'
 import contract from '../../assets/img/contract.png'
 import makeAnimated from 'react-select/animated'
 import classnames from 'classnames';
 import PopupAdmin from "../../ui-components/popup-admin/Popup-admin";
+import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
 
 export const App = () => {
 
@@ -40,33 +40,6 @@ export const App = () => {
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     }
-
-    const LimitedTextarea = ({ rows, cols, value, limit }) => {
-        const [content, setContent] = React.useState(value.slice(0, limit));
-
-        const setFormattedContent = React.useCallback(
-            text => {
-                setContent(text.slice(0, limit));
-            },
-            [limit, setContent]
-        );
-
-        return (
-            <>
-      <textarea
-          className='businessInputInput input'
-          placeholder='Resto description...'
-          rows={rows}
-          cols={cols}
-          onChange={event => setFormattedContent(event.target.value)}
-          value={content}
-      />
-                <div className='wordCount'>
-                    {content.length}/{limit}
-                </div>
-            </>
-        );
-    };
 
 
     const handleClick = (id) => {
@@ -725,7 +698,7 @@ export const App = () => {
                                             Business Name
                                         </div>
                                         <div className="businessInput">
-                                            <input type="text" className='businessInputInput' placeholder='Resto name...'/>
+                                            <input type="text" className='businessInputValue' placeholder='Resto name...'/>
                                         </div>
                                     </div>
 
@@ -735,7 +708,7 @@ export const App = () => {
                                             Business Description (max 100 words)
                                         </div>
                                         <div className="businessInput">
-                                            <LimitedTextarea limit={100} value='' />
+                                            <LimitedTextArea limit={100} value='' />
                                         </div>
                                     </div>
 
@@ -745,7 +718,7 @@ export const App = () => {
                                                 Email
                                             </div>
                                             <div className="businessInput">
-                                                <input type="email" className='businessInputInput half' placeholder='Email...'/>
+                                                <input type="email" className='businessInputValue' placeholder='Email...'/>
                                             </div>
                                         </div>
                                         <div className="rightContent">
@@ -755,7 +728,7 @@ export const App = () => {
                                                 Phone Number
                                             </div>
                                             <div className="businessInput">
-                                                <input type="phone" className='businessInputInput half' placeholder='Phone...'/>
+                                                <input type="phone" className='businessInputValue' placeholder='Phone...'/>
                                             </div>
                                         </div>
                                     </div>
@@ -776,7 +749,7 @@ export const App = () => {
                                                 Province
                                             </div>
                                             <div className="businessInput">
-                                                <input type="email" className='businessInputInput half' placeholder='Province...'/>
+                                                <input type="email" className='businessInputValue' placeholder='Province...'/>
                                             </div>
                                         </div>
                                         <div className="singleCountryBlock">
@@ -784,7 +757,7 @@ export const App = () => {
                                                 City
                                             </div>
                                             <div className="businessInput">
-                                                <input type="email" className='businessInputInput half' placeholder='City...'/>
+                                                <input type="email" className='businessInputValue' placeholder='City...'/>
                                             </div>
                                         </div>
                                         <div className="singleCountryBlock">
@@ -792,7 +765,7 @@ export const App = () => {
                                                 Postal Code
                                             </div>
                                             <div className="businessInput">
-                                                <input type="email" className='businessInputInput half' placeholder='Postal Code...'/>
+                                                <input type="email" className='businessInputValue' placeholder='Postal Code...'/>
                                             </div>
                                         </div>
 
@@ -804,7 +777,7 @@ export const App = () => {
                                                 Working time
                                             </div>
                                             <div className="businessInput">
-                                                <input type="text" className='businessInputInput half' placeholder='Working time...'/>
+                                                <input type="text" className='businessInputValue' placeholder='Working time...'/>
                                             </div>
                                         </div>
                                         <div className="rightContent">
@@ -814,7 +787,7 @@ export const App = () => {
                                                 Average bill
                                             </div>
                                             <div className="businessInput">
-                                                <input type="text" className='businessInputInput half' placeholder='Average bill...'/>
+                                                <input type="text" className='businessInputValue' placeholder='Average bill...'/>
                                             </div>
                                         </div>
                                     </div>
@@ -840,7 +813,7 @@ export const App = () => {
                         case 6: return <div>Content 6</div>;
                         default: return <div>Choose button</div>;
                     }
-                })()}
+                })}
 
 
             </div>

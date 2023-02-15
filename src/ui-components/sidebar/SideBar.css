@@ -1,8 +1,8 @@
 .sideBar{
-    width: 112px;
+    margin: 0 auto;
     height: 100%;
     padding-top: 40px;
-
+    max-width: 112px;
 }
 .sideBar1{
     position: fixed;
@@ -10,14 +10,4 @@
     left: 20px;
     height: 100%;
     background-color: #ffffff;
-}
-.bmoverlay.open{
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    height: 120%;
-    background: rgba(0, 0, 0, 0.3);
-    opacity: 1;
-    transition: opacity 0.3s ease 0s;
-    margin-top: -200px;
 }

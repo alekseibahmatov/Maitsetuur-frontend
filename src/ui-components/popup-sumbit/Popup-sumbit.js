@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Sausages from '../../assets/img/Sausages.png'
 
-function PopupSumbit({isOpen, toggleModal}) {
+function PopupSumbit({errors, isOpen, toggleModal}) {
     useEffect(() => {
         if (isOpen) {
             document.body.classList.add("no-scroll");
@@ -9,6 +9,34 @@ function PopupSumbit({isOpen, toggleModal}) {
             document.body.classList.remove("no-scroll");
         }
     }, [isOpen]);
+
+    if (isOpen) return (
+        <div className="modal-overlay">
+            <div className="modal-content1">
+                <div className="sausages">
+                    <img src={Sausages} alt="sausages"/>
+                    <div className="sumbitAction">
+                        Submit action
+                    </div>
+                    <div className="areYouSure">
+                        Are you sure, that you want to
+                        do this action?
+                    </div>
+                    {errors && Object.keys(errors).length > 0 && (
+                        <div className="generalErrorText">
+                            Something went wrong, check the form again
+                        </div>
+                    )}
+                    <button type="submit" className="doAction">
+                        Do action
+                    </button>
+                    <div className="goBack" onClick={toggleModal}>
+                        Go back
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 
     return (
         <>
@@ -24,9 +52,9 @@ function PopupSumbit({isOpen, toggleModal}) {
                                 Are you sure, that you want to
                                 do this action?
                             </div>
-                            <div className="doAction">
+                            <button type="submit" className="doAction">
                                 Do action
-                            </div>
+                            </button>
                             <div className="goBack" onClick={toggleModal}>
                                 Go back
                             </div>

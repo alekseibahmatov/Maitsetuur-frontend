@@ -2,6 +2,7 @@ html {
     background-color: #F7F7FC;
 }
 .loginContent{
+    margin-top: 80px;
     padding: 40px 0;
 }
 .loginHeader{
@@ -20,7 +21,6 @@ html {
     height: 100%;
     padding: 40px 60px;
     border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .loginFormHeader{
     text-align: center;
@@ -39,11 +39,35 @@ html {
     padding-left: 20px;
 }
 .loginButton{
-    background-color: #5541D7;
+    background-color: #5541D7!important;
     color: white;
     text-align: center;
-    padding: 15px 20px;
+    padding: 15px;
     border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 0;
+}
+.loginButton:hover{
+    transition: 0.3s;
+    background-color: #ffffff;
+    color: #5541D7;
+    border: 1px solid #5541D7!important;
+}
+
+
+.forgetPass{
+    font-size: 14px;
+    float: right;
+    color: #9A9AB0;
+    margin-top: 10px;
+    text-align: right;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.forgetPass:hover{
+    transition: 0.3s;
+    color: #373a47;
 }
 
 @media (max-width: 648px){

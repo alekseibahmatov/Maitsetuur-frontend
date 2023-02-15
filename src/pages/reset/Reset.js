@@ -1,65 +1,21 @@
-import React, {useState} from "react";
+import React from "react";
+import * as Yup from "yup";
+import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
+import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
 import './Reset.css'
 
-export const Reset = () =>{
+const ResetPasswordSchema = Yup.object().shape({
+    password: Yup.string()
+        .required("Password is a required field")
+        .min(8, "Password must be at least 8 characters")
+        .max(32, "Password must not exceed 32 characters"),
+    repeatPassword: Yup.string()
+        .oneOf([Yup.ref("password"), null], "Passwords must match"),
+});
 
-    const [input, setInput] = useState({
-        password: '',
-        confirmPassword: ''
-    });
-
-    const [error, setError] = useState({
-        password: '',
-        confirmPassword: ''
-    })
-
-    const onInputChange = e => {
-        const { name, value } = e.target;
-        setInput(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        validateInput(e);
-    }
-
-    const validateInput = e => {
-        let { name, value } = e.target;
-        setError(prev => {
-            const stateObj = { ...prev, [name]: "" };
-
-            switch (name) {
-                case "password":
-                    if (!value) {
-                        stateObj[name] = "Please enter Password.";
-                    } else if (input.confirmPassword && value !== input.confirmPassword) {
-                        stateObj["confirmPassword"] = "Password and Confirm Password does not match.";
-                    } else {
-                        stateObj["confirmPassword"] = input.confirmPassword ? "" : error.confirmPassword;
-                    }
-                    break;
-
-                case "confirmPassword":
-                    if (!value) {
-                        stateObj[name] = "Please enter Confirm Password.";
-                    } else if (input.password && value !== input.password) {
-                        stateObj[name] = "Password and Confirm Password does not match.";
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-
-            return stateObj;
-        });
-    }
-
+export const Reset = () => {
     return (
-
-
-
         <div className='loginContent'>
-
             <div className="loginHeader">
                 Reset Password
             </div>
@@ -68,42 +24,50 @@ export const Reset = () =>{
                     <div className="loginFormHeader">
                         Reset Password for genryeiter@gmail.com
                     </div>
-                    <div className="authentication">
-                        <div className="inputHeader">
-                            New Password
-                        </div>
-                        <div className="inputAuthentication">
-                            <input type="password"
-                                   name="password"
-                                   placeholder='Enter your new Password'
-                                   value={input.password}
-                                   onChange={onInputChange}
-                                   onBlur={validateInput} className='inputAuthenticationInput'/>
-                            {error.password && <span className='err'>{error.password}</span>}
-                        </div>
-                        <div className="inputHeader">
-                            Repeat Password
-                        </div>
-                        <div className="inputAuthentication">
-                            <input type="password"
-                                   name="confirmPassword"
-                                   placeholder='Repeat your new Password'
-                                   value={input.confirmPassword}
-                                   onChange={onInputChange}
-                                   onBlur={validateInput} className='inputAuthenticationInput'/>
-                            {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
-                        </div>
-                    </div>
-                    <div className="loginButton">
-                        Reset password
-                    </div>
+                    <Formik
+                        initialValues={{password: '', repeatPassword: ''}}
+                        onSubmit={(values, actions) => {
+                            setTimeout(() => {
+                                console.log(values)
+                                actions.setSubmitting(false);
+                            }, 1000);
+                        }}
+                        validationSchema={ResetPasswordSchema}
+                    >
+                        {(props: FormikProps<any>) => (
+                            <Form>
+                                <div className="authentication">
+                                    <div className="inputHeader">
+                                        New Password
+                                    </div>
+                                    <div className="inputAuthentication">
+                                        <Field className="inputAuthenticationInput" type="password"
+                                               name="password" placeholder="Password"/>
+                                        <div className="error">
+                                            <ErrorMessage name="password"/>
+                                        </div>
+                                    </div>
+                                    <div className="inputHeader">
+                                        Repeat Password
+                                    </div>
+                                    <div className="inputAuthentication">
+                                        <Field className="inputAuthenticationInput" type="password"
+                                               name="repeatPassword" placeholder="Repeat Password"/>
+                                        <div className="error">
+                                            <ErrorMessage name="repeatPassword"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button disabled={props.isSubmitting} className="loginButton" type="submit">
+                                    {props.isSubmitting ? <LoadingAnimation/> : 'Reset Password'}
+                                </button>
+                            </Form>
+                        )}
+                    </Formik>
                 </div>
             </div>
         </div>
-
     )
-
-
 }
 
 

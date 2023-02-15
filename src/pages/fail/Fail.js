@@ -2,9 +2,9 @@ import React from "react";
 import './Fail.css'
 import sausage from "../../assets/img/sosiska.png";
 
-export const Fail = () =>{
+export const Fail = () => {
 
-    return(
+    return (
 
         <>
             <div className="qrcodeContent">

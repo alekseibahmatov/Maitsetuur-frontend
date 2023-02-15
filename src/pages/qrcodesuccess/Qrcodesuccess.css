@@ -31,4 +31,12 @@
     text-align: center;
     padding: 15px 20px;
     border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.confirmQrButton:hover{
+    transition: 0.3s;
+    background-color: #ffffff;
+    color: #4141FF;
+    border: 1px solid #4141FF;
 }
