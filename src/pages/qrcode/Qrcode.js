@@ -13,24 +13,38 @@ export const Qrcode = () => {
     const [choose, setChoose] = useState('false');
     const navigate = useNavigate();
     const [scanned, setScanned] = useState(false);
+    const [error, setError] = useState(false);
+
+    const expectedLink = "http://goo.gl/";
 
     const handleScan = (data) => {
-        if (data && !scanned) {
+        if (data) {
             setScanned(true);
+            if (data === expectedLink) {
+                setError(false)
+            } else {
+                setError(true);
+            }
         }
     };
-
-    useEffect(() => {
-        if (scanned) {
-            setTimeout(() => {
-                navigate("/success");
-            }, 2000);
-        }
-    }, [scanned, navigate]);
 
     const handleError = (error) => {
         console.error(error);
     };
+
+    useEffect(() => {
+        let timeout;
+        if (scanned) {
+            timeout = setTimeout(() => {
+                if (!error) {
+                    navigate("/success");
+                } else {
+                    navigate("/fail");
+                }
+            }, 2000);
+        }
+        return () => clearTimeout(timeout);
+    }, [scanned, error, navigate]);
 
     const toggleCamera = () => {
         setChoose(current => !current)
