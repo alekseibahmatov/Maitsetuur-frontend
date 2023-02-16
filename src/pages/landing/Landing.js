@@ -338,7 +338,7 @@ export default function Landing() {
                                                     Pay
                                                 </div>
                                                 <div className="confirm">
-                                                    I agree with the <span className="no">Terms of personal data processing</span>.
+                                                    I agree with the <span className="blue">Terms of personal data processing</span>.
                                                 </div>
 
                                             </div>

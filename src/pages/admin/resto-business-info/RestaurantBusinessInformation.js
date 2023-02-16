@@ -7,7 +7,7 @@ import {sellers, typeOfResto} from "./data";
 import {WaiterSingleSchema} from "../../waiter-single/WaiterSingleSchema";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import {RestaurantBusinessInfoSchema} from "./RestaurantBusinessInfoSchema";
-import {LimitedTextArea} from "../../../ui-components/limited-text-area/LimitedTextArea";
+import {LimitedTextAreaBusiness} from "../../../ui-components/limited-text-area-business/LimitedTextAreaBusiness";
 
 const initialValues = {
     restaurantName: "",
@@ -62,7 +62,7 @@ export const RestaurantBusinessInformation = () => {
         placeholder: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
     };
 
-    return <div className='rightBlock11'>
+    return <div className='rightBlock1'>
         <div className="businessHeader">
             <div className="businessHeader1">
                 Restaurant Business Information
@@ -164,7 +164,7 @@ export const RestaurantBusinessInformation = () => {
                                     Business Description (max 100 words)
                                 </div>
                                 <div className="businessInput">
-                                    <LimitedTextArea limit={100} value=''/>
+                                    <LimitedTextAreaBusiness limit={100} value=''/>
                                 </div>
                             </div>
 

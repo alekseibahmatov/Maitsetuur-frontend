@@ -5,6 +5,7 @@
     display: flex;
     gap: 10px;
     padding-bottom: 20px;
+
 }
 .qrcodeLogoutButton{
     background-color: #E2E2EA;
@@ -13,9 +14,11 @@
     padding-left: 8px;
     padding-right: 10px;
     padding-bottom: 2px;
+    cursor: pointer;
 }
 .qrcodeLogoutText{
     align-self: center;
+    cursor: pointer;
 }
 .qrcodeMain{
     padding: 50px 30px;
@@ -82,4 +85,11 @@
 }
 .qrcodeScanButtonText{
     align-self: center;
+}
+.none{
+    display: none;
+}
+.centerForSpin{
+    text-align: center;
+    padding: 20px;
 }
