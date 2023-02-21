@@ -16,10 +16,14 @@
 }
 .fullHeight{
     height: 159px;
+    resize: none;
 }
 .wordCount1{
     float: right;
+}
+.wordCount11{
     margin-top: -30px;
+    float: right;
 }
 @media (max-width: 700px){
 

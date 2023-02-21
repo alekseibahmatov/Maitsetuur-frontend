@@ -1,15 +1,54 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Qrcode.css'
 import logoout from '../../assets/img/logout.svg'
 import camera from '../../assets/img/Camera.png'
 import code from '../../assets/img/code.png'
 import qr from '../../assets/img/qrcode.png'
 import {useNavigate} from "react-router-dom";
+import { Spin } from "antd";
 import {QrScanner} from '@yudiel/react-qr-scanner';
 
 export const Qrcode = () => {
 
+    const [choose, setChoose] = useState('false');
+    const navigate = useNavigate();
+    const [scanned, setScanned] = useState(false);
+    const [error, setError] = useState(false);
 
+    const expectedLink = "http://goo.gl/";
+
+    const handleScan = (data) => {
+        if (data) {
+            setScanned(true);
+            if (data === expectedLink) {
+                setError(false)
+            } else {
+                setError(true);
+            }
+        }
+    };
+
+    const handleError = (error) => {
+        console.error(error);
+    };
+
+    useEffect(() => {
+        let timeout;
+        if (scanned) {
+            timeout = setTimeout(() => {
+                if (!error) {
+                    navigate("/success");
+                } else {
+                    navigate("/fail");
+                }
+            }, 2000);
+        }
+        return () => clearTimeout(timeout);
+    }, [scanned, error, navigate]);
+
+    const toggleCamera = () => {
+        setChoose(current => !current)
+    }
     return (
         <>
             <div className="qrcodeContent">
@@ -33,21 +72,40 @@ export const Qrcode = () => {
                             Please scan point camera on
                             QR code from the certificate
                         </div>
-                        <div className="qrcodeImage">
+                        <div className="qrcodeScanner">
+
+                        <div className={choose ? "qrcodeImage" : 'none'}>
                             <img src={code} alt=""/>
                             <div className="line">
                             </div>
                         </div>
-                        <div className="qrcodeScanButton">
+                            <div className={ choose ? 'none' : "qrcodeScannerCamera"}>
+                                {!choose && !scanned && (<QrScanner
+                                    delay={300}
+                                    onError={handleError}
+                                    onDecode={handleScan}
+                                    style={{ width: "100%" }}
+                                    stopStream={scanned}
+                                />)}
+                                {scanned && (<div
+                                    className='centerForSpin'
+                                >
+                                    <Spin size="large" tip="Processing QR code..." />
+                                </div>)}
+                            </div>
+                        </div>
+                        <div className={choose ? "qrcodeScanButton" : 'none'} onClick={toggleCamera}>
                             <img src={qr} alt="" className='qrcodeScanButtonImage'/>
-                            <div className="qrcodeScanButtonText">
+                            <div className="qrcodeScanButtonText" id='qrButton'>
                                 Scan QR Code
                             </div>
                         </div>
-                        <QrScanner
-                            onDecode={(result) => console.log(result)}
-                            onError={(error) => console.log(error?.message)}
-                        />
+                        <div className={ choose ? 'none' : "qrcodeScanButton"} onClick={toggleCamera}>
+                            <div className="qrcodeScanButtonText" id='qrButton'>
+                                Get back
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

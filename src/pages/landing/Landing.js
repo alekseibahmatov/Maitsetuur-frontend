@@ -296,7 +296,7 @@ export default function Landing() {
                             <div>
                                 <ReactSwipe
                                     className="carousel"
-                                    swipeOptions={{ continuous: true }}
+                                    swipeOptions={{ continuous: false, disableScroll: true }}
                                     ref={el => (reactSwipeEl = el)}
                                 >
                                     <div><div className="explain">
@@ -338,7 +338,7 @@ export default function Landing() {
                                                     Pay
                                                 </div>
                                                 <div className="confirm">
-                                                    I agree with the <span className="no">Terms of personal data processing</span>.
+                                                    I agree with the <span className="blue">Terms of personal data processing</span>.
                                                 </div>
 
                                             </div>
@@ -536,7 +536,7 @@ export default function Landing() {
                             <div>
                                 <ReactSwipe
                                     className="carousel"
-                                    swipeOptions={{ continuous: true }}
+                                    swipeOptions={{ continuous: false, disableScroll: true }}
                                     ref={el => (reactSwipeEl2 = el)}
                                 >
                                     <div><div className="faq">
