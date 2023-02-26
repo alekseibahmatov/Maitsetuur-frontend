@@ -31,5 +31,6 @@ export const PersonalInfoSchema = Yup.object().shape({
         .min(8, "Password must be at least 8 characters")
         .max(32, "Password must not exceed 32 characters"),
     repeatPassword: Yup.string()
+        .required("Repeat Password is a required field")
         .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });

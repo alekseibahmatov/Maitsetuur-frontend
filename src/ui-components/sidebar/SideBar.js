@@ -9,6 +9,7 @@ import group from "../../assets/img/Group (1).png";
 import icon from "../../assets/img/icon.png";
 import {useNavigate, useLocation} from "react-router-dom";
 import {LIST_OF_COUPONS, LIST_OF_WAITERS, MAIN_DASHBOARD, RESTO_BUSINESS_INFO, TYPES_OF_RESTO} from "../../routes";
+import authService from "../../services/auth";
 
 export const SideBar = () => {
     const navigate = useNavigate();
@@ -23,6 +24,11 @@ export const SideBar = () => {
     const handleClick = (child) => {
         console.log(child)
         navigate('/dashboard/' + child)
+    }
+
+    const handleLogout = () => {
+        authService.logout()
+        navigate('/')
     }
 
     const [isOpen, setIsOpen] = useState(false);
@@ -82,14 +88,13 @@ export const SideBar = () => {
                             'buttonImageSelected': path === LIST_OF_COUPONS
                         })}/>
                     </div>
-                    <div onClick={() => handleClick(6)}
+                    <div onClick={() => handleLogout()}
                          className={classnames({
                              'singleButton': true,
                              'selected': path === 6
                          })}>
                         <img src={icon} alt="" className={classnames({
                             'buttonImage': true,
-                            'buttonImageSelected': path === 6
                         })}/>
                     </div>
                 </div>
@@ -154,16 +159,14 @@ export const SideBar = () => {
                                 })}/>
                                 <div className='buttonText'>Create Waiter</div>
                             </div>
-                            <div onClick={() => handleClick(6)}
+                            <div onClick={() => handleLogout()}
                                  className={classnames({
                                      'singleButton1': true,
-                                     'selected': path === 6
                                  })}>
                                 <img src={icon} alt="" className={classnames({
                                     'buttonImage': true,
-                                    'buttonImageSelected': path === 6
                                 })}/>
-                                <div className='buttonText'>SMTH</div>
+                                <div className='buttonText'>Log Out</div>
                             </div>
                         </div>
                         </div>

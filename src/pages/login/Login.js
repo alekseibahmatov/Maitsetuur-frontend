@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import './Login.css'
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
-import {login} from "../../actions/auth";
+import authService from "../../services/auth";
+import toast from 'react-hot-toast';
+import {useNavigate} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -16,6 +19,7 @@ const LoginSchema = Yup.object().shape({
 })
 
 export const Login = () => {
+    const navigate = useNavigate();
 
     return (
         <div className='loginContent'>
@@ -30,8 +34,22 @@ export const Login = () => {
                     <Formik
                         initialValues={{email: '', password: ''}}
                         onSubmit={(values, actions) => {
-                            setTimeout(() => {
-                                login(values, actions)
+                            setTimeout(async () => {
+                                try {
+                                    const result = await authService.login(values);
+                                    toast.success("Login success");
+                                    setTimeout( () => {
+                                        if (result.status === 200) {
+                                            if (jwt_decode(authService.getAuthUser()?.token)?.roles?.includes('ROLE_NEWBIE')) {
+                                                navigate('/add-personal-info');
+                                            } else navigate('/dashboard');
+                                        }
+                                    }, 1000);
+                                } catch (error) {
+                                    console.log(error.code)
+                                    toast.error(error.data.message);
+                                }
+                                actions.setSubmitting(false)
                             }, 1000);
                         }}
                         validationSchema={LoginSchema}
@@ -62,7 +80,7 @@ export const Login = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="forgetPass">
+                                        <div onClick={() => navigate('/reset-password')} className="forgetPass">
                                             Forgot password?
                                         </div>
                                         <button disabled={props.isSubmitting} className="loginButton" type="submit">
