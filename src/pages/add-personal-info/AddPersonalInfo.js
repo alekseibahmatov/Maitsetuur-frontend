@@ -3,6 +3,9 @@ import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import {PersonalInfoSchema} from "./PersonalInfoSchema";
 import './AddPersonalInfo.css'
 import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
+import authService from "../../services/auth";
+import toast from "react-hot-toast";
+import jwt_decode from "jwt-decode";
 
 const initialValues = {
     fullName: "",
@@ -65,9 +68,36 @@ export const AddPersonalInfo = () => {
                             <Formik
                                 initialValues={initialValues}
                                 onSubmit={(values, actions) => {
-                                    setTimeout(() => {
-                                        console.log(values)
-                                        actions.setSubmitting(false);
+                                    const restructuredValues = {
+                                        fullName: values.fullName,
+                                        phone: values.mobilePhone,
+                                        personalCode: values.idCode,
+                                        address: {
+                                            street: values.street,
+                                            apartmentNumber: values.apartmentNumber,
+                                            city: values.city,
+                                            state: values.state,
+                                            zipCode: values.postcode,
+                                            country: values.country,
+                                        },
+                                        password: values.password,
+                                    };
+
+                                    setTimeout(async () => {
+                                        try {
+                                            const result = await authService.addPersonalInfo(restructuredValues);
+                                            console.log(result)
+                                            // toast.success(result.data.message);
+                                            // setTimeout(() => {
+                                            //     if (result.status === 200) {
+                                            //         navigate('/dashboard');
+                                            //     }
+                                            // }, 1000);
+                                        } catch (error) {
+                                            console.log(error)
+                                            toast.error(error.data.message);
+                                        }
+                                        actions.setSubmitting(false)
                                     }, 1000);
                                 }}
                                 validationSchema={PersonalInfoSchema}

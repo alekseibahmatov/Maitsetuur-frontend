@@ -3,17 +3,25 @@ import * as Yup from "yup";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
 import './Reset.css'
+import authService from "../../services/auth";
+import toast from "react-hot-toast";
+import {useNavigate} from "react-router-dom";
 
 const ResetPasswordSchema = Yup.object().shape({
-    password: Yup.string()
+    activationCode: Yup.string()
+        .required("Activation code is a required field"),
+    newPassword: Yup.string()
         .required("Password is a required field")
         .min(8, "Password must be at least 8 characters")
         .max(32, "Password must not exceed 32 characters"),
     repeatPassword: Yup.string()
-        .oneOf([Yup.ref("password"), null], "Passwords must match"),
+        .required("Repeat Password is a required field")
+        .oneOf([Yup.ref("newPassword"), null], "Passwords must match"),
 });
 
-export const Reset = () => {
+export const SecondStepResetPassword = () => {
+    const navigate = useNavigate();
+
     return (
         <div className='loginContent'>
             <div className="loginHeader">
@@ -22,14 +30,28 @@ export const Reset = () => {
             <div className="loginFormForm">
                 <div className="loginForm">
                     <div className="loginFormHeader">
-                        Reset Password for genryeiter@gmail.com
+                        Please check your email for verification code that we send you, use this code and input your new password
                     </div>
                     <Formik
-                        initialValues={{password: '', repeatPassword: ''}}
+                        initialValues={{activationCode: '', newPassword: ''}}
                         onSubmit={(values, actions) => {
-                            setTimeout(() => {
+                            delete values.repeatPassword;
+                            setTimeout(async () => {
                                 console.log(values)
-                                actions.setSubmitting(false);
+                                try {
+                                    const result = await authService.secondStepResetPassword(values);
+                                    console.log(result)
+                                    toast.success(result.data.message);
+                                    setTimeout(() => {
+                                        if (result.status === 200) {
+                                            navigate('/login');
+                                        }
+                                    }, 1000);
+                                } catch (error) {
+                                    console.log(error)
+                                    toast.error(error.data.message)
+                                }
+                                actions.setSubmitting(false)
                             }, 1000);
                         }}
                         validationSchema={ResetPasswordSchema}
@@ -38,13 +60,23 @@ export const Reset = () => {
                             <Form>
                                 <div className="authentication">
                                     <div className="inputHeader">
+                                        Activation Code
+                                    </div>
+                                    <div className="inputAuthentication">
+                                        <Field className="inputAuthenticationInput" type="activationCode"
+                                               name="activationCode" placeholder="Your Activation Code"/>
+                                        <div className="error">
+                                            <ErrorMessage name="activationCode"/>
+                                        </div>
+                                    </div>
+                                    <div className="inputHeader">
                                         New Password
                                     </div>
                                     <div className="inputAuthentication">
                                         <Field className="inputAuthenticationInput" type="password"
-                                               name="password" placeholder="Password"/>
+                                               name="newPassword" placeholder="Password"/>
                                         <div className="error">
-                                            <ErrorMessage name="password"/>
+                                            <ErrorMessage name="newPassword"/>
                                         </div>
                                     </div>
                                     <div className="inputHeader">
@@ -71,4 +103,4 @@ export const Reset = () => {
 }
 
 
-export default Reset
+export default SecondStepResetPassword

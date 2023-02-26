@@ -1,0 +1,9 @@
+.unauthorizedHeader {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.unauthorizedDescription {
+    font-size: 25px;
+    margin-top: 15px;
+}

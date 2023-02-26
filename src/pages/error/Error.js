@@ -17,14 +17,11 @@ export const Error = () => {
                 404
             </div>
             <div className="permission">
-                You dont have permission to visit this page <br/>
-                <button onClick={goBack}>Click to go back</button>
+                Opss... <br/> Something went wrong
+                <button className="errorButton" onClick={goBack}>Click to go back</button>
             </div>
-
         </div>
-
     )
-
 }
 
 export default Error

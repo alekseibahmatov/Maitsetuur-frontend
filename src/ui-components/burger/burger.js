@@ -12,6 +12,7 @@ import group from "../../assets/img/Group (1).png";
 import icon from "../../assets/img/icon.png";
 import close from '../../assets/img/Less Than.png'
 import user from "../../assets/img/Container.png";
+import authService from "../../services/auth";
 
 const Burger = () => {
 
@@ -27,6 +28,11 @@ const Burger = () => {
     const handleClick = (child) => {
         console.log(child)
         navigate('/dashboard/' + child)
+    }
+
+    const handleLogout = () => {
+        authService.logout()
+        navigate('/')
     }
 
     return (
@@ -103,14 +109,12 @@ const Burger = () => {
                     })}/>
                     <div className='buttonText'>Create Waiter</div>
                 </div>
-                <div onClick={() => handleClick(6)}
+                <div onClick={() => handleLogout()}
                      className={classnames({
                          'singleButton1': true,
-                         'selected': path === 6
                      })}>
                     <img src={icon} alt="" className={classnames({
                         'buttonImage': true,
-                        'buttonImageSelected': path === 6
                     })}/>
                     <div className='buttonText'>Logout</div>
                 </div>
