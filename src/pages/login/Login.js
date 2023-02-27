@@ -38,16 +38,14 @@ export const Login = () => {
                                 try {
                                     const result = await authService.login(values);
                                     toast.success("Login success");
-                                    setTimeout( () => {
+                                    setTimeout(() => {
                                         if (result.status === 200) {
-                                            if (jwt_decode(authService.getAuthUser()?.token)?.roles?.includes('ROLE_NEWBIE')) {
-                                                navigate('/add-personal-info');
-                                            } else navigate('/dashboard');
+                                            navigate('/dashboard');
                                         }
                                     }, 1000);
                                 } catch (error) {
                                     console.log(error.code)
-                                    toast.error(error.data.message);
+                                    toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
                                 }
                                 actions.setSubmitting(false)
                             }, 1000);

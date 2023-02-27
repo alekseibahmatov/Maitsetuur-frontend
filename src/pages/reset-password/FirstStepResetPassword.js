@@ -43,7 +43,7 @@ export const FirstStepResetPassword = () => {
                                     }, 1000);
                                 } catch (error) {
                                     console.log(error.code)
-                                    toast.error(error.data.message)
+                                    toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
                                     actions.setSubmitting(false)
                                 }
                                 actions.setSubmitting(false)
@@ -64,6 +64,9 @@ export const FirstStepResetPassword = () => {
                                             <ErrorMessage name="email"/>
                                         </div>
                                     </div>
+                                </div>
+                                <div onClick={() => navigate('/login')} className="forgetPass">
+                                    Remembered Password? Go To Login
                                 </div>
                                 <button disabled={props.isSubmitting} className="loginButton" type="submit">
                                     {props.isSubmitting ? <LoadingAnimation/> : 'Receive Verification Code'}

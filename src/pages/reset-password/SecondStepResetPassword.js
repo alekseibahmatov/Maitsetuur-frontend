@@ -49,7 +49,7 @@ export const SecondStepResetPassword = () => {
                                     }, 1000);
                                 } catch (error) {
                                     console.log(error)
-                                    toast.error(error.data.message)
+                                    toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
                                 }
                                 actions.setSubmitting(false)
                             }, 1000);

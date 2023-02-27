@@ -5,7 +5,7 @@ import './AddPersonalInfo.css'
 import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
 import authService from "../../services/auth";
 import toast from "react-hot-toast";
-import jwt_decode from "jwt-decode";
+import {useNavigate, useParams} from "react-router-dom";
 
 const initialValues = {
     fullName: "",
@@ -22,15 +22,25 @@ const initialValues = {
 };
 
 export const AddPersonalInfo = () => {
+    const navigate = useNavigate();
+    const {activationCode} = useParams();
+    const [step, setStep] = useState(0);
     const [showPassword, setShowPassword] = useState(false);
 
-    const [step, setStep] = useState(
-        parseInt(localStorage.getItem('formStep')) || 0
-    );
+    const checkActivationCodeOnMount = async () => {
+        try {
+            await authService.checkActivationCode(activationCode);
+        } catch (error) {
+            console.log(error.code)
+            navigate('/')
+            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+        }
+    }
 
     useEffect(() => {
-        localStorage.setItem('formStep', step);
-    }, [step]);
+        console.log(activationCode)
+        checkActivationCodeOnMount();
+    });
 
 
     const togglePasswordVisibility = () => {
@@ -69,6 +79,7 @@ export const AddPersonalInfo = () => {
                                 initialValues={initialValues}
                                 onSubmit={(values, actions) => {
                                     const restructuredValues = {
+                                        activationCode: activationCode,
                                         fullName: values.fullName,
                                         phone: values.mobilePhone,
                                         personalCode: values.idCode,
@@ -85,17 +96,18 @@ export const AddPersonalInfo = () => {
 
                                     setTimeout(async () => {
                                         try {
-                                            const result = await authService.addPersonalInfo(restructuredValues);
+                                            console.log(activationCode)
+                                            const result = await authService.addPersonalData(restructuredValues);
                                             console.log(result)
-                                            // toast.success(result.data.message);
-                                            // setTimeout(() => {
-                                            //     if (result.status === 200) {
-                                            //         navigate('/dashboard');
-                                            //     }
-                                            // }, 1000);
+                                            toast.success(result.data.message);
+                                            setTimeout(() => {
+                                                if (result.status === 200) {
+                                                    navigate('/login');
+                                                }
+                                            }, 1000);
                                         } catch (error) {
                                             console.log(error)
-                                            toast.error(error.data.message);
+                                            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
                                         }
                                         actions.setSubmitting(false)
                                     }, 1000);
