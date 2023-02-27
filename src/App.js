@@ -43,10 +43,7 @@ export const App = () => {
                 <Route path='/reset-password' element={<FirstStepResetPassword/>}/>
                 <Route path='/reset-password-final' element={<SecondStepResetPassword/>}/>
                 <Route path='/reset-success' element={<ResetSuccess/>}/>
-
-                <Route element={<AuthGuard allowedRoles={[ROLES.newbie, ROLES.admin]}/>}>
-                    <Route path='/add-personal-info' element={<AddPersonalInfo/>}/>
-                </Route>
+                <Route path='/add-personal-info/:activationCode' element={<AddPersonalInfo/>}/>
 
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
                 <Route element={<AuthGuard allowedRoles={[ROLES.waiter, ROLES.customer, ROLES.admin]}/>}>

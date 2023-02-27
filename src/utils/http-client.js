@@ -9,7 +9,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use((config) => {
     const authUser = authService.getAuthUser();
-    if (authUser && !config.url.endsWith('/auth/authenticate') && !config.url.endsWith('/auth/recovery/start') && !config.url.endsWith('/auth/recovery') && !config.url.endsWith('/auth/personalData')) {
+    if (authUser && !config.url.includes('auth')) {
         config.headers['authorization'] = `Bearer ${authUser?.token}`;
     }
     return config;
@@ -29,9 +29,9 @@ instance.interceptors.response.use((response) => {
     }
 });
 
-const get = (url, params, config = {}) => instance.get(url, { params, ...config });
+const get = (url, params, config = {}) => instance.get(url, {params, ...config});
 const post = (url, data, config = {}) => instance.post(url, data, config);
 
-const methods = { get, post };
+const methods = {get, post};
 
 export default methods;

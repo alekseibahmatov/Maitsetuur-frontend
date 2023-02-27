@@ -30,13 +30,19 @@ const secondStepResetPassword = (data) => {
     });
 }
 
-const addPersonalInfo = (data) => {
+const addPersonalData = (data) => {
     return http.post('/auth/personalData', data, {
         transformResponse: [(result) => {
             return JSON.parse(result);
         }]
     });
 }
+
+const checkActivationCode = (data) => {
+    console.log(data)
+    return http.get('/auth/activationCode/' + data);
+}
+
 
 const getAuthUser = () => {
     return JSON.parse(localStorage.getItem('authUser'));
@@ -47,7 +53,8 @@ const methods = {
     logout,
     firstStepResetPassword,
     secondStepResetPassword,
-    addPersonalInfo,
+    addPersonalData,
+    checkActivationCode,
     getAuthUser,
 }
 
