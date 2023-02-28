@@ -99,7 +99,9 @@ export const AddPersonalInfo = () => {
                                             console.log(activationCode)
                                             const result = await authService.addPersonalData(restructuredValues);
                                             console.log(result)
-                                            toast.success(result.data.message);
+                                            toast.success(result.data.message, {
+                                                duration: 4000,
+                                            });
                                             setTimeout(() => {
                                                 if (result.status === 200) {
                                                     navigate('/login');
