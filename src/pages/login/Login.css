@@ -42,7 +42,7 @@ html {
     background-color: #5541D7!important;
     color: white;
     text-align: center;
-    padding: 15px;
+    padding: 15px 30px;
     border-radius: 10px;
     transition: 0.3s;
     cursor: pointer;
@@ -50,9 +50,7 @@ html {
 }
 .loginButton:hover{
     transition: 0.3s;
-    background-color: #ffffff;
-    color: #5541D7;
-    border: 1px solid #5541D7!important;
+    background-color: #6E54D6!important;
 }
 
 

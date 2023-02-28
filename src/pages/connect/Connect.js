@@ -2,9 +2,10 @@ import React, {useState} from "react";
 import './Connect.css'
 import burx from "../../assets/img/burx.svg";
 import share from "../../assets/img/share.svg";
+import {useNavigate} from "react-router-dom";
 
 export const Connect = () =>{
-
+    const navigate = useNavigate();
     const [isBurger, setIsBurger] = useState(false);
     const handleClick123 = event => {
         if (event.target.className === 'burx_img'){
@@ -13,6 +14,9 @@ export const Connect = () =>{
         else {
             setIsBurger(false)
         }
+    }
+    const scrollToExplain = () =>{
+        document.getElementById('explain').scrollIntoView({behavior: "smooth", block: "start"});
     }
 
     return(
@@ -40,17 +44,14 @@ export const Connect = () =>{
                                 <div className="closeBurger">
                                     CLOSE
                                 </div>
-                                <div className="next">
-                                    Join us
+                                <div className="next" onClick={() => navigate('/')}>
+                                    Home
                                 </div>
-                                <div className="next" >
-                                    Certificate
-                                </div>
-                                <div className="next">
+                                <div className="next" onClick={() => navigate('/allrestaraunts')}>
                                     All the restaraunts
                                 </div>
-                                <div className="next" >
-                                    Contact us
+                                <div className="next" onClick={scrollToExplain} >
+                                    How does it work
                                 </div>
                             </div>
                             <div className="singleRestaurantHeader">
@@ -67,16 +68,16 @@ export const Connect = () =>{
                                     <div className="leaveForApplyLeft">
                                         <div className="form">
                                             <div className="from_who">
-                                                <input type='text' placeholder='Name' className='bashmak'></input>
+                                                <input type='text' placeholder='Name' className='certificateInputValue'></input>
                                             </div>
                                             <div className="from_who">
-                                                <input type='text' placeholder='Restaurant' className='bashmak'></input>
+                                                <input type='text' placeholder='Restaurant' className='certificateInputValue'></input>
                                             </div>
                                             <div className="from_who">
-                                                <input type='email' placeholder='E-mail' className='bashmak'></input>
+                                                <input type='email' placeholder='E-mail' className='certificateInputValue'></input>
                                             </div>
                                             <div className="from_who">
-                                                <input type='text' placeholder='Phone number' className='bashmak'></input>
+                                                <input type='text' placeholder='Phone number' className='certificateInputValue'></input>
                                             </div>
                                         </div>
                                         <div className="lowerLeaverForApply">
@@ -84,7 +85,7 @@ export const Connect = () =>{
                                                 Send
                                             </div>
                                             <div className="confirmTerms">
-                                                I agree with the <span className="no">Terms of personal data processing</span>.
+                                                I agree with the <span className="blue">Terms of personal data processing</span>.
                                             </div>
                                         </div>
                                     </div>
@@ -126,7 +127,7 @@ export const Connect = () =>{
                 </div>
                 <div className="unrealBg">
                     <div className="container">
-                        <div className="explain1">
+                        <div className="explain1" id='explain'>
                             <div className="explainHeader">
                                 How does it work
                             </div>
@@ -173,10 +174,10 @@ export const Connect = () =>{
                                 </div>
                                 <div className="singleExplain2">
                                     <div className="explainButtons">
-                                        <div className="present" >
+                                        <div className="present" onClick={() => navigate('/')} >
                                             Make a gift
                                         </div>
-                                        <div className="business" >
+                                        <div className="business" onClick={() => navigate('/')}>
                                             For business
                                         </div>
                                     </div>
@@ -197,10 +198,10 @@ export const Connect = () =>{
                                 </div>
                             </div>
                             <div className="rightWho">
-                                <div className="zaebali">
+                                <div className="numberMail">
                                     372 5887 8456
                                 </div>
-                                <div className="zaebali">
+                                <div className="numberMail">
                                     must@vorst.ee
                                 </div>
                             </div>

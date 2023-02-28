@@ -17,9 +17,10 @@ import clock from '../../assets/img/icons8-clocks-28.png'
 import euro from '../../assets/img/icons8-bank-euro-28.png'
 import PopupCertificate from "../../ui-components/popup-certificate/Popup-certificate";
 import rightArrow from '../../assets/img/icons8-right-arrow-30.png'
+import {useNavigate} from "react-router-dom";
 
 export const SingleRestaraunt = () => {
-
+    const navigate = useNavigate();
     const [isBurger, setIsBurger] = useState(false);
     const handleClick123 = event => {
         if (event.target.className === 'burx_img'){
@@ -33,13 +34,12 @@ export const SingleRestaraunt = () => {
     const handleClick = () => {
         setIsActive(current => !current);
     }
+    const scrollToExplain = () =>{
+        document.getElementById('explain').scrollIntoView({behavior: "smooth", block: "start"});
+    }
 
     const scrollToCertificate = () =>{
         document.getElementById('certificate').scrollIntoView({behavior: "smooth", block: "start"});
-    }
-
-    const scrollToFaq = () =>{
-        document.getElementById('faq').scrollIntoView({behavior: "smooth", block: "start"});
     }
 
     let reactSwipeEl;
@@ -145,17 +145,17 @@ export const SingleRestaraunt = () => {
                             <div className="closeBurger">
                                 CLOSE
                             </div>
-                            <div className="next">
+                            <div className="next" onClick={() => navigate('/connect')}>
                                 Join us
                             </div>
                             <div className="next" onClick={scrollToCertificate}>
                                 Certificate
                             </div>
-                            <div className="next">
+                            <div className="next" onClick={() => navigate('/allrestaraunts')}>
                                 All the restaraunts
                             </div>
-                            <div className="next" onClick={scrollToFaq}>
-                                Contact us
+                            <div className="next" onClick={scrollToExplain}>
+                                How does it work
                             </div>
                         </div>
                         <div className="singleRestaurantHeader">
@@ -278,7 +278,7 @@ export const SingleRestaraunt = () => {
             </div>
             <div className="unrealBg">
                 <div className="container">
-                    <div className="explain1">
+                    <div className="explain1" id='explain'>
                         <div className="explainHeader">
                             How does it work
                         </div>
@@ -356,7 +356,7 @@ export const SingleRestaraunt = () => {
                             <div>
                                 <ReactSwipe
                                     className="carousel"
-                                    swipeOptions={{ continuous: true }}
+                                    swipeOptions={{ continuous: false, disableScroll: true }}
                                     ref={el => (reactSwipeEl = el)}
                                 >
                                     <div><div className="explain">

@@ -59,7 +59,7 @@
     position: absolute;
     top: 66px;
     width: 436px;
-    height: 256px;
+    height: 220px;
     z-index: 10;
     border-radius: 16px;
     padding: 40px 0;
@@ -71,7 +71,7 @@
     position: absolute;
     top: 66px;
     width: 436px;
-    height: 256px;
+    height: 220px;
     z-index: 10;
     border-radius: 16px;
     padding: 40px 0;
@@ -80,14 +80,13 @@
 }
 .closeBurger{
     color: white;
-    float: right;
     cursor: pointer;
     display: none;
 }
 
 .next{
     text-decoration: none;
-    padding: 12px 30px!important;
+    padding: 8px 30px!important;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -798,11 +797,18 @@
         padding: 32px 0;
     }
     .closeBurger{
-        display: block;
-        text-align-last: right;
-        padding-right: 40px;
-
+        flex-direction: row;
+        display: flex;
+        justify-content: center;
+        align-self: flex-end;
+        transition: 0.3s;
+        cursor: pointer;
+        position: relative;
+        margin-right: 20px;
+        transform: rotate(45deg);
+        font-size: 18px;
     }
+
     .singleExplain{
         padding-bottom: 10px;
     }

@@ -44,6 +44,9 @@ export const App = () => {
                 <Route path='/reset-password-final' element={<SecondStepResetPassword/>}/>
                 <Route path='/reset-success' element={<ResetSuccess/>}/>
                 <Route path='/add-personal-info/:activationCode' element={<AddPersonalInfo/>}/>
+                <Route path='singlerestaraunt' element={<SingleRestaraunt/>}/>
+                <Route path='allrestaraunts' element={<AllRestaraunt/>}/>
+                <Route path='connect' element={<Connect/>}/>
 
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
                 <Route element={<AuthGuard allowedRoles={[ROLES.waiter, ROLES.customer, ROLES.admin]}/>}>
@@ -68,16 +71,11 @@ export const App = () => {
                             <Route path='waiter-info' element={<WaiterSingle/>}/>
                             <Route path='coupon-info' element={<CouponSingle/>}/>
                             <Route path='create-waiter' element={<CreateWaiter/>}/>
-
-
                         </Route>
 
                         {/* PRIVATE ROUTES ADMIN */}
                         <Route element={<AuthGuard allowedRoles={[ROLES.admin]}/>}>
                             <Route path="resto-business-info" element={<RestaurantBusinessInformation/>}/>
-                            <Route path='singlerestaraunt' element={<SingleRestaraunt/>}/>
-                            <Route path='allrestaraunts' element={<AllRestaraunt/>}/>
-                            <Route path='connect' element={<Connect/>}/>
                         </Route>
 
                         {/* ERROR HANDLING */}

@@ -17,8 +17,10 @@ export const Error = () => {
                 404
             </div>
             <div className="permission">
+                <div className="errorText">
                 Opss... <br/> Something went wrong
-                <button className="errorButton" onClick={goBack}>Click to go back</button>
+                </div>
+                <div className="errorButton" onClick={goBack}>Click to go back</div>
             </div>
         </div>
     )

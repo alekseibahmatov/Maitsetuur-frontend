@@ -38,14 +38,44 @@
     padding: 10px;
     border-radius: 10px;
     transform: translateY(-50%);
+    background-color: #5541D7!important;
+    color: white;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 0;
 }
 
 .togglePasswordButton:hover {
     color: white;
+    background-color: #6E54D6!important;
+    transition: 0.3s;
 }
 
 .generalErrorText {
     color: red;
     width: fit-content;
     margin: 35px auto -25px;
+}
+.alignFlex{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.loginButtonBack{
+    margin-top: 40px;
+}
+.loginButtonBack{
+    background-color: #5541D7!important;
+    color: white;
+    text-align: center;
+    padding: 15px 30px;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 0;
+}
+.loginButtonBack:hover{
+    transition: 0.3s;
+    background-color: #6E54D6!important;
 }

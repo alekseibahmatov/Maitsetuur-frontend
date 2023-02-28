@@ -4,8 +4,10 @@ import burx from "../../assets/img/burx.svg";
 import share from "../../assets/img/share.svg";
 import resto from '../../assets/img/leha2.png'
 import {waiters} from "../restaurant/list-of-waiters/data";
+import {useNavigate} from "react-router-dom";
 
 export const AllRestaraunt = () => {
+    const navigate = useNavigate();
 
     const [isBurger, setIsBurger] = useState(false);
     const handleClick123 = event => {
@@ -95,17 +97,11 @@ export const AllRestaraunt = () => {
                                 <div className="closeBurger">
                                     CLOSE
                                 </div>
-                                <div className="next">
+                                <div className="next" onClick={() => navigate('/')}>
+                                    Home
+                                </div>
+                                <div className="next" onClick={() => navigate('/connect')}>
                                     Join us
-                                </div>
-                                <div className="next">
-                                    Certificate
-                                </div>
-                                <div className="next">
-                                    All the restaraunts
-                                </div>
-                                <div className="next">
-                                    Contact us
                                 </div>
                             </div>
                             <div className="allRestaurantsHeader">

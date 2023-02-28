@@ -15,6 +15,7 @@ import {click} from "@testing-library/user-event/dist/click";
 import PopupCertificate from "../../ui-components/popup-certificate/Popup-certificate";
 import ReactSwipe from 'react-swipe';
 import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
+import cross from '../../assets/img/cross.png'
 
 export default function Landing() {
     const navigate = useNavigate();
@@ -102,7 +103,6 @@ export default function Landing() {
     };
 
 
-    const [isOpen, setIsOpen] = useState(false);
 
     let newDate = new Date();
     let date = newDate.getDate() + 1 + '.';
@@ -209,15 +209,15 @@ export default function Landing() {
                         </div>
                         <div className={isBurger ? 'burger_cont1' : 'burger_cont'}>
                             <div className="closeBurger">
-                                CLOSE
+                                +
                             </div>
-                            <div className="next">
+                            <div className="next" onClick={() => navigate('/connect')}>
                                 Join us
                             </div>
                             <div className="next" onClick={scrollToCertificate}>
                                 Certificate
                             </div>
-                            <div className="next">
+                            <div className="next" onClick={() => navigate('/allrestaraunts')}>
                                 All the restaraunts
                             </div>
                             <div className="next" onClick={scrollToFaq}>
@@ -580,10 +580,10 @@ export default function Landing() {
                     <div className="who">
                         <div className="leftWho">
                             <div className="company1">
-                                MustVorst OÜ
+                                Maitsetuur OÜ
                             </div>
                             <div className="company1">
-                                Kiirki 2/3
+                                Sõstra 4
                             </div>
                             <div className="company1">
                                 Reg. No 2281337
@@ -594,7 +594,7 @@ export default function Landing() {
                                 372 5887 8456
                             </div>
                             <div className="numberMail">
-                                must@vorst.ee
+                                maitsetuur@gmail.com
                             </div>
                         </div>
                     </div>

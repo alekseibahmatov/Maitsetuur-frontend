@@ -226,15 +226,17 @@ export const AddPersonalInfo = () => {
                                                         <ErrorMessage name="postcode"/>
                                                     </div>
                                                 </div>
+                                                <div className="alignFlex">
                                                 <button type="button" onClick={() => {
                                                     setStep(2)
                                                 }} className="loginButton">
                                                     Go to next step
                                                 </button>
                                                 <button type="button" onClick={() => setStep(0)}
-                                                        className="loginButton">
+                                                        className="loginButtonBack">
                                                     Go back
                                                 </button>
+                                                </div>
                                             </React.Fragment>
                                         )}
                                         {step === 2 && (
@@ -274,15 +276,17 @@ export const AddPersonalInfo = () => {
                                                         Something went wrong, check the form again
                                                     </div>
                                                 )}
+                                                <div className="alignFlex">
                                                 <button disabled={props.isSubmitting} className="loginButton"
                                                         type="submit">
                                                     {props.isSubmitting ? <LoadingAnimation/> : 'Submit'}
                                                 </button>
                                                 <button onClick={() => {
                                                     setStep(1)
-                                                }} className="loginButton">
+                                                }} className="loginButtonBack">
                                                     Go back
                                                 </button>
+                                                </div>
                                             </>
                                         )}
                                     </Form>
