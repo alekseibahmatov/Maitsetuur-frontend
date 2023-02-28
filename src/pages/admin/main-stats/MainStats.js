@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Select from "react-select";
 import dots from "../../../assets/img/dots.png";
 import {Data, options, table} from "./data";
+import {CustomChart} from '../../../ui-components/chart/CustomChart'
 
 export const MainStats = () => {
+    const [totalEarning, setTotalEarnings] = useState(0);
+    const [totalOrders, setTotalOrders] = useState(0);
+
+    const updateTotal = (newTotalEarnings, newTotalOrders) => {
+        setTotalEarnings(newTotalEarnings);
+        setTotalOrders(newTotalOrders)
+    };
+
     const customStyles = {
         option: (defaultStyles, state) => ({
             ...defaultStyles,
@@ -20,7 +29,7 @@ export const MainStats = () => {
             borderRadius: '10px',
             fontWeight: 'bold',
             cursor: 'pointer',
-            "@media only screen and (max-width: 600px)" : {
+            "@media only screen and (max-width: 600px)": {
                 ...defaultStyles["@media only screen and (max-width: 600px)"],
                 padding: "0px 0px",
                 fontWeight: 'normal',
@@ -38,7 +47,6 @@ export const MainStats = () => {
 
 
     };
-
 
 
     return <div className='rightBlock3'>
@@ -84,14 +92,14 @@ export const MainStats = () => {
 
                 </div>
             </div>
-            <div className="income">
 
+            <div className="income">
                 <div className="earningsOrders">
                     <div className="earningsOrdersValue">
-                        $50.000
+                        $ {totalEarning}
                     </div>
                     <div className="earningsOrdersValue1">
-                        1050
+                        {totalOrders}
                     </div>
                 </div>
                 <div className="earningsOrders">
@@ -102,15 +110,16 @@ export const MainStats = () => {
                         Total Order
                     </div>
                 </div>
-
             </div>
 
-            <div className="germanLibrary">
-
+            <div className="chartWrapper">
+                <div className="chart">
+                    <CustomChart updateTotal={updateTotal}/>
+                </div>
             </div>
-
 
         </div>
+
         <div className="couponList">
             <div className="couponListHeader">
                 <div className="couponListHeaderName">
@@ -121,38 +130,38 @@ export const MainStats = () => {
                 </div>
             </div>
             <div className="overflownContent">
-            <table>
+                <table>
 
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Restaurant</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Revenue</th>
-                    <th scope="col">Net Profit</th>
-                    <th scope="col">Money Wasted</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-
-                <tbody>
-
-                {table.map((item, i) => (
-
+                    <thead>
                     <tr>
-                        <th scope="row">{item.id}</th>
-                        <td>{item.name}</td>
-                        <td>{item.quantity}</td>
-                        <td>{item.date}</td>
-                        <td>{item.revenue}</td>
-                        <td>{item.netProfit}</td>
-                        <td>{item.moneyWasted}</td>
-                        <td>{item.dots}</td>
-                    </tr>))}
-                </tbody>
+                        <th scope="col">ID</th>
+                        <th scope="col">Restaurant</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Revenue</th>
+                        <th scope="col">Net Profit</th>
+                        <th scope="col">Money Wasted</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
 
-            </table>
+                    <tbody>
+
+                    {table.map((item, i) => (
+
+                        <tr>
+                            <th scope="row">{item.id}</th>
+                            <td>{item.name}</td>
+                            <td>{item.quantity}</td>
+                            <td>{item.date}</td>
+                            <td>{item.revenue}</td>
+                            <td>{item.netProfit}</td>
+                            <td>{item.moneyWasted}</td>
+                            <td>{item.dots}</td>
+                        </tr>))}
+                    </tbody>
+
+                </table>
             </div>
         </div>
 
