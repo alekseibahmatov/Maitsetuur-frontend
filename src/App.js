@@ -37,16 +37,18 @@ export const App = () => {
     return (
         <>
             <Routes>
-                {/* PUBLIC ROUTES */}
+                {/* PUBLIC INFORMATIVE ROUTES */}
                 <Route path="" element={<Landing/>}/>
+                <Route path='/singlerestaraunt' element={<SingleRestaraunt/>}/>
+                <Route path='/allrestaraunts' element={<AllRestaraunt/>}/>
+                <Route path='/connect' element={<Connect/>}/>
+
+                {/* PUBLIC ROUTES AUTH*/}
                 <Route path="/login" element={<Login/>}/>
                 <Route path='/reset-password' element={<FirstStepResetPassword/>}/>
                 <Route path='/reset-password-final' element={<SecondStepResetPassword/>}/>
                 <Route path='/reset-success' element={<ResetSuccess/>}/>
                 <Route path='/add-personal-info/:activationCode' element={<AddPersonalInfo/>}/>
-                <Route path='singlerestaraunt' element={<SingleRestaraunt/>}/>
-                <Route path='allrestaraunts' element={<AllRestaraunt/>}/>
-                <Route path='connect' element={<Connect/>}/>
 
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
                 <Route element={<AuthGuard allowedRoles={[ROLES.waiter, ROLES.customer, ROLES.admin]}/>}>
@@ -56,7 +58,7 @@ export const App = () => {
                     <Route path='/fail' element={<Fail/>}/>
                 </Route>
 
-                {/* ERROR HANDLING */}
+                {/* PUBLIC ROUTES ERROR HANDLING */}
                 <Route path="/*" element={<Error/>}/>
                 <Route path="/unauthorized" element={<Unauthorized/>}/>
 
