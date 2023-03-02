@@ -9,7 +9,7 @@ export const Dashboard = () => {
     return (
         <div className='content'>
             <NavBar key={'nav'} />
-            <div className="main">
+            <div className="mainDashboard">
                 <SideBar/>
                 <Outlet/>
             </div>

@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { stack as Menu } from 'react-burger-menu'
+import { slide as Menu } from 'react-burger-menu'
 import './burger.css'
 import {useLocation, useNavigate} from "react-router-dom";
 import {LIST_OF_COUPONS, LIST_OF_WAITERS, MAIN_DASHBOARD, RESTO_BUSINESS_INFO, TYPES_OF_RESTO} from "../../routes";

@@ -8,14 +8,6 @@ export const NavBar = () => {
     return (
         <>
             <div className="navbar">
-                <div className="logoAndName">
-                    <div className="logo">
-                        <img src={logo} alt="logo"/>
-                    </div>
-                    <div className="name">
-                        Present Perfect Management for R14 restaurant
-                    </div>
-                </div>
                 <div className="burgerMenu">
                     <Burger/>
                 </div>
