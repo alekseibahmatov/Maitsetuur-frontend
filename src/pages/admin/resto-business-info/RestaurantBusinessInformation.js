@@ -9,7 +9,6 @@ import {sellers, typeOfResto} from "./data";
 import {WaiterSingleSchema} from "../../waiter-single/WaiterSingleSchema";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import {RestaurantBusinessInfoSchema} from "./RestaurantBusinessInfoSchema";
-import {LimitedTextAreaBusiness} from "../../../ui-components/limited-text-area-business/LimitedTextAreaBusiness";
 import PopupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
 import './RestaurantBusinessInformation.css'
 import authService from "../../../services/auth";
