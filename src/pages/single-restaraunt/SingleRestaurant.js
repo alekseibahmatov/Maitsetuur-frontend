@@ -19,7 +19,7 @@ import PopupCertificate from "../../ui-components/popup-certificate/Popup-certif
 import rightArrow from '../../assets/img/icons8-right-arrow-30.png'
 import {useNavigate} from "react-router-dom";
 
-export const SingleRestaraunt = () => {
+export const SingleRestaurant = () => {
     const navigate = useNavigate();
     const [isBurger, setIsBurger] = useState(false);
     const handleClick123 = event => {
@@ -507,4 +507,4 @@ export const SingleRestaraunt = () => {
     )
 
 }
-export default SingleRestaraunt
+export default SingleRestaurant

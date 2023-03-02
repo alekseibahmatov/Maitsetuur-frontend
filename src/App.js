@@ -7,7 +7,7 @@ import WaiterSingle from "./pages/waiter-single/WaiterSingle";
 import Login from "./pages/login/Login";
 import SecondStepResetPassword from "./pages/reset-password/SecondStepResetPassword";
 import Error from "./pages/error/Error";
-import CouponSingle from "./pages/coupon-single/Coupon-single";
+import CouponSingle from "./pages/coupon-single/CouponSingle";
 import CreateWaiter from "./pages/create-waiter/Create-waiter";
 import Qrcode from "./pages/qrcode/Qrcode";
 import Qrcodesuccess from "./pages/qrcodesuccess/Qrcodesuccess";
@@ -20,10 +20,11 @@ import Unauthorized from "./pages/unauthorized/Unauthorized";
 import {TypesOfRestaurants} from "./pages/admin/types-of-restaurants/TypesOfRestaurants";
 import {MainStats} from "./pages/admin/main-stats/MainStats";
 import {RestaurantBusinessInformation} from "./pages/admin/resto-business-info/RestaurantBusinessInformation";
-import SingleRestaraunt from "./pages/single-restaraunt/Single-restaraunt";
-import AllRestaraunt from "./pages/all-restaurant/All-restaraunt";
+import SingleRestaurant from "./pages/single-restaraunt/SingleRestaurant";
+import AllRestaurant from "./pages/all-restaurant/AllRestaurant";
 import Connect from "./pages/connect/Connect";
 import FirstStepResetPassword from "./pages/reset-password/FirstStepResetPassword";
+import ListOfCoupons from "./pages/admin/list-of-coupons/ListOfCoupons";
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
@@ -39,8 +40,8 @@ export const App = () => {
             <Routes>
                 {/* PUBLIC INFORMATIVE ROUTES */}
                 <Route path="" element={<Landing/>}/>
-                <Route path='/singlerestaraunt' element={<SingleRestaraunt/>}/>
-                <Route path='/allrestaraunts' element={<AllRestaraunt/>}/>
+                <Route path='/singlerestaraunt' element={<SingleRestaurant/>}/>
+                <Route path='/allrestaraunts' element={<AllRestaurant/>}/>
                 <Route path='/connect' element={<Connect/>}/>
 
                 {/* PUBLIC ROUTES AUTH*/}
@@ -69,7 +70,7 @@ export const App = () => {
                         {/* PRIVATE ROUTES CUSTOMER */}
                         <Route element={<AuthGuard allowedRoles={[ROLES.customer, ROLES.admin]}/>}>
                             <Route path="" element={<MainStats/>}/>
-                            <Route path="types-of-resto" element={<TypesOfRestaurants/>}/>
+                            <Route path="types-of-restaurants" element={<TypesOfRestaurants/>}/>
                             <Route path='waiter-info' element={<WaiterSingle/>}/>
                             <Route path='coupon-info' element={<CouponSingle/>}/>
                             <Route path='create-waiter' element={<CreateWaiter/>}/>
@@ -77,7 +78,8 @@ export const App = () => {
 
                         {/* PRIVATE ROUTES ADMIN */}
                         <Route element={<AuthGuard allowedRoles={[ROLES.admin]}/>}>
-                            <Route path="resto-business-info" element={<RestaurantBusinessInformation/>}/>
+                            <Route path="restaurant-business-info" element={<RestaurantBusinessInformation/>}/>
+                            <Route path="list-of-coupons" element={<ListOfCoupons/>}/>
                         </Route>
 
                         {/* ERROR HANDLING */}

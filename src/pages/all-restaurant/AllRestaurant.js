@@ -6,7 +6,7 @@ import resto from '../../assets/img/leha2.png'
 import {waiters} from "../restaurant/list-of-waiters/data";
 import {useNavigate} from "react-router-dom";
 
-export const AllRestaraunt = () => {
+export const AllRestaurant = () => {
     const navigate = useNavigate();
 
     const [isBurger, setIsBurger] = useState(false);
@@ -178,4 +178,4 @@ export const AllRestaraunt = () => {
 
 }
 
-export default AllRestaraunt
+export default AllRestaurant

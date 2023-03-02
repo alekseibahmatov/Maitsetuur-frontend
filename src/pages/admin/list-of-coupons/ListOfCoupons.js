@@ -4,7 +4,7 @@ import PopupAdmin from "../../../ui-components/popup-admin/Popup-admin";
 import dots from "../../../assets/img/dots.png";
 import {table} from '../main-stats/data'
 
-export const LostOfCoupons = () =>{
+export const ListOfCoupons = () =>{
     const [search, setSearch] = useState('');
 
     return (
@@ -69,4 +69,4 @@ export const LostOfCoupons = () =>{
     )
 
 }
-export default LostOfCoupons
+export default ListOfCoupons
