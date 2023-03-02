@@ -77,7 +77,7 @@ export const App = () => {
                         </Route>
 
                         {/* PRIVATE ROUTES ADMIN */}
-                        <Route element={<AuthGuard allowedRoles={[ROLES.admin]}/>}>
+                        <Route element={<AuthGuard allowedRoles={[ROLES.customer, ROLES.admin]}/>}>
                             <Route path="restaurant-business-info" element={<RestaurantBusinessInformation/>}/>
                             <Route path="list-of-coupons" element={<ListOfCoupons/>}/>
                         </Route>

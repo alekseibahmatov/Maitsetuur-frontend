@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Select from 'react-select'
-import './Admin-restaraunt.css'
+// import './Admin-restaraunt.css'
 import logo from '../../assets/img/Logo.png'
 import user from '../../assets/img/Container.png'
 import graph from '../../assets/img/graph.png'
@@ -21,7 +21,7 @@ import classnames from 'classnames';
 import PopupAdmin from "../../ui-components/popup-admin/Popup-admin";
 import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
 
-export const App = () => {
+export const AdminRestaurant = () => {
 
     const [content, setContent] = useState(1);
     const [search, setSearch] = useState('');
@@ -822,4 +822,4 @@ export const App = () => {
     );
 }
 
-export default App;
+export default AdminRestaurant;
