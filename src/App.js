@@ -78,7 +78,8 @@ export const App = () => {
 
                         {/* PRIVATE ROUTES ADMIN */}
                         <Route element={<AuthGuard allowedRoles={[ROLES.customer, ROLES.admin]}/>}>
-                            <Route path="restaurant-business-info" element={<RestaurantBusinessInformation/>}/>
+                            <Route path="restaurant/create" element={<RestaurantBusinessInformation/>}/>
+                            <Route path="restaurant-info/:restaurantId" element={<RestaurantBusinessInformation/>}/>
                             <Route path="list-of-coupons" element={<ListOfCoupons/>}/>
                         </Route>
 

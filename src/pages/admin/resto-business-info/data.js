@@ -1,4 +1,4 @@
-export const typeOfResto = [
+export const categoriesOfRestaurant = [
     {value: 'china', label: 'China'},
     {value: 'italian', label: 'Italian'},
     {value: 'france', label: 'French'},

@@ -9,32 +9,36 @@
     font-family: 'Mulish', sans-serif;
 }
 
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid rgba(235,235,235,.8);
+    border-bottom: 2px solid rgba(235, 235, 235, .8);
     background-color: #ffffff;
 }
 
-.logoAndName{
+.logoAndName {
     padding: 20px 40px;
     display: flex;
     gap: 20px;
 }
-.name{
+
+.name {
     font-weight: bold;
     font-size: 24px;
 }
-.scanAndUser{
+
+.scanAndUser {
     display: flex;
     gap: 40px;
     padding: 20px 40px;
 }
-.user{
+
+.user {
     display: flex;
     gap: 20px;
 }
-.scan{
+
+.scan {
     color: #5541D7;
     text-align: center;
     align-self: center;
@@ -46,44 +50,53 @@
     cursor: pointer;
     transition: 0.5s;
 }
-.scan:hover{
+
+.scan:hover {
     background-color: #5541D7;
     color: #ffffff;
     transition: 0.5s;
 }
-.userImg{
+
+.userImg {
     border-radius: 50%;
 }
-.userInfo{
+
+.userInfo {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-.userUsername{
+
+.userUsername {
     color: #11142D;
     font-weight: bold;
     font-size: 16px;
 }
-.userDescription{
+
+.userDescription {
     color: #9A9AB0;
     font-size: 12px;
 }
-.sideBar{
+
+.sideBar {
     height: 100%;
     padding-top: 40px;
     margin: 0 auto;
     display: none;
 }
-.overGrey{
-    background-color: rgba(0,0,0,0.2);
+
+.overGrey {
+    background-color: rgba(0, 0, 0, 0.2);
 }
-.rightBlock1{
+
+.rightBlock1 {
     width: 100%;
     background-color: #F7F7FC;
-    border-left: 2px solid rgba(235,235,235,.8);
+    border-left: 2px solid rgba(235, 235, 235, .8);
     min-height: 1200px;
 }
-.sideButtons{
+
+.sideButtons {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,50 +105,57 @@
     height: 100%;
 }
 
-.singleButton{
+.singleButton {
 
     padding: 18px 22px;
     transition: 0.3s;
     cursor: pointer;
 
 }
-.sideBar1{
+
+.sideBar1 {
     height: 100%;
 }
-.singleButton1{
+
+.singleButton1 {
     background-color: #ffffff;
     padding: 20px 22px;
     transition: 0.3s;
     cursor: pointer;
     display: flex;
-   gap: 20px;
+    gap: 20px;
     width: 100%;
 
-    border-bottom: 1px solid rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
-.singleButton1:hover{
+
+.singleButton1:hover {
     background-color: #78A4F8;
     transition: 0.3s;
 }
 
-.selected{
+.selected {
     background-color: #5541D7;
     transition: 0.3s;
 }
-.buttonImageSelected{
+
+.buttonImageSelected {
     filter: brightness(0) invert(1);
 }
-.main2{
+
+.main2 {
     display: flex;
 }
-.blockHeader{
+
+.blockHeader {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     gap: 20px;
     width: 100%;
 }
-.singleBlock{
+
+.singleBlock {
     width: 100%;
     height: 100%;
     padding: 20px;
@@ -144,103 +164,124 @@
     background-color: white;
     border-radius: 10px;
 }
-.overflownContent{
+
+.overflownContent {
     overflow: hidden;
     overflow-x: auto;
 }
-.leftSide{
+
+.leftSide {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.blockName{
+
+.blockName {
     color: #11142D;
     font-size: 16px;
     font-weight: bold;
 }
-.blockValue{
+
+.blockValue {
     color: #11142D;
     font-size: 16px;
     font-weight: bold;
 }
-.rightSide{
+
+.rightSide {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-.percent{
+
+.percent {
     color: #42BDA1;
     font-weight: bold;
 }
-.blockMain{
+
+.blockMain {
     padding: 20px;
     background-color: white;
     margin: 20px 20px;
 }
-.blockMainHeader{
+
+.blockMainHeader {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid rgba(235,235,235,.8);
+    border-bottom: 2px solid rgba(235, 235, 235, .8);
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
 
 }
-.dropAndFeatures{
+
+.dropAndFeatures {
     display: flex;
     gap: 60px;
 }
-.earnings{
+
+.earnings {
     font-size: 16px;
     font-weight: bold;
     align-self: center;
 }
-.features{
+
+.features {
     cursor: pointer;
     align-self: center;
 }
-.income{
+
+.income {
     padding: 30px;
 }
-.chart{
+
+.chart {
     padding: 20px;
 }
-.earningsOrders{
+
+.earningsOrders {
     display: flex;
     justify-content: space-between;
 }
-.earningsOrdersValue{
+
+.earningsOrdersValue {
     font-weight: bold;
     font-size: 24px;
 }
-.earningsOrdersValue1{
+
+.earningsOrdersValue1 {
     font-weight: bold;
     font-size: 24px;
 }
-.earningsOrdersDescription{
+
+.earningsOrdersDescription {
     font-size: 14px;
     color: #92929D;
     padding-top: 10px;
 }
-.earningsOrdersDescription1{
+
+.earningsOrdersDescription1 {
     font-size: 14px;
     color: #92929D;
     padding-top: 10px;
 }
-.couponList{
+
+.couponList {
     padding: 20px;
     background-color: white;
     margin: 20px 20px;
 }
-.couponListHeader{
+
+.couponListHeader {
     padding-top: 10px;
     padding-left: 50px;
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
-    border-bottom: 2px solid rgba(235,235,235,.8);
+    border-bottom: 2px solid rgba(235, 235, 235, .8);
 }
-.couponListHeaderName{
+
+.couponListHeaderName {
     font-weight: bold;
     font-size: 16px;
 }
@@ -249,11 +290,13 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
+
 thead th:nth-child(1) {
     width: 5%;
     text-align: center;
     min-width: 60px;
 }
+
 thead th:nth-child(2) {
     width: 15%;
     min-width: 200px;
@@ -263,56 +306,69 @@ thead th:nth-child(3) {
     width: 10%;
     min-width: 100px;
 }
+
 thead th:nth-child(4) {
     width: 10%;
     min-width: 100px;
-}thead th:nth-child(5) {
-     width: 7%;
-     min-width: 100px;
- }
+}
+
+thead th:nth-child(5) {
+    width: 7%;
+    min-width: 100px;
+}
 
 thead th:nth-child(6) {
     width: 7%;
     min-width: 100px;
 }
+
 thead th:nth-child(7) {
     width: 7%;
     min-width: 100px;
 }
+
 thead th:nth-child(8) {
     width: 3%;
     min-width: 30px;
-}th, td {
-     padding: 20px;
- }
+}
+
+th, td {
+    padding: 20px;
+}
 
 
 tbody td {
     text-align: left;
-    border-bottom: 2px solid rgba(235,235,235,.8);
+    border-bottom: 2px solid rgba(235, 235, 235, .8);
 }
+
 tbody th {
-    border-bottom: 2px solid rgba(235,235,235,.8);
+    border-bottom: 2px solid rgba(235, 235, 235, .8);
 
 }
-tbody tr{
+
+tbody tr {
     transition: 0.3s;
     cursor: pointer;
 }
-tbody tr:hover{
-    background-color: rgba(235,235,235,.8);
+
+tbody tr:hover {
+    background-color: rgba(235, 235, 235, .8);
     transition: 0.3s;
 }
-thead{
+
+thead {
     text-align: left;
-    border-bottom: 2px solid rgba(235,235,235,.8);
+    border-bottom: 2px solid rgba(235, 235, 235, .8);
     background-color: #F7F7FC;
 }
-.waitersHeader{
+
+.waitersHeader {
     padding: 40px;
     font-size: 24px;
     font-weight: bold;
 }
+
 .search {
     width: 95%;
     position: relative;
@@ -329,7 +385,7 @@ thead{
     font-size: 14px;
 }
 
-.searchTerm:focus{
+.searchTerm:focus {
     color: #00B4CC;
 }
 
@@ -340,49 +396,58 @@ thead{
     border: none;
     text-align: center;
     color: grey;
-    background-color:#F7F7FC ;
+    background-color: #F7F7FC;
     cursor: pointer;
     font-size: 20px;
     margin-top: 6px;
     margin-left: 5px;
 }
-.searchAndDots{
+
+.searchAndDots {
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
-    border-bottom: 2px solid rgba(235,235,235,.8);
+    border-bottom: 2px solid rgba(235, 235, 235, .8);
 }
-.waitersMain{
+
+.waitersMain {
     padding: 40px;
     background-color: white;
 }
-.dots{
+
+.dots {
     align-self: center;
     cursor: pointer;
 }
-.typeOfRestaurant{
+
+.typeOfRestaurant {
     display: flex;
 }
-.leftBlockRestaurants{
+
+.leftBlockRestaurants {
     width: 70%;
     background-color: white;
     margin: 10px;
 }
-.rightBlockRestaurants{
+
+.rightBlockRestaurants {
     width: 30%;
     background-color: white;
     margin: 10px;
     max-height: 500px;
 }
-.searchAndDots1{
+
+.searchAndDots1 {
     padding: 40px;
 }
-.typeButtons{
+
+.typeButtons {
     display: flex;
     justify-content: space-around;
     padding: 10px 20px;
 }
-.typeButtonSingle{
+
+.typeButtonSingle {
     color: #11142D;
     font-weight: bold;
     padding-bottom: 10px;
@@ -392,7 +457,7 @@ thead{
     cursor: pointer;
 }
 
-.typeButtonSingleChoosen{
+.typeButtonSingleChoosen {
     color: #11142D;
     font-weight: bold;
     padding-bottom: 10px;
@@ -401,29 +466,34 @@ thead{
     text-align: center;
     cursor: pointer;
 }
-.listOfRestaurants{
+
+.listOfRestaurants {
     padding: 40px;
     display: grid;
     grid-template-columns: repeat(4, 256px);
     gap: 40px;
     justify-content: center;
 }
-.singleRestaurant{
+
+.singleRestaurant {
     border: 1px solid #DBD7F4;
     border-radius: 10px;
     padding: 7px;
 }
-.restaurantName{
+
+.restaurantName {
     color: #11142D;
     font-weight: bold;
     padding-top: 10px;
 }
-.restaurantAvgBill{
+
+.restaurantAvgBill {
     color: #42BDA1;
     font-weight: bold;
     padding-top: 5px;
 }
-.rightBlockRestaurantsHeader{
+
+.rightBlockRestaurantsHeader {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #E1E1FB;
@@ -431,54 +501,65 @@ thead{
     margin-left: 20px;
     margin-right: 20px;
 }
-.nameOfResto{
+
+.nameOfResto {
     font-weight: bold;
     align-self: center;
 }
-.singleItemResto{
+
+.singleItemResto {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     padding-left: 20px;
     padding-top: 20px;
 }
-.singleItemRestoTittle{
+
+.singleItemRestoTittle {
     font-weight: bold;
     align-self: center;
 }
-.singleItemRestoItems{
+
+.singleItemRestoItems {
     font-weight: bold;
     align-self: center;
     color: #92929D;
     text-align: right;
     padding-right: 10px;
 }
-.allRestoItems{
+
+.allRestoItems {
     height: 360px;
     overflow-y: auto;
 }
-.allRestoItems::-webkit-scrollbar{
+
+.allRestoItems::-webkit-scrollbar {
     width: 5px;
     height: 2em
 }
-.allRestoItems::-webkit-scrollbar-track{
+
+.allRestoItems::-webkit-scrollbar-track {
     background-color: #E2E2EA;
     box-shadow: inset 0 0 5px grey;
     border-radius: 400px;
 }
-.allRestoItems::-webkit-scrollbar-thumb{
+
+.allRestoItems::-webkit-scrollbar-thumb {
     background: #5541D7;
     border-radius: 400px;
 }
-.businessHeader{
+
+.businessHeader {
     display: flex;
     gap: 30px;
     padding: 40px;
 }
-.businessHeader1{
+
+.businessHeader1 {
     font-weight: bold;
     font-size: 24px;
 }
-.buttonSample{
+
+.buttonSample {
     background-color: #5541D7;
     color: #ffffff;
     padding: 8px 25px;
@@ -488,7 +569,9 @@ thead{
     transition: 0.3s;
     text-align: center;
 }
-.buttonSample1{
+
+.buttonSample1 {
+    border: none;
     background-color: #5541D7;
     color: #ffffff;
     padding: 8px 25px;
@@ -497,42 +580,56 @@ thead{
     cursor: pointer;
     transition: 0.3s;
     text-align: center;
-    max-width: 100px;
-    margin: 0 auto;
+    font-size: 16px;
+    width: 100%;
+    margin: 5px 0;
 }
-.red{
+
+.buttonSampleDisabled {
+    opacity: 0.7;
+}
+
+.red {
     background-color: #D81159;
 }
-.businessMain{
+
+.businessMain {
     background-color: #ffffff;
     margin: 0px 20px;
     padding: 60px 40px;
 }
-.businessMainHeader{
+
+.businessMainHeader {
     display: flex;
     gap: 50px;
 }
-.businessSingleBlock{
+
+.businessSingleBlock {
     display: flex;
 }
-.buttonInfo{
+
+.buttonInfo {
     margin-left: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
-.buttonHeader{
+
+.buttonHeader {
     font-weight: bold;
 }
-.businessForm{
+
+.businessForm {
     padding-top: 30px;
 }
-.businessFormHeader{
+
+.businessFormHeader {
     font-weight: bold;
     margin-bottom: 5px;
     padding-left: 15px;
 }
-.businessInputValue{
+
+.businessInputValue {
     border: 1px solid #DBD7F4;
     padding: 15px 25px;
     width: 100%;
@@ -542,50 +639,60 @@ thead{
     resize: none;
     font-weight: normal;
 }
-.input{
-    margin-bottom:0;
+
+.input {
+    margin-bottom: 0;
     padding-bottom: 0;
 }
-.wordCount{
+
+.wordCount {
     text-align: right;
     font-weight: bold;
 }
-.fullWidth{
+
+.fullWidth {
     width: 100%;
 }
 
-.mailPhone{
+.mailPhone {
     display: flex;
     gap: 20px;
 }
-.leftContent{
-    width: 100%;
-}
-.rightContent{
+
+.leftContent {
     width: 100%;
 }
 
-.countryCity{
-    display: flex;
-    gap: 20px;
-}
-.singleCountryBlock{
+.rightContent {
     width: 100%;
 }
-.workBill{
+
+.countryCity {
     display: flex;
     gap: 20px;
 }
-.rightBlock11{
+
+.singleCountryBlock {
+    width: 100%;
+}
+
+.workBill {
+    display: flex;
+    gap: 20px;
+}
+
+.rightBlock11 {
     width: 100%;
     background-color: #F7F7FC;
-    border-left: 2px solid rgba(235,235,235,.8);
+    border-left: 2px solid rgba(235, 235, 235, .8);
     min-height: 1200px;
 }
-.typeOfRestaurantSelect{
+
+.typeOfRestaurantSelect {
     width: 50%;
 }
-.deleteButton{
+
+.deleteButton {
     border: 2px solid #D81159;
     float: right;
     padding: 7px 20px;
@@ -595,15 +702,18 @@ thead{
     transition: 0.5s;
     cursor: pointer;
 }
-.deleteButton:hover{
+
+.deleteButton:hover {
     transition: 0.5s;
     color: #5541D7;
     border: 2px solid #5541D7;
 }
-.waitersButton{
+
+.waitersButton {
     display: flex;
 }
-.addWaiter{
+
+.addWaiter {
     border: 2px solid #D81159;
     float: right;
     padding: 7px 20px;
@@ -614,11 +724,13 @@ thead{
     cursor: pointer;
     align-self: center;
 }
-.addWaiter:hover{
+
+.addWaiter:hover {
     transition: 0.5s;
     color: #5541D7;
     border: 2px solid #5541D7;
 }
+
 body.no-scroll {
     overflow: hidden;
 }
@@ -645,14 +757,16 @@ body.no-scroll {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     border-radius: 20px;
 }
-.popupForm{
+
+.popupForm {
     padding: 20px 80px;
     font-size: 16px;
     display: flex;
     gap: 40px;
 
 }
-.newWaitersInputInput{
+
+.newWaitersInputInput {
     border: 1px solid #DBD7F4;
     padding: 15px 25px;
     width: 100%;
@@ -661,20 +775,24 @@ body.no-scroll {
     margin-bottom: 30px;
     resize: none;
 }
-.isikukood{
+
+.isikukood {
     text-align: center;
 }
-.isik{
+
+.isik {
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 18px;
 }
-.popupButtons{
+
+.popupButtons {
     display: flex;
     float: right;
     gap: 40px;
 }
-.closeButton{
+
+.closeButton {
     border: 2px solid #D81159;
     float: right;
     padding: 7px 20px;
@@ -685,12 +803,14 @@ body.no-scroll {
     cursor: pointer;
     align-self: center;
 }
-.closeButton:hover{
+
+.closeButton:hover {
     transition: 0.5s;
     background-color: #D81159;
     color: #ffffff;
 }
-.confirmButton{
+
+.confirmButton {
     color: #5541D7;
     text-align: center;
     align-self: center;
@@ -702,74 +822,107 @@ body.no-scroll {
     transition: 0.5s;
     cursor: pointer;
 }
-.confirmButton:hover{
+
+.confirmButton:hover {
     background-color: #5541D7;
     color: #ffffff;
     transition: 0.5s;
 }
-.businessSingleBlockImage1{
+
+.businessSingleBlockImage1 {
+    position: relative;
     width: 104px;
     height: 104px;
-    background-color: lightgray;
+    background-color: #9A9AB0;
     border-radius: 10px;
     margin: auto;
+    text-align: center;
+    line-height: 104px;
 }
-.uploadImage{
+
+.businessSingleBlockImage {
+    align-self: center;
+}
+
+.uploadImage {
     width: 104px;
     height: 104px;
     border-radius: 10px;
     object-fit: cover;
 }
-.noFile{
+
+.uploadImageError {
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.noFile {
     margin-top: -10px;
     font-size: 12px;
     color: #92929D;
     text-align: center;
 }
+
 @media (max-width: 860px) {
 
-    .blockHeader{
+    .blockHeader {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
-    .blockMain{
+
+    .blockMain {
         padding: 20px;
     }
-    .couponList{
+
+    .couponList {
         padding: 20px;
     }
 
 }
+
 @media (max-width: 550px) {
 
-    .blockHeader{
+    .blockHeader {
         display: grid;
         grid-template-columns: 1fr;
     }
 
 }
+
 @media (max-width: 600px) {
 
-    .features{
+    .features {
         display: none;
     }
-    .blockMainHeader{
+
+    .blockMainHeader {
         padding-bottom: 0;
         border: none;
     }
-    .income{
+
+    .income {
         padding: 0;
     }
-    .earningsOrdersValue1{
+
+    .earningsOrdersValue1 {
         display: none;
     }
-    .earningsOrdersValue{
+
+    .earningsOrdersValue {
         font-size: 14px;
     }
-    .earningsOrdersDescription1{
+
+    .earningsOrdersDescription1 {
         display: none;
     }
-    .earningsOrdersDescription{
+
+    .earningsOrdersDescription {
         display: none;
     }
 }
@@ -790,92 +943,116 @@ body.no-scroll {
     left: 0;
 
 }
-.flexStyleDiv{
+
+.flexStyleDiv {
     display: flex;
     gap: 20px;
 }
-.burgerMenu{
+
+.burgerMenu {
     display: block;
     overflow-y: hidden;
 }
-@media (max-width: 1024px){
-    .blockName{
+
+@media (max-width: 1024px) {
+    .blockName {
         font-size: 14px;
     }
-    .blockValue{
+
+    .blockValue {
         font-size: 14px;
     }
-    .sideBar{
+
+    .sideBar {
         display: none;
     }
-    .logo{
+
+    .logo {
         display: none;
     }
-    .name{
+
+    .name {
         margin-left: 40px;
     }
 }
-@media (max-width: 464px){
-    .waitersButton{
+
+@media (max-width: 464px) {
+    .waitersButton {
         display: block;
     }
-    .waitersHeader{
+
+    .waitersHeader {
         padding-bottom: 20px;
     }
-    .addWaiter{
+
+    .addWaiter {
         float: none;
         width: 80%;
         margin: 0 auto;
         text-align: center;
     }
 }
-@media (max-width: 900px){
-    .businessMainHeader{
+
+@media (max-width: 900px) {
+    .businessMainHeader {
         display: flex;
         flex-direction: column;
     }
-    .businessSingleBlock{
+
+    .businessSingleBlock {
         display: block;
         text-align: center;
     }
-    .buttonInfo{
-     margin-left: 0;
+
+    .buttonInfo {
+        margin-left: 0;
     }
-    .noFile{
+
+    .noFile {
         margin-top: 5px;
     }
-    .buttonSample1{
+
+    .buttonSample1 {
         max-width: 100%;
         width: 80%;
         margin: 0 auto;
     }
-    .mailPhone{
+
+    .mailPhone {
         display: block;
     }
-    .countryCity{
+
+    .countryCity {
         display: block;
     }
-    .workBill{
+
+    .workBill {
         display: block;
     }
-    .typeOfRestaurantSelect{
+
+    .typeOfRestaurantSelect {
         width: 100%;
     }
-    .businessInput1{
+
+    .businessInput1 {
         margin-bottom: 10px;
     }
-    .halfContent{
+
+    .halfContent {
         width: 100%;
     }
 }
-@media (max-width: 740px){
-    .businessHeader{
+
+@media (max-width: 740px) {
+    .businessHeader {
         display: block;
     }
-    .buttonSample{
+
+    .buttonSample {
         width: 130px;
     }
-    .flexStyleDiv{
+
+    .flexStyleDiv {
         margin-top: 20px;
     }
 }

@@ -1,50 +1,79 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useNavigate, useParams} from "react-router-dom";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
+import toast from "react-hot-toast";
+
+import uploadError from "../../../assets/img/restaurant-business-information/upload-error.png";
+import contractImg from "../../../assets/img/restaurant-business-information/contract.png";
 import addContract from "../../../assets/img/restaurant-business-information/contract-add.png";
 import validContract from "../../../assets/img/restaurant-business-information/contract-valid.png";
 import errorContract from "../../../assets/img/restaurant-business-information/contract-error.png";
 import manager from '../../../assets/img/Businessman.png'
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
-import {sellers, typeOfResto} from "./data";
-import {WaiterSingleSchema} from "../../waiter-single/WaiterSingleSchema";
-import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
+
+import {sellers, categoriesOfRestaurant} from "./data";
 import {RestaurantBusinessInfoSchema} from "./RestaurantBusinessInfoSchema";
 import PopupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
-import './RestaurantBusinessInformation.css'
-import authService from "../../../services/auth";
-import toast from "react-hot-toast";
+import {LoadingAnimation} from "../../../ui-components/loading-animation/LoadingAnimation";
 import adminServices from "../../../services/admin"
+import {customStyles} from "./customstyles";
+import {downloadBlobFile, truncateFilename} from "./utils";
+import {initialValuesCreate} from './formikInitialValues'
 
-const initialValues = {
-    restaurantName: "",
-    restaurantDescription: "",
-    restaurantEmail: "",
-    managerEmail: "",
-    restaurantPhone: "",
-    country: "",
-    state: "",
-    street: "",
-    city: "",
-    postalCode: "",
-    workingHours: "",
-    averageBill: "",
-    categories: "",
-    photo: "",
-    contact: "",
-};
+import './RestaurantBusinessInformation.css'
+
 
 export const RestaurantBusinessInformation = () => {
-    const [image, setImage] = useState(null);
-    const [contractIcon, setContractIcon] = useState(false);
-    const [popupSubmit, setPopupSubmit] = useState(false);
-    const [photoName, setPhotoName] = useState("(No file chosen)");
-    const [contractName, setContractName] = useState("(No file chosen)");
-    const animatedComponents = makeAnimated();
-    const MAX_FILENAME_LENGTH = 15;
+    const navigate = useNavigate();
+    const {restaurantId} = useParams();
 
-    const handleChangeImage = e => {
+    const [image, setImage] = useState(null);
+
+    const [popupSubmit, setPopupSubmit] = useState(false);
+
+    const [contractIcon, setContractIcon] = useState(false);
+    const [photoName, setPhotoName] = useState(null);
+    const [contractName, setContractName] = useState(null);
+
+    const animatedComponents = makeAnimated();
+
+    const [restaurantData, setRestaurantData] = useState(initialValuesCreate);
+
+    useEffect(() => {
+        if (restaurantId) {
+            getRestaurantDataOnMount()
+        }
+    }, [restaurantId]);
+
+    const getRestaurantDataOnMount = async () => {
+        try {
+            const result = await adminServices.getRestaurantData(restaurantId)
+            setRestaurantData(result.data)
+            console.log(result)
+
+            const imagePreview = await adminServices.downloadFile(result.data.photo, "photo")
+            setImage(URL.createObjectURL(imagePreview.data))
+
+            // const waiterData = await adminServices.getWaiterData()
+
+        } catch (error) {
+            // navigate('/dashboard')
+            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+        }
+    }
+
+    const handleChangeImage = async (e) => {
         setPhotoName(truncateFilename(e.target.files[0].name));
-        setImage(URL.createObjectURL(e.target.files[0]));
+        // console.log(URL.createObjectURL(e.target.files[0]))
+        const validImage = await checkImageURL(URL.createObjectURL(e.target.files[0]));
+        console.log(validImage)
+        if (validImage) {
+            setImage(URL.createObjectURL(e.target.files[0]));
+        } else {
+            setImage(uploadError)
+        }
+        // console.log(checkImageURL(URL.createObjectURL(e.target.files[0])))
     }
 
     const handleChangeContract = e => {
@@ -56,52 +85,32 @@ export const RestaurantBusinessInformation = () => {
         setPopupSubmit(!popupSubmit)
     }
 
+    const checkImageURL = (url) => {
+        return new Promise((resolve) => {
+            try {
+                const img = new Image();
+                img.onload = () => resolve(true);
+                img.onerror = () => resolve(false);
+                img.src = url;
+            } catch (err) {
+                toast.error("Something went wrong, try again")
+            }
 
-    function truncateFilename(filename) {
-        const extension = filename.slice(filename.lastIndexOf("."));
-        const truncatedFilename = filename.substr(0, MAX_FILENAME_LENGTH - extension.length);
-        return truncatedFilename + "..." + extension;
+        });
     }
 
-    const customStyles = {
-        option: (defaultStyles, state) => ({
-            ...defaultStyles,
-            color: state.isSelected ? "#fff" : "#5541D7",
-            backgroundColor: state.isSelected ? "#5541D7" : "#Fff",
-        }),
-
-        control: (defaultStyles) => ({
-            ...defaultStyles,
-            backgroundColor: "#fff",
-            padding: "7px 25px",
-            border: "1px solid #5541D7",
-            boxShadow: "none",
-            borderRadius: '10px',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-
-        }),
-
-        dropdownIndicator: base => ({
-            ...base,
-            color: "#5541D7",
-            marginLeft: '20px',
-        }),
-        singleValue: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
-        multiValueLabel: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
-        placeholder: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
-    };
 
     return <div className='rightBlock1'>
         <div className="businessHeader">
             <div className="businessHeader1">
-                Restaurant Business Information
+                {restaurantData.restaurantName ? restaurantData.restaurantName : !restaurantId ? "Create" : "Loading..."} Business
+                Information
             </div>
             <div className="flexStyleDiv">
                 <div onClick={toggleModal} className="buttonSample">
                     Submit
                 </div>
-                <div className="buttonSample red">
+                <div hidden={!restaurantId} className="buttonSample red">
                     Delete
                 </div>
             </div>
@@ -109,35 +118,21 @@ export const RestaurantBusinessInformation = () => {
 
         <div className="businessMain">
             <Formik
-                initialValues={initialValues}
+                enableReinitialize={true}
+                initialValues={restaurantData}
                 onSubmit={(values, actions) => {
                     setTimeout(async () => {
-                        const restructuredValues = {
-                            restaurantName: values.restaurantName,
-                            restaurantDescription: values.restaurantDescription,
-                            restaurantEmail: values.restaurantEmail,
-                            managerEmail: values.managerEmail,
-                            restaurantPhone: values.restaurantName,
-                            country: values.country,
-                            state: values.state,
-                            street: values.street,
-                            city: values.city,
-                            postalCode: values.postalCode,
-                            workingHours: values.workingHours,
-                            averageBill: values.averageBill,
-                            categories: values.categories,
-                            photo: values.photo.name,
-                            contact: values.contact.name
-                        };
-                        console.log(restructuredValues)
+                        console.log(values)
                         try {
-                            const result = await adminServices.createNewRestaurant(restructuredValues);
+                            const result = await adminServices.createNewRestaurant(values);
                             console.log(result)
                             toast.success("Success");
-                            // setTimeout(() => {
-                            //     // if (result.status === 200) {
-                            //     // }
-                            // }, 1000);
+                            setTimeout(() => {
+                                if (result.status === 200 && result.data.restaurantCode) {
+                                    setPopupSubmit(false)
+                                    navigate('/dashboard/restaurant-info/' + result.data.restaurantCode)
+                                }
+                            }, 1000);
                         } catch (error) {
                             console.log(error.code)
                             toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
@@ -152,21 +147,30 @@ export const RestaurantBusinessInformation = () => {
                     <Form>
                         <PopupSumbit actionName="Submit" props={props} isOpen={popupSubmit} toggleModal={toggleModal}/>
                         <div className="businessMainHeader">
-
                             <div className="businessSingleBlock">
                                 <div className="businessSingleBlockImage1">
-                                    {image && <img src={image} alt="" className='uploadImage'/>}
+                                    {image ? <img src={image} alt="upload business photo"
+                                                  className={image === uploadError ? 'uploadImageError' : 'uploadImage'}/> : restaurantId ?
+                                        <LoadingAnimation/> : null}
                                 </div>
                                 <div className="buttonInfo">
                                     <div className="buttonHeader">
-                                        Upload photo
+                                        Upload photo (png/jpg)
                                     </div>
                                     <label className="buttonSample1" htmlFor="photo">Browse</label>
+                                    <button disabled={!image} hidden={!restaurantId}
+                                            className={!image ? "buttonSample1 buttonSampleDisabled" : "buttonSample1"}
+                                            type="button"
+                                            onClick={() => downloadBlobFile(restaurantData, "photo", "image/png")}>Download
+                                    </button>
+
                                     <input type="file" id="photo" name="photo" onChange={(e) => {
                                         props.setFieldValue('photo', e.currentTarget.files[0]);
                                         handleChangeImage(e)
                                     }}/>
-                                    <div className="photoName">{photoName}</div>
+                                    <div
+                                        className="photoName">{photoName || restaurantId ? photoName : "(No file chosen)"}
+                                    </div>
                                     <div className="error">
                                         <ErrorMessage name="photo"/>
                                     </div>
@@ -176,41 +180,53 @@ export const RestaurantBusinessInformation = () => {
 
                             <div className="businessSingleBlock">
                                 <div className="businessSingleBlockImage">
-                                    {contractIcon ? props.errors.contact ?
+                                    {contractIcon ? props.errors.contract ?
                                             <img src={errorContract} alt="contract image"/>
                                             : <img src={validContract} alt="contract image"/>
-                                        : <img src={addContract} alt="contract image"/>
+                                        : restaurantId ? <img src={contractImg} alt="contract image"/> :
+                                            <img src={addContract} alt="contract image"/>
                                     }
                                 </div>
                                 <div className="buttonInfo">
                                     <div className="buttonHeader">
-                                        Upload contract
+                                        Upload contract (pdf)
                                     </div>
-                                    <label className="buttonSample1" htmlFor="contact">Browse</label>
-                                    <input type="file" id="contact" name="contact" onChange={(e) => {
-                                        props.setFieldValue('contact', e.currentTarget.files[0]);
+                                    <label className="buttonSample1" htmlFor="contract">Browse</label>
+                                    <button disabled={!image} hidden={!restaurantId}
+                                            className={!image ? "buttonSample1 buttonSampleDisabled" : "buttonSample1"}
+                                            type="button"
+                                            onClick={() => downloadBlobFile(restaurantData, "contact", "application/pdf")}>Download
+                                    </button>
+
+                                    <input type="file" id="contract" name="contract" onChange={(e) => {
+                                        props.setFieldValue('contract', e.currentTarget.files[0]);
                                         handleChangeContract(e)
                                     }}/>
-                                    <div className="photoName">{contractName}</div>
+                                    <div
+                                        className="photoName">{contractName || restaurantId ? contractName : "(No file chosen)"}
+                                    </div>
                                     <div className="error">
-                                        <ErrorMessage name="contact"/>
+                                        <ErrorMessage name="contract"/>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="businessSingleBlock">
-                                <div className="businessSingleBlockImage">
-                                    <img src={manager} alt="businessPhoto"/>
-                                </div>
-                                <div className="buttonInfo">
-                                    <div className="buttonHeader">
-                                        Manager Information
+                            {restaurantId ?
+                                <div className="businessSingleBlock">
+                                    <div className="businessSingleBlockImage">
+                                        <img src={manager} alt="businessPhoto"/>
                                     </div>
-                                    <div className="buttonSample1">
-                                        Browse
+                                    <div className="buttonInfo">
+                                        <div className="buttonHeader">
+                                            Manager Information
+                                        </div>
+                                        <div className="buttonSample1">
+                                            Browse
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                : null}
+
 
                         </div>
 
@@ -222,7 +238,7 @@ export const RestaurantBusinessInformation = () => {
                                 </div>
                                 <div className="businessInput">
                                     <Field className="businessInputValue" type="text" name="restaurantName"
-                                           placeholder="Restaurant name..."/>
+                                           placeholder={restaurantData && !restaurantId ? "Restaurant name..." : "Loading..."}/>
                                     <div className="error">
                                         <ErrorMessage name="restaurantName"/>
                                     </div>
@@ -241,9 +257,12 @@ export const RestaurantBusinessInformation = () => {
                                             className='businessInputValue fullHeight'
                                             id="restaurantDescription"
                                             name="restaurantDescription"
-                                            placeholder="Type your message here"
+                                            placeholder={restaurantData && !restaurantId ? "Restaurant description..." : "Loading..."}
                                         />
-                                        <div className="charactersCount">{props.values.restaurantDescription.length} / 100</div>
+                                        <div
+                                            className="charactersCount">{props?.values?.restaurantDescription?.length} /
+                                            100
+                                        </div>
                                     </div>
                                     <div className="error">
                                         <ErrorMessage name="restaurantDescription"/>
@@ -258,7 +277,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="email" name="restaurantEmail"
-                                               placeholder="Restaurant email..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Restaurant email..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="restaurantEmail"/>
                                         </div>
@@ -271,7 +290,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="email" name="managerEmail"
-                                               placeholder="Restaurant manager's email..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Restaurant manager's email..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="managerEmail"/>
                                         </div>
@@ -284,7 +303,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="text" name="restaurantPhone"
-                                               placeholder="Restaurant phone number..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Restaurant phone number..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="restaurantPhone"/>
                                         </div>
@@ -299,12 +318,18 @@ export const RestaurantBusinessInformation = () => {
                                         Country
                                     </div>
                                     <div className="businessInput1">
-                                        <Select className='myselect' options={sellers}
-                                                defaultValue={sellers[0]} styles={customStyles}
-                                                onChange={e => {
-                                                    props.setFieldValue('country', e.label);
-                                                }}
-                                                components={{IndicatorSeparator: () => null}}/>
+                                        {props.initialValues?.country || !restaurantId ?
+                                            <Select options={sellers}
+                                                    defaultValue={sellers.find((seller) => seller.label === props.initialValues?.country)}
+                                                    styles={customStyles}
+                                                    onChange={e => {
+                                                        console.log(e)
+                                                        props.setFieldValue('country', e.label);
+                                                    }}
+                                                    components={{IndicatorSeparator: () => null}}/>
+                                            :
+                                            <div style={{textAlign: "center", marginTop: 20}}>Loading...</div>
+                                        }
                                     </div>
                                     <div className="error">
                                         <ErrorMessage name="country"/>
@@ -317,7 +342,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="text" name="state"
-                                               placeholder="Restaurant State..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Restaurant State..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="state"/>
                                         </div>
@@ -330,7 +355,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="text" name="street"
-                                               placeholder="Restaurant Street..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Restaurant Street..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="street"/>
                                         </div>
@@ -343,7 +368,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="text" name="city"
-                                               placeholder="Restaurant City..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Restaurant City..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="city"/>
                                         </div>
@@ -356,7 +381,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="text" name="postalCode"
-                                               placeholder="Restaurant Postal Code..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Restaurant Postal Code..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="postalCode"/>
                                         </div>
@@ -372,7 +397,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="text" name="workingHours"
-                                               placeholder="Restaurant Working Time..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Working Time (Mon-Fri 12:30-23, Sat-Sun 13-00)" : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="workingHours"/>
                                         </div>
@@ -385,7 +410,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="text" name="averageBill"
-                                               placeholder="Average Bill..."/>
+                                               placeholder={restaurantData && !restaurantId ? "Average Bill..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="averageBill"/>
                                         </div>
@@ -398,21 +423,26 @@ export const RestaurantBusinessInformation = () => {
                                 <div className="businessFormHeader">
                                     Type of restaurant
                                 </div>
-                                <Select
-                                    closeMenuOnSelect={true}
-                                    components={animatedComponents}
-                                    isMulti
-                                    className='myselect'
-                                    options={typeOfResto}
-                                    styles={customStyles}
-                                    onChange={e => {
-                                        let categories = []
-                                        e.map((elem) => {
-                                            categories.push(elem.label)
-                                        })
-                                        props.setFieldValue('categories', categories);
-                                    }}
-                                />
+                                {props.initialValues?.categories || !restaurantId ?
+                                    <Select
+                                        closeMenuOnSelect={true}
+                                        components={animatedComponents}
+                                        isMulti
+                                        defaultValue={categoriesOfRestaurant.find((category) => props.initialValues?.categories.includes(category.label))}
+                                        options={categoriesOfRestaurant}
+                                        styles={customStyles}
+                                        onChange={e => {
+                                            let categories = []
+                                            e.map((elem) => {
+                                                categories.push(elem.label)
+                                            })
+                                            props.setFieldValue('categories', categories);
+                                        }}
+                                    />
+                                    :
+                                    <div style={{textAlign: "center", marginTop: 20}}>Loading...</div>
+                                }
+
                                 <div className="error">
                                     <ErrorMessage name="categories"/>
                                 </div>

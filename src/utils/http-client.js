@@ -9,8 +9,15 @@ const instance = axios.create({
 
 instance.interceptors.request.use((config) => {
     const authUser = authService.getAuthUser();
+    if (config.url.endsWith('/admin/restaurant')) {
+        config.headers['Content-Type'] = `multipart/form-data`;
+
+    }
     if (authUser && !config.url.includes('auth')) {
         config.headers['authorization'] = `Bearer ${authUser?.token}`;
+    }
+    if (config.url.includes('download')) {
+        config.responseType = 'blob';
     }
     return config;
 }, (error) => {

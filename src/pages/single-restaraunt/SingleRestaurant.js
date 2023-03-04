@@ -252,7 +252,8 @@ export const SingleRestaurant = () => {
                                                     Working time
                                                 </div>
                                                 <div className="lowerSingleText">
-                                                    M-S 12:00 - 24:00
+                                                    {/*todo: map new row after "," symbol*/}
+                                                    Mon-Fri 12:30-23, <br/>Sat-Sun 13-00
                                                 </div>
                                             </div>
                                         </div>

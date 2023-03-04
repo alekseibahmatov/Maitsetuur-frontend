@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import Sausages from '../../assets/img/Sausages.png'
+import {LoadingAnimation} from "../loading-animation/LoadingAnimation";
 
-function PopupSumbit({actionName, props, errors, isOpen, toggleModal}) {
+function PopupSumbit({actionName, props, isOpen, toggleModal}) {
 
     useEffect(() => {
         if (isOpen) {
@@ -26,13 +27,13 @@ function PopupSumbit({actionName, props, errors, isOpen, toggleModal}) {
                                 Are you sure, that you want to
                                 do this action?
                             </div>
-                            {errors && Object.keys(errors).length > 0 && (
+                            {props.errors && Object.keys(props.errors).length > 0 && (
                                 <div className="generalErrorText">
                                     Something went wrong, check the form again
                                 </div>
                             )}
                             <button type="submit" className="doAction">
-                                {actionName}
+                                {props.isSubmitting ? <LoadingAnimation/> : actionName}
                             </button>
                             <div className="goBack" onClick={toggleModal}>
                                 Go back
