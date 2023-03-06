@@ -1,4 +1,15 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
+import * as Yup from "yup";
+import toast from "react-hot-toast";
+import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
+import managerServices from "../../services/manager"
+import {LoadingAnimationDots} from "../loading-animation/loading-animation-dots/LoadingAnimationDots";
+
+const WaiterSchema = Yup.object().shape({
+    email: Yup.string()
+        .required("Email is a required field")
+        .email("Invalid email format"),
+})
 
 function Popup({isOpen, toggleModal}) {
     useEffect(() => {
@@ -9,54 +20,65 @@ function Popup({isOpen, toggleModal}) {
         }
     }, [isOpen]);
 
+
     return (
         <>
             {isOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <div className="popupForm">
-                            <div className="leftPopup">
-                                <div className="newWaiterName">
-                                    Waiters Name
-                                </div>
-                                <div className="newWaitersInput">
-                                    <input type="text" className='newWaitersInputInput' placeholder='Name...'/>
-                                </div>
-                                <div className="newWaiterName">
-                                    Waiters Surname
-                                </div>
-                                <div className="newWaitersInput">
-                                    <input type="text" className='newWaitersInputInput' placeholder='Surname...'/>
-                                </div>
-                            </div>
-                            <div className="rightPopup">
-                                <div className="newWaiterName">
-                                    Waiters phone number
-                                </div>
-                                <div className="newWaitersInput">
-                                    <input type="phone" className='newWaitersInputInput' placeholder='Phone number...'/>
-                                </div>
-                                <div className="newWaiterName">
-                                    Waiters e-mail
-                                </div>
-                                <div className="newWaitersInput">
-                                    <input type="email" className='newWaitersInputInput' placeholder='E-mail...'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="isikukood">
-                            <div className='isik'>Isikukood</div>
-                            <input type="text" className='newWaitersInputInput' placeholder='Isikukood...'/>
-                        </div>
-                        <div className="popupButtons">
-                            <div className='closeButton' onClick={toggleModal}>Close</div>
-                            <div className="confirmButton">Confirm</div>
-                        </div>
+                        <Formik
+                            initialValues={{email: ''}}
+                            onSubmit={(values, actions) => {
+                                setTimeout(async () => {
+                                    try {
+                                        const result = await managerServices.createNewWaiter(values);
+                                        console.log(result)
+                                        toast.success("Waiter created successfully");
+                                        // setTimeout(() => {
+                                        //     if (result.status === 200) {
+                                        //         navigate('/dashboard');
+                                        //     }
+                                        // }, 1000);
+                                    } catch (error) {
+                                        console.log(error.code)
+                                        toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+                                    }
+                                    actions.setSubmitting(false)
+                                }, 1000);
+                            }}
+                            validationSchema={WaiterSchema}
+                        >
+                            {(props: FormikProps<any>) => (
+                                <Form>
+                                    <h2 style={{textAlign: "center", margin: 20}}>To add new waiter, you have
+                                        to <br/> input waiter's email</h2>
+                                    <div className="leftPopup">
+                                        <div className="newWaiterName">
+                                            Waiter's Email
+                                        </div>
+                                        <div className="newWaitersInput">
+                                            <Field className="newWaitersInputInput" type="email" name="email"
+                                                   placeholder="Email"/>
+                                            <div className="error">
+                                                <ErrorMessage name="email"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="popupButtons">
+                                        <button disabled={props.isSubmitting} style={props.isSubmitting ? {backgroundColor: "darkblue"} : {}} type="submit" className="confirmButton">
+                                            {props.isSubmitting ? <LoadingAnimationDots/> : 'Send invitation'}
+                                        </button>
+                                        <button disabled={props.isSubmitting} className='closeButton' onClick={toggleModal}>Go back</button>
+                                    </div>
+                                </Form>
+                            )}
+                        </Formik>
                     </div>
                 </div>
             )}
         </>
     );
 }
+
 export default Popup;
 

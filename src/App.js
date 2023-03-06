@@ -25,6 +25,8 @@ import AllRestaurant from "./pages/all-restaurant/AllRestaurant";
 import Connect from "./pages/connect/Connect";
 import FirstStepResetPassword from "./pages/reset-password/FirstStepResetPassword";
 import ListOfCoupons from "./pages/admin/list-of-coupons/ListOfCoupons";
+import ListOfRestaurants from "./pages/admin/list-of-restaurants/ListOfRestaurants";
+import {ListOfWaiters} from "./pages/restaurant/list-of-waiters/ListOfWaiters";
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
@@ -81,6 +83,8 @@ export const App = () => {
                             <Route path="restaurant/create" element={<RestaurantBusinessInformation/>}/>
                             <Route path="restaurant-info/:restaurantId" element={<RestaurantBusinessInformation/>}/>
                             <Route path="list-of-coupons" element={<ListOfCoupons/>}/>
+                            <Route path="list-of-restaurants" element={<ListOfRestaurants/>}/>
+                            <Route path="list-of-waiters" element={<ListOfWaiters/>}/>
                         </Route>
 
                         {/* ERROR HANDLING */}

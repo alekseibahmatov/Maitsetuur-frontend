@@ -1,12 +1,11 @@
-import React, {useContext} from "react";
+import React from "react";
 import './Login.css'
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import * as Yup from "yup";
-import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
+import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import authService from "../../services/auth";
 import toast from 'react-hot-toast';
 import {useNavigate} from "react-router-dom";
-import jwt_decode from "jwt-decode";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -82,7 +81,7 @@ export const Login = () => {
                                             Forgot password?
                                         </div>
                                         <button disabled={props.isSubmitting} className="loginButton" type="submit">
-                                            {props.isSubmitting ? <LoadingAnimation/> : 'Login'}
+                                            {props.isSubmitting ? <LoadingAnimationDots/> : 'Login'}
                                         </button>
                                     </div>
                                 </div>

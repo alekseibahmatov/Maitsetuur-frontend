@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import {PersonalInfoSchema} from "./PersonalInfoSchema";
 import './AddPersonalInfo.css'
-import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
+import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import authService from "../../services/auth";
 import toast from "react-hot-toast";
 import {useNavigate, useParams} from "react-router-dom";
@@ -281,7 +281,7 @@ export const AddPersonalInfo = () => {
                                                 <div className="alignFlex">
                                                 <button disabled={props.isSubmitting} className="loginButton"
                                                         type="submit">
-                                                    {props.isSubmitting ? <LoadingAnimation/> : 'Submit'}
+                                                    {props.isSubmitting ? <LoadingAnimationDots/> : 'Submit'}
                                                 </button>
                                                 <button onClick={() => {
                                                     setStep(1)

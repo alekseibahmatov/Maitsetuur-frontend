@@ -788,8 +788,7 @@ body.no-scroll {
 
 .popupButtons {
     display: flex;
-    float: right;
-    gap: 40px;
+    justify-content: space-around;
 }
 
 .closeButton {

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Sausages from '../../assets/img/Sausages.png'
-import {LoadingAnimation} from "../loading-animation/LoadingAnimation";
+import {LoadingAnimationDots} from "../loading-animation/loading-animation-dots/LoadingAnimationDots";
 
 function PopupSumbit({actionName, props, isOpen, toggleModal}) {
 
@@ -33,7 +33,7 @@ function PopupSumbit({actionName, props, isOpen, toggleModal}) {
                                 </div>
                             )}
                             <button type="submit" className="doAction">
-                                {props.isSubmitting ? <LoadingAnimation/> : actionName}
+                                {props.isSubmitting ? <LoadingAnimationDots/> : actionName}
                             </button>
                             <div className="goBack" onClick={toggleModal}>
                                 Go back

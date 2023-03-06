@@ -15,7 +15,7 @@ export const ListOfCoupons = () =>{
                 </div>
             </div>
 
-            <div className="waitersMain">
+            <div className="waitersMain" style={{display: "block"}}>
                 <div className="searchAndDots">
                     <div className="search">
                         <button type="submit" className="searchButton">

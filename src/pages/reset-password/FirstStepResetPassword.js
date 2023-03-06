@@ -1,7 +1,7 @@
 import React from "react";
 import * as Yup from "yup";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
-import {LoadingAnimation} from "../../ui-components/loading-animation/LoadingAnimation";
+import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import './Reset.css'
 import authService from "../../services/auth";
 import toast from "react-hot-toast";
@@ -69,7 +69,7 @@ export const FirstStepResetPassword = () => {
                                     Remembered Password? Go To Login
                                 </div>
                                 <button disabled={props.isSubmitting} className="loginButton" type="submit">
-                                    {props.isSubmitting ? <LoadingAnimation/> : 'Receive Verification Code'}
+                                    {props.isSubmitting ? <LoadingAnimationDots/> : 'Receive Verification Code'}
                                 </button>
                             </Form>
                         )}

@@ -38,7 +38,9 @@ instance.interceptors.response.use((response) => {
 
 const get = (url, params, config = {}) => instance.get(url, {params, ...config});
 const post = (url, data, config = {}) => instance.post(url, data, config);
+const put = (url, data, config = {}) => instance.put(url, data, config);
+const del = (url, config = {}) => instance.delete(url, config);
 
-const methods = {get, post};
+const methods = {get, post, put, delete: del};
 
 export default methods;

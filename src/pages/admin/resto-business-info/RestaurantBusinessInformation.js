@@ -15,7 +15,7 @@ import manager from '../../../assets/img/Businessman.png'
 import {sellers, categoriesOfRestaurant} from "./data";
 import {RestaurantBusinessInfoSchema} from "./RestaurantBusinessInfoSchema";
 import PopupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
-import {LoadingAnimation} from "../../../ui-components/loading-animation/LoadingAnimation";
+import {LoadingAnimationDots} from "../../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import adminServices from "../../../services/admin"
 import {customStyles} from "./customstyles";
 import {downloadBlobFile, truncateFilename} from "./utils";
@@ -151,7 +151,7 @@ export const RestaurantBusinessInformation = () => {
                                 <div className="businessSingleBlockImage1">
                                     {image ? <img src={image} alt="upload business photo"
                                                   className={image === uploadError ? 'uploadImageError' : 'uploadImage'}/> : restaurantId ?
-                                        <LoadingAnimation/> : null}
+                                        <LoadingAnimationDots/> : null}
                                 </div>
                                 <div className="buttonInfo">
                                     <div className="buttonHeader">

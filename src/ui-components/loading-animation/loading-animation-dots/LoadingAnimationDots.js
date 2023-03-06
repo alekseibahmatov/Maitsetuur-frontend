@@ -1,8 +1,8 @@
 import React from "react";
-import './LoadingAnimation.css'
+import './LoadingAnimationDots.css'
 
 
-export const LoadingAnimation = () => {
+export const LoadingAnimationDots = () => {
     return (
         <div className="lds-ellipsis">
             <div></div>
