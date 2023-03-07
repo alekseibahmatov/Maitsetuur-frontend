@@ -1,18 +1,19 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { slide as Menu } from 'react-burger-menu'
 import './burger.css'
 import {useLocation, useNavigate} from "react-router-dom";
 import {LIST_OF_COUPONS, LIST_OF_WAITERS, MAIN_DASHBOARD, RESTO_BUSINESS_INFO, TYPES_OF_RESTO} from "../../routes";
 import classnames from "classnames";
 import color from "../../assets/img/color.png";
-import menu from "../../assets/img/Menu 7.png";
+import menu from "../../assets/img/menu.png";
 import graph from "../../assets/img/graph.png";
-import vector from "../../assets/img/vector111.png";
-import group from "../../assets/img/Group (1).png";
+import vector from "../../assets/img/vector.png";
+import group from "../../assets/img/group.png";
 import icon from "../../assets/img/icon.png";
 import close from '../../assets/img/Less Than.png'
 import user from "../../assets/img/Container.png";
 import authService from "../../services/auth";
+import sausage from '../../assets/img/sosiska.png'
 
 const Burger = () => {
 
@@ -34,11 +35,34 @@ const Burger = () => {
         authService.logout()
         navigate('/')
     }
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    function handleMenuStateChange(state) {
+        setIsMenuOpen(state.isOpen);
+    }
 
     return (
         <>
-        <Menu customCrossIcon={ <img src={close} /> }>
+        <Menu onStateChange={handleMenuStateChange}
+            customCrossIcon={ <img src={close} /> }
+              styles={{
+                  bmCross: {
+                      width: '45px',
+                      height: '45px',
+                      // adjust the size as desired
+                  },
+                  bmCrossButton : {
+                      width: '45px',
+                      height: '45px',
+                  },
+                  bmMenuWrap : {
+                      overflow: 'hidden',
+                  },
+              }}
+        >
             <div className="showProfile">
+                <div className="sausage">
+                    <img src={sausage} alt="" className='sausageImg'/>
+                </div>
                 <div className="user1">
                     <div className="userImage">
                         <img src={user} alt="user" className='userImg1'/>
@@ -92,7 +116,7 @@ const Burger = () => {
                          'singleButton1': true,
                          'selected': path === RESTO_BUSINESS_INFO
                      })}>
-                    <img src={vector} alt="" className={classnames({
+                    <img src={menu} alt="" className={classnames({
                         'buttonImage': true,
                         'buttonImageSelected': path === RESTO_BUSINESS_INFO
                     })}/>
@@ -103,7 +127,7 @@ const Burger = () => {
                          'singleButton1': true,
                          'selected': path === LIST_OF_COUPONS
                      })}>
-                    <img src={group} alt="" className={classnames({
+                    <img src={vector} alt="" className={classnames({
                         'buttonImage': true,
                         'buttonImageSelected': path === LIST_OF_COUPONS
                     })}/>
@@ -113,7 +137,7 @@ const Burger = () => {
                      className={classnames({
                          'singleButton1': true,
                      })}>
-                    <img src={icon} alt="" className={classnames({
+                    <img src={group} alt="" className={classnames({
                         'buttonImage': true,
                     })}/>
                     <div className='buttonText'>Logout</div>

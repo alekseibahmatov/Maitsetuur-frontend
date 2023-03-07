@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./SideBar.css"
 import classnames from "classnames";
-import menu from "../../assets/img/Menu 7.png";
+import menu from "../../assets/img/menu.png";
 import graph from "../../assets/img/graph.png";
 import color from "../../assets/img/color.png";
 import vector from "../../assets/img/vector111.png";

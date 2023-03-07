@@ -52,7 +52,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Wrapper for item list */
 .bm-item-list {
-    color: #b8b7ad;
+    color: black;
     height: auto;
 }
 
@@ -68,14 +68,66 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .burgerButtons{
 }
 .user1{
-    display: flex;
     gap: 10px;
     padding-top: 20px;
     padding-left: 10px;
     padding-bottom: 20px;
+    display: none;
 }
 .userInfo1{
     display: flex;
     flex-direction: column;
     gap: 5px
 }
+.buttonImage{
+    width: 40px;
+    height: 40px;
+}
+.buttonText{
+    align-self: center;
+}
+.showProfile{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.sausageImg{
+    width: 76px;
+    height: 48px;
+}
+.sausage{
+    padding: 15px 20px;
+}
+.closeCross{
+    width: 40px;
+    height: 40px;
+}
+
+@media (max-width: 1024px) {
+    .sausage{
+        display: none;
+    }
+    .user1{
+        gap: 10px;
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        display: flex;
+    }
+}
+body::-webkit-scrollbar {
+     width: 6px;
+     height: 6px;
+ }
+body::-webkit-scrollbar-track {
+     border-radius: 10px;
+     background: rgba(0,0,0,0.1);
+ }
+body::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+     background: rgba(0,0,0,0.2);
+ }
+body::-webkit-scrollbar-thumb:hover{
+     background: rgba(0,0,0,0.4);
+ }
+body::-webkit-scrollbar-thumb:active{
+     background: rgba(0,0,0,.9);
+ }

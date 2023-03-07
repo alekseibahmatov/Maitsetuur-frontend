@@ -118,14 +118,13 @@
 }
 
 .singleButton1 {
-    background-color: #ffffff;
-    padding: 20px 22px;
+    background-color: #F7F7FC;
+    padding: 20px 0 20px 34px;
     transition: 0.3s;
     cursor: pointer;
     display: flex;
     gap: 20px;
     width: 100%;
-
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
@@ -582,6 +581,7 @@ thead {
     text-align: center;
     font-size: 16px;
     width: 100%;
+    max-width: 156px;
     margin: 5px 0;
 }
 
@@ -603,6 +603,12 @@ thead {
     display: flex;
     gap: 50px;
 }
+@media (max-width: 1056px){
+    .businessMainHeader {
+        display: flex;
+        gap: 20px;
+    }
+}
 
 .businessSingleBlock {
     display: flex;
@@ -612,7 +618,6 @@ thead {
     margin-left: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 
 .buttonHeader {
@@ -635,7 +640,6 @@ thead {
     width: 100%;
     border-radius: 10px;
     font-size: 16px;
-    margin-bottom: 30px;
     resize: none;
     font-weight: normal;
 }
@@ -772,14 +776,16 @@ body.no-scroll {
     width: 100%;
     border-radius: 10px;
     font-size: 16px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     resize: none;
 }
 
 .isikukood {
     text-align: center;
 }
-
+.businessInput{
+    margin-bottom: 30px;
+}
 .isik {
     margin-bottom: 10px;
     font-weight: bold;
@@ -1005,6 +1011,7 @@ body.no-scroll {
 
     .buttonInfo {
         margin-left: 0;
+        gap: 10px;
     }
 
     .noFile {
