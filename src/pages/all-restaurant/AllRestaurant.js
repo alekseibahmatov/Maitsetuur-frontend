@@ -95,7 +95,7 @@ export const AllRestaurant = () => {
                             </div>
                             <div className={isBurger ? 'burger_cont1' : 'burger_cont'}>
                                 <div className="closeBurger">
-                                    CLOSE
+                                    +
                                 </div>
                                 <div className="next" onClick={() => navigate('/')}>
                                     Home

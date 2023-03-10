@@ -27,7 +27,7 @@
 }
 
 .search {
-    width: 95%;
+    width: 100%;
     position: relative;
     display: flex;
 }
@@ -173,7 +173,7 @@
         grid-template-columns: repeat(2, 256px);
     }
     .rightBlockRestaurants{
-        width: 35%;
+        width: 40%;
     }
 }
 

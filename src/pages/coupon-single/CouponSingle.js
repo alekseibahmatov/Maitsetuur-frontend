@@ -53,11 +53,13 @@ export const CouponSingle = () => {
                             <div className="businessHeader1">
                                 #ID Coupon Info
                             </div>
+                            <div className="flexStyleDiv">
                             <div className="buttonSample" onClick={toggleModal}>
                                 Submit
                             </div>
                             <div className="buttonSample red" onClick={toggleModal}>
                                 Delete
+                            </div>
                             </div>
                         </div>
                         <div className="couponsMain">
@@ -72,11 +74,11 @@ export const CouponSingle = () => {
                             <div className="buttonHeader" >
                                 Upload photo
                             </div>
-                            <div className="buttonSample"  onClick={() => document.getElementById("inputFile").click()}>
+                            <div className="buttonSample1"  onClick={() => document.getElementById("inputFile").click()}>
                                 Browse
                             </div>
                             <div className='noFile'>
-                                ({fileName})
+                                {fileName}
                             </div>
                             <input
                                 id="inputFile"

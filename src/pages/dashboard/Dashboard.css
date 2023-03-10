@@ -201,7 +201,7 @@
 .blockMain {
     padding: 20px;
     background-color: white;
-    margin: 20px 20px;
+    margin: 0px 20px;
 }
 
 .blockMainHeader {
@@ -369,7 +369,7 @@ thead {
 }
 
 .search {
-    width: 95%;
+    width: 100%;
     position: relative;
     display: flex;
 
@@ -427,12 +427,13 @@ thead {
     width: 70%;
     background-color: white;
     margin: 10px;
+
 }
 
 .rightBlockRestaurants {
     width: 30%;
     background-color: white;
-    margin: 10px;
+    margin: 10px 10px 10px 0;
     max-height: 500px;
 }
 
@@ -567,6 +568,13 @@ thead {
     cursor: pointer;
     transition: 0.3s;
     text-align: center;
+    border: none;
+    font-size: 16px;
+}
+.buttonSample:hover{
+    transition: 0.3s;
+    color: black;
+    font-weight: bolder;
 }
 
 .buttonSample1 {
@@ -873,7 +881,6 @@ body.no-scroll {
 }
 
 .noFile {
-    margin-top: -10px;
     font-size: 12px;
     color: #92929D;
     text-align: center;
@@ -1060,6 +1067,7 @@ body.no-scroll {
     }
 
     .buttonSample {
+        margin-top: 10px;
         width: 130px;
     }
 

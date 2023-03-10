@@ -1,6 +1,7 @@
 .waitersMain{
     display: flex;
     flex-wrap: wrap;
+    margin: 0 20px 20px 20px;
 }
 .overflownContent{
     overflow: hidden;
@@ -60,9 +61,8 @@
     transition: 0.5s;
     color: #11142D;
 }
-.halfContent{
-    width: 49.5%;
-    padding: 0 15px;
+.halfContent {
+    width: 49%;
 }
 .purple{
     background-color: #F7F7FC;

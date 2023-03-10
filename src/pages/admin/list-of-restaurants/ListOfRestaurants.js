@@ -45,9 +45,6 @@ export const ListOfRestaurants = () => {
                                placeholder="What are you looking for?"/>
 
                     </div>
-                    <div className="dots">
-                        <img src={dots} alt="dots"/>
-                    </div>
                 </div>
                 <div className="overflownContent">
                     {listData ?

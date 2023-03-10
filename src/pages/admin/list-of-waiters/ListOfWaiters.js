@@ -43,10 +43,6 @@ export const ListOfWaiters = () => {
                         <input type="text" className="searchTerm"
                                onChange={(e) => setSearch(e.target.value)}
                                placeholder="What are you looking for?"/>
-
-                    </div>
-                    <div className="dots">
-                        <img src={dots} alt="dots"/>
                     </div>
                 </div>
                 <div className="overflownContent">

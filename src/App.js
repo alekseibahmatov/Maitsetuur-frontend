@@ -42,8 +42,8 @@ export const App = () => {
             <Routes>
                 {/* PUBLIC INFORMATIVE ROUTES */}
                 <Route path="" element={<Landing/>}/>
-                <Route path='/singlerestaraunt' element={<SingleRestaurant/>}/>
-                <Route path='/allrestaraunts' element={<AllRestaurant/>}/>
+                <Route path='/singlerestaurant' element={<SingleRestaurant/>}/>
+                <Route path='/allrestaurant' element={<AllRestaurant/>}/>
                 <Route path='/connect' element={<Connect/>}/>
 
                 {/* PUBLIC ROUTES AUTH*/}

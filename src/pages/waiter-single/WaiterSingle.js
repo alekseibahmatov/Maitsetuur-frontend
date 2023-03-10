@@ -57,187 +57,186 @@ export const WaiterSingle = () => {
                                 </div>
                             </div>
 
-                            <div className="waitersMain">
-
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        Full Name
+                            <div className="couponsMain">
+                                <div className="mailPhone">
+                                    <div className="leftContent">
+                                        <div className="businessFormHeader">
+                                           Full Name
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="fullName"
+                                                       placeholder="Input full name"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="fullName"/>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue" type="text"
-                                                   name="fullName"
-                                                   placeholder="Input your full name"/>
-                                            <div className="error">
-                                                <ErrorMessage name="fullName"/>
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                            Phone number
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="mobilePhone"
+                                                       placeholder="Input phone number"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="mobilePhone"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        Phone Number
+                                <div className="mailPhone">
+                                    <div className="leftContent">
+                                        <div className="businessFormHeader">
+                                            Id Code
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="idCode"
+                                                       placeholder="Input id code"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="idCode"/>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue"
-                                                   type="text"
-                                                   name="mobilePhone"
-                                                   placeholder="Input your phone number"/>
-                                            <div className="error">
-                                                <ErrorMessage name="mobilePhone"/>
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                            Country
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="country"
+                                                       placeholder="Input Country"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="country"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        ID Code
+                                <div className="mailPhone">
+                                    <div className="leftContent">
+                                        <div className="businessFormHeader">
+                                            City
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="city"
+                                                       placeholder="Input city"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="city"/>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue"
-                                                   type="text"
-                                                   name="idCode"
-                                                   placeholder="Input your ID Code"/>
-                                            <div className="error">
-                                                <ErrorMessage name="idCode"/>
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                            State
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="state"
+                                                       placeholder="Input state"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="state"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        Country
+                                <div className="mailPhone">
+                                    <div className="leftContent">
+                                        <div className="businessFormHeader">
+                                            Street
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="street"
+                                                       placeholder="Input street"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="street"/>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue"
-                                                   type="text"
-                                                   name="country"
-                                                   placeholder="Input your ID Code"/>
-                                            <div className="error">
-                                                <ErrorMessage name="country"/>
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                            Apartment number
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="apartmentNumber"
+                                                       placeholder="Input apartment number"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="apartmentNumber"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        City
+                                <div className="mailPhone">
+                                    <div className="leftContent">
+                                        <div className="businessFormHeader">
+                                            Email
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="email"
+                                                       placeholder="Input email"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="email"/>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue"
-                                                   type="text"
-                                                   name="city"
-                                                   placeholder="Input your city"/>
-                                            <div className="error">
-                                                <ErrorMessage name="city"/>
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                           Post code
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="postcode"
+                                                       placeholder="Input post code"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="postcode"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        State
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue"
-                                                   type="text"
-                                                   name="state"
-                                                   placeholder="Input your city"/>
-                                            <div className="error">
-                                                <ErrorMessage name="state"/>
-                                            </div>
+                                <div className="mailPhone">
+                                    <div className="halfContent">
+                                        <div className="businessFormHeader">
+                                            Restaurant name
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        Street
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue"
-                                                   type="text"
-                                                   name="street"
-                                                   placeholder="Input your city"/>
-                                            <div className="error">
-                                                <ErrorMessage name="street"/>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="restaurantName"
+                                                       placeholder="Input restaurant name"/>
+                                                <div className="error">
+                                                    <ErrorMessage name="restaurantName"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        Apartment Number
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue"
-                                                   type="text"
-                                                   name="apartmentNumber"
-                                                   placeholder="Input your city"/>
-                                            <div className="error">
-                                                <ErrorMessage name="apartmentNumber"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="halfContent">
-
-                                    <div className="businessFormHeader">
-                                        Postcode
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue"
-                                                   type="text"
-                                                   name="postcode"
-                                                   placeholder="Input your city"/>
-                                            <div className="error">
-                                                <ErrorMessage name="postcode"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        Email
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue" type="text"
-                                                   name="email"
-                                                   placeholder="Input your email"/>
-                                            <div className="error">
-                                                <ErrorMessage name="email"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        Resto name
-                                    </div>
-                                    <div className="businessInput">
-                                        <Field className="businessInputValue half" type="text"
-                                               name="restaurantName"
-                                               placeholder="Input your restaurant name"/>
-                                        <div className="error">
-                                            <ErrorMessage name="restaurantName"/>
                                         </div>
                                     </div>
                                 </div>

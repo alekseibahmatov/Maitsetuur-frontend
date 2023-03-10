@@ -25,7 +25,6 @@ export const CreateWaiter = () => {
             </div>
 
             <div className="couponsMain">
-
                 <div className="mailPhone">
                     <div className="leftContent">
                         <div className="businessFormHeader">
