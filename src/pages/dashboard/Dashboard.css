@@ -707,6 +707,11 @@ thead {
     cursor: pointer;
 }
 
+.deleteButtonLoading {
+    background-color: #5541D7!important;
+}
+
+
 .deleteButton:hover {
     transition: 0.5s;
     color: #5541D7;

@@ -74,3 +74,17 @@
     }
 
 }
+
+.noDataList {
+    text-align: center;
+    line-height: 250px;
+    font-size: 25px;
+    color: #888996;
+}
+
+.loadingWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}

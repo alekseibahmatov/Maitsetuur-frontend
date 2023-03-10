@@ -11,7 +11,7 @@ const WaiterSchema = Yup.object().shape({
         .email("Invalid email format"),
 })
 
-function Popup({isOpen, toggleModal}) {
+function Popup({getAllWaitersOnMount, isOpen, toggleModal}) {
     useEffect(() => {
         if (isOpen) {
             document.body.classList.add("no-scroll");
@@ -34,11 +34,9 @@ function Popup({isOpen, toggleModal}) {
                                         const result = await managerServices.createNewWaiter(values);
                                         console.log(result)
                                         toast.success("Waiter created successfully");
-                                        // setTimeout(() => {
-                                        //     if (result.status === 200) {
-                                        //         navigate('/dashboard');
-                                        //     }
-                                        // }, 1000);
+                                        if (result.status === 200) {
+                                            getAllWaitersOnMount()
+                                        }
                                     } catch (error) {
                                         console.log(error.code)
                                         toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
@@ -65,10 +63,14 @@ function Popup({isOpen, toggleModal}) {
                                         </div>
                                     </div>
                                     <div className="popupButtons">
-                                        <button disabled={props.isSubmitting} style={props.isSubmitting ? {backgroundColor: "darkblue"} : {}} type="submit" className="confirmButton">
+                                        <button disabled={props.isSubmitting}
+                                                style={props.isSubmitting ? {backgroundColor: "darkblue"} : {}}
+                                                type="submit" className="confirmButton">
                                             {props.isSubmitting ? <LoadingAnimationDots/> : 'Send invitation'}
                                         </button>
-                                        <button disabled={props.isSubmitting} className='closeButton' onClick={toggleModal}>Go back</button>
+                                        <button disabled={props.isSubmitting} className='closeButton'
+                                                onClick={toggleModal}>Go back
+                                        </button>
                                     </div>
                                 </Form>
                             )}
