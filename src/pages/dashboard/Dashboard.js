@@ -8,6 +8,8 @@ import {Outlet} from 'react-router-dom'
 export const Dashboard = () => {
     return (
         <div className='content'>
+            <div className="bm-overlay-sideBar"  id='bm-overlay-sideBar'>
+            </div>
             <NavBar key={'nav'} />
             <div className="mainDashboard">
                 <SideBar/>
