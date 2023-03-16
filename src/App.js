@@ -73,7 +73,8 @@ export const App = () => {
                         <Route element={<AuthGuard allowedRoles={[ROLES.customer, ROLES.admin]}/>}>
                             <Route path="" element={<MainStats/>}/>
                             <Route path="types-of-restaurants" element={<TypesOfRestaurants/>}/>
-                            <Route path='waiter-info' element={<WaiterSingle/>}/>
+                            <Route path='waiter-info/create' element={<WaiterSingle/>}/>
+                            <Route path='waiter-info/:waiterId' element={<WaiterSingle/>}/>
                             <Route path='coupon-info' element={<CouponSingle/>}/>
                             <Route path='create-waiter' element={<CreateWaiter/>}/>
                         </Route>

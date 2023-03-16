@@ -15,30 +15,29 @@ import manager from '../../../assets/img/Businessman.png'
 import {sellers, categoriesOfRestaurant} from "./data";
 import {RestaurantBusinessInfoSchema} from "./RestaurantBusinessInfoSchema";
 import PopupSumbit from "../../../ui-components/popup-sumbit/Popup-sumbit";
-import {LoadingAnimationDots} from "../../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
+import {
+    LoadingAnimationDots
+} from "../../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import adminServices from "../../../services/admin"
 import {customStyles} from "./customstyles";
 import {downloadBlobFile, truncateFilename} from "./utils";
 import {initialValuesCreate} from './formikInitialValues'
 
 import './RestaurantBusinessInformation.css'
-
+import {useFormikContext} from 'formik';
 
 export const RestaurantBusinessInformation = () => {
     const navigate = useNavigate();
     const {restaurantId} = useParams();
-
     const [image, setImage] = useState(null);
-
+    const [actionType, setActionType] = useState(null);
     const [popupSubmit, setPopupSubmit] = useState(false);
-
     const [contractIcon, setContractIcon] = useState(false);
     const [photoName, setPhotoName] = useState(null);
     const [contractName, setContractName] = useState(null);
-
     const animatedComponents = makeAnimated();
-
     const [restaurantData, setRestaurantData] = useState(initialValuesCreate);
+
 
     useEffect(() => {
         if (restaurantId) {
@@ -52,10 +51,12 @@ export const RestaurantBusinessInformation = () => {
             setRestaurantData(result.data)
             console.log(result)
 
-            const imagePreview = await adminServices.downloadFile(result.data.photo, "photo")
+            const imagePreview = await adminServices.downloadFile(result.data.photo)
             setImage(URL.createObjectURL(imagePreview.data))
 
-            // const waiterData = await adminServices.getWaiterData()
+            // props.setFieldValue('photo', await adminServices.downloadFile(result.data.photo));
+            // props.setFieldValue('contract', await adminServices.downloadFile(result.data.contract));
+
 
         } catch (error) {
             // navigate('/dashboard')
@@ -65,7 +66,6 @@ export const RestaurantBusinessInformation = () => {
 
     const handleChangeImage = async (e) => {
         setPhotoName(truncateFilename(e.target.files[0].name));
-        // console.log(URL.createObjectURL(e.target.files[0]))
         const validImage = await checkImageURL(URL.createObjectURL(e.target.files[0]));
         console.log(validImage)
         if (validImage) {
@@ -73,7 +73,6 @@ export const RestaurantBusinessInformation = () => {
         } else {
             setImage(uploadError)
         }
-        // console.log(checkImageURL(URL.createObjectURL(e.target.files[0])))
     }
 
     const handleChangeContract = e => {
@@ -81,7 +80,8 @@ export const RestaurantBusinessInformation = () => {
         setContractIcon(true)
     }
 
-    const toggleModal = () => {
+    const toggleModal = (action) => {
+        setActionType(action)
         setPopupSubmit(!popupSubmit)
     }
 
@@ -99,6 +99,25 @@ export const RestaurantBusinessInformation = () => {
         });
     }
 
+    const modifiedValues = {
+        restaurantName: restaurantData.restaurantName,
+        restaurantDescription: restaurantData.restaurantDescription,
+        restaurantEmail: restaurantData.restaurantEmail,
+        restaurantPhone: restaurantData.restaurantPhone,
+        street: restaurantData?.address?.street,
+        apartmentNumber: restaurantData?.address?.apartmentNumber,
+        city: restaurantData?.address?.city,
+        state: restaurantData?.address?.state,
+        postalCode: restaurantData?.address?.zipCode,
+        country: restaurantData?.address?.country,
+        workingHours: restaurantData.workingHours,
+        averageBill: restaurantData.averageBill,
+        categories: restaurantData.categories,
+        photo: restaurantData.photo,
+        contact: restaurantData.contact,
+        active: restaurantData.active
+    };
+
 
     return <div className='rightBlock1'>
         <div className="businessHeader">
@@ -107,10 +126,10 @@ export const RestaurantBusinessInformation = () => {
                 Information
             </div>
             <div className="flexStyleDiv">
-                <div onClick={toggleModal} className="buttonSample">
-                    Submit
+                <div onClick={() => toggleModal(restaurantId ? "Update" : "Create")} className="buttonSample">
+                    {restaurantId ? "Update" : "Create"}
                 </div>
-                <div hidden={!restaurantId} className="buttonSample red">
+                <div onClick={() => toggleModal("Delete")} hidden={!restaurantId} className="buttonSample red">
                     Delete
                 </div>
             </div>
@@ -119,20 +138,31 @@ export const RestaurantBusinessInformation = () => {
         <div className="businessMain">
             <Formik
                 enableReinitialize={true}
-                initialValues={restaurantData}
+                initialValues={modifiedValues}
                 onSubmit={(values, actions) => {
                     setTimeout(async () => {
                         console.log(values)
                         try {
-                            const result = await adminServices.createNewRestaurant(values);
+                            let result;
+                            console.log(actionType)
+                            if (actionType === 'Create') {
+                                result = await adminServices.createNewRestaurant(values);
+                            } else if (actionType === 'Update') {
+                                console.log('jopa')
+                                console.log(values)
+                                result = await adminServices.updateRestaurantData(values);
+                            } else if (actionType === 'Delete') {
+                                result = await adminServices.deleteRestaurant(restaurantId);
+                            }
+
                             console.log(result)
-                            toast.success("Success");
-                            setTimeout(() => {
-                                if (result.status === 200 && result.data.restaurantCode) {
-                                    setPopupSubmit(false)
-                                    navigate('/dashboard/restaurant-info/' + result.data.restaurantCode)
-                                }
-                            }, 1000);
+                            toast.success('Restaurant Created Successfully');
+                            // setTimeout(() => {
+                            //     if (result.status === 200 && result.data.restaurantCode) {
+                            //         setPopupSubmit(false)
+                            //         navigate('/dashboard/restaurant-info/' + result.data.restaurantCode)
+                            //     }
+                            // }, 1000);
                         } catch (error) {
                             console.log(error.code)
                             toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
@@ -145,7 +175,8 @@ export const RestaurantBusinessInformation = () => {
             >
                 {(props: FormikProps<any>) => (
                     <Form>
-                        <PopupSumbit actionName="Submit" props={props} isOpen={popupSubmit} toggleModal={toggleModal}/>
+                        <PopupSumbit actionName={actionType} props={props} isOpen={popupSubmit}
+                                     toggleModal={toggleModal}/>
                         <div className="businessMainHeader">
                             <div className="businessSingleBlock">
                                 <div className="businessSingleBlockImage1">
@@ -164,7 +195,10 @@ export const RestaurantBusinessInformation = () => {
                                             onClick={() => downloadBlobFile(restaurantData, "photo", "image/png")}>Download
                                     </button>
 
-                                    <input type="file" id="photo" name="photo" onChange={(e) => {
+                                    <input onLoadedData={async () => {
+                                        props.setFieldValue('photo', await adminServices.downloadFile(restaurantData.photo));
+                                    }
+                                    } type="file" id="photo" name="photo" onChange={(e) => {
                                         props.setFieldValue('photo', e.currentTarget.files[0]);
                                         handleChangeImage(e)
                                     }}/>
@@ -220,7 +254,8 @@ export const RestaurantBusinessInformation = () => {
                                         <div className="buttonHeader">
                                             Manager Information
                                         </div>
-                                        <div className="buttonSample1">
+                                        <div className="buttonSample1"
+                                             onClick={() => navigate('/dashboard/waiter-info/' + restaurantData?.managerId)}>
                                             Browse
                                         </div>
                                     </div>
@@ -284,18 +319,21 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                 </div>
 
-                                <div className="leftContent">
-                                    <div className="businessFormHeader">
-                                        Manager's Email
-                                    </div>
-                                    <div className="businessInput">
-                                        <Field className="businessInputValue" type="email" name="managerEmail"
-                                               placeholder={restaurantData && !restaurantId ? "Restaurant manager's email..." : "Loading..."}/>
-                                        <div className="error">
-                                            <ErrorMessage name="managerEmail"/>
+                                {!restaurantId ?
+                                    <div className="leftContent">
+                                        <div className="businessFormHeader">
+                                            Manager's Email
+                                        </div>
+                                        <div className="businessInput">
+                                            <Field className="businessInputValue" type="email" name="managerEmail"
+                                                   placeholder={restaurantData && !restaurantId ? "Restaurant manager's email..." : "Loading..."}/>
+                                            <div className="error">
+                                                <ErrorMessage name="managerEmail"/>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    : null
+                                }
 
                                 <div className="rightContent">
                                     <div className="businessFormHeader">
@@ -312,7 +350,6 @@ export const RestaurantBusinessInformation = () => {
                             </div>
 
                             <div className="countryCity">
-
                                 <div className="singleCountryBlock">
                                     <div className="businessFormHeader">
                                         Country
@@ -342,7 +379,7 @@ export const RestaurantBusinessInformation = () => {
                                     </div>
                                     <div className="businessInput">
                                         <Field className="businessInputValue" type="text" name="state"
-                                               placeholder={restaurantData && !restaurantId ? "Restaurant State..." : "Loading..."}/>
+                                               placeholder={restaurantData?.address?.state || !restaurantId ? "Restaurant State..." : "Loading..."}/>
                                         <div className="error">
                                             <ErrorMessage name="state"/>
                                         </div>
@@ -428,7 +465,9 @@ export const RestaurantBusinessInformation = () => {
                                         closeMenuOnSelect={true}
                                         components={animatedComponents}
                                         isMulti
-                                        defaultValue={categoriesOfRestaurant.find((category) => props.initialValues?.categories.includes(category.label))}
+                                        defaultValue={
+                                            categoriesOfRestaurant.find((category) => props.initialValues?.categories.includes(category.label))
+                                        }
                                         options={categoriesOfRestaurant}
                                         styles={customStyles}
                                         onChange={e => {

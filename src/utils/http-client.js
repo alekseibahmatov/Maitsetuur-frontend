@@ -1,5 +1,6 @@
 import axios from 'axios';
 import authService from '../services/auth';
+import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
     // baseURL: process.env.REACT_APP_API_BASE_URL
@@ -11,7 +12,6 @@ instance.interceptors.request.use((config) => {
     const authUser = authService.getAuthUser();
     if (config.url.endsWith('/admin/restaurant')) {
         config.headers['Content-Type'] = `multipart/form-data`;
-
     }
     if (authUser && !config.url.includes('auth')) {
         config.headers['authorization'] = `Bearer ${authUser?.token}`;

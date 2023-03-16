@@ -10,6 +10,16 @@ const login = (data) => {
     });
 }
 
+const register = (data) => {
+    return http.post('/auth/register', data, {
+        transformResponse: [(result) => {
+            const parsed = JSON.parse(result);
+            localStorage.setItem('authUser', JSON.stringify(parsed));
+            return parsed;
+        }]
+    });
+}
+
 const logout = () => {
     localStorage.removeItem('authUser');
 }
@@ -50,6 +60,7 @@ const getAuthUser = () => {
 
 const methods = {
     login,
+    register,
     logout,
     firstStepResetPassword,
     secondStepResetPassword,
