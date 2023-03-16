@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from "../../assets/img/Logo.png";
 import user from "../../assets/img/Container.png";
 import "./NavBar.css"
 import Burger from "../../ui-components/burger/burger";
+import logo from '../../assets/img/smallKolbaska.png'
 
 export const NavBar = () => {
     return (
         <>
             <div className="navbar">
+                <div className="menuLogo">
+                    <img src={logo} alt="" className='menuLogoImage'/>
+                </div>
                 <div className="burgerMenu">
                     <Burger/>
                 </div>

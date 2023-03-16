@@ -236,7 +236,7 @@ export default function Landing() {
                                     <img src={heart} className='section_ion_img'></img>
                                 </div>
                                 <div className="section_text">
-                                    Give the best experience to those you love: the perfect gift for friends and loved ones for the New Year.
+                                    <span className='dashed'>Give the best</span> experience to those you love: the perfect gift for friends and loved ones for the New Year.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -244,7 +244,7 @@ export default function Landing() {
                                     <img src={card} className='section_ion_img'></img>
                                 </div>
                                 <div className="section_text">
-                                    Easy to give: buy online and email the recipient with personalized wishes.
+                                    <span className='dashed'>Easy to give: </span> buy online and email the recipient with personalized wishes.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -252,7 +252,7 @@ export default function Landing() {
                                     <img src={meal} className='section_ion_img'></img>
                                 </div>
                                 <div className="section_text">
-                                    Convenient to use: just give the certificate number to pay the bill in the restaurant.
+                                    <span className='dashed'>Convenient to use: </span> just give the certificate number to pay the bill in the restaurant.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -260,7 +260,7 @@ export default function Landing() {
                                     <img src={waiter} className='section_ion_img'></img>
                                 </div>
                                 <div className="section_text">
-                                    More than 100 restaurants, cafes and bars in Tallinn. We add new ones every week.
+                                    <span className='dashed'>More than 100 restaurants </span>, cafes and bars in Tallinn. We add new ones every week.
                                 </div>
                             </div>
                         </div>

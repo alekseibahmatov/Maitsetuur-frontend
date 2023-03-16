@@ -20,6 +20,9 @@
     gap: 40px;
     padding-right: 40px;
 }
+.menuLogo{
+    padding: 15px;
+}
 
 .user {
     display: flex;

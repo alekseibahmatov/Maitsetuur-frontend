@@ -116,6 +116,10 @@
 .single_section{
     display: flex;
     padding-right:40px;
+    line-height: 23px;
+}
+.dashed{
+    border-bottom: 2px dashed #ffffff;
 }
 .section_text{
     font-family: 'Raleway', sans-serif;
