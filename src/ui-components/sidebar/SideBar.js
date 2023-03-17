@@ -43,9 +43,9 @@ export const SideBar = () => {
         document.getElementById('bm-overlay-sideBar').classList.add('shadowActive');
         document.getElementById('navbar').classList.remove('navbar');
         document.getElementById('navbar').classList.add('navbarZindex');
-        setTimeout(() => {
-            document.getElementById('sidebar').classList.add('pointerEventsNone');
-        }, 300);
+            setTimeout(() => {
+                document.getElementById('sidebar').classList.add('pointerEventsNone');
+            }, 1);
         setTimeout(() => {
                 document.getElementById('hiddenObject').classList.add('opacity0');
                 }, 660);
