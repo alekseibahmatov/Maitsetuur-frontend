@@ -6,64 +6,18 @@
     margin-left: 88px;
     margin-top: 88px;
 }
-
-.waitersHeader {
-    padding: 40px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
 .typeOfRestaurant {
     display: flex;
     flex-direction: row;
 }
-
 .leftBlockRestaurants {
     width: 70%;
     background-color: white;
     margin: 10px;
 }
-
 .searchAndDots1 {
     padding: 40px;
 }
-
-.search {
-    width: 100%;
-    position: relative;
-    display: flex;
-}
-
-.searchButton {
-    position: absolute;
-    width: 40px;
-    height: 30px;
-    border: none;
-    text-align: center;
-    color: grey;
-    background-color: #F7F7FC;
-    cursor: pointer;
-    font-size: 20px;
-    margin-top: 6px;
-    margin-left: 5px;
-}
-
-.searchTerm {
-    width: 100%;
-    color: black;
-    background-color: #F7F7FC;
-    border: none;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 50px;
-    padding-right: 10px;
-    font-size: 12px;
-}
-
-.searchTerm:focus {
-    color: #00B4CC;
-}
-
 .typeButtonSingle {
     color: #11142D;
     font-weight: bold;
@@ -236,13 +190,4 @@
         background: #5541D7;
         border-radius: 400px;
 }
-}
-@media (max-width: 1024px){
-    .rightBlock3{
-        width: 100%;
-        margin-left: 0;
-    }
-    .rightBlock1{
-        width: 100%;
-    }
 }

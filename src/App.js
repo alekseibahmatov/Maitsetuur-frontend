@@ -43,7 +43,7 @@ export const App = () => {
                 {/* PUBLIC INFORMATIVE ROUTES */}
                 <Route path="" element={<Landing/>}/>
                 <Route path='/singlerestaurant' element={<SingleRestaurant/>}/>
-                <Route path='/allrestaurant' element={<AllRestaurant/>}/>
+                <Route path='/allrestaurants' element={<AllRestaurant/>}/>
                 <Route path='/connect' element={<Connect/>}/>
 
                 {/* PUBLIC ROUTES AUTH*/}

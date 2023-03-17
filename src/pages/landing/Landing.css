@@ -8,10 +8,6 @@
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
 }
-
-.bg{
-
-}
 .realBg{
     background-image:linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(4, 4, 38, 1)100%), url("../../assets/img/R14.jpg");
     background-size: cover;
@@ -22,20 +18,17 @@
 .unrealBg{
     background-color: rgba(4,4,38);
 }
-
 .container{
     max-width: 1028px;
     margin: 0 auto;
-
 }
-
 .header{
     display: flex;
     justify-content: space-between;
     padding: 40px;
     margin-bottom: 50px;
 }
-.logo{
+.logoLanding{
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 24px;
@@ -50,11 +43,10 @@
     color: white;
     font-size: 18px;
 }
-
 .burger{
     cursor: pointer;
 }
-.burger_cont{
+.burger_closed{
     display: none;
     position: absolute;
     top: 66px;
@@ -65,7 +57,7 @@
     flex-direction: column;
     background: #060431;
 }
-.burger_cont1{
+.burger_opened{
     display: flex;
     position: absolute;
     top: 66px;
@@ -97,8 +89,6 @@
     color: #EEEEEE;
     transition: 0.3s;
 }
-
-
 .salutation{
     font-family: 'Raleway', sans-serif;
     color: white;
@@ -207,7 +197,7 @@
     transition: 0.3s;
     border-bottom: 2px solid rgba(1,1,1,0);
 }
-.knopki{
+.certificateButtons{
     display: flex;
     column-gap: 15px;
     margin-bottom: 20px;
@@ -294,7 +284,7 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
-.explain3{
+.explainForCompany{
     width: 60%;
     font-weight: bolder;
     margin-top: 10px;
@@ -309,10 +299,6 @@
     font-size: 18px;
 }
 .main{
-    display: flex;
-    justify-content: space-between;
-}
-.main1{
     display: flex;
     justify-content: space-between;
 }
@@ -343,15 +329,6 @@
     border-radius: 5px;
     border: 2px solid rgba(0,0,0,0.2);
     padding: 20px 20px;
-    margin-bottom: 10px;
-    font-family: 'Raleway', sans-serif;
-}
-.certificateInputValue1{
-    font-weight: bold;
-    width: 100%;
-    border-radius: 5px;
-    border: 2px solid rgba(0,0,0,0.2);
-    padding: 20px;
     margin-bottom: 10px;
     font-family: 'Raleway', sans-serif;
 }
@@ -415,16 +392,16 @@
     margin-left: 100px;
     position: fixed;
 }
-.values1{
+.values{
     display: flex;
     margin-top: 10px;
 }
-.blockHeader1{
+.blockHeaderCertificateSide{
     text-transform: uppercase;
     margin-bottom: 10px;
     font-size: 14px;
 }
-.blockName1{
+.blockNameCertificateSide{
     font-size: 20px;
 }
 .validDate{
@@ -541,7 +518,7 @@
     margin-top: 5px;
     font-family: 'Raleway', sans-serif;
 }
-.explain1{
+.explainSection{
     padding-top: 100px;
     width: 60%;
     padding-left: 10px;
@@ -568,7 +545,7 @@
     margin-top: 30px;
 
 }
-.singleExplain1{
+.singleExplainWithoutBorder{
     color: #EEEEEE;
     display: flex;
     width: 100%;
@@ -585,11 +562,11 @@
 .explainButtons{
     display: flex;
 }
-.singleExplain2{
+.singleExplainMargin{
     margin-top: 30px;
 }
 
-.faq1{
+.faqSection{
     margin-top: 60px;
     width: 100%;
     height: 100%;
@@ -666,7 +643,7 @@
 .infoAsk{
     padding-top: 30px;
 }
-.company1{
+.companyName{
     font-size: 20px;
     color: white;
     margin-top: 5px;
@@ -694,13 +671,13 @@
     margin-top: 20px;
     color: #78A4F8;
 }
-.askInfo1{
+.askInfoMain{
     font-size: 30px;
     margin-top: 10px;
 }
 @media (max-width: 1024px) {
 
-    .explain1{
+    .explainSection{
         width: 100%;
     }
     .explainHeader{
@@ -763,7 +740,7 @@
     .explain{
         width: 100%;
     }
-    .explain3{
+    .explainForCompany{
         width: 100%;
     }
     .left{
@@ -813,7 +790,7 @@
     .singleExplain{
         padding-bottom: 10px;
     }
-    .singleExplain1{
+    .singleExplainWithoutBorder{
         padding-bottom: 10px;
     }
 
@@ -834,7 +811,7 @@
     .salutation{
         font-size: 30px;
     }
-    .logo{
+    .logoLanding{
         font-size: 18px;
     }
     .section_text{
@@ -860,7 +837,7 @@
         margin-top: 20px;
 
     }
-    .explain3{
+    .explainForCompany{
         font-size: 12px;
         margin-top: 20px;
     }
@@ -876,13 +853,13 @@
     .faq-item p{
         font-size: 12px;
     }
-    .company1{
+    .companyName{
         font-size: 10px;
     }
     .numberMail{
         font-size: 10px;
     }
-    .askInfo1{
+    .askInfoMain{
         font-size: 15px;
     }
 }
@@ -897,7 +874,7 @@
     .certificate_example{
         font-size: 10px;
     }
-    .knopki{
+    .certificateButtons{
         column-gap: 2px;
     }
 }

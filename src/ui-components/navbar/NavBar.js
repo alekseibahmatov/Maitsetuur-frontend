@@ -7,7 +7,7 @@ import logo from '../../assets/img/smallKolbaska.png'
 export const NavBar = () => {
     return (
         <>
-            <div className="navbar">
+            <div className="navbar" id='navbar'>
                 <div className="menuLogo">
                     <img src={logo} alt="" className='menuLogoImage'/>
                 </div>

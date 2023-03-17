@@ -9,14 +9,6 @@
     font-family: 'Mulish', sans-serif;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid rgba(235, 235, 235, .8);
-    background-color: #ffffff;
-    position: fixed;
-    width: 100%;
-}
 .mainDashboard{
     display: flex;
 }
@@ -31,60 +23,6 @@
     font-weight: bold;
     font-size: 24px;
 }
-
-.scanAndUser {
-    display: flex;
-    gap: 40px;
-    padding: 20px 40px;
-}
-
-.user {
-    display: flex;
-    gap: 20px;
-}
-
-.scan {
-    color: #5541D7;
-    text-align: center;
-    align-self: center;
-    border: 2px solid #5541D7;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 7px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.scan:hover {
-    background-color: #5541D7;
-    color: #ffffff;
-    transition: 0.5s;
-}
-
-.userImg {
-    border-radius: 50%;
-}
-
-.userInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.userUsername {
-    color: #11142D;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.userDescription {
-    color: #9A9AB0;
-    font-size: 12px;
-}
-
-
-
 .overGrey {
     background-color: rgba(0, 0, 0, 0.2);
 }
@@ -98,50 +36,10 @@
     margin-top: 88px;
 }
 
-.sideButtons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    height: 100%;
-}
-
-.singleButton {
-    padding: 14px 24px;
-    transition: 0.3s;
-    cursor: pointer;
-    position: relative;
-    border-bottom: 1px solid rgba(235,235,235,0.8);
-
-}
-.singleButton1 {
-    background-color: #ffffff;
-    padding: 26px 0 26px 34px;
-    transition: 0.3s;
-    cursor: pointer;
-    display: flex;
-    gap: 20px;
-    width: 100%;
-}
 .dropdown{
     z-index: unset; /* Remove the z-index property */
     background-color: unset; /* Remove the background-color property */
 }
-
-.selected {
-    background-color: #5541D7;
-    transition: 0.3s;
-    color: white;
-}
-.selected:hover{
-    transition: 0.3s;
-    color: white;
-}
-
-.buttonImageSelected {
-    filter: brightness(0) invert(1);
-}
-
 .main2 {
     display: flex;
 }
@@ -372,7 +270,6 @@ thead {
     width: 100%;
     position: relative;
     display: flex;
-
 }
 
 .searchTerm {
@@ -408,12 +305,6 @@ thead {
     padding-bottom: 20px;
     border-bottom: 2px solid rgba(235, 235, 235, .8);
 }
-
-.waitersMain {
-    padding: 40px;
-    background-color: white;
-}
-
 .dots {
     align-self: center;
     cursor: pointer;
@@ -952,7 +843,7 @@ body.no-scroll {
     left: -100%;
     transform: translateY(-110%);
     width: 15%;
-    transition: left 0.8s ease-in-out;
+    transition: left 0.7s ease-in-out;
     z-index: 100;
     margin-top: 40px;
     min-width: 250px;
@@ -974,9 +865,6 @@ body.no-scroll {
 }
 
 @media (max-width: 1024px) {
-    .sideBar{
-        display: none;
-    }
     .burgerMenu{
         display: block;
     }
@@ -988,16 +876,19 @@ body.no-scroll {
         font-size: 14px;
     }
 
-    .sideBar {
-        display: none;
-    }
-
     .logo {
         display: none;
     }
 
     .name {
         margin-left: 40px;
+    }
+    .rightBlock3{
+        width: 100%;
+        margin-left: 0;
+    }
+    .rightBlock1{
+        width: 100%;
     }
 }
 

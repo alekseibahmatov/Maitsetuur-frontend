@@ -197,7 +197,7 @@ export default function Landing() {
                             <div className="burger">
                                 <img src={burx} className='burx_img'></img>
                             </div>
-                            <div className="logo">
+                            <div className="logoLanding">
                                 MENU
                             </div>
                             <div className="share">
@@ -207,7 +207,7 @@ export default function Landing() {
                                 <img src={share} className='share_img'></img>
                             </div>
                         </div>
-                        <div className={isBurger ? 'burger_cont1' : 'burger_cont'}>
+                        <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
                             <div className="closeBurger">
                                 +
                             </div>
@@ -217,7 +217,7 @@ export default function Landing() {
                             <div className="next" onClick={scrollToCertificate}>
                                 Certificate
                             </div>
-                            <div className="next" onClick={() => navigate('/allrestaraunts')}>
+                            <div className="next" onClick={() => navigate('/allrestaurants')}>
                                 All the restaraunts
                             </div>
                             <div className="next" onClick={scrollToFaq}>
@@ -307,7 +307,7 @@ export default function Landing() {
                                         </div>
                                         <div className="main">
                                             <div className="left">
-                                                <div className="knopki">
+                                                <div className="certificateButtons">
                                                     {nominals.map((name, key) => (
                                                         <Select
                                                             key={key}
@@ -345,10 +345,10 @@ export default function Landing() {
                                             <div className="right">
                                                 <div className="block">
                                                     <div className="description">
-                                                        <div className="blockHeader1">
+                                                        <div className="blockHeaderCertificateSide">
                                                             gift certificate
                                                         </div>
-                                                        <div className="blockName1">
+                                                        <div className="blockNameCertificateSide">
                                                             To the best restaurants in Tallinn
                                                         </div>
                                                         <div className="nominalAndDate">
@@ -359,7 +359,7 @@ export default function Landing() {
                                                                 Valid until
                                                             </div>
                                                         </div>
-                                                        <div className="values1">
+                                                        <div className="values">
                                                             <div className="nominalValue" id='1'>
                                                                 {}
                                                             </div>
@@ -371,23 +371,23 @@ export default function Landing() {
                                                 </div>
                                             </div>
                                         </div></div>
-                                    <div><div className="explain3">
+                                    <div><div className="explainForCompany">
                                         Thank your employees with gift certificates and an unforgettable experience!
                                     </div>
-                                        <div className="main1">
+                                        <div className="main">
                                             <div className="left">
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Name' className='certificateInputValue1'/>
+                                                        <input type='text' placeholder='Name' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Company name' className='certificateInputValue1'/>
+                                                        <input type='text' placeholder='Company name' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue1'/>
+                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue1'/>
+                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="from_who">
                                                         <LimitedTextArea limit={280} value='' />
@@ -404,10 +404,10 @@ export default function Landing() {
                                             <div className="right">
                                                 <div className="block">
                                                     <div className="description">
-                                                        <div className="blockHeader1">
+                                                        <div className="blockHeaderCertificateSide">
                                                             gift certificate
                                                         </div>
-                                                        <div className="blockName1">
+                                                        <div className="blockNameCertificateSide">
                                                             To the best restaurants in Tallinn
                                                         </div>
                                                     </div>
@@ -461,7 +461,7 @@ export default function Landing() {
                         </div>
                     </div>
 
-                    <div className="explain1">
+                    <div className="explainSection">
                         <div className="explainHeader">
                             How does it work
                         </div>
@@ -498,7 +498,7 @@ export default function Landing() {
                                     The restaurant accepts a certificate from the guest by six digit number.
                                 </div>
                             </div>
-                            <div className="singleExplain1">
+                            <div className="singleExplainWithoutBorder">
                                 <div className="number">
                                     05
                                 </div>
@@ -506,7 +506,7 @@ export default function Landing() {
                                     The recipient visits one or several restaurants - and rejoices your gift.
                                 </div>
                             </div>
-                            <div className="singleExplain2">
+                            <div className="singleExplainMargin">
                                 <div className="explainButtons">
                                     <div className="present" onClick={scrollToCertificate}>
                                         Make a gift
@@ -520,7 +520,7 @@ export default function Landing() {
                     </div>
 
 
-                    <div className="faq1" id='faq'>
+                    <div className="faqSection" id='faq'>
                         <div className="faqHeader">
                             <div className="from">
                                 <div className={isActive1 ? 'company' : "client"} onClick={contentPrevious1}>
@@ -555,7 +555,7 @@ export default function Landing() {
                                     </div></div>
                                     <div>
                                         <div className="infoAsk">
-                                        <div className="askInfo1">
+                                        <div className="askInfoMain">
                                         If you have any questions which were not answered yet you can always contact us!
                                     </div>
                                         <div className="askInfo">
@@ -579,13 +579,13 @@ export default function Landing() {
 
                     <div className="who">
                         <div className="leftWho">
-                            <div className="company1">
+                            <div className="companyName">
                                 Maitsetuur OÜ
                             </div>
-                            <div className="company1">
+                            <div className="companyName">
                                 Sõstra 4
                             </div>
-                            <div className="company1">
+                            <div className="companyName">
                                 Reg. No 2281337
                             </div>
                         </div>

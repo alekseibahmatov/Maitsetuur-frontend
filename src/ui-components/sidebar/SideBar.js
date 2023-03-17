@@ -21,10 +21,12 @@ export const SideBar = () => {
     useEffect(() => {
         path = location.pathname.split('/')[2];
         console.log(path)
+
     }, [location.pathname]);
 
     const handleClick = (child) => {
         console.log(child)
+        document.getElementById('hiddenObject').classList.add('opacity0');
         navigate('/dashboard/' + child)
     }
 
@@ -34,33 +36,54 @@ export const SideBar = () => {
     }
 
     const [isOpen, setIsOpen] = useState(false);
+    const [hasTimeoutOccurred, setHasTimeoutOccurred] = useState(false);
 
     const onHover = () => {
         setIsOpen(true);
         document.getElementById('bm-overlay-sideBar').classList.add('shadowActive');
+        document.getElementById('navbar').classList.remove('navbar');
+        document.getElementById('navbar').classList.add('navbarZindex');
+        setTimeout(() => {
+            document.getElementById('sidebar').classList.add('pointerEventsNone');
+        }, 300);
+        setTimeout(() => {
+                document.getElementById('hiddenObject').classList.add('opacity0');
+                }, 660);
     };
 
     const onHoverRemove = () => {
         setIsOpen(false);
         document.getElementById('bm-overlay-sideBar').classList.remove('shadowActive');
+        document.getElementById('navbar').classList.add('navbar');
+        document.getElementById('navbar').classList.remove('navbarZindex');
+        document.getElementById('hiddenObject').classList.remove('opacity0');
+        document.getElementById('sidebar').classList.remove('pointerEventsNone');
     };
 
 
     return (
         <>
 
-            <div className='sideBar' onMouseEnter={() => onHover()}>
+            <div className='sideBar' id='sidebar' onMouseEnter={() => onHover()}>
+                <div onClick={() => handleClick(MAIN_DASHBOARD)}
+                     id='hiddenObject'
+                     className={classnames({
+                         'arrowSidebar': true,
+                     })}>
+                    <img src={cross} alt="" className={classnames({
+                        'buttonImage': true,
+                        'translateX' : true,
+                    })}/>
+                </div>
                 <div
                     className={classnames({
                         'sideButtons': true,
-                        'hover-underline-animation': true // add this class
                     })}
                 >
+
                     <div onClick={() => handleClick(MAIN_DASHBOARD)}
                          className={classnames({
                              'singleButton': true,
-                             'bottomBordered': isOpen,
-                             'hover-underline-animation': true,
                              'selected': path === MAIN_DASHBOARD
                          })}>
                         <img src={color} alt="" className={classnames({
@@ -71,8 +94,6 @@ export const SideBar = () => {
                     <div onClick={() => handleClick(TYPES_OF_RESTO)}
                          className={classnames({
                              'singleButton': true,
-                             'bottomBordered': isOpen,
-                             'hover-underline-animation': true,
                              'selected': path === TYPES_OF_RESTO
                          })}>
                         <img src={vector} alt="" className={classnames({
@@ -83,8 +104,6 @@ export const SideBar = () => {
                     <div onClick={() => handleClick(LIST_OF_WAITERS)}
                          className={classnames({
                              'singleButton': true,
-                             'bottomBordered': isOpen,
-                             'hover-underline-animation': true,
                              'selected': path === LIST_OF_WAITERS
                          })}>
                         <img src={color} alt="" className={classnames({
@@ -95,8 +114,6 @@ export const SideBar = () => {
                     <div onClick={() => handleClick(RESTO_BUSINESS_INFO)}
                          className={classnames({
                              'singleButton': true,
-                             'bottomBordered': isOpen,
-                             'hover-underline-animation': true,
                              'selected': path === RESTO_BUSINESS_INFO
                          })}>
                         <img src={color} alt="" className={classnames({
@@ -107,8 +124,6 @@ export const SideBar = () => {
                     <div onClick={() => handleClick(LIST_OF_COUPONS)}
                          className={classnames({
                              'singleButton': true,
-                             'bottomBordered': isOpen,
-                             'hover-underline-animation': true,
                              'selected': path === LIST_OF_COUPONS
                          })}>
                         <img src={vector} alt="" className={classnames({
@@ -119,8 +134,6 @@ export const SideBar = () => {
                     <div onClick={() => handleLogout()}
                          className={classnames({
                              'singleButton': true,
-                             'bottomBordered': isOpen,
-                             'hover-underline-animation': true,
                              'selected': path === 6
                          })}>
                         <img src={group} alt="" className={classnames({
@@ -132,16 +145,15 @@ export const SideBar = () => {
 
                 <div className={`contentBurger ${isOpen ? 'open' : ''}`}>
 
-                    <div className="sideBar1"  onMouseLeave={() => onHoverRemove()}>
+                    <div className="sideBar1" onMouseLeave={() => onHoverRemove()}>
                         <div
                             className={classnames({
                                 'sideButtons1': true,
-                                'hover-underline-animation': true // add this class
                             })}
                         >
                             <div className="sausageHeader">
                                 <div className="sausageImageHeader">
-                                    <img src={sausage} alt="" className='sausageImageHeaderImg'/>
+                                    <img src={sausage} alt="" className='menuLogoImage'/>
                                 </div>
                                 <div className="closeCrossImage">
                                     <img src={cross} alt=""/>

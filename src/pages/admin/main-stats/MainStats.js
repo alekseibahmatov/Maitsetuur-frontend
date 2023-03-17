@@ -70,29 +70,23 @@ export const MainStats = () => {
                 </div>
             </div>))}
         </div>
-
         <div className="blockMain">
-
             <div className="blockMainHeader">
                 <div className="earnings">
                     Earnings
                 </div>
                 <div className="dropAndFeatures">
-
                     <div className='dropdown'>
                         <Select className='myselect' options={options}
                                 defaultValue={options[0]}
                                 styles={customStyles}
                                 components={{IndicatorSeparator: () => null}}/>
                     </div>
-
                     <div className="features">
                         <img src={dots} alt="features"/>
                     </div>
-
                 </div>
             </div>
-
             <div className="income">
                 <div className="earningsOrders">
                     <div className="earningsOrdersValue">
@@ -111,15 +105,12 @@ export const MainStats = () => {
                     </div>
                 </div>
             </div>
-
             <div className="chartWrapper">
                 <div className="chart">
                     <CustomChart updateTotal={updateTotal}/>
                 </div>
             </div>
-
         </div>
-
         <div className="couponList">
             <div className="couponListHeader">
                 <div className="couponListHeaderName">
@@ -131,7 +122,6 @@ export const MainStats = () => {
             </div>
             <div className="overflownContent">
                 <table>
-
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -144,11 +134,8 @@ export const MainStats = () => {
                         <th scope="col"></th>
                     </tr>
                     </thead>
-
                     <tbody>
-
                     {table.map((item, i) => (
-
                         <tr>
                             <th scope="row">{item.id}</th>
                             <td>{item.name}</td>
@@ -160,12 +147,9 @@ export const MainStats = () => {
                             <td>{item.dots}</td>
                         </tr>))}
                     </tbody>
-
                 </table>
             </div>
         </div>
-
-
     </div>;
 
 }

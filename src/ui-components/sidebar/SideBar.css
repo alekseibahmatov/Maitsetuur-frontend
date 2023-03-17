@@ -1,9 +1,10 @@
 .sideBar{
     height: 100%;
-    padding-top: 40px;
     position: fixed;
-    margin-top: 48px;
     z-index: 101;
+}
+.opacity0{
+    opacity: 0;
 }
 .sideBar1{
     position: fixed;
@@ -14,8 +15,43 @@
     z-index: 90;
     width: 100%;
 }
-.sideButtons1{
-  margin-top: -1px;
+.sideButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    margin-top: 2px;
+}
+
+.singleButton {
+    padding: 14px 24px;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 1px solid rgba(235,235,235,0.8);
+
+}
+.singleButton1 {
+    background-color: #ffffff;
+    padding: 26px 0 26px 34px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+.buttonImageSelected {
+    filter: brightness(0) invert(1);
+}
+.selected {
+    background-color: #5541D7;
+    transition: 0.3s;
+    color: white;
+}
+.selected:hover{
+    transition: 0.3s;
+    color: white;
 }
 .sausageImageHeaderImg{
     width: 77px;
@@ -38,6 +74,18 @@
 .singleButton1:hover{
     color: #000098;
 }
+.arrowSidebar{
+    padding: 22px;
+    background-color: white;
+    border: none;
+}
+
+.translateX{
+    transform: rotate(180deg);
+}
+.pointerEventsNone{
+    pointer-events: none;
+}
 .shadowActive {
     position: fixed;
     top: 0;
@@ -46,12 +94,15 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 20;
-    transition: 0.8s ease-in-out;
+    transition: 0.7s ease-in-out;
 }
 @media (max-width: 1024px) {
     .singleButton1{
         padding-left: 30px;
         padding-top: 10px;
         padding-bottom: 10px;
+    }
+    .sideBar{
+        display: none;
     }
 }

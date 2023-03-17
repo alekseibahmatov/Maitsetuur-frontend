@@ -40,14 +40,14 @@ export const Connect = () =>{
                                     <img src={share} className='share_img'></img>
                                 </div>
                             </div>
-                            <div className={isBurger ? 'burger_cont1' : 'burger_cont'}>
+                            <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
                                 <div className="closeBurger">
                                     +
                                 </div>
                                 <div className="next" onClick={() => navigate('/')}>
                                     Home
                                 </div>
-                                <div className="next" onClick={() => navigate('/allrestaraunts')}>
+                                <div className="next" onClick={() => navigate('/allrestaurants')}>
                                     All the restaraunts
                                 </div>
                                 <div className="next" onClick={scrollToExplain} >
@@ -127,7 +127,7 @@ export const Connect = () =>{
                 </div>
                 <div className="unrealBg">
                     <div className="container">
-                        <div className="explain1" id='explain'>
+                        <div className="explainSection" id='explain'>
                             <div className="explainHeader">
                                 How does it work
                             </div>
@@ -164,7 +164,7 @@ export const Connect = () =>{
                                         The restaurant accepts a certificate from the guest by six digit number.
                                     </div>
                                 </div>
-                                <div className="singleExplain1">
+                                <div className="singleExplainWithoutBorder">
                                     <div className="number">
                                         05
                                     </div>
@@ -172,7 +172,7 @@ export const Connect = () =>{
                                         The recipient visits one or several restaurants - and rejoices your gift.
                                     </div>
                                 </div>
-                                <div className="singleExplain2">
+                                <div className="singleExplainMargin">
                                     <div className="explainButtons">
                                         <div className="present" onClick={() => navigate('/')} >
                                             Make a gift
@@ -187,13 +187,13 @@ export const Connect = () =>{
 
                         <div className="who">
                             <div className="leftWho">
-                                <div className="company1">
+                                <div className="companyName">
                                     MustVorst OÜ
                                 </div>
-                                <div className="company1">
+                                <div className="companyName">
                                     Kiirki 2/3
                                 </div>
-                                <div className="company1">
+                                <div className="companyName">
                                     Reg. No 2281337
                                 </div>
                             </div>

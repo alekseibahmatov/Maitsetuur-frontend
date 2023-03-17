@@ -14,7 +14,6 @@ export const ListOfCoupons = () =>{
                     List of coupons
                 </div>
             </div>
-
             <div className="waitersMain" style={{display: "block"}}>
                 <div className="searchAndDots">
                     <div className="search">
@@ -24,12 +23,10 @@ export const ListOfCoupons = () =>{
                         <input type="text" className="searchTerm"
                                onChange={(e) => setSearch(e.target.value)}
                                placeholder="What are you looking for?"/>
-
                     </div>
                 </div>
                 <div className="overflownContent">
                 <table>
-
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -40,13 +37,10 @@ export const ListOfCoupons = () =>{
                         <th scope='col'>Resto Name</th>
                     </tr>
                     </thead>
-
                     <tbody>
-
                     {table.filter((item) => {
                         return search.toLowerCase() === '' ? item : (item.id.includes(search) || item.id.toLowerCase().includes(search))
                     }).map((item, i) => (
-
                         <tr>
                             <th scope="row">{item.id}</th>
                             <td>{item.revenue}</td>
@@ -56,14 +50,10 @@ export const ListOfCoupons = () =>{
                             <td>{item.name}</td>
                         </tr>))}
                     </tbody>
-
                 </table>
                 </div>
             </div>
-
-
         </div>
     )
-
 }
 export default ListOfCoupons

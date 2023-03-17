@@ -141,7 +141,7 @@ export const SingleRestaurant = () => {
                                 <img src={share} className='share_img'></img>
                             </div>
                         </div>
-                        <div className={isBurger ? 'burger_cont1' : 'burger_cont'}>
+                        <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
                             <div className="closeBurger">
                                 +
                             </div>
@@ -151,7 +151,7 @@ export const SingleRestaurant = () => {
                             <div className="next" onClick={scrollToCertificate}>
                                 Certificate
                             </div>
-                            <div className="next" onClick={() => navigate('/allrestaraunts')}>
+                            <div className="next" onClick={() => navigate('/allrestaurants')}>
                                 All the restaraunts
                             </div>
                             <div className="next" onClick={scrollToExplain}>
@@ -279,7 +279,7 @@ export const SingleRestaurant = () => {
             </div>
             <div className="unrealBg">
                 <div className="container">
-                    <div className="explain1" id='explain'>
+                    <div className="explainSection" id='explain'>
                         <div className="explainHeader">
                             How does it work
                         </div>
@@ -316,7 +316,7 @@ export const SingleRestaurant = () => {
                                     The restaurant accepts a certificate from the guest by six digit number.
                                 </div>
                             </div>
-                            <div className="singleExplain1">
+                            <div className="singleExplainWithoutBorder">
                                 <div className="number">
                                     05
                                 </div>
@@ -324,7 +324,7 @@ export const SingleRestaurant = () => {
                                     The recipient visits one or several restaurants - and rejoices your gift.
                                 </div>
                             </div>
-                            <div className="singleExplain2">
+                            <div className="singleExplainMargin">
                                 <div className="explainButtons">
                                     <div className="present" onClick={scrollToCertificate}>
                                         Make a gift
@@ -368,7 +368,7 @@ export const SingleRestaurant = () => {
                                         </div>
                                         <div className="main">
                                             <div className="left">
-                                                <div className="knopki">
+                                                <div className="certificateButtons">
                                                     {nominals.map((name, key) => (
                                                         <Select
                                                             key={key}
@@ -399,17 +399,17 @@ export const SingleRestaurant = () => {
                                                     Pay
                                                 </div>
                                                 <div className="confirm">
-                                                    I agree with the <span className="no">Terms of personal data processing</span>.
+                                                    I agree with the <span className="blue">Terms of personal data processing</span>.
                                                 </div>
 
                                             </div>
                                             <div className="right">
                                                 <div className="block">
                                                     <div className="description">
-                                                        <div className="blockHeader1">
+                                                        <div className="blockHeaderCertificateSide">
                                                             gift certificate
                                                         </div>
-                                                        <div className="blockName1">
+                                                        <div className="blockNameCertificateSide">
                                                             To the best restaurants in Tallinn
                                                         </div>
                                                         <div className="nominalAndDate">
@@ -420,7 +420,7 @@ export const SingleRestaurant = () => {
                                                                 Valid until
                                                             </div>
                                                         </div>
-                                                        <div className="values1">
+                                                        <div className="values">
                                                             <div className="nominalValue" id='1'>
                                                                 {}
                                                             </div>
@@ -432,23 +432,23 @@ export const SingleRestaurant = () => {
                                                 </div>
                                             </div>
                                         </div></div>
-                                    <div><div className="explain3">
+                                    <div><div className="explainForCompany">
                                         Thank your employees with gift certificates and an unforgettable experience!
                                     </div>
-                                        <div className="main1">
+                                        <div className="main">
                                             <div className="left">
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Name' className='certificateInputValue1'/>
+                                                        <input type='text' placeholder='Name' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='Company name' className='certificateInputValue1'/>
+                                                        <input type='text' placeholder='Company name' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue1'/>
+                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue1'/>
+                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="text">
                                                         <LimitedTextarea limit={280} value='' />
@@ -458,17 +458,17 @@ export const SingleRestaurant = () => {
                                                     Order
                                                 </div>
                                                 <div className="confirm">
-                                                    I agree with the <span className="no">Terms of personal data processing</span>.
+                                                    I agree with the <span className="blue">Terms of personal data processing</span>.
                                                 </div>
 
                                             </div>
                                             <div className="right">
                                                 <div className="block">
                                                     <div className="description">
-                                                        <div className="blockHeader1">
+                                                        <div className="blockHeaderCertificateSide">
                                                             gift certificate
                                                         </div>
-                                                        <div className="blockName1">
+                                                        <div className="blockNameCertificateSide">
                                                             To the best restaurants in Tallinn
                                                         </div>
                                                     </div>
@@ -482,13 +482,13 @@ export const SingleRestaurant = () => {
 
                     <div className="who">
                         <div className="leftWho">
-                            <div className="company1">
+                            <div className="companyName">
                                 MustVorst OÜ
                             </div>
-                            <div className="company1">
+                            <div className="companyName">
                                 Kiirki 2/3
                             </div>
-                            <div className="company1">
+                            <div className="companyName">
                                 Reg. No 2281337
                             </div>
                         </div>

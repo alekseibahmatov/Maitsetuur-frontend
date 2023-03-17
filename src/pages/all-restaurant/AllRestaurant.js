@@ -93,7 +93,7 @@ export const AllRestaurant = () => {
                                     <img src={share} className='share_img'></img>
                                 </div>
                             </div>
-                            <div className={isBurger ? 'burger_cont1' : 'burger_cont'}>
+                            <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
                                 <div className="closeBurger">
                                     +
                                 </div>
@@ -113,23 +113,19 @@ export const AllRestaurant = () => {
                             </div>
                             </div>
 
-                            <div className="search1">
-                                <button type="submit" className="searchButton1">
+                            <div className="searchForAllRestaurants">
+                                <button type="submit" className="searchButtonForAllRestaurants">
                                     <i className="fa fa-search"/>
                                 </button>
-                                <input type="text" className="searchTerm1"
+                                <input type="text" className="searchTermForAllRestaurants"
                                        onChange={(e) => setSearch(e.target.value)}
                                        placeholder="Name of the restaurant"/>
 
                             </div>
-
-
-
-
                         </div>
                     </div>
                 </div>
-                <div className="unrealBg1">
+                <div className="unrealBgHeight">
                     <div className="container">
                         <div className="allRestaurantsList">
                             {reatsaraunts.filter((item) => {
@@ -150,13 +146,13 @@ export const AllRestaurant = () => {
 
                         <div className="who">
                             <div className="leftWho">
-                                <div className="company1">
+                                <div className="companyName">
                                     MustVorst OÜ
                                 </div>
-                                <div className="company1">
+                                <div className="companyName">
                                     Kiirki 2/3
                                 </div>
-                                <div className="company1">
+                                <div className="companyName">
                                     Reg. No 2281337
                                 </div>
                             </div>

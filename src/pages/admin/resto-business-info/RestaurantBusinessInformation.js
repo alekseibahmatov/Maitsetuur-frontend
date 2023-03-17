@@ -99,7 +99,6 @@ export const RestaurantBusinessInformation = () => {
         });
     }
 
-
     return <div className='rightBlock1'>
         <div className="businessHeader">
             <div className="businessHeader1">
