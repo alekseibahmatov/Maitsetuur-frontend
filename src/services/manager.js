@@ -8,8 +8,20 @@ const createNewWaiter = (data) => {
     });
 }
 
+const updateWaiterData = (data) => {
+    return http.put('/manager/restaurant/waiter', data, {
+        transformResponse: [(result) => {
+            return JSON.parse(result);
+        }]
+    });
+}
+
 const deleteWaiter = (id) => {
     return http.delete(`/manager/restaurant/waiter/${id}`);
+}
+
+const getWaiterData = (data) => {
+    return http.get('/manager/restaurant/waiter/' + data);
 }
 
 const getAllWaiters = () => {
@@ -18,7 +30,9 @@ const getAllWaiters = () => {
 
 const methods = {
     createNewWaiter,
+    updateWaiterData,
     deleteWaiter,
+    getWaiterData,
     getAllWaiters,
 }
 

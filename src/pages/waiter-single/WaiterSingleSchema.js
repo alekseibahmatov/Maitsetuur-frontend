@@ -8,12 +8,12 @@ export const WaiterSingleSchema = Yup.object().shape({
         .required("Full name is a required field")
         .matches(/^[^\d]+$/, 'Full name must not contain numbers')
         .min(2, "Full name must be at least 2 characters"),
-    mobilePhone: Yup.string()
+    phone: Yup.string()
         .matches(europeanMobilePhoneRegex, "Invalid mobile phone number")
         .required("Mobile phone is a required field"),
-    idCode: Yup.string()
-        .required("ID Code is a required field")
-        .matches(estonianIdCodeRegex, "Invalid ID Code"),
+    personalCode: Yup.string()
+        .required("Personal Code is a required field")
+        .matches(estonianIdCodeRegex, "Invalid Personal Code"),
     country: Yup.string()
         .required("Country is a required field"),
     city: Yup.string()
@@ -24,7 +24,7 @@ export const WaiterSingleSchema = Yup.object().shape({
         .required("Street is a required field"),
     apartmentNumber: Yup.string()
         .required("Apartment number is a required field"),
-    postcode: Yup.string()
+    zipCode: Yup.string()
         .required("Postcode is a required field"),
     email: Yup.string()
         .required("Email is a required field")

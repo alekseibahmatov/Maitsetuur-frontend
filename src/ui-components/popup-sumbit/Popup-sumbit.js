@@ -29,10 +29,16 @@ function PopupSumbit({actionName, props, isOpen, toggleModal}) {
                             </div>
                             {props.errors && Object.keys(props.errors).length > 0 && (
                                 <div className="generalErrorText">
-                                    Something went wrong, check the form again
+                                    {Object.keys(props.errors).length > 3 ?
+                                        'Something went wrong, check the form again'
+                                        :
+                                        props.errors
+                                    }
                                 </div>
                             )}
-                            <button type="submit" className="doAction">
+                            <button onClick={() => {
+                                console.log(props.errors)
+                            }} type="submit" className="doAction">
                                 {props.isSubmitting ? <LoadingAnimationDots/> : actionName}
                             </button>
                             <div className="goBack" onClick={toggleModal}>

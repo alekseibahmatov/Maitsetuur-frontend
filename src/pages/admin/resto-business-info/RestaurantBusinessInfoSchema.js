@@ -12,9 +12,6 @@ export const RestaurantBusinessInfoSchema = Yup.object().shape({
     restaurantEmail: Yup.string()
         .required("Restaurant Email is a required field")
         .email("Invalid email format"),
-    managerEmail: Yup.string()
-        .required("Manager Email is a required field")
-        .email("Invalid email format"),
     restaurantPhone: Yup.string()
         .matches(europeanMobilePhoneRegex, "Invalid phone number")
         .required("Restaurant Phone Number is a required field"),

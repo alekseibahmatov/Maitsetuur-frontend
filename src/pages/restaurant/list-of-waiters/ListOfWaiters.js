@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import PopupAdmin from "../../../ui-components/popup-admin/Popup-admin";
-import dots from "../../../assets/img/dots.png";
 import adminServices from "../../../services/admin";
 import toast from "react-hot-toast";
 import {
@@ -10,9 +9,11 @@ import managerServices from "../../../services/manager";
 import {
     LoadingAnimationDots
 } from "../../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
+import {Link, useNavigate} from "react-router-dom";
 
 
 export const ListOfWaiters = () => {
+    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [search, setSearch] = useState('');
     const [listData, setListData] = useState(null);
@@ -30,12 +31,6 @@ export const ListOfWaiters = () => {
         }
         setIsDeleting(prevState => ({...prevState, [id]: false}));
     }
-
-    /*   const filteredList = listData?.filter((item) =>
-           Object.values(item).some((value) =>
-               value.toString().toLowerCase().includes(search.toLowerCase())
-           )
-       );*/
 
     const getAllWaitersOnMount = async () => {
         try {
@@ -115,7 +110,11 @@ export const ListOfWaiters = () => {
                             {filteredData?.map((item, index) => (
                                 <tr key={index}>
                                     <td data-label="ID">{item.id}</td>
-                                    <td data-label="Full Name">{item.fullName}</td>
+                                    <td>
+                                        <Link to={`/dashboard/waiter-info/${item.id}`}>
+                                            {item.fullName}
+                                        </Link>
+                                    </td>
                                     <td data-label="E-mail">{item.email}</td>
                                     <td data-label="Phone">{item.phone}</td>
                                     <td data-label="Turnover">{item.turnover}</td>
