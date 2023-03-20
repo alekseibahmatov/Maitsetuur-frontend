@@ -36,7 +36,7 @@ export const CouponSingle = () => {
     }
 
     return(
-        <div className='content'>
+        <div className='rightBlock1'>
             <Formik
                 initialValues={initialValues}
                 onSubmit={(values, actions) => {

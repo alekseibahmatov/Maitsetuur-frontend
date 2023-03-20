@@ -27,6 +27,7 @@ import FirstStepResetPassword from "./pages/reset-password/FirstStepResetPasswor
 import ListOfCoupons from "./pages/admin/list-of-coupons/ListOfCoupons";
 import ListOfRestaurants from "./pages/admin/list-of-restaurants/ListOfRestaurants";
 import {ListOfWaiters} from "./pages/restaurant/list-of-waiters/ListOfWaiters";
+import Payment from "./pages/payment/Payment";
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
@@ -52,6 +53,7 @@ export const App = () => {
                 <Route path='/reset-password-final' element={<SecondStepResetPassword/>}/>
                 <Route path='/reset-success' element={<ResetSuccess/>}/>
                 <Route path='/add-personal-info/:activationCode' element={<AddPersonalInfo/>}/>
+                <Route path='/payment' element={<Payment/>}/>
 
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
                 <Route element={<AuthGuard allowedRoles={[ROLES.waiter, ROLES.customer, ROLES.admin]}/>}>

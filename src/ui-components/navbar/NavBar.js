@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import user from "../../assets/img/Container.png";
 import "./NavBar.css"
 import Burger from "../../ui-components/burger/burger";
 import logo from '../../assets/img/smallKolbaska.png'
 
 export const NavBar = () => {
+    const divRef = useRef(null);
+    const [firstLetter, setFirstLetter] = useState(null);
+
+    useEffect(() => {
+        const firstLetter = divRef.current.textContent[0]
+        setFirstLetter(firstLetter)
+    }, []);
+
     return (
         <>
             <div className="navbar" id='navbar'>
@@ -20,14 +28,16 @@ export const NavBar = () => {
                     </div>
                     <div className="user">
                         <div className="userImage">
-                            <img src={user} alt="user" className='userImg'/>
+                            <div className="userImg">
+                                {firstLetter}
+                            </div>
                         </div>
                         <div className="userInfo">
-                            <div className="userUsername">
-                                Bahsmak
+                            <div className="userUsername" ref={divRef}>
+                                Bashmack
                             </div>
                             <div className="userDescription">
-                                Lisik
+                                Manager
                             </div>
                         </div>
                     </div>

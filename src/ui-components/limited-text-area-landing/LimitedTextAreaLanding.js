@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const LimitedTextArea = ({rows, cols, value, limit}) => {
+export const LimitedTextAreaLanding = ({rows, cols, value, limit}) => {
     const [content, setContent] = React.useState(value.slice(0, limit));
 
     const setFormattedContent = React.useCallback(
@@ -13,7 +13,7 @@ export const LimitedTextArea = ({rows, cols, value, limit}) => {
     return (
         <>
       <textarea
-          className='businessInputValue fullHeight'
+          className='certificateInputValue fullHeight'
           placeholder='Congratulations text...'
           rows={rows}
           cols={cols}

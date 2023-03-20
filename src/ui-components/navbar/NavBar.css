@@ -55,8 +55,18 @@
     transition: 0.5s;
 }
 
+.userImage{
+
+}
 .userImg {
     border-radius: 50%;
+    background-color: rgba(215,215,215, 1);
+    width: 42px;
+    height: 40px;
+    text-align: center;
+    align-self: center;
+    padding-top: 8px;
+    font-size: 18px;
 }
 
 .userInfo {
@@ -64,6 +74,7 @@
     flex-direction: column;
     gap: 5px;
 }
+
 .userUsername {
     color: #11142D;
     font-weight: bold;

@@ -131,7 +131,7 @@ export const SingleRestaurant = () => {
                             <div className="burger">
                                 <img src={burx} className='burx_img'></img>
                             </div>
-                            <div className="logo">
+                            <div className="logoLanding">
                                 MENU
                             </div>
                             <div className="share">

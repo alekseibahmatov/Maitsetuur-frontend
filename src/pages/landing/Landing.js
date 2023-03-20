@@ -14,7 +14,7 @@ import l3 from '../../assets/img/l3.png';
 import {click} from "@testing-library/user-event/dist/click";
 import PopupCertificate from "../../ui-components/popup-certificate/Popup-certificate";
 import ReactSwipe from 'react-swipe';
-import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
+import {LimitedTextAreaLanding} from "../../ui-components/limited-text-area-landing/LimitedTextAreaLanding";
 import cross from '../../assets/img/cross.png'
 
 export default function Landing() {
@@ -331,7 +331,7 @@ export default function Landing() {
                                                         <input type='tel' placeholder='Recipients phone number...' className='certificateInputValue'></input>
                                                     </div>
                                                     <div className="from_who">
-                                                        <LimitedTextArea limit={280} value='' />
+                                                        <LimitedTextAreaLanding limit={280} value='' />
                                                     </div>
                                                 </div>
                                                 <div className="pay">
@@ -390,7 +390,7 @@ export default function Landing() {
                                                         <input type='tel' placeholder='Phone number' className='certificateInputValue'/>
                                                     </div>
                                                     <div className="from_who">
-                                                        <LimitedTextArea limit={280} value='' />
+                                                        <LimitedTextAreaLanding limit={280} value='' />
                                                     </div>
                                                 </div>
                                                 <div className="pay">

@@ -105,4 +105,7 @@
     .sideBar{
         display: none;
     }
+    .menuLogo{
+        display: none;
+    }
 }

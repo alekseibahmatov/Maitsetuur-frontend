@@ -584,6 +584,14 @@ thead {
     gap: 20px;
 }
 
+.rightBlock3{
+    width: 100%;
+    background-color: #F7F7FC;
+    border-left: 2px solid rgba(235, 235, 235, .8);
+    min-height: 1200px;
+    margin-left: 88px;
+    margin-top: 88px;
+}
 .rightBlock11 {
     width: 100%;
     background-color: #F7F7FC;
@@ -886,9 +894,12 @@ body.no-scroll {
     .rightBlock3{
         width: 100%;
         margin-left: 0;
+        border-left: none;
     }
-    .rightBlock1{
+    .rightBlock1 {
         width: 100%;
+        border-left: none;
+        margin-left: 0;
     }
 }
 
