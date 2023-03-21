@@ -6,27 +6,14 @@ import {LoadingAnimationDots} from "../../ui-components/loading-animation/loadin
 import authService from "../../services/auth";
 import toast from "react-hot-toast";
 import {useNavigate, useParams} from "react-router-dom";
+import cross from '../../assets/img/Less Than.png'
 
-const initialValues = {
-    fullName: "",
-    mobilePhone: "",
-    idCode: "",
-    country: "",
-    city: "",
-    state: "",
-    street: "",
-    apartmentNumber: "",
-    postcode: "",
-    password: "",
-    repeatPassword: "",
-};
 
-export const AddPersonalInfo = () => {
+
+export const Payment = () => {
     const navigate = useNavigate();
     const {activationCode} = useParams();
     const [step, setStep] = useState(0);
-    const [showPassword, setShowPassword] = useState(false);
-
     const checkActivationCodeOnMount = async () => {
         try {
             await authService.checkActivationCode(activationCode);
@@ -42,6 +29,46 @@ export const AddPersonalInfo = () => {
         checkActivationCodeOnMount();
     });
 
+    const [formData, setFormData] = useState({
+        from: "",
+        to: "",
+        recieverMail: "",
+        recieverPhone: '',
+        congratsMessage: '',
+    });
+
+    useEffect(() => {
+        const savedFormData = JSON.parse(localStorage.getItem("formData"));
+        if (savedFormData) {
+            setFormData(savedFormData);
+        }
+    }, []);
+
+    const initialValues = {
+        fullName: "",
+        mobilePhone: "",
+        idCode: "",
+        country: "",
+        city: "",
+        state: "",
+        street: "",
+        apartmentNumber: "",
+        postcode: "",
+        password: "",
+        repeatPassword: "",
+    };
+
+    const handleChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    const getBack = (event) => {
+        event.preventDefault();
+        navigate('/');
+    }
 
     return (
         <>
@@ -51,6 +78,7 @@ export const AddPersonalInfo = () => {
                 </div>
                 <div className="loginFormForm">
                     <div className="loginForm">
+                        <img src={cross} alt="goBack" className='goBackPayment' onClick={getBack}/>
                         <div className="authNumbers">
                             <div className="singleNumber activated">
                                 1
@@ -130,6 +158,17 @@ export const AddPersonalInfo = () => {
                                                            placeholder="Input your mobile phone"/>
                                                     <div className="error">
                                                         <ErrorMessage name="mobilePhone"/>
+                                                    </div>
+                                                </div>
+                                                <div className="inputHeader">
+                                                    Your email
+                                                </div>
+                                                <div className="inputAuthentication">
+                                                    <Field className="inputAuthenticationInput" type="text"
+                                                           name="email"
+                                                           placeholder="Input your email"/>
+                                                    <div className="error">
+                                                        <ErrorMessage name="email"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
@@ -229,6 +268,19 @@ export const AddPersonalInfo = () => {
                                                         <ErrorMessage name="mobilePhone"/>
                                                     </div>
                                                 </div>
+                                                <div className="inputHeader">
+                                                    Recipient's email
+                                                </div>
+                                                <div className="inputAuthentication">
+                                                    <Field className="inputAuthenticationInput" type="text"
+                                                           name="email"
+                                                           value={formData.recieverMail}
+                                                           onChange={handleChange}
+                                                           placeholder="Input your email"/>
+                                                    <div className="error">
+                                                        <ErrorMessage name="email"/>
+                                                    </div>
+                                                </div>
                                                 <div className="alignFlex">
                                                     <button type="submit"  className="loginButton">
                                                         Submit
@@ -250,4 +302,4 @@ export const AddPersonalInfo = () => {
         </>
     )
 }
-export default AddPersonalInfo
+export default Payment

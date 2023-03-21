@@ -98,8 +98,69 @@ export default function Landing() {
         setSelect(key)
         const global = nominals[key]
         const element = document.getElementById('1')
-        element.innerHTML = global
+        element.innerHTML = global;
 
+
+    };
+
+
+
+    const [formData, setFormData] = useState({
+        from: "",
+        to: "",
+        recieverMail: "",
+        recieverPhone: '',
+        congratsMessage: '',
+    });
+
+    const [emailValid, setEmailValid] = useState(true);
+    const [phoneValid, setPhoneValid] = useState(true);
+    const isFilled = formData.from &&
+        formData.to &&
+        formData.recieverMail &&
+        formData.recieverPhone &&
+        formData.congratsMessage &&
+        select !== false &&
+        emailValid &&
+        phoneValid;
+
+
+    const handleChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        localStorage.setItem("formData", JSON.stringify(formData));
+        navigate('/payment');
+    };
+
+    const validateEmail = (email) => {
+        // email validation regular expression
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validatePhone = (phone) => {
+        // phone number validation regular expression
+        const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+        return phoneRegex.test(phone);
+    };
+
+    const handleEmailChange = (e) => {
+        const { value } = e.target;
+        setEmailValid(validateEmail(value));
+        handleChange(e);
+    };
+
+    const handlePhoneChange = (e) => {
+        const { value } = e.target;
+        setPhoneValid(validatePhone(value));
+        handleChange(e);
     };
 
 
@@ -319,22 +380,58 @@ export default function Landing() {
                                                 </div>
                                                 <div className="form">
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='From...' className='certificateInputValue'></input>
+                                                        <input type='text' placeholder='From...' className='certificateInputValue'
+                                                               name='from'
+                                                               value={formData.from}
+                                                               onChange={handleChange}
+                                                        ></input>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='text' placeholder='To...' className='certificateInputValue'></input>
+                                                        <input type='text' placeholder='To...' className='certificateInputValue'
+                                                            name='to'
+                                                            value={formData.to}
+                                                            onChange={handleChange}>
+                                                        </input>
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='email' placeholder='Recipients e-mail...' className='certificateInputValue'></input>
+                                                        <input type='email' placeholder='Recipients e-mail...' className={`certificateInputValue ${
+                                                            !emailValid ? "invalid" : ""
+                                                        }`}
+                                                            name='recieverMail'
+                                                            value={formData.recieverMail}
+                                                            onChange={handleEmailChange}>
+                                                        </input>
+                                                        {!emailValid && (
+                                                            <div className="error">Please enter a valid email address</div>
+                                                        )}
                                                     </div>
                                                     <div className="from_who">
-                                                        <input type='tel' placeholder='Recipients phone number...' className='certificateInputValue'></input>
+                                                        <input type='tel' placeholder='Recipients phone number...' className={`certificateInputValue ${
+                                                            !phoneValid ? "invalid" : ""
+                                                        }`}
+                                                            name='recieverPhone'
+                                                            value={formData.recieverPhone}
+                                                            onChange={handlePhoneChange}>
+                                                        </input>
+                                                        {!phoneValid && (
+                                                            <div className="error">
+                                                                Please enter a valid phone number
+                                                            </div>)}
                                                     </div>
                                                     <div className="from_who">
-                                                        <LimitedTextAreaLanding limit={280} value='' />
+                                                        <LimitedTextAreaLanding limit={280} value={formData.congratsMessage}
+                                                                                onTextChange={(text) =>
+                                                                                    setFormData((prevFormData) => ({
+                                                                                        ...prevFormData,
+                                                                                        congratsMessage: text,
+                                                                                    }))
+                                                                                }
+                                                        />
                                                     </div>
                                                 </div>
-                                                <div className="pay">
+                                                <div  onClick={handleSubmit}
+                                                     className={`pay ${isFilled ? "filled" : ""}`}
+                                                >
                                                     Pay
                                                 </div>
                                                 <div className="confirm">

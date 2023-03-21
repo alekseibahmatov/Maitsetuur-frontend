@@ -1,0 +1,8 @@
+.goBackPayment{
+    position: relative;
+    margin-left: -40px;
+    margin-top: -25px;
+    background-color: #F7F7FC;
+    border-radius: 10px;
+    cursor: pointer;
+}
