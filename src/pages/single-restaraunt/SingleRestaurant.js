@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Single-restaraunt.css'
 import burx from "../../assets/img/burx.svg";
 import share from "../../assets/img/share.svg";
@@ -18,6 +18,11 @@ import euro from '../../assets/img/icons8-bank-euro-28.png'
 import PopupCertificate from "../../ui-components/popup-certificate/Popup-certificate";
 import rightArrow from '../../assets/img/icons8-right-arrow-30.png'
 import {useNavigate} from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import {table} from './data'
+import Certificate from "../../ui-components/certificate/Certificate";
+import Footer from "../../ui-components/footer/Footer";
+import Explanation from "../../ui-components/explanation/Explanation";
 
 export const SingleRestaurant = () => {
     const navigate = useNavigate();
@@ -31,9 +36,6 @@ export const SingleRestaurant = () => {
         }
     }
 
-    const handleClick = () => {
-        setIsActive(current => !current);
-    }
     const scrollToExplain = () =>{
         document.getElementById('explain').scrollIntoView({behavior: "smooth", block: "start"});
     }
@@ -42,16 +44,8 @@ export const SingleRestaurant = () => {
         document.getElementById('certificate').scrollIntoView({behavior: "smooth", block: "start"});
     }
 
-    let reactSwipeEl;
+
     let reactSwipeEl1
-    function contentNext (){
-        handleClick()
-        reactSwipeEl.next()
-    }
-    function contentPrevious (){
-        handleClick()
-        reactSwipeEl.prev()
-    }
     function contentNext1 (){
         reactSwipeEl1.next()
     }
@@ -59,71 +53,26 @@ export const SingleRestaurant = () => {
         reactSwipeEl1.prev()
     }
 
-    const LimitedTextarea = ({ rows, cols, value, limit }) => {
-        const [content, setContent] = React.useState(value.slice(0, limit));
+    const { id } = useParams();
+    const [restaurant, setRestaurant] = useState({
+        name: '',
+        description: '',
+        images: [],
+        address: '',
+        phone: '',
+        workingTime: '',
+        averageBill: ''
+    });
 
-        const setFormattedContent = React.useCallback(
-            text => {
-                setContent(text.slice(0, limit));
-            },
-            [limit, setContent]
-        );
 
-        return (
-            <>
-      <textarea
-          className='congrats'
-          placeholder='Congratulations text...'
-          rows={rows}
-          cols={cols}
-          onChange={event => setFormattedContent(event.target.value)}
-          value={content}
-      />
-                <div className='wordCount'>
-                    {content.length}/{limit}
-                </div>
-            </>
-        );
-    };
-    let newDate = new Date();
-    let date = newDate.getDate() + 1 + '.';
-    let month = newDate.getMonth() + 1 + '.';
-    let year = newDate.getFullYear() + 1;
-
-    const nominals = ["50€", "100€", "200€", "500€"];
-
-    const [select, setSelect] = useState(false);
-
-    const handleSelect = key => {
-        setSelect(key)
-        const global = nominals[key]
-        const element = document.getElementById('1')
-        element.innerHTML = global
-
-    };
-    function Select({ user, click, status }) {
-        return (
-            <li className={status ? "active" : 'nominal'} onClick={click}>
-                {user}{" "}
-            </li>
-        );
-    }
-
-    const [isActive, setIsActive] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
-    }
-
-    const images = [
-        resto,
-        resto,
-        resto
-    ]
-
+    useEffect(() => {
+        const restaurantData = id ? table.find(item => item.id.toLowerCase() === id.toLowerCase()) : null;
+        setRestaurant(restaurantData)
+    }, [id,navigate]);
 
     return(
-        <><div className='bg' onClick={handleClick123}>
+        <>
+            <div className='bg' onClick={handleClick123}>
             <div className="realBg">
                 <div className='container'>
                     <div className="preview">
@@ -145,6 +94,9 @@ export const SingleRestaurant = () => {
                             <div className="closeBurger">
                                 +
                             </div>
+                            <div className="next" onClick={() => navigate('/')}>
+                                Home
+                            </div>
                             <div className="next" onClick={() => navigate('/connect')}>
                                 Join us
                             </div>
@@ -159,11 +111,10 @@ export const SingleRestaurant = () => {
                             </div>
                         </div>
                         <div className="singleRestaurantHeader">
-                            R14 Wine Restaurant
+                            {restaurant.name ?? 'Loading...'}
                         </div>
                         <div className="singleRestaurantDescription">
-                            R14 WINE RESTAURANT is a fancy place where you can spend your time with family or your friends!
-                            It has very big selection of wines combined with delicious food! It also has Michelin guide recommendation!
+                            {restaurant.description ?? ''}
                         </div>
                         <div className="singleRestaurantRestaurant">
                             <div className="singleRestoDivided">
@@ -176,7 +127,7 @@ export const SingleRestaurant = () => {
                             </div>
                             <div className="singleRestaurantRestaurantContent">
                                 <div className="mobileImages">
-                                    {images.map((item,i) =>(
+                                    {restaurant.images.map((item,i) =>(
                                         <div key={i} className='imagesCarouselMobile'>
                                             <div className="singleMobileImage" style={{ backgroundImage: `url(${item})` }}>
                                             </div>
@@ -184,27 +135,20 @@ export const SingleRestaurant = () => {
                                     ))}
                                 </div>
                                 <div className="singleRestaurantLeft">
-
                                     <ReactSwipe
+                                        key={restaurant.name}
                                         className="carousel"
                                         swipeOptions={{ continuous: false }}
                                         ref={el => (reactSwipeEl1 = el)}
                                     >
-                                        <div>
-                                            <div className="singleRestaurantBlockImage">
-
+                                        {restaurant.images.map((image, index) => (
+                                            <div key={index}>
+                                                <div
+                                                    className="singleRestaurantBlockImage"
+                                                    style={{ backgroundImage: `url(${image})` }}
+                                                ></div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <div className="singleRestaurantBlockImage">
-
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="singleRestaurantBlockImage">
-
-                                            </div>
-                                        </div>
+                                        ))}
                                     </ReactSwipe>
                                     <div className="swipeButtons">
                                         <div className="singleRestaurantButtonLeft" onClick={contentPrevious1}>
@@ -226,7 +170,7 @@ export const SingleRestaurant = () => {
                                                     Address
                                                 </div>
                                                 <div className="lowerSingleText">
-                                                    Rottermani 14, 13528
+                                                    {restaurant.address ?? ''}
                                                 </div>
                                             </div>
                                         </div>
@@ -239,7 +183,7 @@ export const SingleRestaurant = () => {
                                                     Book a table
                                                 </div>
                                                 <div className="lowerSingleText">
-                                                    +372 53482050
+                                                    {restaurant.phone ?? ''}
                                                 </div>
                                             </div>
                                         </div>
@@ -253,7 +197,7 @@ export const SingleRestaurant = () => {
                                                 </div>
                                                 <div className="lowerSingleText">
                                                     {/*todo: map new row after "," symbol*/}
-                                                    Mon-Fri 12:30-23, <br/>Sat-Sun 13-00
+                                                    {restaurant.workingTime ?? ''}
                                                 </div>
                                             </div>
                                         </div>
@@ -266,7 +210,7 @@ export const SingleRestaurant = () => {
                                                     Average Bill
                                                 </div>
                                                 <div className="lowerSingleText">
-                                                    50-60 euros
+                                                    {restaurant.averageBill ?? ''}
                                                 </div>
                                             </div>
                                         </div>
@@ -279,228 +223,9 @@ export const SingleRestaurant = () => {
             </div>
             <div className="unrealBg">
                 <div className="container">
-                    <div className="explainSection" id='explain'>
-                        <div className="explainHeader">
-                            How does it work
-                        </div>
-                        <div className="explainMain">
-                            <div className="singleExplain">
-                                <div className="number">
-                                    01
-                                </div>
-                                <div className="explainDescription">
-                                    You choose the denomination of the certificate and pay for a gift by card or in internet banking.
-                                </div>
-                            </div>
-                            <div className="singleExplain">
-                                <div className="number">
-                                    02
-                                </div>
-                                <div className="explainDescription">
-                                    We send the certificate to your email or recipient. If you decide for yourself hand over the certificate, print it out or send a link in the messenger.
-                                </div>
-                            </div>
-                            <div className="singleExplain">
-                                <div className="number">
-                                    03
-                                </div>
-                                <div className="explainDescription">
-                                    The recipient selects any restaurant you want to go to by certificate.
-                                </div>
-                            </div>
-                            <div className="singleExplain">
-                                <div className="number">
-                                    04
-                                </div>
-                                <div className="explainDescription">
-                                    The restaurant accepts a certificate from the guest by six digit number.
-                                </div>
-                            </div>
-                            <div className="singleExplainWithoutBorder">
-                                <div className="number">
-                                    05
-                                </div>
-                                <div className="explainDescription">
-                                    The recipient visits one or several restaurants - and rejoices your gift.
-                                </div>
-                            </div>
-                            <div className="singleExplainMargin">
-                                <div className="explainButtons">
-                                    <div className="present" onClick={scrollToCertificate}>
-                                        Make a gift
-                                    </div>
-                                    <div className="business" onClick={scrollToCertificate}>
-                                        For business
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="certificate" id='certificate'>
-                        <div className="certificate_header">
-                            <div className="from">
-                                <div className={isActive ? 'company' : "client"} onClick={contentPrevious}>
-                                    From me
-                                </div>
-                                <div className={isActive ? 'client' : "company"} onClick={contentNext}>
-                                    From Company
-                                </div>
-                            </div>
-                            <div className="certificate_example" onClick={toggleModal}>
-                                Example of certificate
-                            </div>
-                            <PopupCertificate isOpen={isModalOpen} toggleModal={toggleModal} />
-                        </div>
-                        <div className="content">
-
-                            <div>
-                                <ReactSwipe
-                                    className="carousel"
-                                    swipeOptions={{ continuous: false, disableScroll: true }}
-                                    ref={el => (reactSwipeEl = el)}
-                                >
-                                    <div><div className="explain">
-                                        Write a congratulation and indicate the address of the recipient!
-                                    </div>
-                                        <div className="choose">
-                                            Choose your own nominal
-                                        </div>
-                                        <div className="main">
-                                            <div className="left">
-                                                <div className="certificateButtons">
-                                                    {nominals.map((name, key) => (
-                                                        <Select
-                                                            key={key}
-                                                            status={select === key}
-                                                            click={() => handleSelect(key)}
-                                                            user={name}
-                                                        />
-                                                    ))}
-                                                </div>
-                                                <div className="form">
-                                                    <div className="from_who">
-                                                        <input type='text' placeholder='From...' className='certificateInputValue'></input>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='text' placeholder='To...' className='certificateInputValue'></input>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='email' placeholder='Recipients e-mail...' className='certificateInputValue'></input>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='tel' placeholder='Recipients phone number...' className='certificateInputValue'></input>
-                                                    </div>
-                                                    <div className="text">
-                                                        <LimitedTextarea limit={280} value='' />
-                                                    </div>
-                                                </div>
-                                                <div className="pay">
-                                                    Pay
-                                                </div>
-                                                <div className="confirm">
-                                                    I agree with the <span className="blue">Terms of personal data processing</span>.
-                                                </div>
-
-                                            </div>
-                                            <div className="right">
-                                                <div className="block">
-                                                    <div className="description">
-                                                        <div className="blockHeaderCertificateSide">
-                                                            gift certificate
-                                                        </div>
-                                                        <div className="blockNameCertificateSide">
-                                                            To the best restaurants in Tallinn
-                                                        </div>
-                                                        <div className="nominalAndDate">
-                                                            <div className="nominal_value">
-                                                                Nominal
-                                                            </div>
-                                                            <div className="date">
-                                                                Valid until
-                                                            </div>
-                                                        </div>
-                                                        <div className="values">
-                                                            <div className="nominalValue" id='1'>
-                                                                {}
-                                                            </div>
-                                                            <div className="validDate">
-                                                                {date}{month}{year}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div></div>
-                                    <div><div className="explainForCompany">
-                                        Thank your employees with gift certificates and an unforgettable experience!
-                                    </div>
-                                        <div className="main">
-                                            <div className="left">
-                                                <div className="form">
-                                                    <div className="from_who">
-                                                        <input type='text' placeholder='Name' className='certificateInputValue'/>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='text' placeholder='Company name' className='certificateInputValue'/>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue'/>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue'/>
-                                                    </div>
-                                                    <div className="text">
-                                                        <LimitedTextarea limit={280} value='' />
-                                                    </div>
-                                                </div>
-                                                <div className="pay">
-                                                    Order
-                                                </div>
-                                                <div className="confirm">
-                                                    I agree with the <span className="blue">Terms of personal data processing</span>.
-                                                </div>
-
-                                            </div>
-                                            <div className="right">
-                                                <div className="block">
-                                                    <div className="description">
-                                                        <div className="blockHeaderCertificateSide">
-                                                            gift certificate
-                                                        </div>
-                                                        <div className="blockNameCertificateSide">
-                                                            To the best restaurants in Tallinn
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div></div>
-                                </ReactSwipe>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="who">
-                        <div className="leftWho">
-                            <div className="companyName">
-                                MustVorst OÜ
-                            </div>
-                            <div className="companyName">
-                                Kiirki 2/3
-                            </div>
-                            <div className="companyName">
-                                Reg. No 2281337
-                            </div>
-                        </div>
-                        <div className="rightWho">
-                            <div className="numberMail">
-                                372 5887 8456
-                            </div>
-                            <div className="numberMail">
-                                must@vorst.ee
-                            </div>
-                        </div>
-                    </div>
+                    <Explanation></Explanation>
+                    <Certificate></Certificate>
+                    <Footer></Footer>
                 </div>
             </div>
         </div>

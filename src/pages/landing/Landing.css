@@ -285,7 +285,7 @@
     margin-bottom: 20px;
 }
 .explainForCompany{
-    width: 60%;
+    width: 100%;
     font-weight: bolder;
     margin-top: 10px;
     margin-bottom: 30px;
@@ -357,7 +357,29 @@
     transition: 0.5s;
     background-color: #D81159;
     font-weight: bolder;
-
+}
+.order{
+    margin-top: 30px;
+    border-radius: 20px;
+    padding: 7px 15px;
+    background-color: #999999;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    color: #EEEEEE;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.order.filled{
+    transition: 0.5s;
+    background-color: #BB0A43;
+    cursor: pointer;
+    pointer-events: auto;
+}
+.order.filled:hover{
+    transition: 0.5s;
+    background-color: #D81159;
+    font-weight: bolder;
 }
 .confirm{
     margin-top: 20px;

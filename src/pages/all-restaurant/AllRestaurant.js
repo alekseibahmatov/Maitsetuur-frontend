@@ -5,6 +5,8 @@ import share from "../../assets/img/share.svg";
 import resto from '../../assets/img/leha2.png'
 import {waiters} from "../restaurant/list-of-waiters/data";
 import {useNavigate} from "react-router-dom";
+import {table} from '../single-restaraunt/data'
+import Footer from "../../ui-components/footer/Footer";
 
 export const AllRestaurant = () => {
     const navigate = useNavigate();
@@ -128,43 +130,23 @@ export const AllRestaurant = () => {
                 <div className="unrealBgHeight">
                     <div className="container">
                         <div className="allRestaurantsList">
-                            {reatsaraunts.filter((item) => {
-                                return search.toLowerCase() === '' ? item : (item.text.includes(search) || item.text.toLowerCase().includes(search) || item.text.toUpperCase().includes(search))
+                            {table.filter((item) => {
+                                return search.toLowerCase() === '' ? item : (item.carouselText.includes(search) || item.carouselText.toLowerCase().includes(search) || item.carouselText.toUpperCase().includes(search))
                             }).map((item,i) => (
                                 <div className="singleRestaurantBlockAll"
-                                     style={{ backgroundImage: `linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url(${item.image})` }}>
+                                     style={{ backgroundImage: `linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url(${item.carouselImage})` }}>
 
                                     <div className="singleRestaurantBlockAllText">
-                                        {item.text}
+                                        {item.carouselText}
                                     </div>
-                                    <div className="readMoreButton">
+                                    <div className="readMoreButton" onClick={() => {navigate(`/singlerestaurant/${item.id}`)
+                                        window.scrollTo(0, 0);}}>
                                         Read More
                                     </div>
                                 </div>
                             ))}
                         </div>
-
-                        <div className="who">
-                            <div className="leftWho">
-                                <div className="companyName">
-                                    MustVorst OÜ
-                                </div>
-                                <div className="companyName">
-                                    Kiirki 2/3
-                                </div>
-                                <div className="companyName">
-                                    Reg. No 2281337
-                                </div>
-                            </div>
-                            <div className="rightWho">
-                                <div className="numberMail">
-                                    372 5887 8456
-                                </div>
-                                <div className="numberMail">
-                                    must@vorst.ee
-                                </div>
-                            </div>
-                        </div>
+                        <Footer></Footer>
                     </div>
                 </div>
             </div>

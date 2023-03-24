@@ -42,10 +42,9 @@
 }
 .singleRestaurantBlockImage{
     width: 100%;
-    background-image:url("../../assets/img/leha2.png");
+    height: 600px;
     background-size: cover;
     background-position: center;
-    height: 600px;
     border-radius: 20px;
 }
 .restoSingleImage{

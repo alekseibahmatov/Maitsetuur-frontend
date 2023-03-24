@@ -3,6 +3,8 @@ import './Connect.css'
 import burx from "../../assets/img/burx.svg";
 import share from "../../assets/img/share.svg";
 import {useNavigate} from "react-router-dom";
+import Footer from "../../ui-components/footer/Footer";
+import Explanation from "../../ui-components/explanation/Explanation";
 
 export const Connect = () =>{
     const navigate = useNavigate();
@@ -127,86 +129,8 @@ export const Connect = () =>{
                 </div>
                 <div className="unrealBg">
                     <div className="container">
-                        <div className="explainSection" id='explain'>
-                            <div className="explainHeader">
-                                How does it work
-                            </div>
-                            <div className="explainMain">
-                                <div className="singleExplain">
-                                    <div className="number">
-                                        01
-                                    </div>
-                                    <div className="explainDescription">
-                                        You choose the denomination of the certificate and pay for a gift by card or in internet banking.
-                                    </div>
-                                </div>
-                                <div className="singleExplain">
-                                    <div className="number">
-                                        02
-                                    </div>
-                                    <div className="explainDescription">
-                                        We send the certificate to your email or recipient. If you decide for yourself hand over the certificate, print it out or send a link in the messenger.
-                                    </div>
-                                </div>
-                                <div className="singleExplain">
-                                    <div className="number">
-                                        03
-                                    </div>
-                                    <div className="explainDescription">
-                                        The recipient selects any restaurant you want to go to by certificate.
-                                    </div>
-                                </div>
-                                <div className="singleExplain">
-                                    <div className="number">
-                                        04
-                                    </div>
-                                    <div className="explainDescription">
-                                        The restaurant accepts a certificate from the guest by six digit number.
-                                    </div>
-                                </div>
-                                <div className="singleExplainWithoutBorder">
-                                    <div className="number">
-                                        05
-                                    </div>
-                                    <div className="explainDescription">
-                                        The recipient visits one or several restaurants - and rejoices your gift.
-                                    </div>
-                                </div>
-                                <div className="singleExplainMargin">
-                                    <div className="explainButtons">
-                                        <div className="present" onClick={() => navigate('/')} >
-                                            Make a gift
-                                        </div>
-                                        <div className="business" onClick={() => navigate('/')}>
-                                            For business
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="who">
-                            <div className="leftWho">
-                                <div className="companyName">
-                                    MustVorst OÜ
-                                </div>
-                                <div className="companyName">
-                                    Kiirki 2/3
-                                </div>
-                                <div className="companyName">
-                                    Reg. No 2281337
-                                </div>
-                            </div>
-                            <div className="rightWho">
-                                <div className="numberMail">
-                                    372 5887 8456
-                                </div>
-                                <div className="numberMail">
-                                    must@vorst.ee
-                                </div>
-                            </div>
-                        </div>
-
+                        <Explanation></Explanation>
+                        <Footer></Footer>
                     </div>
                 </div>
             </div>

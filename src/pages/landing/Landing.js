@@ -16,23 +16,17 @@ import PopupCertificate from "../../ui-components/popup-certificate/Popup-certif
 import ReactSwipe from 'react-swipe';
 import {LimitedTextAreaLanding} from "../../ui-components/limited-text-area-landing/LimitedTextAreaLanding";
 import cross from '../../assets/img/cross.png'
+import {table} from '../single-restaraunt/data'
+import Certificate from "../../ui-components/certificate/Certificate";
+import Footer from "../../ui-components/footer/Footer";
+import Explanation from "../../ui-components/explanation/Explanation";
+import Faq from "../../ui-components/faq/Faq";
 
 export default function Landing() {
     const navigate = useNavigate();
-    let reactSwipeEl;
-    let reactSwipeEl2;
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [isBurger, setIsBurger] = useState(false);
 
-    const burgerToggle = () => {
-        setIsBurger(current => !current);
-    }
-
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
-    }
     const handleClick123 = event => {
         if (event.target.className === 'burx_img'){
             setIsBurger(true)
@@ -42,12 +36,6 @@ export default function Landing() {
         }
     }
 
-
-    const [isActive, setIsActive] = useState(false);
-    const [isActive1, setIsActive1] = useState(false);
-
-    const [isFaq, setIsFaq] = useState(false);
-
     const scrollToCertificate = () =>{
         document.getElementById('certificate').scrollIntoView({behavior: "smooth", block: "start"});
     }
@@ -55,168 +43,7 @@ export default function Landing() {
     const scrollToFaq = () =>{
         document.getElementById('faq').scrollIntoView({behavior: "smooth", block: "start"});
     }
-    const handleClick = () => {
-        setIsActive(current => !current);
-    }
 
-    function contentNext (){
-        handleClick();
-        reactSwipeEl.next()
-    }
-    function contentPrevious (){
-        handleClick();
-        reactSwipeEl.prev()
-    }
-
-    function contentNext1 (){
-        handleClick1();
-        reactSwipeEl2.next()
-    }
-
-    function contentPrevious1 (){
-        handleClick1();
-        reactSwipeEl2.prev()
-    }
-
-    const handleClick1 = () => {
-        setIsActive1(current => !current);
-        setIsFaq(current => !current);
-    }
-
-    function Select({ user, click, status }) {
-        return (
-            <li className={status ? "active" : 'nominal'} onClick={click}>
-                {user}{" "}
-            </li>
-        );
-    }
-    const nominals = ["50€", "100€", "200€", "500€"];
-
-    const [select, setSelect] = useState(false);
-
-    const handleSelect = key => {
-        setSelect(key)
-        const global = nominals[key]
-        const element = document.getElementById('1')
-        element.innerHTML = global;
-
-
-    };
-
-
-
-    const [formData, setFormData] = useState({
-        from: "",
-        to: "",
-        recieverMail: "",
-        recieverPhone: '',
-        congratsMessage: '',
-    });
-
-    const [emailValid, setEmailValid] = useState(true);
-    const [phoneValid, setPhoneValid] = useState(true);
-    const isFilled = formData.from &&
-        formData.to &&
-        formData.recieverMail &&
-        formData.recieverPhone &&
-        formData.congratsMessage &&
-        select !== false &&
-        emailValid &&
-        phoneValid;
-
-
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
-    };
-
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        localStorage.setItem("formData", JSON.stringify(formData));
-        navigate('/payment');
-    };
-
-    const validateEmail = (email) => {
-        // email validation regular expression
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const validatePhone = (phone) => {
-        // phone number validation regular expression
-        const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
-        return phoneRegex.test(phone);
-    };
-
-    const handleEmailChange = (e) => {
-        const { value } = e.target;
-        setEmailValid(validateEmail(value));
-        handleChange(e);
-    };
-
-    const handlePhoneChange = (e) => {
-        const { value } = e.target;
-        setPhoneValid(validatePhone(value));
-        handleChange(e);
-    };
-
-
-
-    let newDate = new Date();
-    let date = newDate.getDate() + 1 + '.';
-    let month = newDate.getMonth() + 1 + '.';
-    let year = newDate.getFullYear() + 1;
-
-    const images = [
-
-        {
-            src: l1,
-            text: 'R14'
-        },
-
-        {
-            src: l2,
-            text: 'Om.House'
-        },
-
-        {
-            src: l3,
-            text: 'Bruxx'
-        }
-
-    ]
-
-    const [faq, setFAQ] = React.useState([
-        {
-            question: 'How long does the certificate lasts?',
-            answer: 'Certificate lasts for one years after the purchase, it can always be checked on the certificate',
-            open: false
-        },
-        {
-            question: 'Can i make my own budget for certificate?',
-            answer: 'With any of your own preferences we are waiting for your email, after what we can provide the best solution',
-            open: false
-        },
-        {
-            question: 'How can i check the balance?',
-            answer: 'Balance can be checked via the link on your email, with the name ' +
-                'Check the balance ->',
-            open: false
-        },
-        {
-            question: 'Can i buy a few certificates for my company?',
-            answer: 'Of course, by leaving the order we will be able to contact you and make everything you wanted within 2-3 days!',
-            open: false
-        },
-        {
-            question: 'How does thw certificate looks like?',
-            answer: <div>You can check by clicking on this link <a className='blue' onClick={toggleModal}>Certificate.pdf</a></div>,
-            open: false
-        }
-    ]);
 
     const advantages = [
         {
@@ -239,16 +66,6 @@ export default function Landing() {
         },
     ]
 
-    const toggleFAQ = index => {
-        setFAQ(faq.map((item, i) => {
-            if (i === index) {
-                item.open = !item.open;
-            } else {
-                item.open = false;
-            }
-            return item;
-        }));
-    }
     return (
         <div className='bg' onClick={handleClick123}>
             <div className="realBg">
@@ -338,185 +155,7 @@ export default function Landing() {
             </div>
             <div className="unrealBg">
                 <div className="container">
-                    <div className="certificate" id='certificate'>
-                        <div className="certificate_header">
-                            <div className="from">
-                                <div className={isActive ? 'company' : "client"} onClick={contentPrevious}>
-                                    From me
-                                </div>
-                                <div className={isActive ? 'client' : "company"} onClick={contentNext}>
-                                    From Company
-                                </div>
-                            </div>
-                            <div className="certificate_example" onClick={toggleModal}>
-                                Example of certificate
-                            </div>
-                            <PopupCertificate isOpen={isModalOpen} toggleModal={toggleModal} />
-                        </div>
-                        <div className="content">
-                            <div>
-                                <ReactSwipe
-                                    className="carousel"
-                                    swipeOptions={{ continuous: false, disableScroll: true }}
-                                    ref={el => (reactSwipeEl = el)}
-                                >
-                                    <div><div className="explain">
-                                        Write a congratulation and indicate the address of the recipient!
-                                    </div>
-                                        <div className="choose">
-                                            Choose your own nominal
-                                        </div>
-                                        <div className="main">
-                                            <div className="left">
-                                                <div className="certificateButtons">
-                                                    {nominals.map((name, key) => (
-                                                        <Select
-                                                            key={key}
-                                                            status={select === key}
-                                                            click={() => handleSelect(key)}
-                                                            user={name}
-                                                        />
-                                                    ))}
-                                                </div>
-                                                <div className="form">
-                                                    <div className="from_who">
-                                                        <input type='text' placeholder='From...' className='certificateInputValue'
-                                                               name='from'
-                                                               value={formData.from}
-                                                               onChange={handleChange}
-                                                        ></input>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='text' placeholder='To...' className='certificateInputValue'
-                                                            name='to'
-                                                            value={formData.to}
-                                                            onChange={handleChange}>
-                                                        </input>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='email' placeholder='Recipients e-mail...' className={`certificateInputValue ${
-                                                            !emailValid ? "invalid" : ""
-                                                        }`}
-                                                            name='recieverMail'
-                                                            value={formData.recieverMail}
-                                                            onChange={handleEmailChange}>
-                                                        </input>
-                                                        {!emailValid && (
-                                                            <div className="error">Please enter a valid email address</div>
-                                                        )}
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='tel' placeholder='Recipients phone number...' className={`certificateInputValue ${
-                                                            !phoneValid ? "invalid" : ""
-                                                        }`}
-                                                            name='recieverPhone'
-                                                            value={formData.recieverPhone}
-                                                            onChange={handlePhoneChange}>
-                                                        </input>
-                                                        {!phoneValid && (
-                                                            <div className="error">
-                                                                Please enter a valid phone number
-                                                            </div>)}
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <LimitedTextAreaLanding limit={280} value={formData.congratsMessage}
-                                                                                onTextChange={(text) =>
-                                                                                    setFormData((prevFormData) => ({
-                                                                                        ...prevFormData,
-                                                                                        congratsMessage: text,
-                                                                                    }))
-                                                                                }
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div  onClick={handleSubmit}
-                                                     className={`pay ${isFilled ? "filled" : ""}`}
-                                                >
-                                                    Pay
-                                                </div>
-                                                <div className="confirm">
-                                                    I agree with the <span className="blue">Terms of personal data processing</span>.
-                                                </div>
-
-                                            </div>
-                                            <div className="right">
-                                                <div className="block">
-                                                    <div className="description">
-                                                        <div className="blockHeaderCertificateSide">
-                                                            gift certificate
-                                                        </div>
-                                                        <div className="blockNameCertificateSide">
-                                                            To the best restaurants in Tallinn
-                                                        </div>
-                                                        <div className="nominalAndDate">
-                                                            <div className="nominal_value">
-                                                                Nominal
-                                                            </div>
-                                                            <div className="date">
-                                                                Valid until
-                                                            </div>
-                                                        </div>
-                                                        <div className="values">
-                                                            <div className="nominalValue" id='1'>
-                                                                {}
-                                                            </div>
-                                                            <div className="validDate">
-                                                                {date}{month}{year}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div></div>
-                                    <div><div className="explainForCompany">
-                                        Thank your employees with gift certificates and an unforgettable experience!
-                                    </div>
-                                        <div className="main">
-                                            <div className="left">
-                                                <div className="form">
-                                                    <div className="from_who">
-                                                        <input type='text' placeholder='Name' className='certificateInputValue'/>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='text' placeholder='Company name' className='certificateInputValue'/>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='email' placeholder='Company e-mail' className='certificateInputValue'/>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <input type='tel' placeholder='Phone number' className='certificateInputValue'/>
-                                                    </div>
-                                                    <div className="from_who">
-                                                        <LimitedTextAreaLanding limit={280} value='' />
-                                                    </div>
-                                                </div>
-                                                <div className="pay">
-                                                    Order
-                                                </div>
-                                                <div className="confirm">
-                                                    I agree with the <span className="termsLink">Terms of personal data processing</span>.
-                                                </div>
-
-                                            </div>
-                                            <div className="right">
-                                                <div className="block">
-                                                    <div className="description">
-                                                        <div className="blockHeaderCertificateSide">
-                                                            gift certificate
-                                                        </div>
-                                                        <div className="blockNameCertificateSide">
-                                                            To the best restaurants in Tallinn
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div></div>
-                                </ReactSwipe>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    <Certificate></Certificate>
                     <div className="infiniteCarousel">
                         <div className="carouselHeader">
                             Connected restaurants
@@ -525,11 +164,13 @@ export default function Landing() {
                             Certificate gives an opportunity to visit the most popular and breathtaking restaurants of Tallinn
                         </div>
                         <div className="carouselMain">
-                            <ImageCarousel images={images} interval={2000}></ImageCarousel>
-                            <ImageCarousel images={images} interval={2000}></ImageCarousel>
-                            <ImageCarousel images={images} interval={2000}></ImageCarousel>
+                            <ImageCarousel images={table} interval={2000}></ImageCarousel>
+                            <ImageCarousel images={table} interval={2000}></ImageCarousel>
+                            <ImageCarousel images={table} interval={2000}></ImageCarousel>
                         </div>
-                        <div className="allRestaurants">
+                        <div className="allRestaurants" onClick={() => {navigate('/allrestaurants');
+                            window.scrollTo(0, 0);
+                        }}>
                             Whole restaurants list
                         </div>
                     </div>
@@ -558,144 +199,9 @@ export default function Landing() {
                         </div>
                     </div>
 
-                    <div className="explainSection">
-                        <div className="explainHeader">
-                            How does it work
-                        </div>
-                        <div className="explainMain">
-                            <div className="singleExplain">
-                                <div className="number">
-                                    01
-                                </div>
-                                <div className="explainDescription">
-                                    You choose the denomination of the certificate and pay for a gift by card or in internet banking.
-                                </div>
-                            </div>
-                            <div className="singleExplain">
-                                <div className="number">
-                                    02
-                                </div>
-                                <div className="explainDescription">
-                                    We send the certificate to your email or recipient. If you decide for yourself hand over the certificate, print it out or send a link in the messenger.
-                                </div>
-                            </div>
-                            <div className="singleExplain">
-                                <div className="number">
-                                    03
-                                </div>
-                                <div className="explainDescription">
-                                    The recipient selects any restaurant you want to go to by certificate.
-                                </div>
-                            </div>
-                            <div className="singleExplain">
-                                <div className="number">
-                                    04
-                                </div>
-                                <div className="explainDescription">
-                                    The restaurant accepts a certificate from the guest by six digit number.
-                                </div>
-                            </div>
-                            <div className="singleExplainWithoutBorder">
-                                <div className="number">
-                                    05
-                                </div>
-                                <div className="explainDescription">
-                                    The recipient visits one or several restaurants - and rejoices your gift.
-                                </div>
-                            </div>
-                            <div className="singleExplainMargin">
-                                <div className="explainButtons">
-                                    <div className="present" onClick={scrollToCertificate}>
-                                        Make a gift
-                                    </div>
-                                    <div className="business" onClick={scrollToCertificate}>
-                                        For business
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div className="faqSection" id='faq'>
-                        <div className="faqHeader">
-                            <div className="from">
-                                <div className={isActive1 ? 'company' : "client"} onClick={contentPrevious1}>
-                                    Answers to the questions
-                                </div>
-                                <div className={isActive1 ? 'client' : "company"} onClick={contentNext1}>
-                                    Ask a question
-                                </div>
-                            </div>
-                        </div>
-                        <div className="content">
-
-                            <div>
-                                <ReactSwipe
-                                    className="carousel"
-                                    swipeOptions={{ continuous: false, disableScroll: true }}
-                                    ref={el => (reactSwipeEl2 = el)}
-                                >
-                                    <div><div className="faq">
-                                        {/* Map over the FAQ items and render them */}
-                                        {faq.map((item, index) => (
-                                            <div key={index} className="faq-item">
-                                                <button type="button" className={item.open ? 'open' : ''} onClick={() => toggleFAQ(index)}>
-                                                    {item.question}
-                                                    <span className="toggle-icon">
-              {item.open ? '-' : '+'}
-            </span>
-                                                </button>
-                                                {item.open && <p>{item.answer}</p>}
-                                            </div>
-                                        ))}
-                                    </div></div>
-                                    <div>
-                                        <div className="infoAsk">
-                                        <div className="askInfoMain">
-                                        If you have any questions which were not answered yet you can always contact us!
-                                    </div>
-                                        <div className="askInfo">
-                                            ooonaebsiki@gollandskishturval.ee
-                                        </div>
-                                        <div className="askInfo">
-                                            +372 5887 8456
-                                        </div>
-                                        <div className="askInfo">
-                                            Kikri 2/1 Monday-Sunday 24/7
-                                        </div>
-                                        </div></div>
-
-                                </ReactSwipe>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="who">
-                        <div className="leftWho">
-                            <div className="companyName">
-                                Maitsetuur OÜ
-                            </div>
-                            <div className="companyName">
-                                Sõstra 4
-                            </div>
-                            <div className="companyName">
-                                Reg. No 2281337
-                            </div>
-                        </div>
-                        <div className="rightWho">
-                            <div className="numberMail">
-                                372 5887 8456
-                            </div>
-                            <div className="numberMail">
-                                maitsetuur@gmail.com
-                            </div>
-                        </div>
-                    </div>
-
+                    <Explanation></Explanation>
+                    <Faq></Faq>
+                    <Footer></Footer>
                 </div>
             </div>
         </div>
