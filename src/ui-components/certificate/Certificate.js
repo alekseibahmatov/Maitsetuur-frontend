@@ -300,7 +300,7 @@ export const Certificate = () => {
                                     <div className="left">
                                         <div className="form">
                                             <div className="from_who">
-                                                <input type='text' placeholder='Name' className='certificateInputValue'
+                                                <input placeholder='Name' className='certificateInputValue'
                                                        name='from'
                                                        value={formDataCompany.from}
                                                        onChange={handleChangeCompany}
