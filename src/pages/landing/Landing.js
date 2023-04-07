@@ -21,11 +21,17 @@ import Certificate from "../../ui-components/certificate/Certificate";
 import Footer from "../../ui-components/footer/Footer";
 import Explanation from "../../ui-components/explanation/Explanation";
 import Faq from "../../ui-components/faq/Faq";
+import PrivacyPolicy from "../../ui-components/privacy-policy/Privacy-policy";
 
 export default function Landing() {
     const navigate = useNavigate();
 
     const [isBurger, setIsBurger] = useState(false);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    }
 
     const handleClick123 = event => {
         if (event.target.className === 'burx_img'){
@@ -101,7 +107,11 @@ export default function Landing() {
                             <div className="next" onClick={scrollToFaq}>
                                 Contact us
                             </div>
+                            <div className='next' onClick={toggleModal}>
+                                Privacy policy
+                            </div>
                         </div>
+                        <PrivacyPolicy isOpen={isModalOpen} toggleModal={toggleModal} />
                         <div className="salutation">
                             Gift Certificate to the
                         </div>

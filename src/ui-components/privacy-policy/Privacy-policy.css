@@ -1,0 +1,54 @@
+.modalPrivacy{
+    width: 60%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background: white;
+    z-index: 2;
+    max-width: 800px;
+    overflow-y: hidden;
+    height: 50%;
+}
+.policySticky{
+    position: fixed;
+    background: #ffffff;
+    width: 100%;
+}
+.policyContent{
+    padding: 20px 40px;
+    height: 100%;
+    overflow-y: auto;
+}
+.policyContent::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.policyContent::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+.policyContent::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}
+.policyHeader{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.policyDate{
+    font-weight: bold;
+    font-size: 10px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+.policySingleHeader{
+    font-size: 16px;
+    font-weight: bold;
+}
+.policySingleText{
+    font-weight: normal;
+    margin: 5px 0;
+}
