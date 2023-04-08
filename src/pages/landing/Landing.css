@@ -52,7 +52,7 @@
     font-size: 18px;
 }
 
-.burger {
+.burx_img{
     cursor: pointer;
 }
 
@@ -345,13 +345,11 @@
 
 .left {
     width: 55%;
-    height: 100%;
 
 }
 
 .right {
     width: 45%;
-    height: 100%;
 }
 
 .congrats {
@@ -1072,7 +1070,7 @@ body.no-scroll {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.1);
-    z-index: 1;
+    z-index: 40000;
     overflow-y: scroll;
 }
 

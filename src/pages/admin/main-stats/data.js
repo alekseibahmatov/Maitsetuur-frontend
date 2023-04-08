@@ -35,6 +35,10 @@ export const options = [
     {value: 'yearly', label: 'Yearly'}
 ]
 
+
+export const  headers = ["ID", "Name", "Quantity", "Date", "Revenue", "Profit","Money Wasted"];
+
+export const columnSizes = ["2%", "7%", "5%", "10%", "5%", "5%","5%"];
 export const table = [
     {
         id: '01',
@@ -44,7 +48,6 @@ export const table = [
         revenue: '$293.01',
         netProfit: '$710.68',
         moneyWasted: '€21.68',
-        dots: <img src={dots}/>
     },
     {
         id: '02',
@@ -54,7 +57,6 @@ export const table = [
         revenue: '$123.01',
         netProfit: '$712.68',
         moneyWasted: '€0.68',
-        dots: <img src={dots}/>
     },
     {
         id: '03',
@@ -64,7 +66,6 @@ export const table = [
         revenue: '$123.01',
         netProfit: '$712.68',
         moneyWasted: '€0.68',
-        dots: <img src={dots}/>
     },
     {
         id: '04',
@@ -74,6 +75,5 @@ export const table = [
         revenue: '$123.01',
         netProfit: '$712.68',
         moneyWasted: '€0.68',
-        dots: <img src={dots}/>
     },
 ]

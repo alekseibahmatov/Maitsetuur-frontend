@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import Select from "react-select";
 import dots from "../../../assets/img/dots.png";
-import {Data, options, table} from "./data";
+import {Data, options, table, headers , columnSizes} from "./data";
 import {CustomChart} from '../../../ui-components/chart/CustomChart'
+import Table from "../../../ui-components/table/Table";
 
 export const MainStats = () => {
     const [totalEarning, setTotalEarnings] = useState(0);
@@ -121,33 +122,7 @@ export const MainStats = () => {
                 </div>
             </div>
             <div className="overflownContent">
-                <table>
-                    <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Restaurant</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Revenue</th>
-                        <th scope="col">Net Profit</th>
-                        <th scope="col">Money Wasted</th>
-                        <th scope="col"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {table.map((item, i) => (
-                        <tr>
-                            <th scope="row">{item.id}</th>
-                            <td>{item.name}</td>
-                            <td>{item.quantity}</td>
-                            <td>{item.date}</td>
-                            <td>{item.revenue}</td>
-                            <td>{item.netProfit}</td>
-                            <td>{item.moneyWasted}</td>
-                            <td>{item.dots}</td>
-                        </tr>))}
-                    </tbody>
-                </table>
+                <Table headers={headers} items={table} columnSizes={columnSizes}></Table>
             </div>
         </div>
     </div>;

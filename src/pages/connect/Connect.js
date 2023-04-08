@@ -21,6 +21,55 @@ export const Connect = () =>{
         document.getElementById('explain').scrollIntoView({behavior: "smooth", block: "start"});
     }
 
+    const [formData, setFormData] = useState({
+        from: "",
+        companyName: "",
+        fromMail: "",
+        fromPhone: '',
+    });
+
+    const [emailValid, setEmailValid] = useState(true);
+    const [phoneValid, setPhoneValid] = useState(true);
+
+    const isFilled = formData.from &&
+        formData.companyName &&
+        formData.fromMail &&
+        formData.fromPhone &&
+        emailValid &&
+        phoneValid;
+
+    const handleChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    const validateEmail = (email) => {
+        // email validation regular expression
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validatePhone = (phone) => {
+        // phone number validation regular expression
+        const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+        return phoneRegex.test(phone);
+    };
+
+    const handleEmailChange = (e) => {
+        const { value } = e.target;
+        setEmailValid(validateEmail(value));
+        handleChange(e);
+    };
+
+    const handlePhoneChange = (e) => {
+        const { value } = e.target;
+        setPhoneValid(validatePhone(value));
+        handleChange(e);
+    };
+
+
     return(
 
         <>
@@ -70,20 +119,46 @@ export const Connect = () =>{
                                     <div className="leaveForApplyLeft">
                                         <div className="form">
                                             <div className="from_who">
-                                                <input type='text' placeholder='Name' className='certificateInputValue'></input>
+                                                <input type='text' placeholder='Name' className='certificateInputValue'
+                                                name='from'
+                                                value={formData.from}
+                                                onChange={handleChange}
+                                                ></input>
                                             </div>
                                             <div className="from_who">
-                                                <input type='text' placeholder='Restaurant' className='certificateInputValue'></input>
+                                                <input type='text' placeholder='Restaurant' className='certificateInputValue'
+                                                       name='companyName'
+                                                       value={formData.companyName}
+                                                       onChange={handleChange}
+                                                ></input>
                                             </div>
                                             <div className="from_who">
-                                                <input type='email' placeholder='E-mail' className='certificateInputValue'></input>
+                                                <input type='email' placeholder='E-mail' className={`certificateInputValue ${
+                                                    !emailValid ? "invalid" : ""
+                                                }`}
+                                                       name='fromMail'
+                                                       value={formData.fromMail}
+                                                       onChange={handleEmailChange}/>
+                                                {!emailValid && (
+                                                    <div className="error">Please enter a valid email address</div>
+                                                )}
                                             </div>
                                             <div className="from_who">
-                                                <input type='text' placeholder='Phone number' className='certificateInputValue'></input>
+                                                <input type='text' placeholder='Phone number'
+                                                       className={`certificateInputValue ${
+                                                           !phoneValid ? "invalid" : ""
+                                                       }`}
+                                                       name='fromPhone'
+                                                       value={formData.fromPhone}
+                                                       onChange={handlePhoneChange}/>
+                                                {!phoneValid && (
+                                                    <div className="error">
+                                                        Please enter a valid phone number
+                                                    </div>)}
                                             </div>
                                         </div>
                                         <div className="lowerLeaverForApply">
-                                            <div className="sendApplication">
+                                            <div className={`pay ${isFilled ? "filled" : ""}`}>
                                                 Send
                                             </div>
                                             <div className="confirmTerms">
