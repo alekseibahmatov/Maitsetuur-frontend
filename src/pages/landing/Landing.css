@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -8,45 +9,54 @@
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
 }
-.realBg{
-    background-image:linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(4, 4, 38, 1)100%), url("../../assets/img/R14.jpg");
+
+.realBg {
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(4, 4, 38, 1) 100%), url("../../assets/img/R14.jpg");
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     height: 100%;
 }
-.unrealBg{
-    background-color: rgba(4,4,38);
+
+.unrealBg {
+    background-color: rgba(4, 4, 38);
 }
-.container{
+
+.container {
     max-width: 1028px;
     margin: 0 auto;
 }
-.header{
+
+.header {
     display: flex;
     justify-content: space-between;
     padding: 40px;
     margin-bottom: 50px;
 }
-.logoLanding{
+
+.logoLanding {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 24px;
     font-weight: bolder;
     text-transform: uppercase;
 }
-.share{
+
+.share {
     display: flex;
 }
-.share_text{
+
+.share_text {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 18px;
 }
+
 .burx_img{
     cursor: pointer;
 }
-.burger_closed{
+
+.burger_closed {
     display: none;
     position: absolute;
     top: 66px;
@@ -57,7 +67,8 @@
     flex-direction: column;
     background: #060431;
 }
-.burger_opened{
+
+.burger_opened {
     display: flex;
     position: absolute;
     top: 66px;
@@ -68,15 +79,16 @@
     flex-direction: column;
     background: #060431;
 }
-.closeBurger{
+
+.closeBurger {
     color: white;
     cursor: pointer;
     display: none;
 }
 
-.next{
+.next {
     text-decoration: none;
-    padding: 8px 30px!important;
+    padding: 8px 30px !important;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -84,34 +96,40 @@
     color: #a8a8a8;
     transition: 0.3s;
 }
-.next:hover{
+
+.next:hover {
     background-color: #5D539C;
     color: #EEEEEE;
     transition: 0.3s;
 }
-.salutation{
+
+.salutation {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 47px;
     font-weight: bold;
     text-transform: uppercase;
 }
-.four_section{
+
+.four_section {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
     grid-auto-rows: 120px;
     margin-top: 100px;
     column-gap: 100px;
 }
-.single_section{
+
+.single_section {
     display: flex;
-    padding-right:40px;
+    padding-right: 40px;
     line-height: 23px;
 }
-.dashed{
+
+.dashed {
     border-bottom: 2px dashed #ffffff;
 }
-.section_text{
+
+.section_text {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 18.5px;
@@ -119,12 +137,14 @@
     padding-top: 5px;
     font-weight: bolder;
 }
-.buttons{
+
+.buttons {
     display: flex;
     padding-bottom: 200px;
 
 }
-.present{
+
+.present {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 18.5px;
@@ -134,15 +154,17 @@
     padding: 8px;
     border-radius: 30px;
     text-align: center;
-    width:200px;
+    width: 200px;
     cursor: pointer;
     transition: 0.3s;
 }
-.present:hover{
+
+.present:hover {
     transition: 0.3s;
     color: black;
 }
-.business{
+
+.business {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 18.5px;
@@ -152,32 +174,37 @@
     padding: 8px;
     border-radius: 30px;
     text-align: center;
-    width:200px;
+    width: 200px;
     margin-left: 30px;
     cursor: pointer;
     transition: 0.3s;
 }
-.business:hover{
+
+.business:hover {
     transition: 0.3s;
     color: black;
 }
-.certificate{
+
+.certificate {
     width: 100%;
     background-color: white;
     border: 1px solid white;
     border-radius: 20px;
     padding: 30px;
 }
-.certificate_header{
+
+.certificate_header {
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
 }
-.from{
+
+.from {
     display: flex;
     column-gap: 20px;
 }
-.client{
+
+.client {
     color: black;
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
@@ -188,22 +215,23 @@
     pointer-events: none;
 }
 
-.company{
+.company {
     color: grey;
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     cursor: pointer;
     transition: 0.3s;
-    border-bottom: 2px solid rgba(1,1,1,0);
+    border-bottom: 2px solid rgba(1, 1, 1, 0);
 }
-.certificateButtons{
+
+.certificateButtons {
     display: flex;
     column-gap: 15px;
     margin-bottom: 20px;
 }
 
-.nominal{
+.nominal {
     color: #A8A8A8;
     background-color: #EEEEEE;
     padding: 5px;
@@ -214,14 +242,16 @@
     transition: 0.3s;
     font-weight: bold;
 }
-.nominal:hover{
+
+.nominal:hover {
     color: white;
     background-color: #A8A8A8;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
 }
-.active{
+
+.active {
     color: white;
     font-weight: bold;
     background-color: #EB4C43;
@@ -232,7 +262,8 @@
     cursor: pointer;
     transition: 0.3s;
 }
-.certificate_example{
+
+.certificate_example {
     color: #EB4C43;
     border-bottom: 1px solid #EB4C43;
     font-size: 16px;
@@ -240,20 +271,23 @@
     cursor: pointer;
     transition: 0.3s;
 }
-.certificate_example:hover{
+
+.certificate_example:hover {
     color: red;
     border-bottom: 1px solid red;
     transition: 0.3s;
 }
-.popup-box{
+
+.popup-box {
     position: fixed;
     left: 0;
     top: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100vh;
 }
-.box{
+
+.box {
     position: relative;
     width: 50%;
     height: 50%;
@@ -262,7 +296,8 @@
     border-radius: 10px;
     margin: 40px auto;
 }
-.btn-close{
+
+.btn-close {
     cursor: pointer;
     border: 1px solid #999999;
     border-radius: 50%;
@@ -273,67 +308,86 @@
     padding-left: 7px;
     padding-right: 7px;
 }
-.gay{
+
+.gay {
     max-width: 30%;
     height: 100%;
 }
-.explain{
+
+.explain {
     width: 60%;
     font-weight: bolder;
     color: black;
     margin-top: 10px;
     margin-bottom: 20px;
 }
-.explainForCompany{
+
+.explainForCompany {
     width: 100%;
     font-weight: bolder;
     margin-top: 10px;
     margin-bottom: 30px;
     color: #11142D;
 }
-.choose{
+
+.choose {
     color: black;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 18px;
 }
-.main{
+
+.main {
     display: flex;
     justify-content: space-between;
 }
-.left{
+
+.left {
     width: 55%;
 
 }
-.right{
+
+.right {
     width: 45%;
 }
 
-.congrats{
+.congrats {
     resize: none;
     width: 100%;
     min-height: 100px;
     font-weight: bold;
     border-radius: 5px;
-    border: 2px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     padding: 10px;
     margin-top: 10px;
     font-family: 'Raleway', sans-serif;
 }
-.certificateInputValue{
+
+.certificateInputValue {
     font-weight: bold;
     width: 100%;
     border-radius: 5px;
-    border: 2px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
     padding: 20px 20px;
     margin-bottom: 10px;
     font-family: 'Raleway', sans-serif;
 }
-.wordCount{
+
+.wordCount {
     font-weight: bold;
 }
-.pay{
+
+.termsCheckbox {
+    width: 25px;
+    margin: 5px 15px;
+    height: 25px;
+}
+
+.pay {
+    font-size: 17px;
+    outline: none;
+    border: none;
     margin-top: 30px;
     border-radius: 20px;
     padding: 7px 15px;
@@ -345,18 +399,21 @@
     transition: 0.5s;
     pointer-events: none;
 }
-.pay.filled{
+
+.pay.filled {
+    cursor: pointer;
     transition: 0.5s;
     background-color: #BB0A43;
-    cursor: pointer;
     pointer-events: auto;
 }
-.pay.filled:hover{
+
+.pay.filled:hover {
     transition: 0.5s;
     background-color: #D81159;
     font-weight: bolder;
 }
-.order{
+
+.order {
     margin-top: 30px;
     border-radius: 20px;
     padding: 7px 15px;
@@ -368,35 +425,43 @@
     transition: 0.5s;
     pointer-events: none;
 }
-.order.filled{
+
+.order.filled {
     transition: 0.5s;
     background-color: #BB0A43;
     cursor: pointer;
     pointer-events: auto;
 }
-.order.filled:hover{
+
+.order.filled:hover {
     transition: 0.5s;
     background-color: #D81159;
     font-weight: bolder;
 }
-.confirm{
+
+.confirm {
     margin-top: 20px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
 }
-.termsLink{
+
+.termsLink {
     color: lightblue;
     transition: 0.3s;
     cursor: pointer;
 }
-.termsLink:hover{
+
+.termsLink:hover {
     color: blue;
     transition: 0.3s;
 }
-.block{
+
+.block {
     margin-left: 30px;
     width: 90%;
     padding: 30px;
-    background-image:linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(4, 4, 38, 1)90%), url("../../assets/img/leha2.png");
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(4, 4, 38, 1) 90%), url("../../assets/img/leha2.png");
     background-size: cover;
     background-position: center;
     height: 596px;
@@ -405,56 +470,69 @@
     display: flex;
     align-items: flex-end;
 }
-.from_who{
-    margin: 10px 0;
+
+.from_who {
+    margin: 20px 0;
 }
-.description{
+
+.description {
     color: white;
     padding-bottom: 30px;
 }
-.nominalAndDate{
+
+.nominalAndDate {
     margin-top: 10px;
     display: flex;
     gap: 50px;
 }
-.validDate{
+
+.validDate {
     margin-left: 100px;
     position: fixed;
 }
-.values{
+
+.values {
     display: flex;
     margin-top: 10px;
 }
-.blockHeaderCertificateSide{
+
+.blockHeaderCertificateSide {
     text-transform: uppercase;
     margin-bottom: 10px;
     font-size: 14px;
 }
-.blockNameCertificateSide{
+
+.blockNameCertificateSide {
     font-size: 20px;
 }
-.validDate{
+
+.validDate {
     font-size: 20px;
 }
-.nominalValue{
+
+.nominalValue {
     font-size: 20px;
     position: fixed;
 }
-.infiniteCarousel{
+
+.infiniteCarousel {
     margin-top: 100px;
 }
-.carouselMain{
+
+.carouselMain {
     display: flex;
     justify-content: space-between;
     padding-bottom: 40px;
     overflow: hidden;
     overflow-x: auto;
 }
-.carouselHeader{
+
+.carouselHeader {
     color: white;
     font-size: 25px;
 }
-.carouselDescription{
+
+.carouselDescription {
     color: white;
     font-size: 20px;
     width: 50%;
@@ -462,7 +540,8 @@
     margin-bottom: 40px;
     font-family: 'Raleway', sans-serif;
 }
-.allRestaurants{
+
+.allRestaurants {
     margin: 0 auto;
     background-color: #EB4C43;
     color: white;
@@ -476,24 +555,28 @@
     border-radius: 20px;
     margin-top: 20px;
 }
-.allRestaurants:hover{
+
+.allRestaurants:hover {
     color: black;
     background-color: #EB4C43;
     border: 1px solid #EB4C43;
     transition: 0.3s;
 }
-.advantagesHeader{
+
+.advantagesHeader {
     color: #EEEEEE;
     font-size: 25px;
     margin-top: 100px;
     font-family: 'Raleway', sans-serif;
 }
-.advantagesMain{
+
+.advantagesMain {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
     padding-bottom: 20px;
 }
+
 .singleAdvantage {
     width: 310px;
     height: 100%;
@@ -501,7 +584,8 @@
     flex-direction: column;
 
 }
-.advantageImg{
+
+.advantageImg {
     background-size: cover;
     background-position: 50% 20%;
     width: 100%;
@@ -509,8 +593,9 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
-.advantageImg1{
-    background-image: linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url("../../assets/img/l2.png");
+
+.advantageImg1 {
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(27, 36, 105, 1) 90%), url("../../assets/img/l2.png");
     background-size: cover;
     background-position: 50% 20%;
     width: 100%;
@@ -518,8 +603,9 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
-.advantageImg2{
-    background-image: linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url("../../assets/img/l3.png");
+
+.advantageImg2 {
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(27, 36, 105, 1) 90%), url("../../assets/img/l3.png");
     background-size: cover;
     background-position: 50% 20%;
     width: 100%;
@@ -527,7 +613,8 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
-.advantageDescription{
+
+.advantageDescription {
     background-color: #EEEEEE;
     height: 120px;
     padding: 10px;
@@ -535,30 +622,35 @@
     border-bottom-left-radius: 10px;
 
 }
-.advHeader{
+
+.advHeader {
     font-size: 25px;
     font-weight: bolder;
     font-family: 'Raleway', sans-serif;
 }
-.advDescription{
+
+.advDescription {
     font-size: 18px;
     color: #999999;
     font-weight: bold;
     margin-top: 5px;
     font-family: 'Raleway', sans-serif;
 }
-.explainSection{
+
+.explainSection {
     padding-top: 100px;
     width: 60%;
     padding-left: 10px;
     padding-right: 10px;
 }
-.explainHeader{
+
+.explainHeader {
     color: white;
     font-size: 25px;
     font-family: 'Raleway', sans-serif;
 }
-.explainMain{
+
+.explainMain {
     margin-top: 50px;
     display: grid;
     grid-template-columns:80% 80%;
@@ -566,36 +658,42 @@
     column-gap: 50px;
 
 }
-.singleExplain{
+
+.singleExplain {
     color: #EEEEEE;
     display: flex;
     width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 30px;
 
 }
-.singleExplainWithoutBorder{
+
+.singleExplainWithoutBorder {
     color: #EEEEEE;
     display: flex;
     width: 100%;
     margin-top: 30px;
 }
-.number{
+
+.number {
     font-size: 35px;
     margin-right: 20px;
 }
-.explainDescription{
+
+.explainDescription {
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
 }
-.explainButtons{
+
+.explainButtons {
     display: flex;
 }
-.singleExplainMargin{
+
+.singleExplainMargin {
     margin-top: 30px;
 }
 
-.faqSection{
+.faqSection {
     margin-top: 60px;
     width: 100%;
     height: 100%;
@@ -604,6 +702,7 @@
     border: 1px solid white;
     border-radius: 20px;
 }
+
 .faq {
     /* Add some style to the FAQ section */
     display: flex;
@@ -660,7 +759,8 @@
     font-size: 1.2rem;
     color: #333;
 }
-.who{
+
+.who {
     display: flex;
     justify-content: space-between;
     margin-top: 60px;
@@ -669,141 +769,172 @@
     padding-right: 10px;
 
 }
-.infoAsk{
+
+.infoAsk {
     padding-top: 30px;
 }
-.companyName{
+
+.companyName {
     font-size: 20px;
     color: white;
     margin-top: 5px;
     font-family: 'Raleway', sans-serif;
 }
-.numberMail{
+
+.numberMail {
     font-size: 20px;
     color: #78A4F8;
     margin-top: 5px;
     text-align: right;
     font-family: 'Raleway', sans-serif;
 }
-.contentForCompany{
+
+.contentForCompany {
     display: none;
     pointer-events: none;
     transition: 0.3s;
 }
-.contentForGift{
+
+.contentForGift {
     display: block;
     pointer-events: all;
     transition: 0.3s;
 }
-.askInfo{
+
+.askInfo {
     font-size: 20px;
     margin-top: 20px;
     color: #78A4F8;
 }
-.askInfoMain{
+
+.askInfoMain {
     font-size: 30px;
     margin-top: 10px;
 }
+
 @media (max-width: 1024px) {
 
-    .explainSection{
+    .explainSection {
         width: 100%;
     }
-    .explainHeader{
+
+    .explainHeader {
         display: flex;
         justify-content: center;
     }
-    .explainMain{
+
+    .explainMain {
         display: block;
         padding: 0 40px;
     }
-    .explainButtons{
+
+    .explainButtons {
         justify-content: space-between;
         padding-bottom: 20px;
     }
-    .four_section{
+
+    .four_section {
         display: block;
         padding: 0 40px;
     }
-    .salutation{
+
+    .salutation {
         padding: 0 60px;
     }
-    .buttons{
+
+    .buttons {
         justify-content: space-around;
-        padding-left:40px;
-        padding-right:40px;
+        padding-left: 40px;
+        padding-right: 40px;
         padding-bottom: 100px;
         margin-top: 40px;
     }
-    .advantagesMain{
+
+    .advantagesMain {
         overflow: hidden;
         overflow-x: auto;
     }
-    .singleAdvantage{
+
+    .singleAdvantage {
         margin: 0 10px;
         width: 100%;
         min-width: 320px;
         overflow: hidden;
         overflow-x: auto;
     }
-    .who{
+
+    .who {
         display: block;
         text-align: center;
     }
-    .numberMail{
+
+    .numberMail {
         text-align: center;
     }
-    .header{
+
+    .header {
         padding: 20px;
     }
-    .share_img{
+
+    .share_img {
         display: none;
     }
-    .main{
+
+    .main {
         display: block;
     }
 
-    .main1{
+    .main1 {
         display: block;
     }
-    .explain{
+
+    .explain {
         width: 100%;
     }
-    .explainForCompany{
+
+    .explainForCompany {
         width: 100%;
     }
-    .left{
+
+    .left {
         width: 100%;
     }
-    .right{
+
+    .right {
         width: 100%;
         margin-top: 40px;
     }
-    .carouselHeader{
+
+    .carouselHeader {
         text-align: center;
     }
-    .carouselDescription{
+
+    .carouselDescription {
         text-align: center;
         margin: 40px auto;
     }
-    .advantagesHeader{
+
+    .advantagesHeader {
         display: flex;
         justify-content: center;
         margin-top: 50px;
     }
-    .block{
+
+    .block {
         width: 100%;
         margin: 0;
     }
-    .burger_cont1{
+
+    .burger_cont1 {
         left: 0;
         top: -24px;
-        width: 100%!important;
+        width: 100% !important;
         border-radius: 0 0 16px 16px;
-        height: auto!important;
+        height: auto !important;
         padding: 32px 0;
     }
-    .closeBurger{
+
+    .closeBurger {
         flex-direction: row;
         display: flex;
         justify-content: center;
@@ -816,94 +947,114 @@
         font-size: 18px;
     }
 
-    .singleExplain{
-        padding-bottom: 10px;
-    }
-    .singleExplainWithoutBorder{
+    .singleExplain {
         padding-bottom: 10px;
     }
 
-    .active{
+    .singleExplainWithoutBorder {
+        padding-bottom: 10px;
+    }
+
+    .active {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .nominal{
+
+    .nominal {
         padding-left: 10px;
         padding-right: 10px;
     }
 }
-
 
 
 @media (max-width: 620px) {
 
-    .salutation{
+    .salutation {
         font-size: 30px;
     }
-    .logoLanding{
+
+    .logoLanding {
         font-size: 18px;
     }
-    .section_text{
+
+    .section_text {
         font-size: 12px;
     }
-    .present{
+
+    .present {
         font-size: 12px;
     }
-    .business{
+
+    .business {
         font-size: 12px;
     }
-    .client{
+
+    .client {
         font-size: 12px;
     }
-    .company{
+
+    .company {
         font-size: 12px;
     }
-    .certificate_example{
+
+    .certificate_example {
         font-size: 12px;
     }
-    .explain{
+
+    .explain {
         font-size: 12px;
         margin-top: 20px;
 
     }
-    .explainForCompany{
+
+    .explainForCompany {
         font-size: 12px;
         margin-top: 20px;
     }
-    .explainDescription{
+
+    .explainDescription {
         font-size: 12px;
     }
-    .number{
+
+    .number {
         font-size: 25px;
     }
-    .faq-item button{
+
+    .faq-item button {
         font-size: 14px;
     }
-    .faq-item p{
+
+    .faq-item p {
         font-size: 12px;
     }
-    .companyName{
+
+    .companyName {
         font-size: 10px;
     }
-    .numberMail{
+
+    .numberMail {
         font-size: 10px;
     }
-    .askInfoMain{
+
+    .askInfoMain {
         font-size: 15px;
     }
 }
 
-@media (max-width: 394px){
-    .client{
+@media (max-width: 394px) {
+    .client {
         font-size: 10px;
     }
-    .company{
+
+    .company {
         font-size: 10px;
     }
-    .certificate_example{
+
+    .certificate_example {
         font-size: 10px;
     }
-    .certificateButtons{
+
+    .certificateButtons {
         column-gap: 2px;
     }
 }
@@ -932,29 +1083,35 @@ body.no-scroll {
     padding: 20px;
     z-index: 2;
 }
-.carouselMain::-webkit-scrollbar{
+
+.carouselMain::-webkit-scrollbar {
     height: 4px;
     width: 4px;
 }
-.carouselMain::-webkit-scrollbar-track{
+
+.carouselMain::-webkit-scrollbar-track {
     background-color: #E2E2EA;
     box-shadow: inset 0 0 5px grey;
     border-radius: 400px;
 }
-.carouselMain::-webkit-scrollbar-thumb{
+
+.carouselMain::-webkit-scrollbar-thumb {
     background: #5541D7;
     border-radius: 400px;
 }
-.advantagesMain::-webkit-scrollbar{
+
+.advantagesMain::-webkit-scrollbar {
     height: 4px;
     width: 4px;
 }
-.advantagesMain::-webkit-scrollbar-track{
+
+.advantagesMain::-webkit-scrollbar-track {
     background-color: #E2E2EA;
     box-shadow: inset 0 0 5px grey;
     border-radius: 400px;
 }
-.advantagesMain::-webkit-scrollbar-thumb{
+
+.advantagesMain::-webkit-scrollbar-thumb {
     background: #5541D7;
     border-radius: 400px;
 }

@@ -165,7 +165,7 @@ export default function Landing() {
             </div>
             <div className="unrealBg">
                 <div className="container">
-                    <Certificate></Certificate>
+                    <Certificate/>
                     <div className="infiniteCarousel">
                         <div className="carouselHeader">
                             Connected restaurants

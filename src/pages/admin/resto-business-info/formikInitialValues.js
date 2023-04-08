@@ -14,4 +14,5 @@ export const initialValuesCreate = {
     categories: "",
     photo: "",
     contract: "",
+    maitsetuurShare: ""
 };
