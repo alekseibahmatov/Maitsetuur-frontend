@@ -29,6 +29,9 @@ export const RestaurantBusinessInfoSchema = Yup.object().shape({
         .required("Postcode is a required field"),
     averageBill: Yup.string()
         .required("Average Bill is a required field"),
+    maitsetuurShare: Yup.number()
+        .required("Maitsetuur Share is a required field")
+        .max(40, "Maitsetuur Share must not exceed 40% share"),
     categories: Yup.array().required('Please pick at least one category'),
     photo: Yup.mixed()
         .required('Please upload a jpeg/png photo')

@@ -89,7 +89,7 @@ export const WaiterSingle = () => {
         }
     }, [waiterId]);
 
-    return (<div className='content'>
+    return (<div className='rightBlock1'>
 
             <div className="waitersMainContent">
                 <div className="businessHeader">
@@ -358,26 +358,30 @@ export const WaiterSingle = () => {
                                     <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">Device Name</th>
-                                        <th scope="col">Log time</th>
-                                        <th scope="col">Log Date</th>
-                                        <th scope="col">Amount of Coupons</th>
-                                        <th scope="col">Scanned money</th>
-                                        <th scope="col">Bill difference</th>
-                                        <th scope="col"></th>
+                                        <th scope="col">Value</th>
+                                        <th scope="col">Place</th>
+                                        <th scope="col">Waiter ID</th>
+                                        <th scope="col">Waiter Email</th>
+                                        <th scope="col">Created At</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {waiterData.transactions.map((item, i) => (
+                                    {waiterData?.transactions?.map((item, i) => (
                                         <tr>
                                             <th scope="row">{item.id}</th>
-                                            <td>{item.name}</td>
-                                            <td>{item.quantity}</td>
-                                            <td>{item.date}</td>
-                                            <td>{item.revenue}</td>
-                                            <td>{item.netProfit}</td>
-                                            <td>{item.moneyWasted}</td>
-                                            <td>{item.dots}</td>
+                                            <td>{item.value}</td>
+                                            <td>
+                                                <Link to={`/dashboard/restaurant-info/${item.restaurantCode}`}>
+                                                    {item.restaurantName}
+                                                </Link>
+                                            </td>
+                                            <td>
+                                                <Link to={`/dashboard/waiter-info/${item.waiterId}`}>
+                                                    {item.waiterId}
+                                                </Link>
+                                            </td>
+                                            <td>{item.waiterEmail}</td>
+                                            <td>{item.createdAt}</td>
                                         </tr>
                                     ))}
                                     </tbody>
@@ -397,27 +401,24 @@ export const WaiterSingle = () => {
                             </div>
                         </div>
                         <div className="overflownContent">
-                            {!waiterData.login ? <div className="loadingWrapper">
+                            {!waiterData.logins ? <div className="loadingWrapper">
                                 <LoadingAnimationCircular/>
-                            </div> : waiterData?.transactions?.length === 0 ?
+                            </div> : waiterData?.logins?.length === 0 ?
                                 <h1 className="noDataList">No data...</h1> :
                                 <table>
                                     <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">Device Name</th>
-                                        <th scope="col">Last Logged</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">Device metadata</th>
+                                        <th scope="col">Ip</th>
+                                        <th scope="col">Metadata</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {waiterData.transactions.map((item, i) => (<tr>
+                                    {waiterData.logins.map((item, i) => (
+                                        <tr key={i}>
                                         <th scope="row">{item.id}</th>
-                                        <td>{item.deviceName}</td>
-                                        <td>{item.lastLogged}</td>
-                                        <td>{item.location}</td>
-                                        <td>{item.deviceMetadata}</td>
+                                        <td>{item.ip}</td>
+                                        <td>{item.userAgent}</td>
                                     </tr>))}
                                     </tbody>
                                 </table>

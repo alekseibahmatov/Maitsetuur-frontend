@@ -115,7 +115,8 @@ export const RestaurantBusinessInformation = () => {
         categories: restaurantData.categories,
         photo: restaurantData.photo,
         contact: restaurantData.contact,
-        active: restaurantData.active
+        active: restaurantData.active,
+        maitsetuurShare: restaurantData.maitsetuurShare
     };
 
 
@@ -456,34 +457,49 @@ export const RestaurantBusinessInformation = () => {
 
                             </div>
 
-                            <div className="typeOfRestaurantSelect">
-                                <div className="businessFormHeader">
-                                    Type of restaurant
-                                </div>
-                                {props.initialValues?.categories || !restaurantId ?
-                                    <Select
-                                        closeMenuOnSelect={true}
-                                        components={animatedComponents}
-                                        isMulti
-                                        defaultValue={
-                                            categoriesOfRestaurant.find((category) => props.initialValues?.categories.includes(category.label))
-                                        }
-                                        options={categoriesOfRestaurant}
-                                        styles={customStyles}
-                                        onChange={e => {
-                                            let categories = []
-                                            e.map((elem) => {
-                                                categories.push(elem.label)
-                                            })
-                                            props.setFieldValue('categories', categories);
-                                        }}
-                                    />
-                                    :
-                                    <div style={{textAlign: "center", marginTop: 20}}>Loading...</div>
-                                }
+                            <div className="workBill">
+                                <div className="leftContent">
 
-                                <div className="error">
-                                    <ErrorMessage name="categories"/>
+                                    <div className="businessFormHeader">
+                                        Type of restaurant
+                                    </div>
+                                    {props.initialValues?.categories || !restaurantId ?
+                                        <Select
+                                            closeMenuOnSelect={true}
+                                            components={animatedComponents}
+                                            isMulti
+                                            defaultValue={
+                                                categoriesOfRestaurant.find((category) => props.initialValues?.categories.includes(category.label))
+                                            }
+                                            options={categoriesOfRestaurant}
+                                            styles={customStyles}
+                                            onChange={e => {
+                                                let categories = []
+                                                e.map((elem) => {
+                                                    categories.push(elem.label)
+                                                })
+                                                props.setFieldValue('categories', categories);
+                                            }}
+                                        />
+                                        :
+                                        <div style={{textAlign: "center", marginTop: 20}}>Loading...</div>
+                                    }
+                                    <div className="error">
+                                        <ErrorMessage name="categories"/>
+                                    </div>
+                                </div>
+
+                                <div className="rightContent">
+                                    <div className="businessFormHeader">
+                                        Maitsetuur Share
+                                    </div>
+                                    <div className="businessInput">
+                                        <Field className="businessInputValue" type="text" name="maitsetuurShare"
+                                               placeholder={restaurantData && !restaurantId ? "Maitsetuur Share..." : "Loading..."}/>
+                                        <div className="error">
+                                            <ErrorMessage name="maitsetuurShare"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

@@ -1,112 +1,170 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import './Coupon-single.css'
 import PopupSumbit from "../../ui-components/popup-sumbit/Popup-sumbit";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import {CouponSingleSchema} from "./CouponSingleSchema";
-import {LimitedTextArea} from "../../ui-components/limited-text-area/LimitedTextArea";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import adminServices from "../../services/admin";
+import toast from "react-hot-toast";
+import dots from "../../assets/img/dots.png";
+import {
+    LoadingAnimationCircular
+} from "../../ui-components/loading-animation/loading-animaiton-circular/LoadingAnimationCircular";
+import {table} from "../waiter-single/data";
 
-const initialValues = {
-    receiverFullName: "",
-    receiverEmail: "",
-    mobilePhone: "",
-    nominal: "",
-    createdAt: "",
-    validUntil: "",
-    submittedAt: "",
-    congratulations: "",
-    senderFullName: "",
-    submittedInRestaurant: "",
-    submittedBy: "",
-};
 
 export const CouponSingle = () => {
+    const navigate = useNavigate();
+    const {couponId} = useParams();
+    const [actionType, setActionType] = useState(null);
+    const [popupSubmit, setPopupSubmit] = useState(false);
+    const [couponData, setCouponData] = useState({});
+    const [fromData, setFromData] = useState({});
+    const [toData, setToData] = useState({});
 
+    useEffect(() => {
+        if (couponId) {
+            getCouponDataOnMount()
+        }
+    }, [couponId]);
 
-    const [image, setImage] = useState(null);
-    const [fileName, setFileName] = useState("(No file chosen)");
-
-    const handleChangeImage = e => {
-        setFileName(e.target.files[0].name);
-        setImage(URL.createObjectURL(e.target.files[0]));
+    const getCouponDataOnMount = async () => {
+        try {
+            const result = await adminServices.getCouponData(couponId)
+            setCouponData(result.data)
+            console.log(result)
+            await getUserData(result.data);
+        } catch (error) {
+            // navigate('/dashboard')
+            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+        }
     }
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
+    const getUserData = async (data) => {
+        try {
+            const fromResult = await adminServices.getWaiterData(data.fromId);
+            const toResult = await adminServices.getWaiterData(data.toId);
+            setFromData(fromResult.data);
+            setToData(toResult.data);
+            console.log(data);
+            console.log(fromResult.data);
+            console.log('toResult.data');
+            console.log(toResult.data);
+        } catch (error) {
+            toast.error('Opss... Something went wrong');
+        }
+    };
+
+    const toggleModal = (action) => {
+        setActionType(action)
+        setPopupSubmit(!popupSubmit)
     }
 
-    return(
+    const modifiedInitialValues = {
+        toFullName: toData.fullName,
+        toEmail: toData.email,
+        toPhone: toData.phone,
+        fromFullName: fromData.fullName,
+        fromEmail: fromData.email,
+        fromPhone: fromData.phone,
+        fromAddress: fromData.address?.street,
+        value: couponData.value,
+        remainingValue: couponData.remainingValue,
+        description: couponData.description,
+        createdAt: couponData.createdAt,
+        validUntil: couponData.validUntil,
+    };
+
+    return (
         <div className='rightBlock1'>
-            <Formik
-                initialValues={initialValues}
-                onSubmit={(values, actions) => {
-                    setTimeout(() => {
-                        console.log(values)
-                        actions.setSubmitting(false);
-                    }, 1000);
-                }}
-                validationSchema={CouponSingleSchema}
-            >
-                {(props: FormikProps<any>) => (
-                    <Form>
-                        <div className="businessHeader">
-                            <div className="businessHeader1">
-                                #ID Coupon Info
-                            </div>
-                            <div className="flexStyleDiv">
-                            <div className="buttonSample" onClick={toggleModal}>
-                                Submit
-                            </div>
-                            <div className="buttonSample red" onClick={toggleModal}>
-                                Delete
-                            </div>
-                            </div>
-                        </div>
-                        <div className="couponsMain">
 
-                            <div className="businessMainHeader">
-                                <div className="businessSingleBlock">
-                                    <div className="businessSingleBlockImage1">
-                                        {image && <img src={image} alt="" className='uploadImage'/>}
-                                    </div>
-
-                        <div className="buttonInfo">
-                            <div className="buttonHeader" >
-                                Upload photo
-                            </div>
-                            <div className="buttonSample1"  onClick={() => document.getElementById("inputFile").click()}>
-                                Browse
-                            </div>
-                            <div className='noFile'>
-                                {fileName}
-                            </div>
-                            <input
-                                id="inputFile"
-                                type="file"
-                                onChange={handleChangeImage}
-                                style={{ display: 'none' }}
-                            />
-                        </div>
+            <div className="businessHeader">
+                <div className="businessHeader1">
+                    {!couponId ? "Create" : '#' + couponId} Coupon
+                    Information
+                </div>
+                <div className="flexStyleDiv">
+                    <div className="buttonSample" onClick={() => toggleModal(couponId ? "Update" : "Create")}>
+                        {couponId ? "Update" : "Create"}
+                    </div>
+                    <div className="buttonSample red" onClick={() => toggleModal("Delete")} hidden={!couponId}>
+                        Delete
                     </div>
                 </div>
+            </div>
 
+            <div className="couponsMain">
+                <Formik
+                    enableReinitialize={true}
+                    initialValues={modifiedInitialValues}
+                    onSubmit={(values, actions) => {
+                        setTimeout(async () => {
+                            console.log(values)
+                            try {
+                                let result;
+                                console.log(actionType)
+                                if (actionType === 'Create') {
+                                    result = await adminServices.createNewCoupon(values);
+                                } else if (actionType === 'Update') {
+                                    console.log(values)
+                                    const updateModifiedValues = {
+                                        id: couponId,
+                                        senderUserId: couponData.fromId,
+                                        holderUserId: couponData.toId,
+                                        value: values.value,
+                                        remainingValue: values.remainingValue,
+                                        validUntil: values.validUntil,
+                                        description: values.description
+                                    }
+                                    result = await adminServices.updateCouponData(updateModifiedValues);
+                                } else if (actionType === 'Delete') {
+                                    result = await adminServices.deleteCoupon(couponId);
+                                }
+
+                                console.log(result)
+                                toast.success(result.data.message ? result.data.message : 'Sucksess');
+                                // setTimeout(() => {
+                                //     if (result.status === 200 && result.data.restaurantCode) {
+                                //         setPopupSubmit(false)
+                                //         navigate('/dashboard/restaurant-info/' + result.data.restaurantCode)
+                                //     }
+                                // }, 1000);
+                            } catch (error) {
+                                console.log(error.code)
+                                toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+                            }
+
+                            actions.setSubmitting(false);
+                        }, 1000);
+                    }}
+                    validationSchema={CouponSingleSchema}
+                >
+                    {(props: FormikProps<any>) => (
+                        <Form>
+                            <PopupSumbit actionName={actionType} props={props} isOpen={popupSubmit}
+                                         toggleModal={toggleModal}/>
+
+                            <h2>Receiver/Sender Data</h2>
                             <div className="specialBlock">
+
                                 <div className="leftSideBlock">
+
                                     <div className="businessName">
                                         <div className="businessFormHeader">
-                                            To
+                                            Receiver Full Name
                                         </div>
                                         <div className="businessInput">
-                                            <div className="businessInputWrapper">
-                                                <Field className="businessInputValue" type="text"
-                                                       name="receiverFullName"
-                                                       placeholder="Input receiver's full name"/>
+                                            <div className="businessInput">
+                                                <Field className="businessInputValue" type="text" name="toFullName"
+                                                       disabled
+                                                       placeholder={couponData && !couponId ? "Receiver Full Name..." : "Loading..."}/>
                                                 <div className="error">
-                                                    <ErrorMessage name="receiverFullName"/>
+                                                    <ErrorMessage name="toFullName"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div className="businessName">
                                         <div className="businessFormHeader">
                                             Receiver E-mail
@@ -114,64 +172,111 @@ export const CouponSingle = () => {
                                         <div className="businessInput">
                                             <div className="businessInputWrapper">
                                                 <Field className="businessInputValue" type="text"
-                                                       name="receiverEmail"
-                                                       placeholder="Input receiver's email"/>
+                                                       name="toEmail" disabled
+                                                       placeholder={couponData && !couponId ? "Input receiver's email" : "Loading..."}/>
                                                 <div className="error">
-                                                    <ErrorMessage name="receiverEmail"/>
+                                                    <ErrorMessage name="toEmail"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="rightSideBlock">
+
                                     <div className="businessName">
                                         <div className="businessFormHeader">
-                                            Congratulations (max 100 words)
+                                            Receiver Phone
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInput">
+                                                <Field className="businessInputValue" type="text" name="toPhone"
+                                                       disabled
+                                                       placeholder={couponData && !couponId ? "Receiver Phone..." : "Loading..."}/>
+                                                <div className="error">
+                                                    <ErrorMessage name="toPhone"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div className="rightSideBlock">
+
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                            Sender Full Name
                                         </div>
                                         <div className="businessInput">
                                             <div className="businessInputWrapper">
-                                                <LimitedTextArea limit={100} value=''/>
+                                                <Field className="businessInputValue" type="text"
+                                                       name="fromFullName" disabled
+                                                       placeholder={couponData && !couponId ? "Input sender's full name" : "Loading..."}/>
                                                 <div className="error">
-                                                    <ErrorMessage name="congratulations"/>
+                                                    <ErrorMessage name="fromFullName"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="mailPhone">
-                                <div className="leftContent">
-                                    <div className="businessFormHeader">
-                                        Receivers phone
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue" type="text"
-                                                   name="mobilePhone"
-                                                   placeholder="Input receiver's email"/>
-                                            <div className="error">
-                                                <ErrorMessage name="mobilePhone"/>
+
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                            Sender Email
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="fromEmail" disabled
+                                                       placeholder={couponData && !couponId ? "Input sender's email" : "Loading..."}/>
+                                                <div className="error">
+                                                    <ErrorMessage name="fromEmail"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="rightContent">
-                                    <div className="businessFormHeader">
-                                        From who
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue" type="text"
-                                                   name="senderFullName"
-                                                   placeholder="Input sender's full name"/>
-                                            <div className="error">
-                                                <ErrorMessage name="senderFullName"/>
+
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                            Sender Phone
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="fromPhone" disabled
+                                                       placeholder={couponData && !couponId ? "Input sender's phone" : "Loading..."}/>
+                                                <div className="error">
+                                                    <ErrorMessage name="fromPhone"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div className="rightContent">
+                                        <div className="businessFormHeader">
+                                            Sender Address
+                                        </div>
+                                        <div className="businessInput">
+                                            <div className="businessInputWrapper">
+                                                <Field className="businessInputValue" type="text"
+                                                       name="fromAddress" disabled
+                                                       placeholder={couponData && !couponId ? "Input sender's address" : "Loading..."}/>
+                                                <div className="error">
+                                                    <ErrorMessage name="fromAddress"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
+
                             </div>
+
+                            <div className="divider"/>
+
+
+                            <h2 style={{marginBottom: 40}}>Coupon Data</h2>
+
+
                             <div className="mailPhone">
+
                                 <div className="leftContent">
                                     <div className="businessFormHeader">
                                         Nominal
@@ -179,31 +284,37 @@ export const CouponSingle = () => {
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
                                             <Field className="businessInputValue" type="text"
-                                                   name="nominal"
-                                                   placeholder="Input nominal"/>
+                                                   name="value"
+                                                   placeholder={couponData && !couponId ? "Input nominal" : "Loading..."}/>
                                             <div className="error">
-                                                <ErrorMessage name="nominal"/>
+                                                <ErrorMessage name="value"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="rightContent">
+
+
+                                <div className="leftContent">
                                     <div className="businessFormHeader">
-                                        Submitted in resto
+                                        Remaining Nominal
                                     </div>
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
                                             <Field className="businessInputValue" type="text"
-                                                   name="submittedInRestaurant"
-                                                   placeholder="Input restaurant name"/>
+                                                   name="remainingValue"
+                                                   placeholder={couponData && !couponId ? "Remaining Nominal" : "Loading..."}/>
                                             <div className="error">
-                                                <ErrorMessage name="submittedInRestaurant"/>
+                                                <ErrorMessage name="remainingValue"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+
                             <div className="mailPhone">
+
+
                                 <div className="leftContent">
                                     <div className="businessFormHeader">
                                         Created at
@@ -211,32 +322,16 @@ export const CouponSingle = () => {
                                     <div className="businessInput">
                                         <div className="businessInputWrapper">
                                             <Field className="businessInputValue" type="text"
-                                                   name="createdAt"
-                                                   placeholder="example 12-12-12"/>
+                                                   name="createdAt" disabled
+                                                   placeholder={couponData && !couponId ? "example 12-12-12" : "Loading..."}/>
                                             <div className="error">
                                                 <ErrorMessage name="createdAt"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="rightContent">
-                                    <div className="businessFormHeader">
-                                        Submitted by
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue" type="text"
-                                                   name="submittedBy"
-                                                   placeholder="example 12-12-12"/>
-                                            <div className="error">
-                                                <ErrorMessage name="submittedBy"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mailPhone">
-                                <div className="halfContent">
+
+                                <div className="leftContent">
                                     <div className="businessFormHeader">
                                         Valid until
                                     </div>
@@ -244,7 +339,7 @@ export const CouponSingle = () => {
                                         <div className="businessInputWrapper">
                                             <Field className="businessInputValue" type="text"
                                                    name="validUntil"
-                                                   placeholder="example 12-12-12"/>
+                                                   placeholder={couponData && !couponId ? "example 12-12-12" : "Loading..."}/>
                                             <div className="error">
                                                 <ErrorMessage name="validUntil"/>
                                             </div>
@@ -252,33 +347,93 @@ export const CouponSingle = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mailPhone">
-                                <div className="halfContent">
-                                    <div className="businessFormHeader">
-                                        Submitted at
-                                    </div>
-                                    <div className="businessInput">
-                                        <div className="businessInputWrapper">
-                                            <Field className="businessInputValue" type="text"
-                                                   name="submittedAt"
-                                                   placeholder="example 12-12-12"/>
-                                            <div className="error">
-                                                <ErrorMessage name="submittedAt"/>
-                                            </div>
+
+                            <div>
+                                <div className="businessFormHeader">
+                                    Description (max 100 words)
+                                </div>
+                                <div className="businessInput">
+                                    <div className="textAreaWrapper">
+                                        <Field
+                                            as="textarea"
+                                            type="text"
+                                            className='businessInputValue fullHeight'
+                                            id="description"
+                                            name="description"
+                                            placeholder={couponData && !couponId ? "Description..." : "Loading..."}
+                                        />
+                                        <div
+                                            className="charactersCount">{props?.values?.description?.length ?? 0} /
+                                            100
                                         </div>
+                                    </div>
+                                    <div className="error">
+                                        <ErrorMessage name="description"/>
                                     </div>
                                 </div>
                             </div>
 
+                        </Form>
+                    )}
+                </Formik>
+            </div>
+
+            <div className="waitersMain" style={{display: "block"}}>
+
+                <div className="couponListHeader">
+                    <div className="couponListHeaderName">
+                        <h2>
+                            Transactions List
+                        </h2>
+                    </div>
+                    <div className="features">
+                        <img src={dots} alt="features"/>
+                    </div>
+                </div>
+                <div className="overflownContent">
+                    {!couponData ?
+                        <div className="loadingWrapper">
+                            <LoadingAnimationCircular/>
                         </div>
-                        <PopupSumbit errors={props.errors} isOpen={isModalOpen} toggleModal={toggleModal}/>
-                    </Form>
-                )}
-            </Formik>
+                        :
+                        couponData?.transactions?.length === 0 ? <h1 className="noDataList">No data...</h1> :
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col">Place</th>
+                                    <th scope="col">Waiter ID</th>
+                                    <th scope="col">Waiter Email</th>
+                                    <th scope="col">Created At</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {couponData?.transactions?.map((item, i) => (
+                                    <tr>
+                                        <th scope="row">{item.id}</th>
+                                        <td>{item.value}</td>
+                                        <td>
+                                            <Link to={`/dashboard/restaurant-info/${item.restaurantCode}`}>
+                                                {item.restaurantName}
+                                            </Link>
+                                        </td>
+                                        <td>
+                                            <Link to={`/dashboard/waiter-info/${item.waiterId}`}>
+                                                {item.waiterId}
+                                            </Link>
+                                        </td>
+                                        <td>{item.waiterEmail}</td>
+                                        <td>{item.createdAt}</td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                    }
+                </div>
+            </div>
         </div>
-
     )
-
 }
 
 export default CouponSingle

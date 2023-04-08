@@ -1,15 +1,11 @@
 import React from 'react';
 
-export const LimitedTextAreaLanding = ({rows, cols, value, limit, onTextChange}) => {
+export const LimitedTextAreaLanding = ({rows, cols, value, limit}) => {
     const [content, setContent] = React.useState(value.slice(0, limit));
 
-    const setFormattedContent = React.useCallback(
-        (text) => {
-            setContent(text.slice(0, limit));
-            onTextChange(text.slice(0, limit));
-        },
-        [limit, setContent, onTextChange]
-    );
+    const setFormattedContent = React.useCallback(text => {
+        setContent(text.slice(0, limit));
+    }, [limit, setContent]);
 
     return (
         <>

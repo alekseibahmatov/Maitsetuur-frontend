@@ -1,8 +1,10 @@
 import React from "react";
 import './Fail.css'
 import sausage from "../../assets/img/sosiska.png";
+import {useNavigate} from "react-router-dom";
 
 export const Fail = () => {
+    const navigate = useNavigate();
 
     return (
 
@@ -20,7 +22,7 @@ export const Fail = () => {
                     Certificate is not valid anymore
                 </div>
 
-                <div className="confirmQrButton">
+                <div onClick={() => navigate(-1)} className="confirmQrButton">
                     Go back
                 </div>
                 <div className="scanDescription">

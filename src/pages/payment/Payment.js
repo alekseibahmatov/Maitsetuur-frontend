@@ -1,74 +1,44 @@
 import React, {useState, useEffect} from "react";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
-import {PersonalInfoSchema} from "../add-personal-info/PersonalInfoSchema";
-import './Payment.css'
 import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import authService from "../../services/auth";
 import toast from "react-hot-toast";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import cross from '../../assets/img/Less Than.png'
-
+import {paymentValidationSchema} from "./PaymentValidationSchema";
 
 
 export const Payment = () => {
     const navigate = useNavigate();
-    const {activationCode} = useParams();
     const [step, setStep] = useState(0);
-    const checkActivationCodeOnMount = async () => {
-        try {
-            await authService.checkActivationCode(activationCode);
-        } catch (error) {
-            console.log(error.code)
-            navigate('/')
-            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
-        }
-    }
+    const [localStorageFormData, setLocalStorageFormData] = useState({});
+
+    const getPaymentInitialValues = (localStorageData) => {
+        return {
+            fromFullName: localStorageData?.from || '',
+            fromPhone: '',
+            fromEmail: '',
+            country: '',
+            city: '',
+            state: '',
+            street: '',
+            apartmentNumber: '',
+            postcode: '',
+            toFullName: localStorageData?.to || '',
+            toPhone: localStorageData?.receiverPhone || '',
+            toEmail: localStorageData?.receiverMail || '',
+            congratsText: ''
+        };
+    };
 
     useEffect(() => {
-        console.log(activationCode)
-        checkActivationCodeOnMount();
-    });
-
-    const [formData, setFormData] = useState({
-        from: "",
-        to: "",
-        recieverMail: "",
-        recieverPhone: '',
-        congratsMessage: '',
-    });
-
-    useEffect(() => {
-        const savedFormData = JSON.parse(localStorage.getItem("formData"));
-        if (savedFormData) {
-            setFormData(savedFormData);
+        const localStorageData = JSON.parse(localStorage.getItem("certificateFormData"));
+        if (localStorageData) {
+            setLocalStorageFormData(localStorageData);
         }
     }, []);
 
-    const initialValues = {
-        fullName: "",
-        mobilePhone: "",
-        idCode: "",
-        country: "",
-        city: "",
-        state: "",
-        street: "",
-        apartmentNumber: "",
-        postcode: "",
-        password: "",
-        repeatPassword: "",
-    };
-
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
-    };
-
-    const getBack = (event) => {
-        event.preventDefault();
-        navigate('/');
-    }
+    const paymentInitialValues = getPaymentInitialValues(localStorageFormData)
 
     return (
         <>
@@ -78,7 +48,7 @@ export const Payment = () => {
                 </div>
                 <div className="loginFormForm">
                     <div className="loginForm">
-                        <img src={cross} alt="goBack" className='goBackPayment' onClick={getBack}/>
+                        <img src={cross} alt="goBack" className='goBackPayment' onClick={() => navigate('/')}/>
                         <div className="authNumbers">
                             <div className="singleNumber activated">
                                 1
@@ -94,30 +64,34 @@ export const Payment = () => {
                         </div>
                         <div className="authentication">
                             <Formik
-                                initialValues={initialValues}
+                                enableReinitialize={true}
+                                initialValues={paymentInitialValues}
                                 onSubmit={(values, actions) => {
                                     const restructuredValues = {
-                                        activationCode: activationCode,
-                                        fullName: values.fullName,
-                                        phone: values.mobilePhone,
-                                        personalCode: values.idCode,
-                                        address: {
+                                        value: 0,
+                                        fromEmail: values.fromEmail,
+                                        toFullName: values.toFullName,
+                                        fromFullName: values.fromFullName,
+                                        toEmail: values.toEmail,
+                                        toPhone: values.toPhone,
+                                        fromPhone: values.fromPhone,
+                                        congratsText: values.congratsMessage,
+                                        billingAddress: {
                                             street: values.street,
                                             apartmentNumber: values.apartmentNumber,
                                             city: values.city,
                                             state: values.state,
                                             zipCode: values.postcode,
-                                            country: values.country,
+                                            country: values.country
                                         },
-                                        password: values.password,
-                                    };
+                                        // todo: add payment methods and received extra data
+                                        preferredProvider: ''
+                                    }
 
                                     setTimeout(async () => {
                                         try {
-                                            console.log(activationCode)
                                             const result = await authService.addPersonalData(restructuredValues);
-                                            console.log(result)
-                                            toast.success(result.data.message, {
+                                            toast.success(result.data?.message, {
                                                 duration: 4000,
                                             });
                                             setTimeout(() => {
@@ -132,7 +106,7 @@ export const Payment = () => {
                                         actions.setSubmitting(false)
                                     }, 1000);
                                 }}
-                                validationSchema={PersonalInfoSchema}
+                                validationSchema={paymentValidationSchema}
                             >
                                 {(props: FormikProps<any>) => (
                                     <Form>
@@ -143,10 +117,10 @@ export const Payment = () => {
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="fullName"
+                                                           name="fromFullName"
                                                            placeholder="Input your full name"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="fullName"/>
+                                                        <ErrorMessage name="fromFullName"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
@@ -154,10 +128,10 @@ export const Payment = () => {
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="mobilePhone"
+                                                           name="fromPhone"
                                                            placeholder="Input your mobile phone"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="mobilePhone"/>
+                                                        <ErrorMessage name="fromPhone"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
@@ -165,10 +139,10 @@ export const Payment = () => {
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="email"
+                                                           name="fromEmail"
                                                            placeholder="Input your email"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="email"/>
+                                                        <ErrorMessage name="fromEmail"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
@@ -245,16 +219,16 @@ export const Payment = () => {
                                             </>
                                         )}
                                         {step === 1 && (
-                                            <React.Fragment>
+                                            <>
                                                 <div className="inputHeader">
                                                     Recipient's Full Name
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="fullName"
+                                                           name="toFullName"
                                                            placeholder="Input your full name"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="fullName"/>
+                                                        <ErrorMessage name="toFullName"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
@@ -262,10 +236,10 @@ export const Payment = () => {
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="mobilePhone"
+                                                           name="toPhone"
                                                            placeholder="Input your mobile phone"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="mobilePhone"/>
+                                                        <ErrorMessage name="toPhone"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
@@ -273,16 +247,14 @@ export const Payment = () => {
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="email"
-                                                           value={formData.recieverMail}
-                                                           onChange={handleChange}
+                                                           name="toEmail"
                                                            placeholder="Input your email"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="email"/>
+                                                        <ErrorMessage name="toEmail"/>
                                                     </div>
                                                 </div>
                                                 <div className="alignFlex">
-                                                    <button type="submit"  className="loginButton">
+                                                    <button type="submit" className="loginButton">
                                                         Submit
                                                     </button>
                                                     <button type="button" onClick={() => setStep(0)}
@@ -290,7 +262,7 @@ export const Payment = () => {
                                                         Go back
                                                     </button>
                                                 </div>
-                                            </React.Fragment>
+                                            </>
                                         )}
                                     </Form>
                                 )}

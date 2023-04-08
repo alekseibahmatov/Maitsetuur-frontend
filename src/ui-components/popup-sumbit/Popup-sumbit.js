@@ -32,7 +32,7 @@ function PopupSumbit({actionName, props, isOpen, toggleModal}) {
                                     {Object.keys(props.errors).length > 3 ?
                                         'Something went wrong, check the form again'
                                         :
-                                        props.errors
+                                        props.errors.toString()
                                     }
                                 </div>
                             )}

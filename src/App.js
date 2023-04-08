@@ -58,9 +58,9 @@ export const App = () => {
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
                 <Route element={<AuthGuard allowedRoles={[ROLES.waiter, ROLES.customer, ROLES.admin]}/>}>
                     <Route path='/qrcode' element={<Qrcode/>}/>
-                    <Route path='/qrcode-success' element={<Qrcodesuccess/>}/>
-                    <Route path='/success' element={<Success/>}/>
-                    <Route path='/fail' element={<Fail/>}/>
+                    {/*<Route path='/qrcode-success' element={<Qrcodesuccess/>}/>*/}
+                    <Route path='/qrcode-success' element={<Success/>}/>
+                    <Route path='/qrcode-fail' element={<Fail/>}/>
                 </Route>
 
                 {/* PUBLIC ROUTES ERROR HANDLING */}
@@ -77,7 +77,6 @@ export const App = () => {
                             <Route path="types-of-restaurants" element={<TypesOfRestaurants/>}/>
                             <Route path='waiter-info/create' element={<WaiterSingle/>}/>
                             <Route path='waiter-info/:waiterId' element={<WaiterSingle/>}/>
-                            <Route path='coupon-info' element={<CouponSingle/>}/>
                             <Route path='create-waiter' element={<CreateWaiter/>}/>
                         </Route>
 
@@ -88,6 +87,8 @@ export const App = () => {
                             <Route path="list-of-coupons" element={<ListOfCoupons/>}/>
                             <Route path="list-of-restaurants" element={<ListOfRestaurants/>}/>
                             <Route path="list-of-waiters" element={<ListOfWaiters/>}/>
+                            <Route path='coupon/create' element={<CouponSingle/>}/>
+                            <Route path='coupon-info/:couponId' element={<CouponSingle/>}/>
                         </Route>
 
                         {/* ERROR HANDLING */}
