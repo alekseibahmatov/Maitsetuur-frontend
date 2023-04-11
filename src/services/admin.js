@@ -36,7 +36,6 @@ const createNewWaiter = (data) => {
     });
 }
 
-
 const updateWaiterData = (data) => {
     return http.put('/admin/restaurant/waiter', data, {
         transformResponse: [(result) => {
@@ -57,6 +56,35 @@ const downloadFile = (fileId) => {
     return http.get(`/file/download/${fileId}`);
 }
 
+const getAllCoupons = () => {
+    return http.get('/admin/certificate');
+}
+
+const updateCouponData = (data) => {
+    return http.put('/admin/certificate', data, {
+        transformResponse: [(result) => {
+            return JSON.parse(result);
+        }]
+    });
+}
+
+const createNewCoupon = (data) => {
+    return http.post('/admin/certificate', data, {
+        transformResponse: [(result) => {
+            return JSON.parse(result);
+        }]
+    });
+}
+
+const getCouponData = (data) => {
+    return http.get('/admin/certificate/' + data);
+}
+
+const deleteCoupon = (data) => {
+    return http.delete('/admin/certificate/' + data);
+}
+
+
 const methods = {
     createNewWaiter,
     createNewRestaurant,
@@ -67,7 +95,12 @@ const methods = {
     updateWaiterData,
     getAllWaiters,
     getWaiterData,
-    downloadFile
+    downloadFile,
+    getAllCoupons,
+    updateCouponData,
+    createNewCoupon,
+    getCouponData,
+    deleteCoupon
 }
 
 export default methods;
