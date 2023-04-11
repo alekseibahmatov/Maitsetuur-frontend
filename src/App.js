@@ -28,6 +28,7 @@ import ListOfCoupons from "./pages/admin/list-of-coupons/ListOfCoupons";
 import ListOfRestaurants from "./pages/admin/list-of-restaurants/ListOfRestaurants";
 import {ListOfWaiters} from "./pages/restaurant/list-of-waiters/ListOfWaiters";
 import Payment from "./pages/payment/Payment";
+import Report from "./pages/report/Report";
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
@@ -88,6 +89,7 @@ export const App = () => {
                             <Route path="list-of-coupons" element={<ListOfCoupons/>}/>
                             <Route path="list-of-restaurants" element={<ListOfRestaurants/>}/>
                             <Route path="list-of-waiters" element={<ListOfWaiters/>}/>
+                            <Route path='report' element={<Report/>}/>
                         </Route>
 
                         {/* ERROR HANDLING */}

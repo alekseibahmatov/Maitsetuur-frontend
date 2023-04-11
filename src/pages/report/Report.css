@@ -1,0 +1,108 @@
+.reportMain{
+    padding: 40px;
+}
+.reportHeader{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #D5AFFF;
+}
+.leftReportHeader{
+    font-size: 24px;
+}
+.rightReportHeader{
+    display: flex;
+    gap: 20px;
+    align-self: center;
+}
+.reportDownload{
+    color: #ffffff;
+    background: #5541D7;
+    font-weight: bold;
+    padding: 8px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.reportContactUs{
+    color: #5541D7;
+    background: #E6E6FA;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.reportMainContentHeaderSection{
+    padding: 40px 0;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.reportMainContentHeader{
+    width: 100%;
+    align-self: center;
+}
+.reportMainContentHeaderUpperPart{
+    font-size: 24px;
+}
+.reportMainContentHeaderLowerPart{
+    font-size: 20px;
+    color: #8B2CF5;
+}
+.reportMainContentSingleSection{
+    background-color: #ffffff;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+}
+.reportMainContentSingleSectionContent{
+    display: flex;
+    gap: 20px;
+}
+.singleSectionUpperText{
+    font-size: 22px;
+}
+.singleSectionText{
+    margin-top: 5px;
+}
+.pink{
+    color: #8B2CF5;
+}
+.green{
+    color: #48742C;
+}
+.ruby{
+    color: #EB3223;
+}
+.singleSectionLowerText{
+    font-size: 16px;
+}
+.reportMainContentDropDownSection{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+.reportMainContentDropDowns{
+    display: flex;
+    gap: 20px;
+}
+.reportMainContentResetButton{
+    color: #DA2063;
+    background: #FFB7D1;
+    padding: 12px 25px;
+    border-radius: 10px;
+    align-self: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.reportMainContentList{
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+}
+.searchDots{
+    align-self: center;
+    padding-right: 32px;
+}

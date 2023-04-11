@@ -185,12 +185,13 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 thead th:nth-child(1) {
     min-width: 60px;
     text-align: center;
-    background-color: #ffffff;
 }
 
 tbody td:nth-child(1){
@@ -224,8 +225,8 @@ tbody tr:hover {
 
 thead {
     text-align: left;
-    border-bottom: 2px solid rgba(235, 235, 235, .8);
     background-color: #F7F7FC;
+    border-radius: 10px;
 }
 
 .waitersHeader {
@@ -241,8 +242,10 @@ thead {
 }
 
 .searchTerm {
-    width: 100%;
-    color: black;
+    width: 97%;
+    font-weight: normal;
+    border-radius: 10px;
+    color: rgba(0,0,0,0.1);
     background-color: #F7F7FC;
     border: none;
     padding: 15px 50px;
@@ -271,7 +274,6 @@ thead {
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
-    border-bottom: 2px solid rgba(235, 235, 235, .8);
 }
 .dots {
     align-self: center;
