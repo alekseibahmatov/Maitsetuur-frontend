@@ -182,48 +182,48 @@
     font-size: 16px;
 }
 
-table {
+.table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
 }
 
-thead th:nth-child(1) {
+.thead th:nth-child(1) {
     min-width: 60px;
     text-align: center;
 }
 
-tbody td:nth-child(1){
+.tbody td:nth-child(1){
     text-align: center;
 }
 
-th, td {
+.th, td {
     padding: 20px 15px;
 }
 
 
-tbody td {
+.tbody td {
     text-align: left;
     border-bottom: 2px solid rgba(235, 235, 235, .8);
 }
 
-tbody th {
+.tbody th {
     border-bottom: 2px solid rgba(235, 235, 235, .8);
 
 }
 
-tbody tr {
+.tbody tr {
     transition: 0.3s;
     cursor: pointer;
 }
 
-tbody tr:hover {
+.tbody tr:hover {
     background-color: rgba(235, 235, 235, .8);
     transition: 0.3s;
 }
 
-thead {
+.thead {
     text-align: left;
     background-color: #F7F7FC;
     border-radius: 10px;

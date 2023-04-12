@@ -104,5 +104,38 @@
 }
 .searchDots{
     align-self: center;
-    padding-right: 32px;
+}
+
+@media (max-width: 940px){
+    .reportMainContentHeader{
+        display: none;
+    }
+}
+@media (max-width: 840px){
+    .reportMainContentDropDownSection{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .reportMainContentDropDowns{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .reportMainContentResetButton{
+        margin-right: auto;
+    }
+}
+@media (max-width: 730px){
+    .reportMainContentHeaderSection{
+        flex-direction: column;
+    }
+}
+@media (max-width: 640px){
+    .reportHeader{
+        flex-direction: column;
+        gap: 20px;
+        margin-right: auto;
+    }
+    .rightReportHeader{
+        margin-right: auto;
+    }
 }

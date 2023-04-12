@@ -4,6 +4,7 @@ import classNames from "classnames";
 
 function Table({ headers, items, columnSizes }) {
     return (
+        <div className='overflownContent'>
         <table className="table">
             <thead className="thead">
             <tr className="tr">
@@ -37,6 +38,7 @@ function Table({ headers, items, columnSizes }) {
             ))}
             </tbody>
         </table>
+        </div>
     );
 }
 

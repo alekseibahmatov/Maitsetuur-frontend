@@ -41,6 +41,11 @@ export default function Report() {
             borderRadius: '10px',
             fontWeight: 'bold',
             cursor: 'pointer',
+            "@media only screen and (max-width: 840px)": {
+                ...defaultStyles["@media only screen and (max-width: 600px)"],
+                maxWidth: '400px',
+                width: '100%',
+            },
             "@media only screen and (max-width: 600px)": {
                 ...defaultStyles["@media only screen and (max-width: 600px)"],
                 padding: "0px 0px",
