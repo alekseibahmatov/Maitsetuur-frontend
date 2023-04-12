@@ -122,7 +122,7 @@ export const MainStats = () => {
                 </div>
             </div>
             <div className="overflownContent">
-                <Table headers={headers} items={table} columnSizes={columnSizes}></Table>
+                <Table headers={headers} items={table} columnSizes={columnSizes}/>
             </div>
         </div>
     </div>;

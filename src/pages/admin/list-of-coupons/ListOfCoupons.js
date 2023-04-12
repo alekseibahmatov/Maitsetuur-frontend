@@ -2,13 +2,14 @@ import React, {useState, useEffect} from "react";
 import './data'
 import PopupAdmin from "../../../ui-components/popup-admin/Popup-admin";
 import dots from "../../../assets/img/dots.png";
-import {table} from '../main-stats/data'
+import {columnSizes, headers, table} from './data'
 import {Link, useNavigate} from "react-router-dom";
 import adminServices from "../../../services/admin";
 import toast from "react-hot-toast";
 import {
     LoadingAnimationCircular
 } from "../../../ui-components/loading-animation/loading-animaiton-circular/LoadingAnimationCircular";
+import Table from "../../../ui-components/table/Table";
 
 export const ListOfCoupons = () => {
     const navigate = useNavigate()
@@ -66,32 +67,36 @@ export const ListOfCoupons = () => {
                         : filteredData?.length === 0 ?
                             <h1 className="noDataList">No data...</h1>
                             :
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Coupon Balance</th>
-                                    <th scope="col">Remaining Balance</th>
-                                    <th scope="col">Holder Name</th>
-                                    <th scope="col">Sender Name</th>
-                                    <th scope="col">Valid Until</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {filteredData.map((item, i) => (
-                                    <tr onClick={() => navigate(`/dashboard/coupon-info/${item.id}`)} key={i}>
-                                        <th scope="row">
-                                            {item.id}
-                                        </th>
-                                        <td>{item.value}</td>
-                                        <td>{item.remainingValue}</td>
-                                        <td>{item.holder}</td>
-                                        <td>{item.sender}</td>
-                                        <td>{item.validUntil}</td>
+                            <>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Coupon Balance</th>
+                                        <th scope="col">Remaining Balance</th>
+                                        <th scope="col">Holder Name</th>
+                                        <th scope="col">Sender Name</th>
+                                        <th scope="col">Valid Until</th>
                                     </tr>
-                                ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    {filteredData.map((item, i) => (
+                                        <tr key={i}>
+                                            <th scope="row">
+                                                <Link to={`/dashboard/coupon-info/${item.id}`}>
+                                                    {item.id}
+                                                </Link>
+                                            </th>
+                                            <td>{item.value}</td>
+                                            <td>{item.remainingValue}</td>
+                                            <td>{item.holder}</td>
+                                            <td>{item.sender}</td>
+                                            <td>{item.validUntil}</td>
+                                        </tr>
+                                    ))}
+                                    </tbody>
+                                </table>
+                            </>
                     }
                 </div>
             </div>

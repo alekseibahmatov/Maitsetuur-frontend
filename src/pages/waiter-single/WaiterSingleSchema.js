@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-const europeanMobilePhoneRegex = /^((\+|00)\d{2,3}[\s.-]?)?(\d{3,4}[\s.-]?){2,3}(\d{2,3})$/;
+const europeanMobilePhoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 const estonianIdCodeRegex = /^[1-6]{1}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])[0-9]{4}$/;
 
 export const WaiterSingleSchema = Yup.object().shape({

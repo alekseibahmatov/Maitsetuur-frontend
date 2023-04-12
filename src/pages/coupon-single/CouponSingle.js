@@ -80,8 +80,7 @@ export const CouponSingle = () => {
 
             <div className="businessHeader">
                 <div className="businessHeader1">
-                    {!couponId ? "Create" : '#' + couponId} Coupon
-                    Information
+                    {!couponId ? "Create" : '#' + couponId} Coupon Information
                 </div>
                 <div className="flexStyleDiv">
                     <div className="buttonSample" onClick={() => toggleModal(couponId ? "Update" : "Create")}>
@@ -156,8 +155,8 @@ export const CouponSingle = () => {
                                         <div className="businessInput">
                                             <div className="businessInput">
                                                 <Field className="businessInputValue" type="text" name="toFullName"
-                                                       disabled
-                                                       placeholder={couponData && !couponId ? "Receiver Full Name..." : "Loading..."}/>
+                                                       disabled={!Object.keys(couponData).length || Boolean(couponId)}
+                                                       placeholder={couponData !== {} && !couponId ? "Receiver Full Name..." : "Loading..."}/>
                                                 <div className="error">
                                                     <ErrorMessage name="toFullName"/>
                                                 </div>

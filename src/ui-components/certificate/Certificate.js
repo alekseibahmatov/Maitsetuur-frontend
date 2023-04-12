@@ -3,15 +3,17 @@ import PopupCertificate from "../popup-certificate/Popup-certificate";
 import ReactSwipe from "react-swipe";
 import {useNavigate} from "react-router-dom";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
-import * as Yup from "yup";
 import {initialValuesIndividual, validationSchemaIndividual} from "./CertificateFormik";
+import {LoadingAnimationDots} from "../loading-animation/loading-animation-dots/LoadingAnimationDots";
 
 
 export const Certificate = () => {
     const navigate = useNavigate();
     const [selectedNominal, setSelectedNominal] = useState(null);
     const [isActive, setIsActive] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     const nominals = [50, 100, 200, 500];
 
@@ -113,6 +115,7 @@ export const Certificate = () => {
                                                         <ErrorMessage name="nominal"/>
                                                     </div>
                                                 </div>
+
                                                 <div className="form">
 
                                                     <div className="from_who">
@@ -176,8 +179,14 @@ export const Certificate = () => {
                                                     </div>
                                                 </div>
 
-
-                                                <button className={props.isValid ? "pay filled" : "pay" } type="submit">Submit</button>
+                                                <button onClick={() => {
+                                                    setIsLoading(true)
+                                                    setTimeout(() => {
+                                                        setIsLoading(false)
+                                                    }, 1500)
+                                                }} className={"pay filled"} type="submit">
+                                                    {isLoading ? <LoadingAnimationDots/> : 'Submit'}
+                                                </button>
 
                                             </Form>
                                         )}
@@ -197,8 +206,8 @@ export const Certificate = () => {
                                                 <div className="nominal_value">
                                                     Nominal
                                                 </div>
-                                                <div className="nominalValue" id='1'>
-                                                    {}
+                                                <div className="date">
+                                                    Valid until
                                                 </div>
 
                                             </div>
@@ -206,9 +215,10 @@ export const Certificate = () => {
                                                 <div className="validDate">
                                                     {date}{month}{year}
                                                 </div>
-                                                <div className="date">
-                                                    Valid until
+                                                <div className="nominalValue" id='1'>
+                                                    {selectedNominal + '€'}
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -232,8 +242,8 @@ export const Certificate = () => {
                                         initialValues={initialValuesIndividual}
                                         onSubmit={(values, actions) => {
                                             console.log(values)
-                                            // localStorage.setItem("certificateFormData", JSON.stringify(formData));
-                                            // navigate("/payment")
+                                            localStorage.setItem("certificateFormData", JSON.stringify(values));
+                                            navigate("/payment")
                                         }}
                                         validationSchema={validationSchemaIndividual}
                                     >
@@ -304,7 +314,16 @@ export const Certificate = () => {
                                                 </div>
 
 
-                                                <button className={props.isValid ? "pay filled" : "pay" } type="submit">Submit</button>
+
+                                                <button onClick={() => {
+                                                    setIsLoading(true)
+                                                    setTimeout(() => {
+                                                        setIsLoading(false)
+                                                    }, 1500)
+                                                }} className={"pay filled"} type="submit">
+                                                    {isLoading ? <LoadingAnimationDots/> : 'Submit'}
+                                                    {props.isValid ? <h1>Check form fields</h1> : ''}
+                                                </button>
 
                                             </Form>
                                         )}

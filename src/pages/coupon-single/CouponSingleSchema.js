@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-const europeanMobilePhoneRegex = /^((\+|00)\d{2,3}[\s.-]?)?(\d{3,4}[\s.-]?){2,3}(\d{2,3})$/;
+const europeanMobilePhoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
 export const CouponSingleSchema = Yup.object().shape({
     toFullName: Yup.string()
