@@ -12,7 +12,7 @@ export const Step2 = () =>{
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Add Business Information
+                    Add Business Address
                 </div>
                 <div className="loginFormForm">
                     <div className="loginFormBusiness">

@@ -12,7 +12,7 @@ export const Step3MoreThan1Coupon = () =>{
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Add Business Information
+                    Add Coupon Configuration
                 </div>
                 <div className="loginFormForm">
                     <div className="loginFormBusiness">
@@ -57,7 +57,7 @@ export const Step3MoreThan1Coupon = () =>{
                             <div className="checkBoxes">
                                 <div className="singleCheckBox">
                                 <label className="form-control">
-                                    <input type="checkbox" name="checkbox"/>
+                                    <input type="checkbox" name="checkbox" className='input'/>
                                 </label>
                                 <div className='checkBoxText'>
                                     The coupons wont be personal?
@@ -65,7 +65,7 @@ export const Step3MoreThan1Coupon = () =>{
                                 </div>
                                 <div className="singleCheckBox">
                                     <label className="form-control">
-                                        <input type="checkbox" name="checkbox"/>
+                                        <input type="checkbox" name="checkbox" className='input'/>
                                     </label>
                                     <div className='checkBoxText'>
                                         Will coupons have the same nominal value?
@@ -73,7 +73,7 @@ export const Step3MoreThan1Coupon = () =>{
                                 </div>
                                 <div className="singleCheckBox">
                                     <label className="form-control">
-                                        <input type="checkbox" name="checkbox"/>
+                                        <input type="checkbox" name="checkbox" className='input'/>
                                     </label>
                                     <div className='checkBoxText'>
                                         Will coupons have the same greeting text?

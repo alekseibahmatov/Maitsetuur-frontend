@@ -12,7 +12,7 @@ export const Step3_1Coupon = () =>{
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Add Business Information
+                    Add Coupon Configuration
                 </div>
                 <div className="loginFormForm">
                     <div className="loginFormBusiness">

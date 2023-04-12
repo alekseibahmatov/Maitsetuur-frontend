@@ -17,7 +17,7 @@ export const Step42 = () =>{
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Add Business Information
+                    Add Coupon Data
                 </div>
                 <div className="loginFormForm">
                     <div className="loginFormBusiness">

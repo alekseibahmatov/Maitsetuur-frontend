@@ -20,7 +20,7 @@ export const Step5 = () =>{
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Add Business Information
+                    Order details
                 </div>
                 <div className="loginFormForm">
                     <div className="loginFormBusiness">
