@@ -94,7 +94,7 @@ export const Step2 = () =>{
                                        name="fullName"
                                        placeholder="Input your postcode"/>
                             </div>
-                            <div className="alignFlex">
+                            <div className="alignFlexBottom">
                                 <button type="button"  className="loginButton">
                                     Next step
                                 </button>

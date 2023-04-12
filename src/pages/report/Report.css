@@ -105,6 +105,9 @@
 .searchDots{
     align-self: center;
 }
+.unshown{
+    display: none;
+}
 
 @media (max-width: 940px){
     .reportMainContentHeader{

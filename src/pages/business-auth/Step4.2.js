@@ -105,7 +105,7 @@ export const Step42 = () =>{
                                 Recipient Congratulations
                             </div>
                             <LimitedTextAreaCoupon limit={250} value=''></LimitedTextAreaCoupon>
-                            <button  className="loginButtonBusiness">
+                            <button  className="loginButtonBusinessSmall">
                                 Go back to configuration step
                             </button>
                             <button  className="proceedPaymentButton done">

@@ -25,11 +25,41 @@
     cursor: pointer;
     border: 0;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 .loginButtonBusiness:hover{
     transition: 0.3s;
     background-color: #6E54D6!important;
+}
+.loginButtonBusinessSmall{
+    margin-top: 30px;
+    background-color: #5541D7!important;
+    color: white;
+    text-align: center;
+    padding: 15px 30px;
+    border-radius: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.loginButtonBusinessSmall:hover{
+    transition: 0.3s;
+    background-color: #6E54D6!important;
+}
+.alignFlexBusiness{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    margin-bottom: 80px;
+}
+.alignFlexBottom{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 .form-control {
     font-size: 16px;
@@ -87,12 +117,15 @@
 .rightSideCouponExample{
     width: 40%
 }
+.leftSideCouponInput{
+    width: 50%;
+}
 .singleCheckBox{
     display: flex;
-    gap: 15px;
+    gap: 7px;
     margin-top: 25px;
     padding-bottom: 5px;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 .exampleCoupon{
     width: 360px;
@@ -117,6 +150,7 @@
 }
 .checkBoxText{
     font-size: 14px;
+    align-self: center;
 }
 .numbersForCoupon{
     position: absolute;
@@ -211,6 +245,7 @@
     transition: 0.3s;
     border: 0;
     width: 100%;
+    margin-bottom: 60px;
 }
 .done{
     background-color: rgba(77, 183, 59,1)!important;
@@ -295,7 +330,9 @@
     .couponExampleLeftRight{
         flex-direction: column;
     }
-
+    .leftSideCouponInput{
+        width: 100%;
+    }
     .rightSideCouponExample{
         text-align: center;
         width: 100%;

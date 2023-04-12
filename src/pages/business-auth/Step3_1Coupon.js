@@ -54,7 +54,7 @@ export const Step3_1Coupon = () =>{
                                        name="fullName"
                                        placeholder="Input coupons amount"/>
                             </div>
-                            <div className="alignFlex">
+                            <div className="alignFlexBottom">
                                 <button type="button"  className="loginButton">
                                     Next step
                                 </button>

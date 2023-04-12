@@ -81,7 +81,7 @@ export const Step3MoreThan1Coupon = () =>{
                                 </div>
                             </div>
 
-                            <div className="alignFlex">
+                            <div className="alignFlexBottom">
                                 <button type="button"  className="loginButton">
                                     Next step
                                 </button>

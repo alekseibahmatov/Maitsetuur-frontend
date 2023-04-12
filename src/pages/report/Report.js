@@ -144,6 +144,21 @@ export default function Report() {
                                     </div>
                                 </div>
                             </div>
+                            <div className="reportMainContentSingleSection unshown">
+                                <div className="reportMainContentSingleSectionContent">
+                                    <div className="singleSectionIcon">
+                                        <img src={paid} alt="" className='singleSectionIconImage'/>
+                                    </div>
+                                    <div className="singleSectionText">
+                                        <div className="singleSectionUpperText green">
+                                            Paid
+                                        </div>
+                                        <div className="singleSectionLowerText">
+                                            Status
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="reportMainContentDropDownSection">
                             <div className="reportMainContentDropDowns">

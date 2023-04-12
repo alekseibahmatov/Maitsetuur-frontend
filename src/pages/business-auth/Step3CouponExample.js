@@ -126,7 +126,7 @@ export const Step3CouponExample = () =>{
                                 </div>
                             </div>
                         </div>
-                        <div className="alignFlex">
+                        <div className="alignFlexBusiness">
                             <button type="button"  className="loginButton">
                                 Next step
                             </button>
