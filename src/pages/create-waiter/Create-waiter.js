@@ -13,7 +13,7 @@ export const CreateWaiter = () => {
 
     return (
 
-        <div className='content'>
+        <div className='contentWaiter'>
             <div className="businessHeader">
                 <div className="businessHeader1">
                     Create Waiter Account

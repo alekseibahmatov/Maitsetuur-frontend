@@ -58,6 +58,7 @@ export const SecondStepResetPassword = () => {
                     >
                         {(props: FormikProps<any>) => (
                             <Form>
+                                <div className="inputBoards">
                                 <div className="authentication">
                                     <div className="inputHeader">
                                         Activation Code
@@ -90,9 +91,10 @@ export const SecondStepResetPassword = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <button disabled={props.isSubmitting} className="loginButton" type="submit">
+                                <button disabled={props.isSubmitting} className="loginButton fullWidth" type="submit">
                                     {props.isSubmitting ? <LoadingAnimationDots/> : 'Reset Password'}
                                 </button>
+                                </div>
                             </Form>
                         )}
                     </Formik>

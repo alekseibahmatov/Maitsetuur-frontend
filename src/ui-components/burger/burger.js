@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { slide as Menu } from 'react-burger-menu'
 import './burger.css'
 import {useLocation, useNavigate} from "react-router-dom";
@@ -19,6 +19,12 @@ const Burger = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const divRef = useRef(null);
+    const [firstLetter, setFirstLetter] = useState(null);
+    useEffect(() => {
+        const firstLetter = divRef.current.textContent[0]
+        setFirstLetter(firstLetter)
+    }, []);
     let path = location.pathname.split('/')[2];
 
     useEffect(() => {
@@ -65,10 +71,12 @@ const Burger = () => {
                 </div>
                 <div className="user1">
                     <div className="userImage">
-                        <img src={user} alt="user" className='userImg1'/>
+                        <div className="userImgBurger">
+                            {firstLetter}
+                        </div>
                     </div>
                     <div className="userInfo1">
-                        <div className="userUsername">
+                        <div className="userUsername" ref={divRef}>
                             Bahsmak
                         </div>
                         <div className="userDescription">

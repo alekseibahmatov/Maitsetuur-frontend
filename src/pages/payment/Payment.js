@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
+import './Payment.css'
 import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import authService from "../../services/auth";
 import toast from "react-hot-toast";
@@ -112,6 +113,7 @@ export const Payment = () => {
                                     <Form>
                                         {step === 0 && (
                                             <>
+                                                <div className="inputBoards">
                                                 <div className="inputHeader">
                                                     Your Full Name
                                                 </div>
@@ -213,13 +215,15 @@ export const Payment = () => {
                                                 </div>
                                                 <button onClick={() => {
                                                     setStep(1)
-                                                }} className="loginButton">
+                                                }} className="loginButton fullWidth">
                                                     Go to next step
                                                 </button>
+                                                </div>
                                             </>
                                         )}
                                         {step === 1 && (
                                             <>
+                                                <div className="inputBoards">
                                                 <div className="inputHeader">
                                                     Recipient's Full Name
                                                 </div>
@@ -261,6 +265,7 @@ export const Payment = () => {
                                                             className="loginButtonBack">
                                                         Go back
                                                     </button>
+                                                </div>
                                                 </div>
                                             </>
                                         )}

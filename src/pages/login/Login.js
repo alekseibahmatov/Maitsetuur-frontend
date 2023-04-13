@@ -53,6 +53,9 @@ export const Login = () => {
                     >
                         {(props: FormikProps<any>) => (
                             <Form>
+                                <div className="inputBoards">
+
+
                                 <div className="login">
                                     <div className="form">
                                         <div className="authentication">
@@ -80,10 +83,11 @@ export const Login = () => {
                                         <div onClick={() => navigate('/reset-password')} className="forgetPass">
                                             Forgot password?
                                         </div>
-                                        <button disabled={props.isSubmitting} className="loginButton" type="submit">
+                                        <button disabled={props.isSubmitting} className="loginButton fullWidth" type="submit">
                                             {props.isSubmitting ? <LoadingAnimationDots/> : 'Login'}
                                         </button>
                                     </div>
+                                </div>
                                 </div>
                             </Form>
                         )}

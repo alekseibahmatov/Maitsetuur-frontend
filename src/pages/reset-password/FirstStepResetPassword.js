@@ -53,6 +53,7 @@ export const FirstStepResetPassword = () => {
                     >
                         {(props: FormikProps<any>) => (
                             <Form>
+                                <div className="inputBoards">
                                 <div className="authentication">
                                     <div className="inputHeader">
                                         Your Email
@@ -68,9 +69,10 @@ export const FirstStepResetPassword = () => {
                                 <div onClick={() => navigate('/login')} className="forgetPass">
                                     Remembered Password? Go To Login
                                 </div>
-                                <button disabled={props.isSubmitting} className="loginButton" type="submit">
+                                <button disabled={props.isSubmitting} className="loginButton fullWidth" type="submit">
                                     {props.isSubmitting ? <LoadingAnimationDots/> : 'Receive Verification Code'}
                                 </button>
+                                </div>
                             </Form>
                         )}
                     </Formik>

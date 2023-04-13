@@ -41,7 +41,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-    background: #F7F7FC;
+    background: #ffffff;
     font-size: 1.15em;
 }
 
@@ -70,14 +70,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .user1{
     gap: 10px;
     padding-top: 20px;
-    padding-left: 10px;
+    padding-left: 20px;
     padding-bottom: 20px;
     display: none;
+    align-self: center;
 }
 .userInfo1{
     display: flex;
     flex-direction: column;
-    gap: 5px
+    gap: 5px;
+    padding-left: 5px;
 }
 .buttonImage{
     width: 40px;
@@ -100,6 +102,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
     width: 40px;
     height: 40px;
 }
+.userImgBurger{
+    border-radius: 50%;
+    background-color: rgba(215,215,215, 1);
+    width: 42px;
+    height: 40px;
+    text-align: center;
+    align-self: center;
+    padding-top: 8px;
+    font-size: 18px;
+
+}
 
 @media (max-width: 1024px) {
     .sausage{
@@ -108,8 +121,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
     .user1{
         gap: 10px;
         padding-top: 20px;
-        padding-left: 10px;
-        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-bottom: 15px;
         display: flex;
     }
 }

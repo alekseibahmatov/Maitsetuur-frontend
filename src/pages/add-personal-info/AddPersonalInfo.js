@@ -74,7 +74,9 @@ export const AddPersonalInfo = () => {
                             Please fill out the multiple step form
                             with your personal info
                         </div>
+
                         <div className="authentication">
+
                             <Formik
                                 initialValues={initialValues}
                                 onSubmit={(values, actions) => {
@@ -120,6 +122,7 @@ export const AddPersonalInfo = () => {
                                     <Form>
                                         {step === 0 && (
                                             <>
+                                                <div className="inputBoards">
                                                 <div className="inputHeader">
                                                     Your Full Name
                                                 </div>
@@ -155,13 +158,16 @@ export const AddPersonalInfo = () => {
                                                 </div>
                                                 <button onClick={() => {
                                                     setStep(1)
-                                                }} className="loginButton">
+                                                }} className="loginButton fullWidth marginBottom">
                                                     Go to next step
                                                 </button>
+                                                </div>
                                             </>
+
                                         )}
                                         {step === 1 && (
                                             <React.Fragment>
+                                                <div className="inputBoards">
                                                 <div className="inputHeader">
                                                     Your Country
                                                 </div>
@@ -228,7 +234,7 @@ export const AddPersonalInfo = () => {
                                                         <ErrorMessage name="postcode"/>
                                                     </div>
                                                 </div>
-                                                <div className="alignFlex">
+                                                <div className="alignFlex marginBottom">
                                                 <button type="button" onClick={() => {
                                                     setStep(2)
                                                 }} className="loginButton">
@@ -239,10 +245,12 @@ export const AddPersonalInfo = () => {
                                                     Go back
                                                 </button>
                                                 </div>
+                                                </div>
                                             </React.Fragment>
                                         )}
                                         {step === 2 && (
                                             <>
+                                                <div className="inputBoards">
                                                 <div className="inputHeader">
                                                     Your Password
                                                 </div>
@@ -278,7 +286,7 @@ export const AddPersonalInfo = () => {
                                                         Something went wrong, check the form again
                                                     </div>
                                                 )}
-                                                <div className="alignFlex">
+                                                <div className="alignFlex marginBottom">
                                                 <button disabled={props.isSubmitting} className="loginButton"
                                                         type="submit">
                                                     {props.isSubmitting ? <LoadingAnimationDots/> : 'Submit'}
@@ -288,6 +296,7 @@ export const AddPersonalInfo = () => {
                                                 }} className="loginButtonBack">
                                                     Go back
                                                 </button>
+                                                </div>
                                                 </div>
                                             </>
                                         )}
