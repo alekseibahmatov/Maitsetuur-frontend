@@ -1,0 +1,33 @@
+.inputFormForNewUser{
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 10px;
+}
+.singleInputLine{
+    display: flex;
+    gap: 20px;
+}
+.singleInputField{
+    width: 100%;
+}
+.spaceBottom{
+    margin-bottom: 40px;
+}
+.createNewUserHeader{
+    width: 100%;
+    align-self: center;
+}
+.resetForm{
+    color: #DA2063;
+    background: #FFB7D1;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+@media (max-width: 690px){
+    .singleInputLine{
+        flex-direction: column;
+    }
+}

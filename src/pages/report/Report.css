@@ -18,7 +18,7 @@
 .reportDownload{
     color: #ffffff;
     background: #5541D7;
-    font-weight: bold;
+    font-weight: 500;
     padding: 8px 25px;
     border-radius: 10px;
     cursor: pointer;
@@ -27,7 +27,7 @@
 .reportContactUs{
     color: #5541D7;
     background: #E6E6FA;
-    font-weight: bold;
+    font-weight: bolder;
     padding: 8px 20px;
     border-radius: 10px;
     cursor: pointer;
@@ -60,6 +60,7 @@
 .reportMainContentSingleSectionContent{
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 .singleSectionUpperText{
     font-size: 22px;

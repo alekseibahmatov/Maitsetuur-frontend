@@ -22,10 +22,13 @@ function Table({ headers, items, columnSizes }) {
             </tr>
             </thead>
             <tbody className="tbody">
+
             {items.map((item, index) => (
+
                 <tr key={index} className="tr">
+
                     {Object.values(item).map((value, index) => (
-                        <td
+                       <td
                             key={index}
                             className={classNames("td", `col-${index}`, {
                                 "td-center": index === 0,
@@ -34,8 +37,11 @@ function Table({ headers, items, columnSizes }) {
                             {value}
                         </td>
                     ))}
+
                 </tr>
+
             ))}
+
             </tbody>
         </table>
         </div>

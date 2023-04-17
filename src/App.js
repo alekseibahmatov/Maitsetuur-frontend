@@ -37,6 +37,10 @@ import {Step3CouponExample} from "./pages/business-auth/Step3CouponExample";
 import {Step41} from "./pages/business-auth/Step4.1";
 import {Step42} from "./pages/business-auth/Step4.2";
 import {Step5} from "./pages/business-auth/Step5";
+import ReportList from "./pages/report-list/ReportList";
+import {Test} from "./pages/test/Test";
+import CreateNewUser from "./pages/create-new-user/CreateNewUser";
+import ReadUser from "./pages/read-user/ReadUser";
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
@@ -71,6 +75,7 @@ export const App = () => {
                 <Route path='/step4.1' element={<Step41/>}/>
                 <Route path='/step4.2' element={<Step42/>}/>
                 <Route path='/step5' element={<Step5/>}/>
+                <Route path='/test' element={<Test/>}/>
 
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
                 <Route element={<AuthGuard allowedRoles={[ROLES.waiter, ROLES.customer, ROLES.admin]}/>}>
@@ -107,6 +112,9 @@ export const App = () => {
                             <Route path='coupon/create' element={<CouponSingle/>}/>
                             <Route path='coupon-info/:couponId' element={<CouponSingle/>}/>
                             <Route path='report' element={<Report/>}/>
+                            <Route path='reportlist' element={<ReportList/>}/>
+                            <Route path='createnewuser' element={<CreateNewUser/>}/>
+                            <Route path='readuser' element={<ReadUser/>}/>
                         </Route>
 
                         {/* ERROR HANDLING */}
