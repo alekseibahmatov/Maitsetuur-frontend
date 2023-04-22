@@ -7,14 +7,15 @@ pipeline {
       }
     }
 
-    stage('Install dependencies') {
+    stage('Build project') {
+      agent {
+        docker {
+          image 'node:18.16.0-slim'
+        }
+
+      }
       steps {
         sh 'npm i'
-      }
-    }
-
-    stage('Build project') {
-      steps {
         sh 'npm build'
       }
     }
@@ -25,7 +26,7 @@ pipeline {
       }
     }
 
-    stage('') {
+    stage('Success') {
       steps {
         cleanWs(cleanWhenSuccess: true)
       }
