@@ -12,7 +12,9 @@ pipeline {
         docker {
           image 'node:18.16.0-slim'
         }
-
+      }
+      environment {
+        CI = "false"
       }
       steps {
         sh 'npm i'
