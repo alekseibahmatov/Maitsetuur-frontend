@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import {initialValuesIndividual, validationSchemaIndividual} from "./CertificateFormik";
+import PrivacyPolicy from "../privacy-policy/Privacy-policy";
 
 
 export const Certificate = () => {
@@ -34,6 +35,11 @@ export const Certificate = () => {
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
+    }
+
+    const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+    const togglePrivacy = () => {
+        setIsPrivacyOpen(!isPrivacyOpen);
     }
 
     const Select = ({value, click, status}) => {
@@ -166,18 +172,23 @@ export const Certificate = () => {
                                                 </div>
 
                                                 <div className="confirm">
-                                                    <Field className="termsCheckbox" type="checkbox"
+                                                    <button className={props.isValid ? "pay filled" : "pay" } type="submit">Submit</button>
+                                                    <div className="confirmCheckbox"><Field className="termsCheckbox" type="checkbox"
                                                            name="termsCheckbox"/>
                                                     <div>
-                                                        I agree with the <span className="blue">Terms of personal data processing</span>.
+                                                        I agree with the <span className="blue" onClick={togglePrivacy}>Terms of personal data processing
+                                                    </span>.
+
                                                         <div className="error">
                                                             <ErrorMessage name="termsCheckbox"/>
                                                         </div>
                                                     </div>
+                                                    </div>
                                                 </div>
 
 
-                                                <button className={props.isValid ? "pay filled" : "pay" } type="submit">Submit</button>
+
+
 
                                             </Form>
                                         )}
@@ -293,18 +304,21 @@ export const Certificate = () => {
                                                 </div>
 
                                                 <div className="confirm">
+                                                    <button className={props.isValid ? "pay filled" : "pay" } type="submit">Submit</button>
+                                                    <div className="confirmCheckbox">
                                                     <Field className="termsCheckbox" type="checkbox"
                                                            name="termsCheckbox"/>
                                                     <div>
-                                                        I agree with the <span className="blue">Terms of personal data processing</span>.
+                                                        I agree with the <span className="blue" onClick={togglePrivacy}>Terms of personal data processing</span>.
                                                         <div className="error">
                                                             <ErrorMessage name="termsCheckbox"/>
                                                         </div>
                                                     </div>
+                                                    </div>
                                                 </div>
 
 
-                                                <button className={props.isValid ? "pay filled" : "pay" } type="submit">Submit</button>
+
 
                                             </Form>
                                         )}
@@ -331,6 +345,7 @@ export const Certificate = () => {
                     </ReactSwipe>
                 </div>
             </div>
+            <PrivacyPolicy isOpen={isPrivacyOpen} toggleModal={togglePrivacy} />
         </>
     )
 

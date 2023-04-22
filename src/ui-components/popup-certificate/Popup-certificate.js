@@ -37,7 +37,7 @@ function PopupCertificate({isOpen, toggleModal}) {
                                             To
                                         </div>
                                         <div className="answerCertificate">
-                                            German Bigdikovich
+                                            Mr. Great Taste
                                         </div>
                                     </div>
                                     <div className="questionAnswerCertificate">
@@ -45,7 +45,7 @@ function PopupCertificate({isOpen, toggleModal}) {
                                             Wishes
                                         </div>
                                         <div className="answerCertificate">
-                                            Dear German, fuck you and your whole family, hope you die from AIDS!!!
+                                            I hope this present will find you well, best luck and enjoy your dinner!
                                         </div>
                                     </div>
                                     <div className="questionAnswerCertificate">
@@ -57,7 +57,7 @@ function PopupCertificate({isOpen, toggleModal}) {
                                         </div>
                                     </div>
                                     <div className="furtherInfo">
-                                        Further info can be found on <a className='blue'>cocksuck.menu.ee</a>
+                                        Further info can be found on <a className='blueLink'>maitsetuur.ee</a>
                                     </div>
                                 </div>
                                 <div className="rightCertificatePopup">

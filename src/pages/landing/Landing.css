@@ -388,7 +388,6 @@
     font-size: 17px;
     outline: none;
     border: none;
-    margin-top: 30px;
     border-radius: 20px;
     padding: 7px 15px;
     background-color: #999999;
@@ -444,12 +443,17 @@
     font-weight: bold;
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
 .termsLink {
     color: lightblue;
     transition: 0.3s;
     cursor: pointer;
+}
+.confirmCheckbox{
+    display: flex;
+    align-items: center;
 }
 
 .termsLink:hover {
@@ -882,6 +886,10 @@
 
     .main {
         display: block;
+    }
+    .confirm{
+        flex-direction: column-reverse;
+        align-items: normal;
     }
 
     .main1 {

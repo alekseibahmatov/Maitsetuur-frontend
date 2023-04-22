@@ -39,6 +39,9 @@
     margin-top: 20px;
     font-family: 'Raleway', sans-serif;
 }
+.blueLink{
+    color: #00B4CC;
+}
 .blue{
     color: #00B4CC;
     transition: 0.3s;
@@ -199,6 +202,7 @@
     }
     .nominalAndDateCertificatePopup{
         gap: 36px;
+        margin-top: 10px;
     }
     .descriptionCertificatePopup{
         padding-top: 220px;

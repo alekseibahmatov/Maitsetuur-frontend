@@ -54,20 +54,20 @@ export default function Landing() {
     const advantages = [
         {
            img: l1,
-           header: 'Jopka Jopka',
-           description: 'The recipient is definitely freaking out'
+           header: 'Unique experience',
+           description: 'A gift that has not been made before you - the recipient will definitely be delighted.'
 
         },
         {
             img: l2,
             header: 'Any holiday',
-            description: 'On any holiday dad will again grapple with grandfather drunk'
+            description: 'For a birthday, wedding, or even for the successful closing of a deal for a business partner.'
 
         },
         {
             img: l3,
-            header: 'Little Choose',
-            description: 'Restaurants in Estonia can be counted on one hand'
+            header: 'Reusable card',
+            description: 'The recipient will be able to use the same certificate multiple times.'
 
         },
     ]

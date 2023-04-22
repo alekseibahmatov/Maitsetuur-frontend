@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ReactSwipe from "react-swipe";
+import PopupCertificate from "../popup-certificate/Popup-certificate";
 
 export const Faq = () =>{
 
@@ -35,6 +36,12 @@ export const Faq = () =>{
         }));
     }
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+        console.log('asd')
+    }
+
     const [faq, setFAQ] = React.useState([
         {
             question: 'How long does the certificate lasts?',
@@ -58,9 +65,18 @@ export const Faq = () =>{
             open: false
         },
         {
-            question: 'How does thw certificate looks like?',
-            answer: <div>You can check by clicking on this link Certificate.pdf</div>,
-            open: false
+            question: 'How does the certificate look like?',
+            answer: (
+                <div>
+                    <div>
+                        You can check by clicking on this link{" "}
+                        <button className="blue" onClick={toggleModal} style={{ display: "inline" }}>
+                            Certificate.pdf
+                        </button>
+                    </div>
+                </div>
+            ),
+            open: false,
         }
     ]);
 
@@ -105,7 +121,7 @@ export const Faq = () =>{
                                         If you have any questions which were not answered yet you can always contact us!
                                     </div>
                                     <div className="askInfo">
-                                        ooonaebsiki@gollandskishturval.ee
+                                        maitsetuur@gmail.com
                                     </div>
                                     <div className="askInfo">
                                         +372 5887 8456
@@ -118,6 +134,7 @@ export const Faq = () =>{
                     </div>
                 </div>
             </div>
+            <PopupCertificate isOpen={isModalOpen} toggleModal={toggleModal} />
         </>
 
     )

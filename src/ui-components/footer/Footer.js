@@ -15,7 +15,7 @@ export const Footer = () =>{
                         Sõstra 4
                     </div>
                     <div className="companyName">
-                        Reg. No 2281337
+                        Reg. No 1273892
                     </div>
                 </div>
                 <div className="rightWho">
