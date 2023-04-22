@@ -24,7 +24,8 @@ pipeline {
 
     stage('Copy builded project to rooot dir') {
       steps {
-        sh 'cp -R build/. /var/jenkins_home/links_to_sites/maitsetuur.ee/'
+        sh 'ls'
+        sh 'cp -R build/* /var/jenkins_home/links_to_sites/maitsetuur.ee/'
       }
     }
 
