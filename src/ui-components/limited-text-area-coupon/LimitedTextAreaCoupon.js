@@ -1,11 +1,13 @@
 import React from 'react';
+import {Field} from "formik";
 
-export const LimitedTextAreaCoupon = ({rows, cols, value, limit}) => {
+export const LimitedTextAreaCoupon = ({handleTextChange, rows, cols, value, limit}) => {
     const [content, setContent] = React.useState(value.slice(0, limit));
 
     const setFormattedContent = React.useCallback(text => {
-        setContent(text.slice(0, limit));
-    }, [limit, setContent]);
+        const newText = text.slice(0, limit);
+        setContent(newText);
+    }, [limit, setContent, handleTextChange]);
 
     return (
         <>

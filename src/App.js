@@ -29,14 +29,14 @@ import ListOfRestaurants from "./pages/admin/list-of-restaurants/ListOfRestauran
 import {ListOfWaiters} from "./pages/restaurant/list-of-waiters/ListOfWaiters";
 import Payment from "./pages/payment/Payment";
 import Report from "./pages/report/Report";
-import {Step1} from "./pages/business-auth/Step1";
-import {Step2} from "./pages/business-auth/Step2";
-import {Step3_1Coupon} from "./pages/business-auth/Step3_1Coupon";
-import {Step3MoreThan1Coupon} from "./pages/business-auth/Step3MoreThan1Coupon";
-import {Step3CouponExample} from "./pages/business-auth/Step3CouponExample";
-import {Step41} from "./pages/business-auth/Step4.1";
-import {Step42} from "./pages/business-auth/Step4.2";
-import {Step5} from "./pages/business-auth/Step5";
+import {Step1} from "./pages/business-coupon-order/Step1";
+import {Step2} from "./pages/business-coupon-order/Step2";
+import {Step3_1Coupon} from "./pages/business-coupon-order/Step3_1Coupon";
+import {Step3MoreThan1Coupon} from "./pages/business-coupon-order/Step3MoreThan1Coupon";
+import {Step3CouponExample} from "./pages/business-coupon-order/Step3CouponExample";
+import {Step41} from "./pages/business-coupon-order/Step4.1";
+import {Step42} from "./pages/business-coupon-order/Step4.2";
+import {Step5} from "./pages/business-coupon-order/Step5";
 import ReportList from "./pages/report-list/ReportList";
 import {Test} from "./pages/test/Test";
 import CreateNewUser from "./pages/create-new-user/CreateNewUser";
@@ -67,13 +67,15 @@ export const App = () => {
                 <Route path='/reset-success' element={<ResetSuccess/>}/>
                 <Route path='/add-personal-info/:activationCode' element={<AddPersonalInfo/>}/>
                 <Route path='/payment' element={<Payment/>}/>
+
                 <Route path='/step1' element={<Step1/>}/>
                 <Route path='/step2' element={<Step2/>}/>
-                <Route path='/step3' element={<Step3_1Coupon/>}/>
-                <Route path='/step3.1' element={<Step3MoreThan1Coupon/>}/>
-                <Route path='/step3.2' element={<Step3CouponExample/>}/>
+                {/*<Route path='/step3' element={<Step3_1Coupon/>}/>*/}
+                {/*<Route path='/step3.1' element={<Step3MoreThan1Coupon/>}/>*/}
+                <Route path='/step3' element={<Step3CouponExample/>}/>
+
                 <Route path='/step4.1' element={<Step41/>}/>
-                <Route path='/step4.2' element={<Step42/>}/>
+                <Route path='/step4' element={<Step42/>}/>
                 <Route path='/step5' element={<Step5/>}/>
                 <Route path='/test' element={<Test/>}/>
 

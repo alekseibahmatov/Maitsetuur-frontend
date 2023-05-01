@@ -37,6 +37,8 @@
     "react-select": "^5.7.0",
     "react-swipe": "^6.0.4",
     "react-swipe-component": "^3.0.0",
+    "react-tooltip": "^5.11.1",
+    "react-transition-group": "^4.4.5",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },

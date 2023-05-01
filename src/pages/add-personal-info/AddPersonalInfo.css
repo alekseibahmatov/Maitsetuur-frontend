@@ -27,6 +27,10 @@
     position: relative;
 }
 
+.inputWrapper {
+    position: relative;
+}
+
 .customPasswordInput {
     padding-right: 70px;
 }
