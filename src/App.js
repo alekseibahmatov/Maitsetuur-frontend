@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import {Routes, Route} from 'react-router-dom'
 import Landing from "./pages/landing/Landing";
@@ -29,18 +29,22 @@ import ListOfRestaurants from "./pages/admin/list-of-restaurants/ListOfRestauran
 import {ListOfWaiters} from "./pages/restaurant/list-of-waiters/ListOfWaiters";
 import Payment from "./pages/payment/Payment";
 import Report from "./pages/report/Report";
-import {Step1} from "./pages/business-coupon-order/Step1";
-import {Step2} from "./pages/business-coupon-order/Step2";
-import {Step3_1Coupon} from "./pages/business-coupon-order/Step3_1Coupon";
-import {Step3MoreThan1Coupon} from "./pages/business-coupon-order/Step3MoreThan1Coupon";
-import {Step3CouponExample} from "./pages/business-coupon-order/Step3CouponExample";
-import {Step41} from "./pages/business-coupon-order/Step4.1";
-import {Step42} from "./pages/business-coupon-order/Step4.2";
-import {Step5} from "./pages/business-coupon-order/Step5";
+import {AddBusinessInformation} from "./pages/business-coupon-order/AddBusinessInformation";
+import {AddBusinessAddress} from "./pages/business-coupon-order/AddBusinessAddress";
+import {AddCouponConfiguration} from "./pages/business-coupon-order/AddCouponConfiguration";
+import {AddCouponData} from "./pages/business-coupon-order/AddCouponData";
+import {OrderDetails} from "./pages/business-coupon-order/OrderDetails";
 import ReportList from "./pages/report-list/ReportList";
-import {Test} from "./pages/test/Test";
 import CreateNewUser from "./pages/create-new-user/CreateNewUser";
 import ReadUser from "./pages/read-user/ReadUser";
+
+import {
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS,
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION,
+    BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION,
+    BUSINESS_COUPON_ORDER_ADD_COUPON_DATA,
+    BUSINESS_COUPON_ORDER_DETAILS
+} from "./routes";
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
@@ -60,7 +64,7 @@ export const App = () => {
                 <Route path='/connect' element={<Connect/>}/>
                 <Route path='/singlerestaurant/:id' element={<SingleRestaurant/>}/>
 
-                {/* PUBLIC ROUTES AUTH*/}
+                {/* PUBLIC ROUTES AUTH */}
                 <Route path="/login" element={<Login/>}/>
                 <Route path='/reset-password' element={<FirstStepResetPassword/>}/>
                 <Route path='/reset-password-final' element={<SecondStepResetPassword/>}/>
@@ -68,16 +72,13 @@ export const App = () => {
                 <Route path='/add-personal-info/:activationCode' element={<AddPersonalInfo/>}/>
                 <Route path='/payment' element={<Payment/>}/>
 
-                <Route path='/step1' element={<Step1/>}/>
-                <Route path='/step2' element={<Step2/>}/>
-                {/*<Route path='/step3' element={<Step3_1Coupon/>}/>*/}
-                {/*<Route path='/step3.1' element={<Step3MoreThan1Coupon/>}/>*/}
-                <Route path='/step3' element={<Step3CouponExample/>}/>
-
-                <Route path='/step4.1' element={<Step41/>}/>
-                <Route path='/step4' element={<Step42/>}/>
-                <Route path='/step5' element={<Step5/>}/>
-                <Route path='/test' element={<Test/>}/>
+                {/* PUBLIC ROUTES BUSINESS COUPON ORDER */}
+                <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION} element={<AddBusinessInformation/>}/>
+                <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS} element={<AddBusinessAddress/>}/>
+                <Route path={BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION} element={<AddCouponConfiguration/>}/>
+                <Route path={BUSINESS_COUPON_ORDER_ADD_COUPON_DATA} element={<AddCouponData/>}/>
+                <Route path={BUSINESS_COUPON_ORDER_DETAILS} element={<OrderDetails/>}/>
+               {/* todo add failure order page */}
 
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
                 <Route element={<AuthGuard allowedRoles={[ROLES.waiter, ROLES.customer, ROLES.admin]}/>}>

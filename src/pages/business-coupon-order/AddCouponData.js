@@ -13,9 +13,10 @@ import {useNavigate} from "react-router-dom";
 import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import {Tooltip} from 'react-tooltip'
 import {validationSchema} from "./BusinessCouponOrderValidationSchema";
+import {BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION, BUSINESS_COUPON_ORDER_DETAILS} from "../../routes";
 
 
-export const Step42 = () => {
+export const AddCouponData = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(3);
     const [couponStep, setCouponStep] = useState(0);
@@ -53,7 +54,8 @@ export const Step42 = () => {
                         localStorage.setItem('businessFormData', JSON.stringify(parsedData));
                         console.log(parsedData);
                     }
-                    navigate('/step5');
+                    console.log('jopa')
+                    navigate(BUSINESS_COUPON_ORDER_DETAILS);
                     scrollTop();
                 } catch (error) {
                     toast.error(
@@ -247,7 +249,7 @@ export const Step42 = () => {
                                                     </div>
                                                 }
                                                 <button onClick={() => {
-                                                    navigate('/step3')
+                                                    navigate(BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION)
                                                     scrollTop()
                                                 }} type="button" className="loginButtonBusinessSmall">
                                                     Go back to configuration step

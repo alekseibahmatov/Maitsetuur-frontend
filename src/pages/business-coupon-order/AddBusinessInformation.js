@@ -7,6 +7,7 @@ import {LoadingAnimationDots} from "../../ui-components/loading-animation/loadin
 import {useNavigate} from "react-router-dom";
 import {scrollTop} from "./tools";
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
+import {BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS} from "../../routes";
 
 const validationSchema = Yup.object().shape({
     businessName: Yup.string().required('Business name is required'),
@@ -17,7 +18,7 @@ const validationSchema = Yup.object().shape({
         .required('Business email is required')
 });
 
-export const Step1 = () => {
+export const AddBusinessInformation = () => {
     const [step, setStep] = useState(0);
     const navigate = useNavigate();
 
@@ -68,7 +69,7 @@ export const Step1 = () => {
                                 setTimeout(async () => {
                                     try {
                                         saveToLocalStorage(values);
-                                        navigate('/step2');
+                                        navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS);
                                         scrollTop();
                                     } catch (error) {
                                         console.log(error)

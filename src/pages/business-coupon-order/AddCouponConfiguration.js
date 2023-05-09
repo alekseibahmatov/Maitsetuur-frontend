@@ -12,6 +12,12 @@ import {scrollTop} from "./tools";
 import {useNavigate} from "react-router-dom";
 import toast from "react-hot-toast";
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
+import {
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS,
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION,
+    BUSINESS_COUPON_ORDER_ADD_COUPON_DATA
+} from "../../routes";
+import {AddCouponData} from "./AddCouponData";
 
 const CouponConfiguratorValidationSchema = Yup.object().shape({
     couponsAmount: Yup.number()
@@ -46,7 +52,7 @@ const CouponConfiguratorValidationSchema = Yup.object().shape({
     }),
 });
 
-export const Step3CouponExample = () => {
+export const AddCouponConfiguration = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(2);
     const [couponsAmount, setCouponsAmount] = useState(0);
@@ -138,12 +144,12 @@ export const Step3CouponExample = () => {
     useEffect(() => {
         const storedData = localStorage.getItem('businessFormData');
         if (!storedData) {
-            navigate('/step1');
+            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION);
         }
         if (storedData) {
             const parsedData = JSON.parse(storedData);
             if (!parsedData.businessAddress) {
-                navigate('/step2');
+                navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS);
             }
             const couponConfiguration = parsedData?.couponConfiguration;
             if (couponConfiguration) {
@@ -175,7 +181,7 @@ export const Step3CouponExample = () => {
                                 try {
                                     saveToLocalStorage(values);
                                     scrollTop();
-                                    navigate("/step4");
+                                    navigate(BUSINESS_COUPON_ORDER_ADD_COUPON_DATA);
                                 } catch (error) {
                                     console.log(error.code);
                                     toast.error(error.data.message ? error.data.message : "Opss... Something went wrong");
@@ -409,7 +415,7 @@ export const Step3CouponExample = () => {
                                             {props.isSubmitting ? <LoadingAnimationDots/> : "Next step"}
                                         </button>
                                         <button onClick={() => {
-                                            navigate('/step2')
+                                            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS)
                                             scrollTop()
                                         }} type="button" className="loginButtonBack">
                                             Go back

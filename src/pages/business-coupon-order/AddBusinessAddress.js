@@ -7,6 +7,11 @@ import {LoadingAnimationDots} from "../../ui-components/loading-animation/loadin
 import {useNavigate} from "react-router-dom";
 import {scrollTop} from "./tools";
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
+import {
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS,
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION,
+    BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION
+} from "../../routes";
 
 const validationSchema = Yup.object().shape({
     country: Yup.string().required("Country is required"),
@@ -17,7 +22,7 @@ const validationSchema = Yup.object().shape({
     postcode: Yup.string().required("Postcode is required"),
 });
 
-export const Step2 = () => {
+export const AddBusinessAddress = () => {
     const [step, setStep] = useState(1);
     const navigate = useNavigate();
 
@@ -39,12 +44,12 @@ export const Step2 = () => {
     useEffect(() => {
         const storedData = localStorage.getItem('businessFormData');
         if (!storedData) {
-            navigate('/step1');
+            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION);
         }
         if (storedData) {
             const parsedData = JSON.parse(storedData);
             if (!parsedData.businessInformation) {
-                navigate('/step1');
+                navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION);
             }
             const businessInformation = parsedData?.businessAddress;
             if (businessInformation) {
@@ -71,7 +76,7 @@ export const Step2 = () => {
                                     try {
                                         saveToLocalStorage(values);
                                         scrollTop();
-                                        navigate("/step3");
+                                        navigate(BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION);
                                     } catch (error) {
                                         console.log(error.code);
                                         toast.error(error.data.message ? error.data.message : "Opss... Something went wrong");
@@ -135,7 +140,7 @@ export const Step2 = () => {
                                             {props.isSubmitting ? <LoadingAnimationDots/> : "Next step"}
                                         </button>
                                         <button onClick={() => {
-                                            navigate('/step1')
+                                            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION)
                                             scrollTop()
                                         }} type="button" className="loginButtonBack">
                                             Go back

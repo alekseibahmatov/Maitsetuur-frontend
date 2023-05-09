@@ -5,7 +5,7 @@ import TableForPayment from "../../ui-components/table-for-payment/TableForPayme
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
 import {useNavigate} from "react-router-dom";
 
-export const Step5 = () =>{
+export const OrderDetails = () =>{
     const navigate = useNavigate();
     const [step, setStep] = useState(4);
 
