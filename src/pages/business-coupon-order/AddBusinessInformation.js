@@ -10,9 +10,18 @@ import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order
 import {BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS} from "../../routes";
 
 const validationSchema = Yup.object().shape({
-    businessName: Yup.string().required('Business name is required'),
-    businessCode: Yup.string().required('Business code is required'),
-    businessKRKM: Yup.string().required('Business KRKM is required'),
+    businessName: Yup.string()
+        .required('Business name is required')
+        .max(100, 'Business name seems to be incorrect, please contact us')
+        .typeError("Input correct business name"),
+    businessCode: Yup.string()
+        .matches(/^\d{8}$/, 'Invalid Business Code (ID)')
+        .required('Business code is required')
+        .typeError("Input correct business code"),
+    businessKRKM: Yup.string()
+        .matches(/^EE1[0-9]{8}$/, 'Invalid Estonian KRKM number')
+        .required('Estonian KRKM number is required')
+        .typeError("Input correct Business KRKM"),
     businessEmail: Yup.string()
         .email('Invalid email')
         .required('Business email is required')

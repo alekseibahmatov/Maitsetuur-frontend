@@ -14,4 +14,8 @@ export const BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION = '/business-coupon-
 export const BUSINESS_COUPON_ORDER_ADD_COUPON_DATA = '/business-coupon-order/add-coupon-data'
 export const BUSINESS_COUPON_ORDER_DETAILS = '/business-coupon-order/order-details'
 
+export const PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA = '/personal-coupon-order/add-your-personal-data'
+export const PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA = '/personal-coupon-order/add-your-address-data'
+export const PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA = '/personal-coupon-order/add-recipient-personal-data'
+export const PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA = '/personal-coupon-order/check-coupon-data'
 

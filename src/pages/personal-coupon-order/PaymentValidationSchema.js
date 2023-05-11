@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const paymentValidationSchema = Yup.object().shape({
+export const validationSchemaPersonal = Yup.object().shape({
     fullName: Yup.string()
         .required('Full name is required'),
     mobilePhone: Yup.string()

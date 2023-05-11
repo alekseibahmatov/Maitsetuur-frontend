@@ -1,15 +1,19 @@
 import React, {useState, useEffect} from "react";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import './Payment.css'
-import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import authService from "../../services/auth";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import cross from '../../assets/img/Less Than.png'
-import {paymentValidationSchema} from "./PaymentValidationSchema";
+import {validationSchemaPersonal} from "./PaymentValidationSchema";
+import {PersonalCouponOrderHeader} from "../../ui-components/personal-coupon-order-header/PersonalCouponOrderHeader";
+import {
+    PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA,
+    PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA
+} from "../../routes";
 
 
-export const Payment = () => {
+export const AddYourAddressData = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(0);
     const [localStorageFormData, setLocalStorageFormData] = useState({});
@@ -45,24 +49,12 @@ export const Payment = () => {
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Fill payment information
+                    Add Your Address
                 </div>
                 <div className="loginFormForm">
                     <div className="loginForm">
                         <img src={cross} alt="goBack" className='goBackPayment' onClick={() => navigate('/')}/>
-                        <div className="authNumbers">
-                            <div className="singleNumber activated">
-                                1
-                            </div>
-                            <div className="numberLine">
-                            </div>
-                            <div className={step > 0 ? "singleNumber activated" : "singleNumber"}>
-                                2
-                            </div>
-                        </div>
-                        <div className="loginFormHeader">
-                            Please fill out the information about yourself and recipient
-                        </div>
+                        <PersonalCouponOrderHeader step={2}/>
                         <div className="authentication">
                             <Formik
                                 enableReinitialize={true}
@@ -85,7 +77,7 @@ export const Payment = () => {
                                             zipCode: values.postcode,
                                             country: values.country
                                         },
-                                        // todo: add payment methods and received extra data
+                                        // todo: add personal-coupon-order methods and received extra data
                                         preferredProvider: ''
                                     }
 
@@ -107,46 +99,12 @@ export const Payment = () => {
                                         actions.setSubmitting(false)
                                     }, 1000);
                                 }}
-                                validationSchema={paymentValidationSchema}
+                                validationSchema={validationSchemaPersonal}
                             >
                                 {(props: FormikProps<any>) => (
                                     <Form>
-                                        {step === 0 && (
-                                            <>
-                                                <div className="inputBoards">
-                                                <div className="inputHeader">
-                                                    Your Full Name
-                                                </div>
-                                                <div className="inputAuthentication">
-                                                    <Field className="inputAuthenticationInput" type="text"
-                                                           name="fromFullName"
-                                                           placeholder="Input your full name"/>
-                                                    <div className="error">
-                                                        <ErrorMessage name="fromFullName"/>
-                                                    </div>
-                                                </div>
-                                                <div className="inputHeader">
-                                                    Your Mobile Phone
-                                                </div>
-                                                <div className="inputAuthentication">
-                                                    <Field className="inputAuthenticationInput" type="text"
-                                                           name="fromPhone"
-                                                           placeholder="Input your mobile phone"/>
-                                                    <div className="error">
-                                                        <ErrorMessage name="fromPhone"/>
-                                                    </div>
-                                                </div>
-                                                <div className="inputHeader">
-                                                    Your email
-                                                </div>
-                                                <div className="inputAuthentication">
-                                                    <Field className="inputAuthenticationInput" type="text"
-                                                           name="fromEmail"
-                                                           placeholder="Input your email"/>
-                                                    <div className="error">
-                                                        <ErrorMessage name="fromEmail"/>
-                                                    </div>
-                                                </div>
+                                        <>
+                                            <div className="inputBoards">
                                                 <div className="inputHeader">
                                                     Your Country
                                                 </div>
@@ -213,62 +171,27 @@ export const Payment = () => {
                                                         <ErrorMessage name="postcode"/>
                                                     </div>
                                                 </div>
-                                                <button onClick={() => {
-                                                    setStep(1)
-                                                }} className="loginButton fullWidth">
-                                                    Go to next step
-                                                </button>
-                                                </div>
-                                            </>
-                                        )}
-                                        {step === 1 && (
-                                            <>
-                                                <div className="inputBoards">
-                                                <div className="inputHeader">
-                                                    Recipient's Full Name
-                                                </div>
-                                                <div className="inputAuthentication">
-                                                    <Field className="inputAuthenticationInput" type="text"
-                                                           name="toFullName"
-                                                           placeholder="Input your full name"/>
-                                                    <div className="error">
-                                                        <ErrorMessage name="toFullName"/>
-                                                    </div>
-                                                </div>
-                                                <div className="inputHeader">
-                                                    Recipient's Mobile Phone
-                                                </div>
-                                                <div className="inputAuthentication">
-                                                    <Field className="inputAuthenticationInput" type="text"
-                                                           name="toPhone"
-                                                           placeholder="Input your mobile phone"/>
-                                                    <div className="error">
-                                                        <ErrorMessage name="toPhone"/>
-                                                    </div>
-                                                </div>
-                                                <div className="inputHeader">
-                                                    Recipient's email
-                                                </div>
-                                                <div className="inputAuthentication">
-                                                    <Field className="inputAuthenticationInput" type="text"
-                                                           name="toEmail"
-                                                           placeholder="Input your email"/>
-                                                    <div className="error">
-                                                        <ErrorMessage name="toEmail"/>
-                                                    </div>
-                                                </div>
+                                                {/*<button onClick={() => {*/}
+                                                {/*    setStep(1)*/}
+                                                {/*}} className="loginButton fullWidth">*/}
+                                                {/*    Go to next step*/}
+                                                {/*</button>*/}
+                                                {/*<button type="button" onClick={() => setStep(0)}*/}
+                                                {/*        className="loginButtonBack">*/}
+                                                {/*    Go back*/}
+                                                {/*</button>*/}
+
                                                 <div className="alignFlex">
-                                                    <button type="submit" className="loginButton">
-                                                        Submit
+                                                    <button type="submit" className="loginButton" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA)}>
+                                                        Go to next step
                                                     </button>
-                                                    <button type="button" onClick={() => setStep(0)}
+                                                    <button type="button" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA)}
                                                             className="loginButtonBack">
                                                         Go back
                                                     </button>
                                                 </div>
-                                                </div>
-                                            </>
-                                        )}
+                                            </div>
+                                        </>
                                     </Form>
                                 )}
                             </Formik>
@@ -279,4 +202,4 @@ export const Payment = () => {
         </>
     )
 }
-export default Payment
+export default AddYourAddressData

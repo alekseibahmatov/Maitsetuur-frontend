@@ -1,6 +1,6 @@
 import './Landing.css';
 import {useNavigate} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import ImageCarousel from "../../ui-components/carousel/Carousel";
 import burx from '../../assets/img/burx.svg'
 import share from '../../assets/img/share.svg';
@@ -11,11 +11,6 @@ import waiter from '../../assets/img/Waiter.svg';
 import l1 from '../../assets/img/l1.png';
 import l2 from '../../assets/img/l2.png';
 import l3 from '../../assets/img/l3.png';
-import {click} from "@testing-library/user-event/dist/click";
-import PopupCertificate from "../../ui-components/popup-certificate/Popup-certificate";
-import ReactSwipe from 'react-swipe';
-import {LimitedTextAreaLanding} from "../../ui-components/limited-text-area-landing/LimitedTextAreaLanding";
-import cross from '../../assets/img/cross.png'
 import {table} from '../single-restaraunt/data'
 import Certificate from "../../ui-components/certificate/Certificate";
 import Footer from "../../ui-components/footer/Footer";
@@ -79,7 +74,7 @@ export default function Landing() {
                     <div className="preview">
                         <div className="header">
                             <div className="burger">
-                                <img src={burx} className='burx_img'></img>
+                                <img src={burx} className='burx_img'/>
                             </div>
                             <div className="logoLanding">
                                 MENU
@@ -88,7 +83,7 @@ export default function Landing() {
                                 <div className="share_text">
                                     Share
                                 </div>
-                                <img src={share} className='share_img'></img>
+                                <img src={share} className='share_img'/>
                             </div>
                         </div>
                         <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
@@ -121,7 +116,7 @@ export default function Landing() {
                         <div className="four_section">
                             <div className="single_section">
                                 <div className="section_icon">
-                                    <img src={heart} className='section_ion_img'></img>
+                                    <img src={heart} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
                                     <span className='dashed'>Give the best</span> experience to those you love: the perfect gift for friends and loved ones for the New Year.
@@ -129,7 +124,7 @@ export default function Landing() {
                             </div>
                             <div className="single_section">
                                 <div className="section_icon">
-                                    <img src={card} className='section_ion_img'></img>
+                                    <img src={card} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
                                     <span className='dashed'>Easy to give: </span> buy online and email the recipient with personalized wishes.
@@ -137,7 +132,7 @@ export default function Landing() {
                             </div>
                             <div className="single_section">
                                 <div className="section_icon">
-                                    <img src={meal} className='section_ion_img'></img>
+                                    <img src={meal} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
                                     <span className='dashed'>Convenient to use: </span> just give the certificate number to pay the bill in the restaurant.
@@ -145,7 +140,7 @@ export default function Landing() {
                             </div>
                             <div className="single_section">
                                 <div className="section_icon">
-                                    <img src={waiter} className='section_ion_img'></img>
+                                    <img src={waiter} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
                                     <span className='dashed'>More than 100 restaurants </span>, cafes and bars in Tallinn. We add new ones every week.
@@ -165,7 +160,9 @@ export default function Landing() {
             </div>
             <div className="unrealBg">
                 <div className="container">
+
                     <Certificate/>
+
                     <div className="infiniteCarousel">
                         <div className="carouselHeader">
                             Connected restaurants
@@ -174,9 +171,9 @@ export default function Landing() {
                             Certificate gives an opportunity to visit the most popular and breathtaking restaurants of Tallinn
                         </div>
                         <div className="carouselMain">
-                            <ImageCarousel images={table} interval={2000}></ImageCarousel>
-                            <ImageCarousel images={table} interval={2000}></ImageCarousel>
-                            <ImageCarousel images={table} interval={2000}></ImageCarousel>
+                            <ImageCarousel images={table} interval={2000}/>
+                            <ImageCarousel images={table} interval={2000}/>
+                            <ImageCarousel images={table} interval={2000}/>
                         </div>
                         <div className="allRestaurants" onClick={() => {navigate('/allrestaurants');
                             window.scrollTo(0, 0);
@@ -209,9 +206,9 @@ export default function Landing() {
                         </div>
                     </div>
 
-                    <Explanation></Explanation>
-                    <Faq></Faq>
-                    <Footer></Footer>
+                    <Explanation/>
+                    <Faq/>
+                    <Footer/>
                 </div>
             </div>
         </div>

@@ -14,11 +14,11 @@
 
 .activated {
     color: #5541D7;
-    border: 1px solid #5541D7;
+    border: 1px solid #5541D7!important;
 }
 
 .numberLine {
-    border-top: 1px solid #C0B8F4;
+    border: 1px solid #C0B8F4;
     width: 85px;
     align-self: center;
 }

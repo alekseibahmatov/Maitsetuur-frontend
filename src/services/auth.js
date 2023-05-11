@@ -1,7 +1,7 @@
 import http from "../utils/http-client";
 
 const login = (data) => {
-    return http.post('/auth/authenticate', data, {
+    return http.post('/auth/login', data, {
         transformResponse: [(result) => {
             const parsed = JSON.parse(result);
             localStorage.setItem('authUser', JSON.stringify(parsed));

@@ -27,7 +27,7 @@ import FirstStepResetPassword from "./pages/reset-password/FirstStepResetPasswor
 import ListOfCoupons from "./pages/admin/list-of-coupons/ListOfCoupons";
 import ListOfRestaurants from "./pages/admin/list-of-restaurants/ListOfRestaurants";
 import {ListOfWaiters} from "./pages/restaurant/list-of-waiters/ListOfWaiters";
-import Payment from "./pages/payment/Payment";
+import AddYourPersonalData from "./pages/personal-coupon-order/AddYourPersonalData";
 import Report from "./pages/report/Report";
 import {AddBusinessInformation} from "./pages/business-coupon-order/AddBusinessInformation";
 import {AddBusinessAddress} from "./pages/business-coupon-order/AddBusinessAddress";
@@ -43,14 +43,20 @@ import {
     BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION,
     BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION,
     BUSINESS_COUPON_ORDER_ADD_COUPON_DATA,
-    BUSINESS_COUPON_ORDER_DETAILS
+    BUSINESS_COUPON_ORDER_DETAILS, PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA,
+    PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA,
+    PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA, PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA
 } from "./routes";
+import AddYourAddressData from "./pages/personal-coupon-order/AddYourAddressData";
+import AddRecipientPersonalData from "./pages/personal-coupon-order/AddRecipientPersonalData";
+import CheckCouponData from "./pages/personal-coupon-order/CheckCouponData";
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
     'waiter': 'ROLE_WAITER',
     'admin': 'ROLE_ADMIN',
-    'newbie': 'ROLE_NEWBIE'
+    'newbie': 'ROLE_NEWBIE',
+    'account': 'ROLE_ACCOUNTANT'
 }
 
 export const App = () => {
@@ -70,7 +76,12 @@ export const App = () => {
                 <Route path='/reset-password-final' element={<SecondStepResetPassword/>}/>
                 <Route path='/reset-success' element={<ResetSuccess/>}/>
                 <Route path='/add-personal-info/:activationCode' element={<AddPersonalInfo/>}/>
-                <Route path='/payment' element={<Payment/>}/>
+
+                {/* PUBLIC ROUTES PERSONAL COUPON ORDER */}
+                <Route path={PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA} element={<AddYourPersonalData/>}/>
+                <Route path={PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA} element={<AddYourAddressData/>}/>
+                <Route path={PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA} element={<AddRecipientPersonalData/>}/>
+                <Route path={PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA} element={<CheckCouponData/>}/>
 
                 {/* PUBLIC ROUTES BUSINESS COUPON ORDER */}
                 <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION} element={<AddBusinessInformation/>}/>
@@ -96,6 +107,14 @@ export const App = () => {
                 <Route element={<AuthGuard allowedRoles={[ROLES.waiter, ROLES.customer, ROLES.admin]}/>}>
 
                     <Route path="/dashboard/*" element={<Dashboard/>}>
+
+                        {/* PRIVATE ROUTES ACCOUNTANT */}
+                        <Route element={<AuthGuard allowedRoles={[ROLES.customer, ROLES.admin, ROLES.account]}/>}>
+                            <Route path='report' element={<Report/>}/>
+                            <Route path='reportlist' element={<ReportList/>}/>
+                        </Route>
+
+
                         {/* PRIVATE ROUTES CUSTOMER */}
                         <Route element={<AuthGuard allowedRoles={[ROLES.customer, ROLES.admin]}/>}>
                             <Route path="" element={<MainStats/>}/>
@@ -114,8 +133,6 @@ export const App = () => {
                             <Route path="list-of-waiters" element={<ListOfWaiters/>}/>
                             <Route path='coupon/create' element={<CouponSingle/>}/>
                             <Route path='coupon-info/:couponId' element={<CouponSingle/>}/>
-                            <Route path='report' element={<Report/>}/>
-                            <Route path='reportlist' element={<ReportList/>}/>
                             <Route path='createnewuser' element={<CreateNewUser/>}/>
                             <Route path='readuser' element={<ReadUser/>}/>
                         </Route>
