@@ -1,51 +1,67 @@
 import React, {useState, useEffect} from "react";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import './Payment.css'
-import authService from "../../services/auth";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import cross from '../../assets/img/Less Than.png'
-import {validationSchemaPersonal} from "./PaymentValidationSchema";
 import {PersonalCouponOrderHeader} from "../../ui-components/personal-coupon-order-header/PersonalCouponOrderHeader";
+import * as Yup from "yup";
+import {
+    PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA,
+    PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA
+} from "../../routes";
+import {scrollTop} from "../business-coupon-order/tools";
+import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 
+const europeanMobilePhoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+
+export const validationSchemaToPersonalData = Yup.object().shape({
+    toFullName: Yup.string()
+        .required('Full Name is required')
+        .max(100, 'Full Name seems to be incorrect, please contact us')
+        .typeError("Input correct Full Name"),
+    toPhone: Yup.string()
+        .matches(europeanMobilePhoneRegex, "Invalid phone number")
+        .required('Mobile phone is required'),
+    toEmail: Yup.string()
+        .email('Invalid email')
+        .required('Email is required'),
+});
 
 export const AddRecipientPersonalData = () => {
     const navigate = useNavigate();
-    const [step, setStep] = useState(0);
-    const [localStorageFormData, setLocalStorageFormData] = useState({});
 
-    const getPaymentInitialValues = (localStorageData) => {
-        return {
-            fromFullName: localStorageData?.from || '',
-            fromPhone: '',
-            fromEmail: '',
-            country: '',
-            city: '',
-            state: '',
-            street: '',
-            apartmentNumber: '',
-            postcode: '',
-            toFullName: localStorageData?.to || '',
-            toPhone: localStorageData?.receiverPhone || '',
-            toEmail: localStorageData?.receiverMail || '',
-            congratsText: ''
-        };
+    const [initialValues, setInitialValues] = useState({
+        toFullName: '',
+        toPhone: '',
+        toEmail: '',
+    });
+
+    const saveToLocalStorage = (data) => {
+        const currentLocalStorage = JSON.parse(localStorage.getItem('certificateFormData')) || {};
+        currentLocalStorage.toPersonalData = data;
+        localStorage.setItem('certificateFormData', JSON.stringify(currentLocalStorage));
     };
 
     useEffect(() => {
-        const localStorageData = JSON.parse(localStorage.getItem("certificateFormData"));
-        if (localStorageData) {
-            setLocalStorageFormData(localStorageData);
+        const storedData = localStorage.getItem("certificateFormData");
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            const toPersonalData = parsedData?.toPersonalData;
+            if (toPersonalData) {
+                setInitialValues(toPersonalData);
+            }
+            console.log(toPersonalData)
+
         }
     }, []);
 
-    const paymentInitialValues = getPaymentInitialValues(localStorageFormData)
 
     return (
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Add Your Personal Data
+                    Add Recipient's Personal Data
                 </div>
                 <div className="loginFormForm">
                     <div className="loginForm">
@@ -54,48 +70,23 @@ export const AddRecipientPersonalData = () => {
                         <div className="authentication">
                             <Formik
                                 enableReinitialize={true}
-                                initialValues={paymentInitialValues}
+                                initialValues={initialValues}
                                 onSubmit={(values, actions) => {
-                                    const restructuredValues = {
-                                        value: 0,
-                                        fromEmail: values.fromEmail,
-                                        toFullName: values.toFullName,
-                                        fromFullName: values.fromFullName,
-                                        toEmail: values.toEmail,
-                                        toPhone: values.toPhone,
-                                        fromPhone: values.fromPhone,
-                                        congratsText: values.congratsMessage,
-                                        billingAddress: {
-                                            street: values.street,
-                                            apartmentNumber: values.apartmentNumber,
-                                            city: values.city,
-                                            state: values.state,
-                                            zipCode: values.postcode,
-                                            country: values.country
-                                        },
-                                        // todo: add personal-coupon-order methods and received extra data
-                                        preferredProvider: ''
-                                    }
+                                    actions.setSubmitting(true);
 
                                     setTimeout(async () => {
                                         try {
-                                            const result = await authService.addPersonalData(restructuredValues);
-                                            toast.success(result.data?.message, {
-                                                duration: 4000,
-                                            });
-                                            setTimeout(() => {
-                                                if (result.status === 200) {
-                                                    navigate('/login');
-                                                }
-                                            }, 1000);
+                                            saveToLocalStorage(values);
+                                            navigate(PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA);
+                                            scrollTop();
                                         } catch (error) {
                                             console.log(error)
-                                            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+                                            toast.error(error.data ? error.data : 'Opss... Something went wrong');
                                         }
-                                        actions.setSubmitting(false)
+                                        actions.setSubmitting(false);
                                     }, 1000);
                                 }}
-                                validationSchema={validationSchemaPersonal}
+                                validationSchema={validationSchemaToPersonalData}
                             >
                                 {(props: FormikProps<any>) => (
                                     <Form>
@@ -134,11 +125,12 @@ export const AddRecipientPersonalData = () => {
                                                         <ErrorMessage name="toEmail"/>
                                                     </div>
                                                 </div>
+
                                                 <div className="alignFlex">
-                                                    <button type="submit" className="loginButton">
-                                                        Submit
+                                                    <button className="loginButton" type="submit">
+                                                        {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
                                                     </button>
-                                                    <button type="button" onClick={() => setStep(0)}
+                                                    <button type="button" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA)}
                                                             className="loginButtonBack">
                                                         Go back
                                                     </button>

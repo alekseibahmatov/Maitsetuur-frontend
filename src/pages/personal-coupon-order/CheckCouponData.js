@@ -1,45 +1,56 @@
 import React, {useState, useEffect} from "react";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import './Payment.css'
-import authService from "../../services/auth";
-import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import cross from '../../assets/img/Less Than.png'
-import {validationSchemaPersonal} from "./PaymentValidationSchema";
 import {PersonalCouponOrderHeader} from "../../ui-components/personal-coupon-order-header/PersonalCouponOrderHeader";
+import * as Yup from "yup";
+import {scrollTop} from "../business-coupon-order/tools";
+import toast from "react-hot-toast";
+import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
+import {
+    PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA,
+} from "../../routes";
+import customerServices from "../../services/customer";
 
+export const validationSchemaCouponData = Yup.object().shape({
+    value: Yup.number()
+        .integer("Nominal value must be a whole number")
+        .typeError("Nominal value must be a valid number")
+        .min(1, "Nominal has to be minimal 1 euro")
+        .max(5000, "Contact us, in case you need bigger than 5000€ nominal, please")
+        .required("Nominal value is required"),
+    congratsText: Yup.string()
+        .max(250, "Congratulations text cannot exceed 250 characters")
+        .required("Congratulations text is required"),
+});
 
 export const CheckCouponData = () => {
     const navigate = useNavigate();
-    const [step, setStep] = useState(0);
-    const [localStorageFormData, setLocalStorageFormData] = useState({});
 
-    const getPaymentInitialValues = (localStorageData) => {
-        return {
-            fromFullName: localStorageData?.from || '',
-            fromPhone: '',
-            fromEmail: '',
-            country: '',
-            city: '',
-            state: '',
-            street: '',
-            apartmentNumber: '',
-            postcode: '',
-            toFullName: localStorageData?.to || '',
-            toPhone: localStorageData?.receiverPhone || '',
-            toEmail: localStorageData?.receiverMail || '',
-            congratsText: ''
-        };
+    const [initialValues, setInitialValues] = useState({
+        value: '',
+        congratsText: '',
+    });
+
+    const saveToLocalStorage = (data) => {
+        const currentLocalStorage = JSON.parse(localStorage.getItem('certificateFormData')) || {};
+        currentLocalStorage.couponData = data;
+        localStorage.setItem('certificateFormData', JSON.stringify(currentLocalStorage));
     };
 
     useEffect(() => {
-        const localStorageData = JSON.parse(localStorage.getItem("certificateFormData"));
-        if (localStorageData) {
-            setLocalStorageFormData(localStorageData);
+        const storedData = localStorage.getItem("certificateFormData");
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            const couponData = parsedData?.couponData;
+            if (couponData) {
+                setInitialValues(couponData);
+            }
+            console.log(couponData)
+
         }
     }, []);
-
-    const paymentInitialValues = getPaymentInitialValues(localStorageFormData)
 
     return (
         <>
@@ -54,91 +65,74 @@ export const CheckCouponData = () => {
                         <div className="authentication">
                             <Formik
                                 enableReinitialize={true}
-                                initialValues={paymentInitialValues}
+                                initialValues={initialValues}
                                 onSubmit={(values, actions) => {
-                                    const restructuredValues = {
-                                        value: 0,
-                                        fromEmail: values.fromEmail,
-                                        toFullName: values.toFullName,
-                                        fromFullName: values.fromFullName,
-                                        toEmail: values.toEmail,
-                                        toPhone: values.toPhone,
-                                        fromPhone: values.fromPhone,
-                                        congratsText: values.congratsMessage,
-                                        billingAddress: {
-                                            street: values.street,
-                                            apartmentNumber: values.apartmentNumber,
-                                            city: values.city,
-                                            state: values.state,
-                                            zipCode: values.postcode,
-                                            country: values.country
-                                        },
-                                        // todo: add personal-coupon-order methods and received extra data
-                                        preferredProvider: ''
-                                    }
+                                    actions.setSubmitting(true);
+
 
                                     setTimeout(async () => {
                                         try {
-                                            const result = await authService.addPersonalData(restructuredValues);
-                                            toast.success(result.data?.message, {
-                                                duration: 4000,
-                                            });
+                                            saveToLocalStorage(values);
+                                            const result = await customerServices.initiatePayment();
+                                            console.log(result)
+                                            toast.success(result.data.message);
                                             setTimeout(() => {
                                                 if (result.status === 200) {
-                                                    navigate('/login');
+                                                    window.location.href = result?.data?.redirectUrl
+                                                    // navigate(result?.data?.redirectUrl,  { replace: true });
                                                 }
                                             }, 1000);
+
+                                            scrollTop();
                                         } catch (error) {
                                             console.log(error)
-                                            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+                                            toast.error(error.data ? error.data : 'Opss... Something went wrong');
                                         }
-                                        actions.setSubmitting(false)
+                                        actions.setSubmitting(false);
                                     }, 1000);
                                 }}
-                                validationSchema={validationSchemaPersonal}
+                                validationSchema={validationSchemaCouponData}
                             >
                                 {(props: FormikProps<any>) => (
                                     <Form>
                                         <>
                                             <div className="inputBoards">
                                                 <div className="inputHeader">
-                                                    Recipient's Full Name
+                                                    Nominal value
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="toFullName"
-                                                           placeholder="Input your full name"/>
+                                                           name="value"
+                                                           placeholder="Input nominal value"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="toFullName"/>
+                                                        <ErrorMessage name="value"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
-                                                    Recipient's Mobile Phone
+                                                    Congratulations text
                                                 </div>
                                                 <div className="inputAuthentication">
-                                                    <Field className="inputAuthenticationInput" type="text"
-                                                           name="toPhone"
-                                                           placeholder="Input your mobile phone"/>
+                                                    <Field
+                                                        className="inputAuthenticationInput resizeHeight"
+                                                        name="congratsText"
+                                                        id="congratsText"
+                                                        component="textarea"
+                                                        placeholder='Congratulations text...'
+                                                    />
+                                                    <div className='wordCountText'>
+                                                        {props.values.congratsText?.length || 0}/250
+                                                    </div>
                                                     <div className="error">
-                                                        <ErrorMessage name="toPhone"/>
+                                                        <ErrorMessage name="congratsText"/>
                                                     </div>
                                                 </div>
-                                                <div className="inputHeader">
-                                                    Recipient's email
-                                                </div>
-                                                <div className="inputAuthentication">
-                                                    <Field className="inputAuthenticationInput" type="text"
-                                                           name="toEmail"
-                                                           placeholder="Input your email"/>
-                                                    <div className="error">
-                                                        <ErrorMessage name="toEmail"/>
-                                                    </div>
-                                                </div>
+
+
                                                 <div className="alignFlex">
-                                                    <button type="submit" className="loginButton">
-                                                        Submit
+                                                    <button className="loginButton" type="submit">
+                                                        {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
                                                     </button>
-                                                    <button type="button" onClick={() => setStep(0)}
+                                                    <button type="button" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA)}
                                                             className="loginButtonBack">
                                                         Go back
                                                     </button>

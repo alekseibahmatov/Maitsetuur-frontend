@@ -1,49 +1,64 @@
 import React, {useState, useEffect} from "react";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import './Payment.css'
-import authService from "../../services/auth";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import cross from '../../assets/img/Less Than.png'
-import {validationSchemaPersonal} from "./PaymentValidationSchema";
 import {PersonalCouponOrderHeader} from "../../ui-components/personal-coupon-order-header/PersonalCouponOrderHeader";
 import {
-    PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA,
+    PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA, PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA,
     PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA
 } from "../../routes";
+import * as Yup from "yup";
+import {scrollTop} from "../business-coupon-order/tools";
+import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 
+export const validationSchemaFromAddressData = Yup.object().shape({
+    country: Yup.string()
+        .required('Country is required'),
+    city: Yup.string()
+        .required('City is required'),
+    state: Yup.string()
+        .required('State is required'),
+    street: Yup.string()
+        .required('Street is required'),
+    apartmentNumber: Yup.string()
+        .required('Apartment number is required'),
+    postcode: Yup.string()
+        .required('Postcode is required'),
+});
 
 export const AddYourAddressData = () => {
     const navigate = useNavigate();
-    const [step, setStep] = useState(0);
-    const [localStorageFormData, setLocalStorageFormData] = useState({});
 
-    const getPaymentInitialValues = (localStorageData) => {
-        return {
-            fromFullName: localStorageData?.from || '',
-            fromPhone: '',
-            fromEmail: '',
-            country: '',
-            city: '',
-            state: '',
-            street: '',
-            apartmentNumber: '',
-            postcode: '',
-            toFullName: localStorageData?.to || '',
-            toPhone: localStorageData?.receiverPhone || '',
-            toEmail: localStorageData?.receiverMail || '',
-            congratsText: ''
-        };
+    const [initialValues, setInitialValues] = useState({
+        country: '',
+        city: '',
+        state: '',
+        street: '',
+        apartmentNumber: '',
+        postcode: '',
+    });
+
+    const saveToLocalStorage = (data) => {
+        const currentLocalStorage = JSON.parse(localStorage.getItem('certificateFormData')) || {};
+        currentLocalStorage.billingAddress = data;
+        localStorage.setItem('certificateFormData', JSON.stringify(currentLocalStorage));
     };
 
     useEffect(() => {
-        const localStorageData = JSON.parse(localStorage.getItem("certificateFormData"));
-        if (localStorageData) {
-            setLocalStorageFormData(localStorageData);
+        const storedData = localStorage.getItem("certificateFormData");
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            const addressData = parsedData?.billingAddress;
+            if (addressData) {
+                setInitialValues(addressData);
+            }
+            console.log(addressData)
+
         }
     }, []);
 
-    const paymentInitialValues = getPaymentInitialValues(localStorageFormData)
 
     return (
         <>
@@ -58,48 +73,24 @@ export const AddYourAddressData = () => {
                         <div className="authentication">
                             <Formik
                                 enableReinitialize={true}
-                                initialValues={paymentInitialValues}
+                                initialValues={initialValues}
                                 onSubmit={(values, actions) => {
-                                    const restructuredValues = {
-                                        value: 0,
-                                        fromEmail: values.fromEmail,
-                                        toFullName: values.toFullName,
-                                        fromFullName: values.fromFullName,
-                                        toEmail: values.toEmail,
-                                        toPhone: values.toPhone,
-                                        fromPhone: values.fromPhone,
-                                        congratsText: values.congratsMessage,
-                                        billingAddress: {
-                                            street: values.street,
-                                            apartmentNumber: values.apartmentNumber,
-                                            city: values.city,
-                                            state: values.state,
-                                            zipCode: values.postcode,
-                                            country: values.country
-                                        },
-                                        // todo: add personal-coupon-order methods and received extra data
-                                        preferredProvider: ''
-                                    }
+                                    actions.setSubmitting(true);
 
                                     setTimeout(async () => {
                                         try {
-                                            const result = await authService.addPersonalData(restructuredValues);
-                                            toast.success(result.data?.message, {
-                                                duration: 4000,
-                                            });
-                                            setTimeout(() => {
-                                                if (result.status === 200) {
-                                                    navigate('/login');
-                                                }
-                                            }, 1000);
+                                            saveToLocalStorage(values);
+                                            navigate(PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA);
+                                            scrollTop();
                                         } catch (error) {
                                             console.log(error)
-                                            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+                                            toast.error(error.data ? error.data : 'Opss... Something went wrong');
                                         }
-                                        actions.setSubmitting(false)
+                                        actions.setSubmitting(false);
                                     }, 1000);
+
                                 }}
-                                validationSchema={validationSchemaPersonal}
+                                validationSchema={validationSchemaFromAddressData}
                             >
                                 {(props: FormikProps<any>) => (
                                     <Form>
@@ -171,19 +162,10 @@ export const AddYourAddressData = () => {
                                                         <ErrorMessage name="postcode"/>
                                                     </div>
                                                 </div>
-                                                {/*<button onClick={() => {*/}
-                                                {/*    setStep(1)*/}
-                                                {/*}} className="loginButton fullWidth">*/}
-                                                {/*    Go to next step*/}
-                                                {/*</button>*/}
-                                                {/*<button type="button" onClick={() => setStep(0)}*/}
-                                                {/*        className="loginButtonBack">*/}
-                                                {/*    Go back*/}
-                                                {/*</button>*/}
 
                                                 <div className="alignFlex">
-                                                    <button type="submit" className="loginButton" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA)}>
-                                                        Go to next step
+                                                    <button className="loginButton" type="submit">
+                                                        {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
                                                     </button>
                                                     <button type="button" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA)}
                                                             className="loginButtonBack">

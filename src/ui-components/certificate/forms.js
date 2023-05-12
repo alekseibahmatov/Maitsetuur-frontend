@@ -101,16 +101,21 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                 initialValues={initialValuesPersonal}
                 validationSchema={validationSchemaPersonal}
                 onSubmit={(values, actions) => {
-                    console.log(values)
                     const reformattedFormValues = {
-                        from: values.fromFullName,
-                        to: values.toFullName,
-                        receiverPhone: values.toPhone,
-                        receiverMail: values.toEmail,
+                        fromPersonalData: {
+                            fromFullName: values.fromFullName,
+                        },
+                        toPersonalData: {
+                            toFullName: values.toFullName,
+                            toEmail: values.toPhone,
+                            toPhone: values.toEmail,
+                        },
+                        couponData: {
+                            nominal: values.nominal,
+                            congratsMessage: values.congratsMessage
+                        }
                     }
                     submitPersonalForm(reformattedFormValues, actions, navigate)
-                    // localStorage.setItem("certificateFormData", JSON.stringify(formData));
-                    // navigate("/personal-coupon-order")
                 }}
             >
                 {(props: FormikProps<any>) => (

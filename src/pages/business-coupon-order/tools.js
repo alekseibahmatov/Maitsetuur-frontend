@@ -1,5 +1,9 @@
 import React from "react";
 import toast from "react-hot-toast";
+import {
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION,
+    BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION
+} from "../../routes";
 
 export const scrollTop = () => {
     window.scrollTo({
@@ -16,12 +20,12 @@ export const prepareGeneralCouponObject = (setCoupons, navigate) => {
     try {
         const storedData = localStorage.getItem('businessFormData');
         if (!storedData) {
-            navigate('/step1');
+            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION);
         }
         if (storedData) {
             const parsedData = JSON.parse(storedData);
             if (!parsedData.couponConfiguration) {
-                navigate('/step3');
+                navigate(BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION);
             }
             const couponConfiguration = parsedData?.couponConfiguration;
             if (couponConfiguration) {

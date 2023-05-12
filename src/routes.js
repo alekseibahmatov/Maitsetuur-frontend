@@ -18,4 +18,5 @@ export const PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA = '/personal-coupon-or
 export const PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA = '/personal-coupon-order/add-your-address-data'
 export const PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA = '/personal-coupon-order/add-recipient-personal-data'
 export const PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA = '/personal-coupon-order/check-coupon-data'
+export const PERSONAL_COUPON_ORDER_DETAILS = '/personal-coupon-order/order-details'
 

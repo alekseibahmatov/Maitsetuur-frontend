@@ -1,6 +1,9 @@
 import React from 'react'
 import {useNavigate} from "react-router-dom";
-import {BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION} from "../../routes";
+import {
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION,
+    PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA
+} from "../../routes";
 import {scrollTop} from "../../pages/business-coupon-order/tools";
 import toast from "react-hot-toast";
 
@@ -37,7 +40,7 @@ export const submitPersonalForm = (reformattedFormValues, actions, navigate) => 
             console.log(reformattedFormValues)
             localStorage.setItem("certificateFormData", JSON.stringify(reformattedFormValues));
 
-            navigate('/personal-coupon-order')
+            navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA)
             scrollTop();
         } catch (error) {
             console.log(error)

@@ -33,7 +33,7 @@ import {AddBusinessInformation} from "./pages/business-coupon-order/AddBusinessI
 import {AddBusinessAddress} from "./pages/business-coupon-order/AddBusinessAddress";
 import {AddCouponConfiguration} from "./pages/business-coupon-order/AddCouponConfiguration";
 import {AddCouponData} from "./pages/business-coupon-order/AddCouponData";
-import {OrderDetails} from "./pages/business-coupon-order/OrderDetails";
+import {OrderDetails} from "./pages/common-pages/OrderDetails";
 import ReportList from "./pages/report-list/ReportList";
 import CreateNewUser from "./pages/create-new-user/CreateNewUser";
 import ReadUser from "./pages/read-user/ReadUser";
@@ -45,7 +45,7 @@ import {
     BUSINESS_COUPON_ORDER_ADD_COUPON_DATA,
     BUSINESS_COUPON_ORDER_DETAILS, PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA,
     PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA,
-    PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA, PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA
+    PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA, PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA, PERSONAL_COUPON_ORDER_DETAILS
 } from "./routes";
 import AddYourAddressData from "./pages/personal-coupon-order/AddYourAddressData";
 import AddRecipientPersonalData from "./pages/personal-coupon-order/AddRecipientPersonalData";
@@ -82,13 +82,14 @@ export const App = () => {
                 <Route path={PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA} element={<AddYourAddressData/>}/>
                 <Route path={PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA} element={<AddRecipientPersonalData/>}/>
                 <Route path={PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA} element={<CheckCouponData/>}/>
+                <Route path={PERSONAL_COUPON_ORDER_DETAILS + '/:orderToken'} element={<OrderDetails/>}/>
 
                 {/* PUBLIC ROUTES BUSINESS COUPON ORDER */}
                 <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION} element={<AddBusinessInformation/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS} element={<AddBusinessAddress/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION} element={<AddCouponConfiguration/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_COUPON_DATA} element={<AddCouponData/>}/>
-                <Route path={BUSINESS_COUPON_ORDER_DETAILS} element={<OrderDetails/>}/>
+                <Route path={BUSINESS_COUPON_ORDER_DETAILS + '/:orderToken'} element={<OrderDetails/>}/>
                {/* todo add failure order page */}
 
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}
