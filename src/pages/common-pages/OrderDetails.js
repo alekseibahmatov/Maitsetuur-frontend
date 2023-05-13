@@ -72,6 +72,7 @@ export const OrderDetails = () => {
 
         <>
             {paymentValidationResult ?
+                // success
                 <div className="loginContent">
                     <div className="loginHeader">
                         Order details
@@ -103,10 +104,13 @@ export const OrderDetails = () => {
                     </div>
                 </div>
 
-                : <h1>Failure
+                :
+                // failure
+                <h1>Failure
                     <br/>
                     <button onClick={() => window.location.reload()}>try again</button>
-                </h1>}
+                </h1>
+            }
 
         </>
 

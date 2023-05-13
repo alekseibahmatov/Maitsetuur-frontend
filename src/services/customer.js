@@ -37,7 +37,7 @@ const validatePayment = (orderToken) => {
 
 
 
-    return http.post('/payment/verificationCreation', orderToken, {
+    return http.post('/payment/validatePayment', orderToken, {
         transformResponse: [(result) => {
             return JSON.parse(result);
         }]
