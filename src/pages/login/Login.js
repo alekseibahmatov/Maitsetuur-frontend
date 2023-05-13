@@ -43,7 +43,7 @@ export const Login = () => {
                                         }
                                     }, 1000);
                                 } catch (error) {
-                                    console.log(error.code)
+                                    console.log(error)
                                     toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
                                 }
                                 actions.setSubmitting(false)

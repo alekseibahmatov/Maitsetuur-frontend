@@ -36,7 +36,7 @@ import {AddCouponData} from "./pages/business-coupon-order/AddCouponData";
 import {OrderDetails} from "./pages/common-pages/OrderDetails";
 import ReportList from "./pages/report-list/ReportList";
 import CreateNewUser from "./pages/create-new-user/CreateNewUser";
-import ReadUser from "./pages/read-user/ReadUser";
+import ReadUser from "./pages/user-info/ReadUser";
 
 import {
     BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS,
@@ -134,8 +134,9 @@ export const App = () => {
                             <Route path="list-of-waiters" element={<ListOfWaiters/>}/>
                             <Route path='coupon/create' element={<CouponSingle/>}/>
                             <Route path='coupon-info/:couponId' element={<CouponSingle/>}/>
-                            <Route path='createnewuser' element={<CreateNewUser/>}/>
-                            <Route path='readuser' element={<ReadUser/>}/>
+                            <Route path='user/create' element={<CreateNewUser/>}/>
+                            <Route path='user-info/:userId' element={<CreateNewUser/>}/>
+                            {/*<Route path='user-info/:userId' element={<ReadUser/>}/>*/}
                         </Route>
 
                         {/* ERROR HANDLING */}

@@ -5,7 +5,8 @@ import jwt_decode from "jwt-decode";
 const instance = axios.create({
     // baseURL: process.env.REACT_APP_API_BASE_URL
     // todo: add .env file with normal config parameters
-    baseURL: 'https://api.maitsetuur.ee/api/v1'
+    // baseURL: 'https://api.maitsetuur.ee/api/v1'
+    baseURL: 'http://localhost:8080/api/v1'
 });
 
 instance.interceptors.request.use((config) => {

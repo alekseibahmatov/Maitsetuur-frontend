@@ -123,8 +123,7 @@ export const RestaurantBusinessInformation = () => {
     return <div className='rightBlock1'>
         <div className="businessHeader">
             <div className="businessHeader1">
-                {restaurantData.restaurantName ? restaurantData.restaurantName : !restaurantId ? "Create" : "Loading..."} Business
-                Information
+                {restaurantData.restaurantName ? restaurantData.restaurantName : !restaurantId ? "Create" : "Loading..."} Business Information
             </div>
             <div className="flexStyleDiv">
                 <div onClick={() => toggleModal(restaurantId ? "Update" : "Create")} className="buttonSample">

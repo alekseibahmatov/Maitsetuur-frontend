@@ -24,6 +24,31 @@ const deleteRestaurant = (data) => {
     return http.delete('/admin/restaurant/' + data);
 }
 
+// todo: update link and etc.
+const createNewUser = (data) => {
+    return http.post('/admin/user', data, {
+        transformResponse: [(result) => {
+            return JSON.parse(result);
+        }]
+    });
+}
+
+const getUserData = (data) => {
+    return http.get('/admin/user/' + data);
+}
+
+const updateUserData = (data) => {
+    return http.put('/admin/user', data, {
+        transformResponse: [(result) => {
+            return JSON.parse(result);
+        }]
+    });
+}
+
+const deleteUser = (data) => {
+    return http.delete('/admin/user/' + data);
+}
+
 const getAllRestaurants = () => {
     return http.get('/admin/restaurant');
 }
@@ -91,6 +116,10 @@ const methods = {
     deleteRestaurant,
     updateRestaurantData,
     getRestaurantData,
+    createNewUser,
+    deleteUser,
+    updateUserData,
+    getUserData,
     getAllRestaurants,
     updateWaiterData,
     getAllWaiters,

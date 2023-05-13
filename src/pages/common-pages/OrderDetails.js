@@ -4,7 +4,6 @@ import sausage from '../../assets/img/sosiska.png'
 import TableForPayment from "../../ui-components/table-for-payment/TableForPayment";
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
 import {useNavigate, useParams} from "react-router-dom";
-import {BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION, BUSINESS_COUPON_ORDER_ADD_COUPON_DATA} from "../../routes";
 import customerServices from "../../services/customer";
 
 export const OrderDetails = () => {
@@ -41,17 +40,7 @@ export const OrderDetails = () => {
     }
 
     const storedData = localStorage.getItem('businessFormData');
-    // if (!storedData) {
-    //     navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION);
-    //     return null;
-    // }
-
     const parsedData = storedData ? JSON.parse(storedData) : null;
-    // if (!parsedData.generalCouponObject) {
-    //     navigate(BUSINESS_COUPON_ORDER_ADD_COUPON_DATA);
-    //     return null;
-    // }
-
     const coupons = parsedData ? parsedData.generalCouponObject : [];
 
     const nominalValues = [...new Set(coupons.map(coupon => coupon.nominalValue))];
