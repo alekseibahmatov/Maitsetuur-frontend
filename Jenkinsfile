@@ -25,6 +25,16 @@ pipeline {
                 }
             }
         }
+        stage('Delete dockerfile') {
+            steps {
+                sh 'rm Dockerfile'
+            }
+        }
+        stage('Copy new dockerfile') {
+            steps {
+                sh 'cp /var/jenkins/infra/Dockerfile_frontend Dockerfile'
+            }
+        }
         stage('Build docker image') {
             steps {
                 sh 'docker build . -t frontend:latest'
@@ -32,7 +42,7 @@ pipeline {
         }
         stage('Start docker container') {
             steps {
-                sh 'docker run -p 80:80 -d frontend:latest'
+                sh 'docker run -p 80:80 -e REACT_APP_API_BASE_URL=https://testapi.maitsetuur.ee/v1 -d frontend:latest'
                 cleanWs()
             }
         }
