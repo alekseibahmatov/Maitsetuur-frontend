@@ -19,6 +19,7 @@ export default function Report() {
     const navigate = useNavigate();
     const {reportId} = useParams();
     const [reportData, setReportData] = useState(null);
+    const [search, setSearch] = useState('');
 
     console.log(reportId)
 
