@@ -82,14 +82,14 @@ export const App = () => {
                 <Route path={PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA} element={<AddYourAddressData/>}/>
                 <Route path={PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA} element={<AddRecipientPersonalData/>}/>
                 <Route path={PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA} element={<CheckCouponData/>}/>
-                <Route path={PERSONAL_COUPON_ORDER_DETAILS + '/:orderToken'} element={<OrderDetails/>}/>
+                <Route path={PERSONAL_COUPON_ORDER_DETAILS} element={<OrderDetails/>}/>
 
                 {/* PUBLIC ROUTES BUSINESS COUPON ORDER */}
                 <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION} element={<AddBusinessInformation/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS} element={<AddBusinessAddress/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION} element={<AddCouponConfiguration/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_COUPON_DATA} element={<AddCouponData/>}/>
-                <Route path={BUSINESS_COUPON_ORDER_DETAILS + '/:orderToken'} element={<OrderDetails/>}/>
+                <Route path={BUSINESS_COUPON_ORDER_DETAILS} element={<OrderDetails/>}/>
                {/* todo add failure order page */}
 
                 {/* AUTHORIZED ROUTES WITHOUT THE DASHBOARD */}

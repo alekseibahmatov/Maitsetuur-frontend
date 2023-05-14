@@ -21,7 +21,6 @@ const initiatePayment = () => {
             zipCode: localStorageData?.billingAddress?.postCode,
             country: localStorageData?.billingAddress?.country
         },
-        preferredProvider: 'HABAEE2X'
     };
 
     console.log(updatedData)
@@ -34,8 +33,7 @@ const initiatePayment = () => {
 }
 
 const validatePayment = (orderToken) => {
-
-    return http.post('/payment/validatePayment', orderToken, {
+    return http.post('/payment/validatePayment', {orderToken: orderToken}, {
         transformResponse: [(result) => {
             return JSON.parse(result);
         }]
