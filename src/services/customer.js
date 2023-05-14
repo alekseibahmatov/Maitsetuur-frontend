@@ -2,7 +2,7 @@ import http from "../utils/http-client";
 import {useParams} from "react-router-dom";
 
 const initiatePayment = () => {
-    const localStorageData = JSON.parse(localStorage.getItem('certificateFormData')) || {};
+    const localStorageData = JSON.parse(localStorage.getItem('personalFormData')) || {};
 
     const updatedData = {
         value: localStorageData?.couponData?.value,
@@ -21,7 +21,6 @@ const initiatePayment = () => {
             zipCode: localStorageData?.billingAddress?.postCode,
             country: localStorageData?.billingAddress?.country
         },
-        preferredProvider: 'HABAEE2X'
     };
 
     console.log(updatedData)
@@ -34,8 +33,7 @@ const initiatePayment = () => {
 }
 
 const validatePayment = (orderToken) => {
-
-    return http.post('/payment/validatePayment', orderToken, {
+    return http.post('/payment/validatePayment', {orderToken: orderToken}, {
         transformResponse: [(result) => {
             return JSON.parse(result);
         }]

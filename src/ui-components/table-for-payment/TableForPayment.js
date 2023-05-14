@@ -1,7 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './TableForPayment.css';
+import { useLocation } from 'react-router-dom';
 
-const TableForPayment = ({ items, total }) => {
+const TableForPayment = () => {
+    const location = useLocation();
+    let storageKey;
+
+    if (location.pathname.includes('personal-coupon-order')) {
+        storageKey = 'personalFormData';
+    } else if(location.pathname.includes('business-coupon-order')) {
+        storageKey = 'businessFormData';
+    }
+
+    const storedData = localStorage.getItem(storageKey);
+    const parsedData = storedData ? JSON.parse(storedData) : null;
+
+    let items = [];
+    let total = 0;
+
+    if (parsedData) {
+        if (storageKey === 'personalFormData') {
+            const { couponData } = parsedData;
+            items = [{item: `Certificate ${couponData.value}$`, quantity: 1, price: parseFloat(couponData.value)}];
+        } else {
+            const coupons = parsedData.generalCouponObject;
+
+            const nominalValues = [...new Set(coupons.map(coupon => coupon.nominalValue))];
+
+            items = nominalValues.map(nominalValue => {
+                const filteredCoupons = coupons.filter(coupon => coupon.nominalValue === nominalValue);
+                const quantity = filteredCoupons.length;
+                const price = parseFloat(nominalValue);
+                return {item: `Certificate ${nominalValue}$`, quantity, price};
+            }).sort((a, b) => a.price - b.price);
+        }
+
+        total = items.reduce((acc, item) => {
+            return acc + item.price * item.quantity;
+        }, 0);
+    }
+
     return (
         <div className="table-for-payment-wrapper">
             <table className="table-for-payment">
