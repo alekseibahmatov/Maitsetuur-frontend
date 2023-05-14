@@ -3,11 +3,15 @@ import '../business-coupon-order/BusinessAuth.css'
 import sausage from '../../assets/img/sosiska.png'
 import TableForPayment from "../../ui-components/table-for-payment/TableForPayment";
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import customerServices from "../../services/customer";
 
 export const OrderDetails = () => {
-    const {orderToken} = useParams();
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const orderToken = searchParams.get('order-token');
+
+    console.log(orderToken)
     const navigate = useNavigate();
     const [step, setStep] = useState(4);
     const [isLoading, setIsLoading] = useState(true);
