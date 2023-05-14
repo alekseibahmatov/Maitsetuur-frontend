@@ -1,10 +1,5 @@
 FROM node:16.13.2-alpine as builder
 WORKDIR /app
-COPY package.json .
-COPY package-lock.json .
-RUN npm install
-COPY . .
-CMD ["npm", "start"]
 
 #FROM nginx:1.19.0
 #WORKDIR /usr/share/nginx/html
