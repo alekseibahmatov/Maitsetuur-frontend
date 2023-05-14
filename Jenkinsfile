@@ -37,12 +37,12 @@ pipeline {
         }
         stage('Build docker image') {
             steps {
-                sh 'docker build . -t frontend:latest'
+                sh 'docker build . -t frontend'
             }
         }
         stage('Start docker container') {
             steps {
-                sh 'docker run -p 80:80 -e REACT_APP_API_BASE_URL=https://testapi.maitsetuur.ee/v1 -d frontend:latest'
+                sh 'docker run --name frontend -p 80:80 -e REACT_APP_API_BASE_URL=https://testapi.maitsetuur.ee/v1 -d frontend'
                 cleanWs()
             }
         }
