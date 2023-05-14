@@ -1,4 +1,4 @@
-import React from 'react-dom'
+import React, {useEffect} from 'react'
 import './Report.css'
 import euro from '../../assets/img/Exchange Euro.png'
 import bill from '../../assets/img/Paid Bill.png'
@@ -10,7 +10,6 @@ import Table from "../../ui-components/table/Table";
 import {useState} from "react";
 import { options, options2, customStyles, headers, columnSizes, table } from './constants';
 import {useNavigate, useParams} from "react-router-dom";
-import {useEffect} from "@types/react";
 import accountantServices from "../../services/accountant";
 import toast from "react-hot-toast";
 import {initialValuesCreate} from "../admin/resto-business-info/formikInitialValues";
