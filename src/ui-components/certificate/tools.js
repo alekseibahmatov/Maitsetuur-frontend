@@ -38,7 +38,7 @@ export const submitPersonalForm = (reformattedFormValues, actions, navigate) => 
     setTimeout(async () => {
         try {
             console.log(reformattedFormValues)
-            localStorage.setItem("certificateFormData", JSON.stringify(reformattedFormValues));
+            localStorage.setItem("personalFormData", JSON.stringify(reformattedFormValues));
 
             navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA)
             scrollTop();

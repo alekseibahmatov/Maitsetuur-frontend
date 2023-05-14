@@ -119,7 +119,6 @@ export const App = () => {
                         {/* PRIVATE ROUTES CUSTOMER */}
                         <Route element={<AuthGuard allowedRoles={[ROLES.customer, ROLES.admin]}/>}>
                             <Route path="" element={<MainStats/>}/>
-                            <Route path="types-of-restaurants" element={<TypesOfRestaurants/>}/>
                             <Route path='waiter-info/create' element={<WaiterSingle/>}/>
                             <Route path='waiter-info/:waiterId' element={<WaiterSingle/>}/>
                             <Route path='create-waiter' element={<CreateWaiter/>}/>
