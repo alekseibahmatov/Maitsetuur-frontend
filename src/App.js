@@ -111,8 +111,8 @@ export const App = () => {
 
                         {/* PRIVATE ROUTES ACCOUNTANT */}
                         <Route element={<AuthGuard allowedRoles={[ROLES.customer, ROLES.admin, ROLES.account]}/>}>
-                            <Route path='report' element={<Report/>}/>
-                            <Route path='reportlist' element={<ReportList/>}/>
+                            <Route path='report/:reportId' element={<Report/>}/>
+                            <Route path='report-list' element={<ReportList/>}/>
                         </Route>
 
 

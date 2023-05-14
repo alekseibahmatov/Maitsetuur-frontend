@@ -4,80 +4,42 @@ import euro from '../../assets/img/Exchange Euro.png'
 import bill from '../../assets/img/Paid Bill.png'
 import unpaid from '../../assets/img/Payment History.png'
 import paid from '../../assets/img/Transaction Approved.png'
-import {options} from "../admin/main-stats/data";
 import dots from "../../assets/img/dots.png";
 import Select from "react-select";
 import Table from "../../ui-components/table/Table";
 import {useState} from "react";
+import { options, options2, customStyles, headers, columnSizes, table } from './constants';
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect} from "@types/react";
+import accountantServices from "../../services/accountant";
+import toast from "react-hot-toast";
+import {initialValuesCreate} from "../admin/resto-business-info/formikInitialValues";
 
 export default function Report() {
-    const [search, setSearch] = useState('');
+    const navigate = useNavigate();
+    const {reportId} = useParams();
+    const [reportData, setReportData] = useState(null);
 
-    const options = [
-        {value: 'all', label: 'All transactions'},
-        {value: 'daily', label: 'Daily'},
-        {value: 'yearly', label: 'Yearly'}
-    ]
-    const options2 = [
-        {value: 'all', label: 'Oct 1, 2019 → Nov 1, 2019'},
-        {value: 'daily', label: 'Daily'},
-        {value: 'yearly', label: 'Yearly'}
-    ]
+    console.log(reportId)
 
-    const customStyles = {
-        option: (defaultStyles, state) => ({
-            ...defaultStyles,
-            color: state.isSelected ? "#fff" : "#5541D7",
-            backgroundColor: state.isSelected ? "#5541D7" : "#Fff",
-        }),
-
-        control: (defaultStyles) => ({
-            ...defaultStyles,
-            backgroundColor: "#E6E6FA",
-            minWidth: '250px',
-            padding: "3px 20px",
-            border: "1px solid #E6E6FA",
-            boxShadow: "none",
-            borderRadius: '10px',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            "@media only screen and (max-width: 840px)": {
-                ...defaultStyles["@media only screen and (max-width: 600px)"],
-                maxWidth: '400px',
-                width: '100%',
-            },
-            "@media only screen and (max-width: 600px)": {
-                ...defaultStyles["@media only screen and (max-width: 600px)"],
-                padding: "0px 0px",
-                fontWeight: 'normal',
-                fontSize: '14px',
-            }
-
-        }),
-
-        dropdownIndicator: base => ({
-            ...base,
-            color: "#5541D7",
-            marginLeft: '20px',
-        }),
-        singleValue: (defaultStyles) => ({...defaultStyles, color: "#5541D7"}),
-
-
-    };
-
-    const  headers = ["ID", "Name", "Email", "Total Visit", "Contract File", "Total Received"];
-
-    const columnSizes = ["2%", "7%", "5%", "10%", "5%", "5%"];
-    const table = [
-        {
-            id : '1',
-            name : 'Name',
-            email: 'smth',
-            totalVisits: '43',
-            contractFile: 'smth',
-            totalRecieved: '123'
+    useEffect(() => {
+        if (reportId) {
+            getReportDataOnMount()
         }
-    ]
+    }, [reportId]);
+
+    const getReportDataOnMount = async () => {
+        try {
+            const result = await accountantServices.getReportData(reportId)
+            setReportData(result.data)
+            console.log(result)
+
+        } catch (error) {
+            // navigate('/dashboard')
+            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+        }
+    }
+
 
     return(
         <>
@@ -195,7 +157,7 @@ export default function Report() {
                         </div>
                             <img src={dots} alt="" className='searchDots'/>
                         </div>
-                        <Table headers={headers} items={table} columnSizes={columnSizes}></Table>
+                        <Table headers={headers} items={table} columnSizes={columnSizes}/>
                     </div>
                 </div>
             </div>
