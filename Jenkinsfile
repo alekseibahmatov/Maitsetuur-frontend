@@ -17,6 +17,7 @@ pipeline {
             steps {
                 script {
                     try {
+                        sh 'docker rm frontend'
                         sh 'docker rmi frontend'
                     } catch (Exception e) {
                         echo "Error: Failed to stop the stack, but continuing the pipeline."
