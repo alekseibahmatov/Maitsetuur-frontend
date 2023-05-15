@@ -48,7 +48,7 @@ export const OrderDetails = () => {
     return (
 
         <>
-            {paymentValidationResult ?
+            {!paymentValidationResult ?
                 // payment success
                 <div className="loginContent">
                     <div className="loginHeader">
