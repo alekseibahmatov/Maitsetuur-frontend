@@ -2,7 +2,7 @@ import http from "../utils/http-client";
 import {useParams} from "react-router-dom";
 
 const initiatePayment = () => {
-    const localStorageData = JSON.parse(localStorage.getItem('certificateFormData')) || {};
+    const localStorageData = JSON.parse(localStorage.getItem('personalFormData')) || {};
 
     const updatedData = {
         value: localStorageData?.couponData?.value,

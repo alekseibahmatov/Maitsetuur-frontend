@@ -11,7 +11,6 @@ export const OrderDetails = () => {
     const searchParams = new URLSearchParams(location.search);
     const orderToken = searchParams.get('order-token');
 
-    console.log(orderToken)
     const navigate = useNavigate();
     const [step, setStep] = useState(4);
     const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +22,9 @@ export const OrderDetails = () => {
             await Promise.all([
                 new Promise((resolve) => setTimeout(resolve, 2000)),
                 customerServices.validatePayment(orderToken)
-                    .then(result => setPaymentValidationResult(result))
+                    .then(result => {
+                        setPaymentValidationResult(result?.data?.success)
+                    })
                     .catch(error => setPaymentValidationResult(false))
             ]);
         } finally {
@@ -43,29 +44,12 @@ export const OrderDetails = () => {
         );
     }
 
-    const storedData = localStorage.getItem('businessFormData');
-    const parsedData = storedData ? JSON.parse(storedData) : null;
-    const coupons = parsedData ? parsedData.generalCouponObject : [];
-
-    const nominalValues = [...new Set(coupons.map(coupon => coupon.nominalValue))];
-
-    const items = nominalValues.map(nominalValue => {
-        const filteredCoupons = coupons.filter(coupon => coupon.nominalValue === nominalValue);
-        const quantity = filteredCoupons.length;
-        const price = parseFloat(nominalValue);
-        return {item: `Certificate ${nominalValue}$`, quantity, price};
-    }).sort((a, b) => a.price - b.price);
-
-    const total = items.reduce((acc, item) => {
-        return acc + item.price * item.quantity;
-    }, 0);
-
 
     return (
 
         <>
-            {paymentValidationResult ?
-                // success
+            {!paymentValidationResult ?
+                // payment success
                 <div className="loginContent">
                     <div className="loginHeader">
                         Order details
@@ -82,13 +66,18 @@ export const OrderDetails = () => {
                                 </div>
                             </div>
                             <div className="inputBoards">
-                                <TableForPayment items={items} total={total}/>
+                                <TableForPayment/>
                                 <div className="downloadReceipt">
                                     Download order receipt
                                 </div>
                                 <button onClick={() => {
                                     navigate('/')
-                                    localStorage.removeItem('businessFormData')
+                                    if (location.pathname.includes('personal-coupon-order')) {
+                                        localStorage.removeItem('personalFormData')
+                                    }
+                                    if (location.pathname.includes('business-coupon-order')) {
+                                        localStorage.removeItem('businessFormData')
+                                    }
                                 }} className="loginButtonBusiness">
                                     Get Back To Homepage
                                 </button>
@@ -98,8 +87,8 @@ export const OrderDetails = () => {
                 </div>
 
                 :
-                // failure
-                <h1>Failure
+                // payment failed
+                <h1>payment failed
                     <br/>
                     <button onClick={() => window.location.reload()}>try again</button>
                 </h1>

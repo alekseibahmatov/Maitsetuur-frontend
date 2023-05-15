@@ -38,13 +38,13 @@ export const AddRecipientPersonalData = () => {
     });
 
     const saveToLocalStorage = (data) => {
-        const currentLocalStorage = JSON.parse(localStorage.getItem('certificateFormData')) || {};
+        const currentLocalStorage = JSON.parse(localStorage.getItem('personalFormData')) || {};
         currentLocalStorage.toPersonalData = data;
-        localStorage.setItem('certificateFormData', JSON.stringify(currentLocalStorage));
+        localStorage.setItem('personalFormData', JSON.stringify(currentLocalStorage));
     };
 
     useEffect(() => {
-        const storedData = localStorage.getItem("certificateFormData");
+        const storedData = localStorage.getItem("personalFormData");
         if (storedData) {
             const parsedData = JSON.parse(storedData);
             const toPersonalData = parsedData?.toPersonalData;
