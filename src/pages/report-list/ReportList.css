@@ -1,15 +1,27 @@
+.tooltipWrapper {
+    position: relative;
+}
+
+.tooltipContainer {
+    position: absolute;
+    top: -20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.tooltipContainer.show {
+    opacity: 1;
+}
+
 .react-daterange-picker__wrapper{
     background-color: #E6E6FA;
     padding: 8px 15px;
     border: 1px solid #E6E6FA!important;
     border-radius: 10px;
-    color: #8B2CF5;
+    color: #5541D7;
 }
 .react-calendar__month-view__days__day--weekend {
     color: black!important;
-}
-.react-calendar__tile--now {
-    background: #8B2CF5!important;
 }
 
 .react-calendar__tile--now:enabled:hover,
@@ -36,4 +48,28 @@
 .paid{
     color: #3A8A07;
     background: #B4FF99;
+}
+
+
+.date-picker-fake-btn-wrapper:hover {
+    border-color: hsl(0, 0%, 70%);
+}
+
+.date-picker-fake-btn-wrapper {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    min-height: 38px;
+    position: relative;
+    transition: all 100ms;
+    background-color: #E6E6FA;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #5541D7;
+    width: 250px;
+    padding: 11px 30px;
+    border: 1px solid #E6E6FA;
+    font-weight: bold;
 }

@@ -9,6 +9,7 @@ export const WAITER_INFO = 'waiter-info'
 export const LIST_OF_COUPONS = 'list-of-coupons'
 
 export const BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION = '/business-coupon-order/add-business-information'
+export const BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE = '/business-coupon-order/add-business-representative'
 export const BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS = '/business-coupon-order/add-business-address'
 export const BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION = '/business-coupon-order/add-coupon-configuration'
 export const BUSINESS_COUPON_ORDER_ADD_COUPON_DATA = '/business-coupon-order/add-coupon-data'

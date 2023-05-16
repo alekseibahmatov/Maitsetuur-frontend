@@ -1,10 +1,15 @@
 import http from "../utils/http-client";
-import {useParams} from "react-router-dom";
 
-const initiatePayment = () => {
-    const localStorageData = JSON.parse(localStorage.getItem('personalFormData')) || {};
+const initiatePayment = (type) => {
+    let localStorageData;
 
-    const updatedData = {
+    if (type === 'personal') {
+        localStorageData = JSON.parse(localStorage.getItem('personalFormData')) || {};
+    } else if (type === 'business') {
+        localStorageData = JSON.parse(localStorage.getItem('businessFormData')) || {};
+    }
+
+    const updatedData = type === 'personal' ? {
         buyer: {
             fromFullName: localStorageData?.fromPersonalData?.fromFullName,
             fromEmail: localStorageData?.fromPersonalData?.fromEmail,
@@ -15,7 +20,7 @@ const initiatePayment = () => {
             apartmentNumber: localStorageData?.billingAddress?.apartmentNumber,
             city: localStorageData?.billingAddress?.city,
             state: localStorageData?.billingAddress?.state,
-            zipCode: localStorageData?.billingAddress?.postCode,
+            zipCode: localStorageData?.billingAddress?.postcode,
             country: localStorageData?.billingAddress?.country
         },
         certificates: [
@@ -26,6 +31,26 @@ const initiatePayment = () => {
                 greetingsText: localStorageData?.couponData?.congratsText
             }
         ],
+    } : {
+        buyer: {
+            fromFullName: localStorageData?.businessRepresentative?.representativeFullName,
+            fromEmail: localStorageData?.businessRepresentative?.representativeEmail,
+            fromPhone: localStorageData?.businessRepresentative?.representativePhone
+        },
+        businessInformation: {
+            businessName: localStorageData?.businessInformation?.businessName,
+            registerCode: localStorageData?.businessInformation?.businessCode,
+            businessKMKR: localStorageData?.businessInformation?.businessKmkr
+        },
+        address: {
+            street: localStorageData?.businessAddress?.street,
+            apartmentNumber: localStorageData?.businessAddress?.houseNumber,
+            city: localStorageData?.businessAddress?.city,
+            state: localStorageData?.businessAddress?.state,
+            zipCode: localStorageData?.businessAddress?.postcode,
+            country: localStorageData?.businessAddress?.country
+        },
+        certificates: localStorageData?.generalCouponObject
     };
 
     console.log(updatedData)
@@ -36,6 +61,7 @@ const initiatePayment = () => {
         }]
     });
 }
+
 
 const validatePayment = (orderToken) => {
     return http.post('/payment/validatePayment', {orderToken: orderToken}, {

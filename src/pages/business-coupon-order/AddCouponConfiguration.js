@@ -54,7 +54,7 @@ const CouponConfiguratorValidationSchema = Yup.object().shape({
 
 export const AddCouponConfiguration = () => {
     const navigate = useNavigate();
-    const [step, setStep] = useState(2);
+    const [step, setStep] = useState(3);
     const [couponsAmount, setCouponsAmount] = useState(0);
     const [checkboxesVisible, setCheckboxesVisible] = useState(false);
     const [previewValues, setPreviewValues] = useState({

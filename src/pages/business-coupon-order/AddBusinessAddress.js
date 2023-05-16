@@ -9,7 +9,7 @@ import {scrollTop} from "./tools";
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
 import {
     BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS,
-    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION,
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION, BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE,
     BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION
 } from "../../routes";
 
@@ -23,7 +23,7 @@ const validationSchema = Yup.object().shape({
 });
 
 export const AddBusinessAddress = () => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(2);
     const navigate = useNavigate();
 
     const [initialValues, setInitialValues] = useState({
@@ -48,12 +48,12 @@ export const AddBusinessAddress = () => {
         }
         if (storedData) {
             const parsedData = JSON.parse(storedData);
-            if (!parsedData.businessInformation) {
-                navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION);
+            if (!parsedData.businessRepresentative) {
+                navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE);
             }
-            const businessInformation = parsedData?.businessAddress;
-            if (businessInformation) {
-                setInitialValues(businessInformation);
+            const businessAddress = parsedData?.businessAddress;
+            if (businessAddress) {
+                setInitialValues(businessAddress);
             }
         }
     }, []);
@@ -140,7 +140,7 @@ export const AddBusinessAddress = () => {
                                             {props.isSubmitting ? <LoadingAnimationDots/> : "Next step"}
                                         </button>
                                         <button onClick={() => {
-                                            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION)
+                                            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE)
                                             scrollTop()
                                         }} type="button" className="loginButtonBack">
                                             Go back
