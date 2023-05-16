@@ -61,7 +61,7 @@ const TableForPayment = () => {
                 </tbody>
             </table>
             <div className="total-wrapper">
-                <div className="total-label">Total</div>
+                <div className="total-label">TOTAL</div>
                 <div className="total-amount">€{total?.toFixed(2)}</div>
             </div>
         </div>
