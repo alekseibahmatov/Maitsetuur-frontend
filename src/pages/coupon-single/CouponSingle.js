@@ -63,7 +63,6 @@ export const CouponSingle = () => {
     const modifiedInitialValues = {
         toFullName: toData.fullName,
         toEmail: toData.email,
-        toPhone: toData.phone,
         fromFullName: fromData.fullName,
         fromEmail: fromData.email,
         fromPhone: fromData.phone,
@@ -184,16 +183,6 @@ export const CouponSingle = () => {
                                     <div className="businessName">
                                         <div className="businessFormHeader">
                                             Receiver Phone
-                                        </div>
-                                        <div className="businessInput">
-                                            <div className="businessInput">
-                                                <Field className="businessInputValue" type="text" name="toPhone"
-                                                       disabled
-                                                       placeholder={couponData && !couponId ? "Receiver Phone..." : "Loading..."}/>
-                                                <div className="error">
-                                                    <ErrorMessage name="toPhone"/>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 

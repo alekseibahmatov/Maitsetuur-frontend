@@ -107,8 +107,7 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                         },
                         toPersonalData: {
                             toFullName: values.toFullName,
-                            toEmail: values.toPhone,
-                            toPhone: values.toEmail,
+                            toEmail: values.toEmail,
                         },
                         couponData: {
                             nominal: values.nominal,
@@ -159,15 +158,6 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                             </div>
 
                             <div className="from_who">
-                                <Field className="certificateInputValue" type="text"
-                                       name="toPhone"
-                                       placeholder="Recipient's phone number"/>
-                                <div className="error">
-                                    <ErrorMessage name="toPhone"/>
-                                </div>
-                            </div>
-
-                            <div className="from_who">
                                 <Field
                                     className="certificateInputValue fullHeight"
                                     name="congratsMessage"
@@ -195,7 +185,6 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                                                fromFullName: true,
                                                toFullName: true,
                                                toEmail: true,
-                                               toPhone: true,
                                                congratsMessage: true,
                                                termsCheckbox: true,
                                            });

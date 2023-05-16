@@ -18,13 +18,9 @@ const validationSchema = Yup.object().shape({
         .matches(/^\d{8}$/, 'Invalid Business Code (ID)')
         .required('Business code is required')
         .typeError("Input correct business code"),
-    businessKRKM: Yup.string()
-        .matches(/^EE1[0-9]{8}$/, 'Invalid Estonian KRKM number')
-        .required('Estonian KRKM number is required')
-        .typeError("Input correct Business KRKM"),
-    businessEmail: Yup.string()
-        .email('Invalid email')
-        .required('Business email is required')
+    businessKmkr: Yup.string()
+        .matches(/^EE1[0-9]{8}$/, 'Invalid Estonian KMKR number')
+        .typeError("Input correct Business KMKR"),
 });
 
 export const AddBusinessInformation = () => {
@@ -34,7 +30,7 @@ export const AddBusinessInformation = () => {
     const [initialValues, setInitialValues] = useState({
         businessName: '',
         businessCode: '',
-        businessKRKM: '',
+        businessKmkr: '',
         businessEmail: '',
     });
 
@@ -114,16 +110,16 @@ export const AddBusinessInformation = () => {
                                             <ErrorMessage name="businessCode"/>
                                         </div>
                                     </div>
-                                    <div className="inputHeader">Business KRKM</div>
+                                    <div className="inputHeader">Business KMKR (optional)</div>
                                     <div className="inputAuthentication">
                                         <Field
                                             className="inputAuthenticationInput"
                                             type="text"
-                                            name="businessKRKM"
-                                            placeholder="Input business KRKM"
+                                            name="businessKmkr"
+                                            placeholder="Input business KMRK"
                                         />
                                         <div className="error">
-                                            <ErrorMessage name="businessKRKM"/>
+                                            <ErrorMessage name="businessKmkr"/>
                                         </div>
                                     </div>
                                     <div className="inputHeader">Business Email</div>

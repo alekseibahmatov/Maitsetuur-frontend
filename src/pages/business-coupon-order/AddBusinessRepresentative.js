@@ -3,39 +3,40 @@ import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import './Payment.css'
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
-import cross from '../../assets/img/Less Than.png'
 import {PersonalCouponOrderHeader} from "../../ui-components/personal-coupon-order-header/PersonalCouponOrderHeader";
-import * as Yup from "yup";
 import {
-    PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA,
-    PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA
+    PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA
 } from "../../routes";
+import * as Yup from "yup";
 import {scrollTop} from "../business-coupon-order/tools";
 import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
-
 const europeanMobilePhoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
-export const validationSchemaToPersonalData = Yup.object().shape({
-    toFullName: Yup.string()
+export const validationSchemaBusinessRepresentativeData = Yup.object().shape({
+    fromFullName: Yup.string()
         .required('Full Name is required')
         .max(100, 'Full Name seems to be incorrect, please contact us')
         .typeError("Input correct Full Name"),
-    toEmail: Yup.string()
+    fromPhone: Yup.string()
+        .matches(europeanMobilePhoneRegex, "Invalid phone number")
+        .required('Mobile phone is required'),
+    fromEmail: Yup.string()
         .email('Invalid email')
         .required('Email is required'),
 });
 
-export const AddRecipientPersonalData = () => {
+export const AddBusinessRepresentativeData = () => {
     const navigate = useNavigate();
 
     const [initialValues, setInitialValues] = useState({
-        toFullName: '',
-        toEmail: '',
+        fromFullName: '',
+        fromPhone: '',
+        fromEmail: '',
     });
 
     const saveToLocalStorage = (data) => {
         const currentLocalStorage = JSON.parse(localStorage.getItem('personalFormData')) || {};
-        currentLocalStorage.toPersonalData = data;
+        currentLocalStorage.fromPersonalData = data;
         localStorage.setItem('personalFormData', JSON.stringify(currentLocalStorage));
     };
 
@@ -43,26 +44,24 @@ export const AddRecipientPersonalData = () => {
         const storedData = localStorage.getItem("personalFormData");
         if (storedData) {
             const parsedData = JSON.parse(storedData);
-            const toPersonalData = parsedData?.toPersonalData;
-            if (toPersonalData) {
-                setInitialValues(toPersonalData);
+            const personalData = parsedData?.fromPersonalData;
+            if (personalData) {
+                setInitialValues(personalData);
             }
-            console.log(toPersonalData)
+            console.log(personalData)
 
         }
     }, []);
-
 
     return (
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Add Recipient's Personal Data
+                    Add Your Personal Data
                 </div>
                 <div className="loginFormForm">
                     <div className="loginForm">
-                        <img src={cross} alt="goBack" className='goBackPayment' onClick={() => navigate('/')}/>
-                        <PersonalCouponOrderHeader step={3}/>
+                        <PersonalCouponOrderHeader step={1}/>
                         <div className="authentication">
                             <Formik
                                 enableReinitialize={true}
@@ -73,7 +72,7 @@ export const AddRecipientPersonalData = () => {
                                     setTimeout(async () => {
                                         try {
                                             saveToLocalStorage(values);
-                                            navigate(PERSONAL_COUPON_ORDER_CHECK_COUPON_DATA);
+                                            navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA);
                                             scrollTop();
                                         } catch (error) {
                                             console.log(error)
@@ -81,46 +80,51 @@ export const AddRecipientPersonalData = () => {
                                         }
                                         actions.setSubmitting(false);
                                     }, 1000);
+
                                 }}
-                                validationSchema={validationSchemaToPersonalData}
+                                validationSchema={validationSchemaFromPersonalData}
                             >
                                 {(props: FormikProps<any>) => (
-
                                     <Form>
+
                                         <>
                                             <div className="inputBoards">
                                                 <div className="inputHeader">
-                                                    Recipient's Full Name
+                                                    Your Full Name
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="toFullName"
+                                                           name="fromFullName"
                                                            placeholder="Input your full name"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="toFullName"/>
+                                                        <ErrorMessage name="fromFullName"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
-                                                    Recipient's email
+                                                    Your Mobile Phone
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="toEmail"
-                                                           placeholder="Input your email"/>
+                                                           name="fromPhone"
+                                                           placeholder="Input your mobile phone"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="toEmail"/>
+                                                        <ErrorMessage name="fromPhone"/>
                                                     </div>
                                                 </div>
-
-                                                <div className="alignFlex">
-                                                    <button className="loginButton" type="submit">
-                                                        {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
-                                                    </button>
-                                                    <button type="button" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA)}
-                                                            className="loginButtonBack">
-                                                        Go back
-                                                    </button>
+                                                <div className="inputHeader">
+                                                    Your email
                                                 </div>
+                                                <div className="inputAuthentication">
+                                                    <Field className="inputAuthenticationInput" type="text"
+                                                           name="fromEmail"
+                                                           placeholder="Input your email"/>
+                                                    <div className="error">
+                                                        <ErrorMessage name="fromEmail"/>
+                                                    </div>
+                                                </div>
+                                                <button className="loginButton fullWidth" type="submit">
+                                                    {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
+                                                </button>
                                             </div>
                                         </>
                                     </Form>
@@ -133,4 +137,4 @@ export const AddRecipientPersonalData = () => {
         </>
     )
 }
-export default AddRecipientPersonalData
+export default AddBusinessRepresentativeData
