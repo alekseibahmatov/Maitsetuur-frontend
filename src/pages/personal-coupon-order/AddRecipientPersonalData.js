@@ -85,6 +85,7 @@ export const AddRecipientPersonalData = () => {
                                 validationSchema={validationSchemaToPersonalData}
                             >
                                 {(props: FormikProps<any>) => (
+
                                     <Form>
                                         <>
                                             <div className="inputBoards">
