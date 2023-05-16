@@ -1,0 +1,18 @@
+.redLine{
+    border-top: 2px solid #EB3223;
+}
+.failure{
+    border: 1px solid #EB3223;
+    background-color: #FCF7F7;
+}
+.redText{
+    color: #EB3223;
+    max-width: 300px;
+}
+.couponFailureImage{
+    background-color: #EB3D30;
+    border-radius: 50%;
+    width: 104px;
+    margin: 30px auto;
+    text-align: center;
+}

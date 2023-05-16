@@ -5,6 +5,11 @@ import TableForPayment from "../../ui-components/table-for-payment/TableForPayme
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
 import {useNavigate, useLocation} from "react-router-dom";
 import customerServices from "../../services/customer";
+import {CouponSucessHeader} from "../../ui-components/coupon-sucess-header/CouponSucessHeader";
+import {CouponFailureHeader} from "../../ui-components/coupon-failure-header/CouponFailureHeader";
+import declineMain from '../../assets/img/declinedMiddle.png'
+import {PaymentSuccess} from "../../ui-components/payment-status/PaymentSuccess";
+import {PaymentFailure} from "../../ui-components/payment-status/PaymentFailure";
 
 export const OrderDetails = () => {
     const location = useLocation();
@@ -48,50 +53,12 @@ export const OrderDetails = () => {
     return (
 
         <>
-            {!paymentValidationResult ?
+            {paymentValidationResult ?
                 // payment success
-                <div className="loginContent">
-                    <div className="loginHeader">
-                        Order details
-                    </div>
-                    <div className="loginFormForm">
-                        <div className="loginFormBusiness">
-                            <BusinessCouponOrderHeader step={step}/>
-                            <div className="successMessage">
-                                <div className="sausageLogoImage">
-                                    <img src={sausage} alt="" className='smallSosiskaLehi'/>
-                                </div>
-                                <div className="thankYouMessage">
-                                    Thank you for purchase!
-                                </div>
-                            </div>
-                            <div className="inputBoards">
-                                <TableForPayment/>
-                                <div className="downloadReceipt">
-                                    Download order receipt
-                                </div>
-                                <button onClick={() => {
-                                    navigate('/')
-                                    if (location.pathname.includes('personal-coupon-order')) {
-                                        localStorage.removeItem('personalFormData')
-                                    }
-                                    if (location.pathname.includes('business-coupon-order')) {
-                                        localStorage.removeItem('businessFormData')
-                                    }
-                                }} className="loginButtonBusiness">
-                                    Get Back To Homepage
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <PaymentSuccess/>
                 :
                 // payment failed
-                <h1>payment failed
-                    <br/>
-                    <button onClick={() => window.location.reload()}>try again</button>
-                </h1>
+                <PaymentFailure/>
             }
 
         </>
