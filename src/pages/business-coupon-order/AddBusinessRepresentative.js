@@ -1,54 +1,62 @@
 import React, {useState, useEffect} from "react";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
-import './Payment.css'
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
-import {PersonalCouponOrderHeader} from "../../ui-components/personal-coupon-order-header/PersonalCouponOrderHeader";
 import {
-    PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS,
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION, BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE,
 } from "../../routes";
 import * as Yup from "yup";
-import {scrollTop} from "../business-coupon-order/tools";
+import {scrollTop} from "./tools";
 import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
+import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
 const europeanMobilePhoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
 export const validationSchemaBusinessRepresentativeData = Yup.object().shape({
-    fromFullName: Yup.string()
+    representativeFullName: Yup.string()
         .required('Full Name is required')
         .max(100, 'Full Name seems to be incorrect, please contact us')
         .typeError("Input correct Full Name"),
-    fromPhone: Yup.string()
+    representativePhone: Yup.string()
         .matches(europeanMobilePhoneRegex, "Invalid phone number")
         .required('Mobile phone is required'),
-    fromEmail: Yup.string()
+    representativeEmail: Yup.string()
         .email('Invalid email')
         .required('Email is required'),
 });
 
-export const AddBusinessRepresentativeData = () => {
+export const AddBusinessRepresentative = () => {
+    const [step, setStep] = useState(1);
+
     const navigate = useNavigate();
 
     const [initialValues, setInitialValues] = useState({
-        fromFullName: '',
-        fromPhone: '',
-        fromEmail: '',
+        representativeFullName: '',
+        representativePhone: '',
+        representativeEmail: '',
     });
 
     const saveToLocalStorage = (data) => {
-        const currentLocalStorage = JSON.parse(localStorage.getItem('personalFormData')) || {};
-        currentLocalStorage.fromPersonalData = data;
-        localStorage.setItem('personalFormData', JSON.stringify(currentLocalStorage));
+        const currentLocalStorage = JSON.parse(localStorage.getItem('businessFormData')) || {};
+        currentLocalStorage.businessRepresentative = data;
+        localStorage.setItem('businessFormData', JSON.stringify(currentLocalStorage));
     };
 
     useEffect(() => {
-        const storedData = localStorage.getItem("personalFormData");
+        const storedData = localStorage.getItem("businessFormData");
+        if (!storedData) {
+            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION);
+        }
         if (storedData) {
             const parsedData = JSON.parse(storedData);
-            const personalData = parsedData?.fromPersonalData;
-            if (personalData) {
-                setInitialValues(personalData);
+            if (!parsedData.businessRepresentative) {
+                navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE);
             }
-            console.log(personalData)
+            const businessRepresentative = parsedData?.businessRepresentative;
+            if (businessRepresentative) {
+                setInitialValues(businessRepresentative);
+            }
+            console.log(businessRepresentative)
 
         }
     }, []);
@@ -57,11 +65,12 @@ export const AddBusinessRepresentativeData = () => {
         <>
             <div className="loginContent">
                 <div className="loginHeader">
-                    Add Your Personal Data
+                    Add Business Representative
                 </div>
                 <div className="loginFormForm">
-                    <div className="loginForm">
-                        <PersonalCouponOrderHeader step={1}/>
+                    <div className="loginFormBusiness">
+                        <BusinessCouponOrderHeader step={step}/>
+
                         <div className="authentication">
                             <Formik
                                 enableReinitialize={true}
@@ -72,7 +81,7 @@ export const AddBusinessRepresentativeData = () => {
                                     setTimeout(async () => {
                                         try {
                                             saveToLocalStorage(values);
-                                            navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_ADDRESS_DATA);
+                                            navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS);
                                             scrollTop();
                                         } catch (error) {
                                             console.log(error)
@@ -82,7 +91,7 @@ export const AddBusinessRepresentativeData = () => {
                                     }, 1000);
 
                                 }}
-                                validationSchema={validationSchemaFromPersonalData}
+                                validationSchema={validationSchemaBusinessRepresentativeData}
                             >
                                 {(props: FormikProps<any>) => (
                                     <Form>
@@ -90,41 +99,49 @@ export const AddBusinessRepresentativeData = () => {
                                         <>
                                             <div className="inputBoards">
                                                 <div className="inputHeader">
-                                                    Your Full Name
+                                                    Representative Full Name
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="fromFullName"
-                                                           placeholder="Input your full name"/>
+                                                           name="representativeFullName"
+                                                           placeholder="Input representative full name"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="fromFullName"/>
+                                                        <ErrorMessage name="representativeFullName"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
-                                                    Your Mobile Phone
+                                                    Representative Mobile Phone
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="fromPhone"
-                                                           placeholder="Input your mobile phone"/>
+                                                           name="representativePhone"
+                                                           placeholder="Input representative mobile phone"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="fromPhone"/>
+                                                        <ErrorMessage name="representativePhone"/>
                                                     </div>
                                                 </div>
                                                 <div className="inputHeader">
-                                                    Your email
+                                                    Representative email
                                                 </div>
                                                 <div className="inputAuthentication">
                                                     <Field className="inputAuthenticationInput" type="text"
-                                                           name="fromEmail"
-                                                           placeholder="Input your email"/>
+                                                           name="representativeEmail"
+                                                           placeholder="Input representative email"/>
                                                     <div className="error">
-                                                        <ErrorMessage name="fromEmail"/>
+                                                        <ErrorMessage name="representativeEmail"/>
                                                     </div>
                                                 </div>
-                                                <button className="loginButton fullWidth" type="submit">
-                                                    {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
-                                                </button>
+                                                <div className="alignFlexBottom">
+                                                    <button className="loginButton" type="submit">
+                                                        {props.isSubmitting ? <LoadingAnimationDots/> : "Next step"}
+                                                    </button>
+                                                    <button onClick={() => {
+                                                        navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION)
+                                                        scrollTop()
+                                                    }} type="button" className="loginButtonBack">
+                                                        Go back
+                                                    </button>
+                                                </div>
                                             </div>
                                         </>
                                     </Form>
@@ -137,4 +154,4 @@ export const AddBusinessRepresentativeData = () => {
         </>
     )
 }
-export default AddBusinessRepresentativeData
+export default AddBusinessRepresentative

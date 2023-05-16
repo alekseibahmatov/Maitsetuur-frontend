@@ -7,7 +7,9 @@ import {LoadingAnimationDots} from "../../ui-components/loading-animation/loadin
 import {useNavigate} from "react-router-dom";
 import {scrollTop} from "./tools";
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
-import {BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS} from "../../routes";
+import {
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE
+} from "../../routes";
 
 const validationSchema = Yup.object().shape({
     businessName: Yup.string()
@@ -74,7 +76,7 @@ export const AddBusinessInformation = () => {
                                 setTimeout(async () => {
                                     try {
                                         saveToLocalStorage(values);
-                                        navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS);
+                                        navigate(BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE);
                                         scrollTop();
                                     } catch (error) {
                                         console.log(error)

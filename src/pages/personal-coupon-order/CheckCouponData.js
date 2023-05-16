@@ -73,9 +73,9 @@ export const CheckCouponData = () => {
                                     setTimeout(async () => {
                                         try {
                                             saveToLocalStorage(values);
-                                            const result = await customerServices.initiatePayment();
+                                            const result = await customerServices.initiatePayment('personal');
                                             console.log(result)
-                                            toast.success(result.data.message);
+                                            toast.success('Redirecting your to payment page');
                                             setTimeout(() => {
                                                 if (result.status === 200) {
                                                     window.location.href = result?.data?.redirectUrl

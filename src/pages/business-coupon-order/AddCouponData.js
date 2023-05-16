@@ -14,11 +14,12 @@ import {LoadingAnimationDots} from "../../ui-components/loading-animation/loadin
 import {Tooltip} from 'react-tooltip'
 import {validationSchema} from "./BusinessCouponOrderValidationSchema";
 import {BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION, BUSINESS_COUPON_ORDER_DETAILS} from "../../routes";
+import customerServices from "../../services/customer";
 
 
 export const AddCouponData = () => {
     const navigate = useNavigate();
-    const [step, setStep] = useState(3);
+    const [step, setStep] = useState(4);
     const [couponStep, setCouponStep] = useState(0);
     const [coupons, setCoupons] = useState([]);
     const [tooltipText, setTooltipText] = useState(null);
@@ -45,7 +46,7 @@ export const AddCouponData = () => {
     const handleSubmit = (values, actions) => {
         if (couponStep === coupons.length - 1) {
             actions.setSubmitting(true);
-            setTimeout(() => {
+            setTimeout(async () => {
                 try {
                     const storedData = localStorage.getItem('businessFormData');
                     if (storedData) {
@@ -54,8 +55,18 @@ export const AddCouponData = () => {
                         localStorage.setItem('businessFormData', JSON.stringify(parsedData));
                         console.log(parsedData);
                     }
-                    console.log('jopa')
-                    navigate(BUSINESS_COUPON_ORDER_DETAILS);
+                    const result = await customerServices.initiatePayment('business');
+                    console.log(result)
+                    toast.success('Redirecting your to payment page');
+                    setTimeout(() => {
+                        if (result.status === 200) {
+                            window.location.href = result?.data?.redirectUrl
+                            // navigate(result?.data?.redirectUrl,  { replace: true });
+                        }
+                    }, 1000);
+
+
+
                     scrollTop();
                 } catch (error) {
                     toast.error(

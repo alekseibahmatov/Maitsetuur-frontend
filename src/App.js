@@ -40,7 +40,7 @@ import ReadUser from "./pages/user-info/ReadUser";
 
 import {
     BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS,
-    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION,
+    BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION, BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE,
     BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION,
     BUSINESS_COUPON_ORDER_ADD_COUPON_DATA,
     BUSINESS_COUPON_ORDER_DETAILS, PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA,
@@ -50,9 +50,13 @@ import {
 import AddYourAddressData from "./pages/personal-coupon-order/AddYourAddressData";
 import AddRecipientPersonalData from "./pages/personal-coupon-order/AddRecipientPersonalData";
 import CheckCouponData from "./pages/personal-coupon-order/CheckCouponData";
+
+import AddBusinessRepresentative from "./pages/business-coupon-order/AddBusinessRepresentative";
+
 import {ReportPaid} from "./assets/html-files/ReportPaid";
 import {ReportUnpaid} from "./assets/html-files/ReportUnpaid";
 import {ReportPersonal} from "./assets/html-files/ReportPersonal";
+
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
@@ -92,6 +96,7 @@ export const App = () => {
 
                 {/* PUBLIC ROUTES BUSINESS COUPON ORDER */}
                 <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION} element={<AddBusinessInformation/>}/>
+                <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE} element={<AddBusinessRepresentative/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_BUSINESS_ADDRESS} element={<AddBusinessAddress/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION} element={<AddCouponConfiguration/>}/>
                 <Route path={BUSINESS_COUPON_ORDER_ADD_COUPON_DATA} element={<AddCouponData/>}/>
