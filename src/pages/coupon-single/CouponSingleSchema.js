@@ -14,9 +14,6 @@ export const CouponSingleSchema = Yup.object().shape({
     toEmail: Yup.string()
         .required("Receiver Email is a required field")
         .email("Invalid email format"),
-    toPhone: Yup.string()
-        .matches(europeanMobilePhoneRegex, "Invalid mobile phone number")
-        .required("Mobile phone is a required field"),
     value: Yup.number()
         .required("Nominal is a required field")
         .min(0)
