@@ -33,7 +33,6 @@ export const AddBusinessInformation = () => {
         businessName: '',
         businessCode: '',
         businessKmkr: '',
-        businessEmail: '',
     });
 
     const saveToLocalStorage = (data) => {
@@ -122,18 +121,6 @@ export const AddBusinessInformation = () => {
                                         />
                                         <div className="error">
                                             <ErrorMessage name="businessKmkr"/>
-                                        </div>
-                                    </div>
-                                    <div className="inputHeader">Business Email</div>
-                                    <div className="inputAuthentication">
-                                        <Field
-                                            className="inputAuthenticationInput"
-                                            type="text"
-                                            name="businessEmail"
-                                            placeholder="Input business email"
-                                        />
-                                        <div className="error">
-                                            <ErrorMessage name="businessEmail"/>
                                         </div>
                                     </div>
                                     <button className="loginButtonBusiness" type="submit">
