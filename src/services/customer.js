@@ -5,15 +5,12 @@ const initiatePayment = () => {
     const localStorageData = JSON.parse(localStorage.getItem('personalFormData')) || {};
 
     const updatedData = {
-        value: localStorageData?.couponData?.value,
-        congratsText: localStorageData?.couponData?.congratsText,
-        fromEmail: localStorageData?.fromPersonalData?.fromEmail,
-        fromFullName: localStorageData?.fromPersonalData?.fromFullName,
-        fromPhone: localStorageData?.fromPersonalData?.fromPhone,
-        toFullName: localStorageData?.toPersonalData?.toFullName,
-        toEmail: localStorageData?.toPersonalData?.toEmail,
-        toPhone: localStorageData?.toPersonalData?.toPhone,
-        billingAddress: {
+        buyer: {
+            fromFullName: localStorageData?.fromPersonalData?.fromFullName,
+            fromEmail: localStorageData?.fromPersonalData?.fromEmail,
+            fromPhone: localStorageData?.fromPersonalData?.fromPhone
+        },
+        address: {
             street: localStorageData?.billingAddress?.street,
             apartmentNumber: localStorageData?.billingAddress?.apartmentNumber,
             city: localStorageData?.billingAddress?.city,
@@ -21,6 +18,14 @@ const initiatePayment = () => {
             zipCode: localStorageData?.billingAddress?.postCode,
             country: localStorageData?.billingAddress?.country
         },
+        certificates: [
+            {
+                email: localStorageData?.toPersonalData?.toEmail,
+                greeting: localStorageData?.toPersonalData?.toFullName,
+                nominalValue: localStorageData?.couponData?.value,
+                greetingsText: localStorageData?.couponData?.congratsText
+            }
+        ],
     };
 
     console.log(updatedData)

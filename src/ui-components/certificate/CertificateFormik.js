@@ -7,33 +7,15 @@ export const initialValuesPersonal = {
     fromFullName: '',
     toFullName: '',
     toEmail: '',
-    toPhone: '',
     congratsMessage: '',
     termsCheckbox: false,
 };
-
-//            fromFullName: localStorageData?.from || '',
-//             fromPhone: '',
-//             fromEmail: '',
-//             country: '',
-//             city: '',
-//             state: '',
-//             street: '',
-//             apartmentNumber: '',
-//             postcode: '',
-//             toFullName: localStorageData?.to || '',
-//             toPhone: localStorageData?.receiverPhone || '',
-//             toEmail: localStorageData?.receiverMail || '',
-//             congratsText: ''
 
 export const validationSchemaPersonal = Yup.object().shape({
     nominal: Yup.string().required('Nominal is required'),
     fromFullName: Yup.string().required('Your Full name is required'),
     toFullName: Yup.string().required("Recipient's Full Name is required"),
     toEmail: Yup.string().email('Invalid email').required("Recipient's email is required"),
-    toPhone: Yup.string()
-        .matches(europeanMobilePhoneRegex, "Invalid phone number")
-        .required("Recipient's phone number is required"),
     congratsMessage: Yup.string().required("Congratulation Text is required").max(280, 'Congrats message must be 280 characters or less'),
     termsCheckbox: Yup.boolean().oneOf([true], 'You must agree to the Terms of personal data processing'),
 });
