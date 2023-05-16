@@ -50,7 +50,13 @@ import {
 import AddYourAddressData from "./pages/personal-coupon-order/AddYourAddressData";
 import AddRecipientPersonalData from "./pages/personal-coupon-order/AddRecipientPersonalData";
 import CheckCouponData from "./pages/personal-coupon-order/CheckCouponData";
+
 import AddBusinessRepresentative from "./pages/business-coupon-order/AddBusinessRepresentative";
+
+import {ReportPaid} from "./assets/html-files/ReportPaid";
+import {ReportUnpaid} from "./assets/html-files/ReportUnpaid";
+import {ReportPersonal} from "./assets/html-files/ReportPersonal";
+
 
 const ROLES = {
     'customer': 'ROLE_CUSTOMER',
@@ -70,6 +76,9 @@ export const App = () => {
                 <Route path='/allrestaurants' element={<AllRestaurant/>}/>
                 <Route path='/connect' element={<Connect/>}/>
                 <Route path='/singlerestaurant/:id' element={<SingleRestaurant/>}/>
+                <Route path='/reportpaid' element={<ReportPaid/>}/>
+                <Route path='/reportunpaid' element={<ReportUnpaid/>}/>
+                <Route path='/reportpersonal' element={<ReportPersonal/>}/>
 
                 {/* PUBLIC ROUTES AUTH */}
                 <Route path="/login" element={<Login/>}/>

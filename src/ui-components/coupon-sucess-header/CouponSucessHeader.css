@@ -1,0 +1,66 @@
+.headerCircles{
+    border: 1px solid #4DB73B;
+    border-radius: 50%;
+    padding: 25px;
+    background-color: #F7FCF7;
+    align-self: center;
+}
+.headerCircleCenter{
+    border: 1px solid #4DB73B;
+    border-radius: 50%;
+    background-color: #F7FCF7;
+    padding: 14px 16px;
+}
+
+.greenLine{
+    border-top: 2px solid #4DB73B;
+}
+.couponPaymentHeader{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #3E3E3E;
+}
+.couponPaymentDescription{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 25px auto;
+    color: #4DB73B;
+    width: 70%;
+}
+.couponGoBackButton{
+    border: 1px solid #5541D7;
+    background-color: #F7F7FC;
+    color: #5541D7;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    margin: 35px auto;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.couponGoBackButton:hover{
+    transition: 0.3s;
+    background-color: #ECECF1;
+}
+.couponContactUs{
+    color: #9A9AB0;
+    font-size: 16px;
+    max-width: 270px;
+    margin: 15px auto;
+    text-align: center;
+}
+.couponMail{
+    color: #2940FF;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 60px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.couponMail:hover{
+    transition: 0.3s;
+    color: #5541D7;
+}
