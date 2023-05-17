@@ -53,7 +53,7 @@ export const OrderDetails = () => {
     return (
 
         <>
-            {paymentValidationResult ?
+            {!paymentValidationResult ?
                 // payment success
                 <PaymentSuccess/>
                 :
