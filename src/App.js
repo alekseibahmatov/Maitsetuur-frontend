@@ -56,6 +56,9 @@ import AddBusinessRepresentative from "./pages/business-coupon-order/AddBusiness
 import {ReportPaid} from "./assets/html-files/ReportPaid";
 import {ReportUnpaid} from "./assets/html-files/ReportUnpaid";
 import {ReportPersonal} from "./assets/html-files/ReportPersonal";
+import {ReportBusiness} from "./assets/html-files/ReportBusiness";
+import {ReportMany} from "./assets/html-files/ReportMany";
+import {Certificate} from "./assets/html-files/Certificate";
 
 
 const ROLES = {
@@ -79,6 +82,9 @@ export const App = () => {
                 <Route path='/reportpaid' element={<ReportPaid/>}/>
                 <Route path='/reportunpaid' element={<ReportUnpaid/>}/>
                 <Route path='/reportpersonal' element={<ReportPersonal/>}/>
+                <Route path='/reportbusiness' element={<ReportBusiness/>}/>
+                <Route path='/reportmany' element={<ReportMany/>}/>
+                <Route path='/certificate' element={<Certificate/>}/>
 
                 {/* PUBLIC ROUTES AUTH */}
                 <Route path="/login" element={<Login/>}/>

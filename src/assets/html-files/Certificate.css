@@ -1,0 +1,97 @@
+.certificatePdf{
+    font-family: 'Mulish', sans-serif;
+    font-weight: bold;
+    margin: 0 auto;
+    background-color: #ffffff;
+    height: 600px;
+    width: 846px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.certificatePdfContent{
+    padding: 38px;
+    display: flex;
+    gap: 30px;
+}
+.certificatePdfLeft{
+    width: 324px;
+}
+.certificatePdfHeader{
+    display: flex;
+    gap: 8px;
+    font-size: 25px;
+    margin-top: 10px;
+}
+.certificatePdfHeaderCompany{
+    color: #3F27DC;
+    font-weight: 800;
+}
+.certificatePdfHeaderCertificate{
+    color: #252229;
+    font-weight: 600;
+}
+.certificatePdfTittle{
+    color: #8A8A8C;
+    font-size: 13px;
+    margin-top: 15px;
+}
+.certificatePdfValue{
+    font-weight: bold;
+    font-size: 20px;
+    color: #252229;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #8A8A8C;
+}
+.certificatePdfCongrats{
+    padding-top: 15px;
+    font-size: 16px;
+    font-weight: bolder;
+}
+.certificatePdfMoreInfo{
+    margin-top: 40px;
+    display: flex;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: normal;
+}
+.certificatePdfMoreInfoText{
+    font-weight: normal;
+}
+.certificatePdfMoreInfoLink{
+    color: #769EF3;
+}
+.certificatePdfRight{
+    width: 402px;
+    height: 535px;
+    border-radius: 20px;
+    margin-left: 10px;
+    background-size: cover;
+    color: white;
+    padding: 30px;
+    background: linear-gradient(to left top, rgb(5, 5, 54), rgba(255,255,255,0) 86%),url("../img/image 18.svg");
+}
+.certificatePdfRightHeader{
+    font-size: 13px;
+    margin-top: 260px;
+}
+.certificatePdfRightTittle{
+    margin-top: 3px;
+    font-size: 23px;
+    line-height: 23px;
+    padding-bottom: 20px;
+}
+.certificatePdfRightLower{
+    display: flex;
+    justify-content: space-between;
+}
+.certificateDateAvailability{
+    font-size: 13px;
+}
+.certificateDateAvailabilityValue{
+    font-size: 25px;
+}
+.marginned{
+    margin-top: 20px;
+}
