@@ -98,6 +98,12 @@
     cursor: pointer;
     transition: 0.3s;
 }
+
+.reportMainContentResetButton:hover {
+    color: #fff5f9;
+    background: #e71860;
+
+}
 .reportMainContentList{
     background: #ffffff;
     border-radius: 10px;

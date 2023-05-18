@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './ReportList.css'
 import unpaid from '../../assets/img/Payment History.png'
 import paid from '../../assets/img/Transaction Approved.png'
@@ -10,57 +10,83 @@ import './Calendar.css'
 import './DateRangePicker.css'
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import {customStyles, table, headers, columnSizes} from "./constants";
-import {Tooltip} from 'react-tooltip'
+import {CSSTransition} from "react-transition-group";
+import {generatePastMonthsOptions} from "./tools";
+import accountantServices from "../../services/accountant";
+import toast from "react-hot-toast";
+import {
+    LoadingAnimationCircular
+} from "../../ui-components/loading-animation/loading-animaiton-circular/LoadingAnimationCircular";
 
 export default function ReportList() {
     const [search, setSearch] = useState('');
     const [value, onChange] = useState([new Date(), new Date()]);
-    const [tooltipText, setTooltipText] = useState('');
-    const [showTooltip, setShowTooltip] = useState(false);
     const [showDatePicker, setShowDatePicker] = useState(false);
+    const selectInputRef = useRef();
+    const [listData, setListData] = useState(null);
+    const [paidReportsCount, setPaidReportsCount] = useState(0);
+    const [unpaidReportsCount, setUnpaidReportsCount] = useState(0);
+    const [selectedPeriod, setSelectedPeriod] = useState(null);
 
-    useEffect(() => {
-        if (tooltipText !== '') {
-            setShowTooltip(true);
-            const timer = setTimeout(() => {
-                setShowTooltip(false);
-                setTooltipText('');
-            }, 4000);
 
-            return () => clearTimeout(timer);
-        }
-    }, [tooltipText]);
-
-    const generatePastMonthsOptions = () => {
-        const currentDate = new Date();
-        const options = [];
-
-        const customPeriodOption = {value: 'custom', label: 'Custom period'};
-        options.push(customPeriodOption);
-
-        for (let i = 0; i < 12; i++) {
-            const endDate = new Date();
-            endDate.setMonth(currentDate.getMonth() - (i * 2));
-            endDate.setDate(1);
-
-            const startDate = new Date(endDate);
-            startDate.setDate(startDate.getDate() - 13);
-
-            const label = `${startDate.toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric'
-            })} - ${endDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric'})}`;
-            const value = `${startDate.toISOString().slice(0, 10)} - ${endDate.toISOString().slice(0, 10)}`;
-
-            options.push({value, label});
-        }
-
-        return options;
+    const resetFilters = () => {
+        setSearch('');
+        selectInputRef.current.setValue('');
+        setShowDatePicker(false);
     };
 
-    const options = generatePastMonthsOptions();
+    const getAllReportsOnMount = async () => {
+        try {
+            const result = await accountantServices.getAllReports()
+            setListData(result.data)
+            setPaidReportsCount(
+                result?.data?.filter((item) => item.status === "PAID")
+            );
+            setUnpaidReportsCount(
+                result?.data?.filter((item) => item.status === "UNPAID")
+            );
+        } catch (error) {
+            toast.error(error.data.message ? error.data.message : 'Opss... Something went wrong');
+        }
+    }
+
+    const filteredItems = listData?.filter(item => {
+        const searchTerm = search?.toLowerCase();
+        if (searchTerm === "") {
+            return true;
+        }
+
+        if (searchTerm !== "" && !Object.values(item).some(
+            value => value && value.toString()?.toLowerCase().includes(searchTerm)
+        )) {
+            return false;
+        }
+
+        console.log('ebana')
+
+        const reportFromDate = new Date(item.reportFrom);
+        const reportToDate = new Date(item.reportTo);
+
+        if ((reportFromDate < selectedPeriod[0] || reportFromDate > selectedPeriod[1]) ||
+            (reportToDate < selectedPeriod[0] || reportToDate > selectedPeriod[1])) {
+            console.log('in the range')
+            return false;
+        }
+
+        console.log(selectedPeriod)
+
+        return true;
+    });
+
+    useEffect(() => {
+        getAllReportsOnMount()
+    }, []);
+
 
     const handleSelectChange = selectedOption => {
+        if (selectedOption.value !== 'custom') {
+            setSelectedPeriod(selectedOption.value?.split(" - "))
+        }
         setShowDatePicker(selectedOption.value === 'custom');
     };
 
@@ -70,17 +96,15 @@ export default function ReportList() {
         const isBeforeMinimumYear = selectedDates?.some(date => date && date.getFullYear() < 2022);
 
         if (isFutureDate) {
-            console.log('Selected dates include a future date');
-            setTooltipText(`We can't generate reports from the future`);
             return;
         }
 
         if (isBeforeMinimumYear) {
-            console.log('Selected dates include a date before 2022');
-            setTooltipText('Please select dates from 2022 or later');
             return;
         }
-
+        const dateStrings = selectedDates.map(date => date.toISOString().slice(0,10));
+        console.log(dateStrings)
+        setSelectedPeriod(selectedDates)
         onChange(selectedDates);
     };
 
@@ -119,7 +143,11 @@ export default function ReportList() {
                                     </div>
                                     <div className="singleSectionText">
                                         <div className="singleSectionUpperText pink">
-                                            24
+                                            {listData?.length ?
+                                                listData?.length
+                                                :
+                                                <LoadingAnimationCircular/>
+                                            }
                                         </div>
                                         <div className="singleSectionLowerText">
                                             All reports
@@ -134,7 +162,11 @@ export default function ReportList() {
                                     </div>
                                     <div className="singleSectionText">
                                         <div className="singleSectionUpperText green">
-                                            23
+                                            {paidReportsCount ?
+                                                paidReportsCount?.length
+                                                :
+                                                <LoadingAnimationCircular/>
+                                            }
                                         </div>
                                         <div className="singleSectionLowerText">
                                             Paid Reports
@@ -149,7 +181,11 @@ export default function ReportList() {
                                     </div>
                                     <div className="singleSectionText">
                                         <div className="singleSectionUpperText ruby">
-                                            1
+                                            {unpaidReportsCount ?
+                                                unpaidReportsCount.length
+                                                :
+                                                <LoadingAnimationCircular/>
+                                            }
                                         </div>
                                         <div className="singleSectionLowerText">
                                             Unpaid Reports
@@ -160,36 +196,31 @@ export default function ReportList() {
                         </div>
                         <div className="reportMainContentDropDownSection">
                             <div className="reportMainContentDropDowns">
-                                <Select options={options}
+                                <Select options={generatePastMonthsOptions()}
                                         placeholder="All Periods"
+                                        ref={selectInputRef}
                                         styles={customStyles}
                                         onChange={handleSelectChange}
                                         components={{IndicatorSeparator: () => null}}/>
                                 <div>
-                                    {showDatePicker ?
-                                        <>
-                                            <Tooltip
-                                                anchorId="date-picker"
-                                                place="top"
-                                                content={tooltipText}
-                                                isOpen={showTooltip}
-                                            />
-                                            <div id="date-picker">
-                                                <DateRangePicker
-                                                    onChange={handleDateChange}
-                                                    value={value}/>
-                                            </div>
-                                        </>
-
-                                        :
-                                        null
-
-                                    }
-
+                                    <CSSTransition
+                                        in={showDatePicker}
+                                        timeout={300}
+                                        classNames="fade"
+                                        unmountOnExit
+                                    >
+                                        <DateRangePicker
+                                            minDetail={'year'}
+                                            minDate={new Date(2023, 0, 1)}
+                                            maxDate={new Date()}
+                                            rangeDivider={' to '}
+                                            onChange={handleDateChange}
+                                            value={value}/>
+                                    </CSSTransition>
                                 </div>
                             </div>
-                            <div className="reportMainContentResetButton">
-                                Reset Settings
+                            <div onClick={resetFilters} className="reportMainContentResetButton">
+                                Reset Filters
                             </div>
                         </div>
                     </div>
@@ -199,13 +230,13 @@ export default function ReportList() {
                                 <button type="submit" className="searchButton">
                                     <i className="fa fa-search"/>
                                 </button>
-                                <input type="text" className="searchTerm"
+                                <input type="text" className="searchTerm" value={search}
                                        onChange={(e) => setSearch(e.target.value)}
                                        placeholder="What are you looking for?"/>
                             </div>
                             <img src={dots} alt="" className='searchDots'/>
                         </div>
-                        <Table headers={headers} items={table} columnSizes={columnSizes}/>
+                        <Table filteredItems={filteredItems} items={table} search={search} columnSizes={columnSizes}/>
                     </div>
                 </div>
             </div>
