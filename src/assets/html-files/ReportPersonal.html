@@ -7,23 +7,14 @@
             font-weight: bold;
             margin: 0 auto;
             background-color: #ffffff;
-            height: 1096px;
-            width: 800px;
             position: relative;
         }
 
         .reportPdfHeaderValues {
             width: 100%;
             position: absolute;
-            left: 140px;
-            top: 63px;
-        }
-
-        .reportContent {
-            padding: 60px 60px 20px 60px;
-        }
-
-        .reportPdfHeader {
+            left: 83px;
+            top: 3px;
         }
 
         .reportPdfHeaderLeft {
@@ -106,6 +97,8 @@
             position: absolute;
             right: 0;
             top: 1.5px;
+            width: 150px;
+            text-align: right;
         }
 
         .reportPdfBillAbsolute {
@@ -211,6 +204,8 @@
             position: absolute;
             top: -3px;
             right: 0;
+            width: 150px;
+            text-align: right;
         }
 
         .reportPdfGrandTotalText {
@@ -223,6 +218,8 @@
             position: absolute;
             top: 0;
             right: 0;
+            width: 150px;
+            text-align: right;
         }
 
         .reportPdfFooter {
@@ -231,8 +228,8 @@
             color: #8A8A8C;
             border-top: 1px solid black;
             padding-top: 15px;
-            position: absolute;
-            bottom: 15px;
+            position: fixed;
+            bottom: 0;
             width: 680px;
             left: 50%;
             margin-left: -340px
@@ -247,6 +244,8 @@
             top: 15px;
             right: 0;
             font-weight: 700;
+            width: 150px;
+            text-align: right;
         }
 
         .reportPdfSubHeaderAddress {
@@ -287,6 +286,8 @@
             position: absolute;
             top: -3px;
             right: 0;
+            width: 150px;
+            text-align: right;
         }
 
     </style>
@@ -404,7 +405,7 @@
                         GRAND TOTAL
                     </div>
                     <div class="reportPdfGrandTotalValue">
-                        600.00€
+                        100000.00€
                     </div>
                 </div>
             </div>
