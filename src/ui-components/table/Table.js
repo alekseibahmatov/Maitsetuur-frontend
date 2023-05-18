@@ -1,57 +1,58 @@
 import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import {LoadingAnimationCircular} from "../loading-animation/loading-animaiton-circular/LoadingAnimationCircular";
+import {useNavigate} from "react-router-dom";
+import arrow from "../../assets/img/Arrow 9.png";
 
-function Table({ headers, items, columnSizes }) {
+function Table({filteredItems, columnSizes, search}) {
+    const navigate = useNavigate()
+
     return (
         <div className='overflownContent'>
-        <table className="table">
-            <thead className="thead">
-            <tr className="tr">
-                {headers.map((header, index) => (
-                    <th
-                        key={index}
-                        className={classNames("th", `col-${index}`, {
-                            "th-center": index === 0,
-                        })}
-                        style={{ width: columnSizes[index] }}
-                    >
-                        {header}
-                    </th>
-                ))}
-            </tr>
-            </thead>
-            <tbody className="tbody">
+            {!filteredItems ?
+                <div className="loadingWrapper">
+                    <LoadingAnimationCircular/>
+                </div>
+                : filteredItems?.length === 0 ?
+                    <h1 className="noDataList">No data...</h1>
+                    :
+                    <table className="table">
+                        <thead className="thead">
+                        <tr className="tr">
+                            <th scope="col" className="th" style={{width: columnSizes[0]}}>ID</th>
+                            <th scope="col" className="th" style={{width: columnSizes[1]}}>Amount of Transactions</th>
+                            <th scope="col" className="th" style={{width: columnSizes[2]}}>Turnover</th>
+                            <th scope="col" className="th" style={{width: columnSizes[3]}}>MaitseTuur Share</th>
+                            <th scope="col" className="th" style={{width: columnSizes[4]}}>Report period</th>
+                            <th scope="col" className="th" style={{width: columnSizes[5]}}>Status</th>
 
-            {items.map((item, index) => (
+                        </tr>
+                        </thead>
+                        <tbody className="tbody">
 
-                <tr key={index} className="tr">
+                        {filteredItems.map((item, index) => (
 
-                    {Object.values(item).map((value, index) => (
-                       <td
-                            key={index}
-                            className={classNames("td", `col-${index}`, {
-                                "td-center": index === 0,
-                            })}
-                        >
-                            {value}
-                        </td>
-                    ))}
+                            <tr onClick={() => navigate(`/dashboard/report/${item.id}`)} key={index}>
+                                <th className="td" scope="row">
+                                    {index}.
+                                </th>
+                                <td className="td">{item.transactionsAmount}</td>
+                                <td className="td">{item.turnover}</td>
+                                <td className="td">{item.maitsetuurShare}</td>
+                                <td className="td">{item.reportFrom} <img src={arrow} alt="" className="arrowTable"/> {item.reportTo}
+                                </td>
+                                <td className="td">
+                                    <div className='buttonTable paid'>{item.status}</div>
+                                </td>
+                            </tr>
 
-                </tr>
+                        ))}
 
-            ))}
+                        </tbody>
+                    </table>
+            }
 
-            </tbody>
-        </table>
         </div>
     );
 }
-
-Table.propTypes = {
-    headers: PropTypes.arrayOf(PropTypes.string).isRequired,
-    items: PropTypes.arrayOf(PropTypes.object).isRequired,
-    columnSizes: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
 
 export default Table;

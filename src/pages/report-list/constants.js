@@ -2,6 +2,12 @@ import arrow from "../../assets/img/Arrow 9.png";
 
 export const customStyles = {
 
+    input: (baseStyles) => ({
+        ...baseStyles,
+        color: 'transparent',
+        cursor: 'pointer'
+    }),
+
     menu: (provided, state) => ({
         ...provided,
         width: 'calc(100% + 50px)', // You can set the width to any desired value
@@ -43,6 +49,8 @@ export const customStyles = {
     placeholder: (provided) => ({
         ...provided,
         color: '#5541D7',
+        cursor: 'pointer'
+
     }),
 
     control: (defaultStyles) => ({
@@ -82,23 +90,23 @@ export const customStyles = {
 
 export const table = [
     {
-        id: '1',
-        name: 'Name',
-        email: 'smth',
-        totalVisits: '43',
-        contractFile: <div>Oct 1, 2019 <img src={arrow} alt="" className="arrowTable"/> Nov 1, 2019</div>,
-        totalRecieved: <div className='buttonTable unpaid'>Unpaid</div>
+        id: 0,
+        transactionsAmount: 0,
+        turnover: 0,
+        maitsetuurShare: 0,
+        reportFrom: "2023-05-17",
+        reportTo: "2023-05-17",
+        status: "Paid",
     },
-    {
-        id: '2',
-        name: 'Name',
-        email: 'smth',
-        totalVisits: '43',
-        contractFile: <div>Oct 1, 2019 <img src={arrow} alt="" className="arrowTable"/> Nov 1, 2019</div>,
-        totalRecieved: <div className='buttonTable paid'>Paid</div>
-    }
-]
+];
 
-export const headers = ["ID", "Amount of transactions", "Turnover", "MaitseTuur Share", "Period of Report", "Status"];
+export const headers = [
+    "ID",
+    "Amount of Transactions",
+    "Turnover",
+    "MaitseTuur Share",
+    "Period of Report",
+    "Status",
+];
 
 export const columnSizes = ["2%", "7%", "5%", "5%", "10%", "5%"];

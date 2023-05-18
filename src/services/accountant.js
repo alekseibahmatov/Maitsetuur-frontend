@@ -1,11 +1,12 @@
 import http from "../utils/http-client";
 
+
 const getReportData = (data) => {
     return http.get('/admin/report/' + data);
 }
 
 const getAllReports = () => {
-    return http.get('/admin/report');
+    return http.get('/accountant/report');
 }
 
 const downloadReport = (fileId) => {
