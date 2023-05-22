@@ -1,0 +1,499 @@
+<html>
+<head>
+    <style>
+
+        .reportPdf {
+            font-family: 'Mulish', sans-serif;
+            font-weight: bold;
+            margin: 0 auto;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .reportPdfHeaderValues {
+            width: 100%;
+            position: absolute;
+            left: 83px;
+            top: 3px;
+        }
+
+        .reportPdfHeaderLeft {
+            gap: 20px;
+        }
+
+        .roundedImg {
+            width: 65px;
+            height: 65px;
+            background-color: #5541D7;
+            border-radius: 10px;
+        }
+
+        .reportPdfCompany {
+            margin-bottom: 5px;
+            font-weight: 800;
+            line-height: 11px;
+            font-size: 12px;
+            color: #8A8A8C;
+        }
+
+        .reportPdfReportNoNumber {
+            font-weight: 400 !important;
+        }
+
+        .reportPdfReportNo {
+            margin-bottom: 3px;
+            font-weight: 800;
+            font-size: 27px;
+            color: #252229;
+            line-height: 28px;
+        }
+
+        .reportPdfDescription {
+            font-weight: 700;
+        }
+
+        .reportPdfSubHeaderTittle {
+            font-size: 13px;
+            font-weight: 700;
+            color: #8A8A8C;
+            margin-bottom: 7px;
+        }
+
+        .reportPdfSubHeader {
+            margin-top: 60px;
+            position: relative;
+        }
+
+
+        .reportPdfSubHeaderDate {
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        .reportPdfSubHeaderRight {
+            top: 1px;
+            right: -30px;
+            position: absolute;
+        }
+
+        .reportPdfSubHeaderValue {
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .reportPdfAmount {
+            position: relative;
+            font-weight: 700;
+            margin-top: 60px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid black;
+        }
+
+        .reportPdfTotalAmount {
+            color: #8A8A8C;
+            font-size: 13px;
+            font-weight: 600;
+            position: absolute;
+            right: 0;
+            top: 1.5px;
+            width: 150px;
+            text-align: right;
+        }
+
+        .reportPdfBillAbsolute {
+            position: absolute;
+            right: 0;
+        }
+
+        .reportPdfTable {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+
+        .reportPdfTablePersonal tr {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .reportPdfTablePersonal th {
+            font-size: 12px;
+            border-bottom: 1px solid #C5C5C5;
+            padding-bottom: 10px;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .reportPdfTablePersonal td {
+            color: #8A8A8C;
+            font-weight: normal;
+            font-size: 12px;
+            padding-bottom: 7px;
+            padding-top: 7px;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+
+        .reportPdfTable th {
+            font-size: 12px;
+            border-bottom: 1px solid #C5C5C5;
+            padding-bottom: 10px;
+            text-align: left;
+            padding-left: 10px;
+            font-weight: 600;
+        }
+
+        .reportPdfTable td {
+            color: #8A8A8C;
+            font-weight: normal;
+            font-size: 12px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .reportPdfFooter {
+            margin-top: auto;
+            font-size: 12px;
+            color: #8A8A8C;
+            border-top: 1px solid black;
+            padding-top: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 680px;
+            left: 50%;
+            margin-left: -340px
+        }
+
+        .reportPdfFooterLeft {
+            padding-left: 10px;
+        }
+
+        .reportPdfFooterReg {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            font-weight: 700;
+            width: 150px;
+            text-align: right;
+        }
+
+        .reportPdfSubHeaderAddress {
+            font-size: 13px;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .reportPdfDetails {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .reportPdfIcon {
+            margin-right: 15px;
+        }
+
+        .reportPdfSubHeaderRightSingle {
+            padding-left: 9px;
+            width: 120px;
+            float: left;
+            text-align: left;
+        }
+
+        .reportPdfSubHeaderRight td {
+            width: 100%;
+        }
+
+        .reportPdfHeaderRight {
+            position: absolute;
+            top: 24px;
+            right: 30px;
+            font-weight: 400;
+        }
+
+        .reportPdfStatus {
+            color: #8A8A8C;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
+        .reportPdfPaid {
+            font-weight: 800;
+            font-size: 30px;
+            color: #EB3526;
+        }
+
+        .reportPdfBill {
+            position: relative;
+            margin-top: 70px;
+            height: 150px;
+        }
+
+        .reportPdfSubTotal {
+            width: 300px;
+            position: relative;
+        }
+
+        .reportPdfVat {
+            width: 300px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .reportPdfGrandTotal {
+            width: 300px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .reportPdfSubTotalText {
+            font-size: 12px;
+            color: #8A8A8C;
+            align-self: center;
+        }
+
+        .reportPdfVatText {
+            font-size: 12px;
+            color: #8A8A8C;
+            align-self: center;
+        }
+
+
+        .reportPdfVatValue {
+            position: absolute;
+            top: -3px;
+            right: 0;
+            width: 150px;
+            text-align: right;
+        }
+
+        .reportPdfGrandTotalText {
+            font-size: 18px;
+            color: #8A8A8C;
+        }
+
+        .reportPdfGrandTotalValue {
+            align-self: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            text-align: right;
+        }
+
+
+        .reportPdfSubTotalValue {
+            position: absolute;
+            top: -3px;
+            right: 0;
+            width: 150px;
+            text-align: right;
+        }
+
+        .reportPdfTablePersonal {
+            margin-top: 20px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<div class="reportPdf">
+    <div class="reportContent">
+        <div class="reportPdfHeader">
+            <div class="reportPdfHeaderLeft">
+                <div class="reportPdfIcon">
+                    <div class="roundedImg"></div>
+                </div>
+                <div class="reportPdfHeaderValues">
+                    <div class="reportPdfCompany">
+                        MaitseTuur
+                    </div>
+                    <div class="reportPdfReportNo">
+                        Report #1
+                    </div>
+                    <div class="reportPdfDescription">
+                        Report description
+                    </div>
+                </div>
+            </div>
+            <div class="reportPdfHeaderRight">
+                <div class="reportPdfStatus">
+                    Status
+                </div>
+                <div class="reportPdfPaid">
+                    Unpaid
+                </div>
+            </div>
+        </div>
+        <div class="reportPdfSubHeader">
+            <div class="reportPdfSubHeaderLeft">
+                <div class="reportPdfSubHeaderTittle">
+                    Reported period
+                </div>
+                <div class="reportPdfSubHeaderDate">
+                    January 1 - April 22, 2023
+                </div>
+            </div>
+            <div class="reportPdfSubHeaderRight">
+                <div class="reportPdfSubHeaderRightSingle">
+                    <div class="reportPdfSubHeaderTittle">
+                        Turnover
+                    </div>
+                    <div class="reportPdfSubHeaderValue">
+                        99,999.00€
+                    </div>
+                </div>
+                <div class="reportPdfSubHeaderRightSingle">
+                    <div class="reportPdfSubHeaderTittle">
+                        MaitseTuur Share
+                    </div>
+                    <div class="reportPdfSubHeaderValue">
+                        99,999.00€
+                    </div>
+                </div>
+                <div class="reportPdfSubHeaderRightSingle">
+                    <div class="reportPdfSubHeaderTittle">
+                        Netto
+                    </div>
+                    <div class="reportPdfSubHeaderValue">
+                        99,999.00€
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reportPdfAmount">
+            <div class="reportPdfDetails">
+                Details
+            </div>
+            <div class="reportPdfTotalAmount">
+                Certificates: 999
+            </div>
+        </div>
+        <div class="reportPdfTable">
+            <table class="reportPdfTable">
+                <thead>
+                <tr>
+                    <th class="reportPdfCertificate">Certificate</th>
+                    <th class="reportPdfActivationDate">Activation Date</th>
+                    <th class="reportPdfActivationTime">Activation Time</th>
+                    <th class="reportPdfWaitersName">Waiter's Name</th>
+                    <th class="reportPdfSpent">Spent</th>
+                    <th class="reportPdfRemaining">Remaining</th>
+                    <th class="reportPdfTotal">Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Certificate #1</td>
+                    <td>January 1, 2023</td>
+                    <td>January 1, 2023</td>
+                    <td>Ivan Zalupenko</td>
+                    <td>25,43€</td>
+                    <td>24,57€</td>
+                    <td>50,00€</td>
+                </tr>
+                <tr>
+                    <td>Certificate #1</td>
+                    <td>January 1, 2023</td>
+                    <td>January 1, 2023</td>
+                    <td>Ivan Zalupenko</td>
+                    <td>25,43€</td>
+                    <td>---</td>
+                    <td>50,00€</td>
+                </tr>
+                <tr>
+                    <td>Certificate #1</td>
+                    <td>January 1, 2023</td>
+                    <td>January 1, 2023</td>
+                    <td>Ivan Zalupenko</td>
+                    <td>25,43€</td>
+                    <td>24,57€</td>
+                    <td>50,00€</td>
+                </tr>
+                <tr>
+                    <td>Certificate #1</td>
+                    <td>January 1, 2023</td>
+                    <td>January 1, 2023</td>
+                    <td>Ivan Zalupenko</td>
+                    <td>25,43€</td>
+                    <td>24,57€</td>
+                    <td>50,00€</td>
+                </tr>
+                <tr>
+                    <td>Certificate #1</td>
+                    <td>January 1, 2023</td>
+                    <td>January 1, 2023</td>
+                    <td>Ivan Zalupenko</td>
+                    <td>25,43€</td>
+                    <td>24,57€</td>
+                    <td>50,00€</td>
+                </tr>
+                <tr>
+                    <td>Certificate #1</td>
+                    <td>January 1, 2023</td>
+                    <td>January 1, 2023</td>
+                    <td>Ivan Zalupenko</td>
+                    <td>25,43€</td>
+                    <td>24,57€</td>
+                    <td>50,00€</td>
+                </tr>
+                <tr>
+                    <td>Certificate #1</td>
+                    <td>January 1, 2023</td>
+                    <td>January 1, 2023</td>
+                    <td>Ivan Zalupenko</td>
+                    <td>25,43€</td>
+                    <td>24,57€</td>
+                    <td>50,00€</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="reportPdfBill">
+            <div class="reportPdfBillAbsolute">
+
+                <div class="reportPdfSubTotal">
+                    <div class="reportPdfSubTotalText">
+                        Sub total
+                    </div>
+                    <div class="reportPdfSubTotalValue">
+                        500.00€
+                    </div>
+                </div>
+                <div class="reportPdfVat">
+                    <div class="reportPdfVatText">
+                        Vat 20%
+                    </div>
+                    <div class="reportPdfVatValue">
+                        100.00€
+                    </div>
+                </div>
+                <div class="reportPdfGrandTotal">
+                    <div class="reportPdfGrandTotalText">
+                        GRAND TOTAL
+                    </div>
+                    <div class="reportPdfGrandTotalValue">
+                        600.00€
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reportPdfFooter">
+            <div class="reportPdfFooterLeft">
+                MaitseTuur
+            </div>
+            <div class="reportPdfFooterReg">
+                Reg. Num: 2281337666
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

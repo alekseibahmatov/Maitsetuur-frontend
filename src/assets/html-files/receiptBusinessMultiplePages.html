@@ -1,109 +1,135 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <title>ReportMany</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .reportPdf{
+
+        .reportPdf {
             font-family: 'Mulish', sans-serif;
             font-weight: bold;
             margin: 0 auto;
             background-color: #ffffff;
-            height: 1096px;
-            width: 800px;
-            display: flex;
-            flex-direction: column;
+            position: relative;
         }
-        .reportContent{
-            padding: 60px 60px 20px 60px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+
+        .reportPdfHeaderValues {
+            width: 100%;
+            position: absolute;
+            left: 83px;
+            top: 3px;
         }
-        .reportPdfHeader{
-            display: flex;
-            justify-content: space-between;
-        }
-        .reportPdfHeaderLeft{
-            display: flex;
+
+        .reportPdfHeaderLeft {
             gap: 20px;
         }
-        .roundedImg{
+
+        .roundedImg {
             width: 65px;
             height: 65px;
             background-color: #5541D7;
             border-radius: 10px;
         }
-        .reportPdfCompany{
+
+        .reportPdfCompany {
+            margin-bottom: 5px;
+            font-weight: 800;
+            line-height: 11px;
             font-size: 12px;
             color: #8A8A8C;
         }
-        .reportPdfReportNo{
-            font-size: 26px;
+
+        .reportPdfReportNoNumber {
+            font-weight: 400 !important;
+        }
+
+        .reportPdfReportNo {
+            margin-bottom: 3px;
+            font-weight: 800;
+            font-size: 27px;
             color: #252229;
+            line-height: 28px;
         }
-        .reportPdfHeaderRight{
-            align-self: center;
+
+        .reportPdfDescription {
+            font-weight: 700;
         }
-        .reportPdfSubHeaderTittle{
-            font-size: 12px;
+
+        .reportPdfSubHeaderTittle {
+            font-size: 13px;
+            font-weight: 700;
             color: #8A8A8C;
+            margin-bottom: 7px;
         }
-        .reportPdfSubHeader{
-            margin-top: 50px;
-            display: flex;
-            justify-content: space-between;
+
+        .reportPdfSubHeader {
+            margin-top: 60px;
+            position: relative;
         }
-        .reportPdfSubHeaderLeft{
-            width: 50%;
-        }
-        .reportPdfSubHeaderDate{
+
+
+        .reportPdfSubHeaderDate {
             margin-top: 5px;
+            font-weight: 700;
         }
-        .reportPdfSubHeaderRight{
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
+
+        .reportPdfSubHeaderRight {
             align-self: center;
+            top: 11px;
+            right: 0;
+            position: absolute;
         }
-        .reportPdfSubHeaderValue{
-            font-weight: normal;
+
+        .reportPdfSubHeaderValue {
+            font-weight: 500;
             margin-top: 5px;
         }
-        .reportPdfAmount{
-            margin-top: 80px;
-            display: flex;
-            justify-content: space-between;
+
+        .reportPdfAmount {
+            position: relative;
+            font-weight: 700;
+            margin-top: 60px;
             padding-bottom: 20px;
-            border-bottom: 2px solid black;
+            border-bottom: 1px solid black;
         }
-        .reportPdfTotalAmount{
-            font-size: 12px;
+
+        .reportPdfTotalAmount {
             color: #8A8A8C;
-            align-self: center;
+            font-size: 13px;
+            font-weight: 600;
+            position: absolute;
+            right: 0;
+            top: 1.5px;
+            width: 150px;
+            text-align: right;
         }
-        .reportPdfTable{
+
+        .reportPdfBillAbsolute {
+            position: absolute;
+            right: 0;
+        }
+
+        .reportPdfTable {
             border-collapse: collapse;
             width: 100%;
         }
-        .reportPdfTablePersonal{
+
+        .reportPdfTablePersonal {
             border-collapse: collapse;
             width: 100%;
         }
+
         .reportPdfTablePersonal tr {
             display: table;
             table-layout: fixed;
             width: 100%;
         }
+
         .reportPdfTablePersonal th {
             font-size: 12px;
-            border-bottom: 2px solid #C5C5C5;
+            border-bottom: 1px solid #C5C5C5;
             padding-bottom: 10px;
             text-align: left;
             padding-left: 10px;
         }
+
         .reportPdfTablePersonal td {
             color: #8A8A8C;
             font-weight: normal;
@@ -113,53 +139,90 @@
             text-align: left;
             padding-left: 10px;
         }
-        .reportPdfTablePersonal{
+
+        .reportPdfTablePersonal {
             margin-top: 20px;
         }
+
         .reportPdfTable th {
             font-size: 12px;
-            border-bottom: 2px solid #C5C5C5;
+            border-bottom: 1px solid #C5C5C5;
             padding-bottom: 10px;
             text-align: left;
             padding-left: 10px;
+            font-weight: 600;
         }
+
         .reportPdfTable td {
             color: #8A8A8C;
             font-weight: normal;
             font-size: 12px;
-            padding-bottom: 7px;
-            padding-top: 7px;
+            padding-bottom: 10px;
+            padding-top: 10px;
             text-align: left;
             padding-left: 10px;
         }
-        .reportPdfTable{
-            margin-top: 20px;
-        }
-        .reportPdfFooter{
-            display: flex;
-            justify-content: space-between;
+
+        .reportPdfFooter {
             margin-top: auto;
             font-size: 12px;
             color: #8A8A8C;
-            border-top: 2px solid black;
-            padding-top: 20px;
+            border-top: 1px solid black;
+            padding-top: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 680px;
+            left: 50%;
+            margin-left: -340px
         }
-        .reportPdfFooterLeft{
+
+        .reportPdfFooterLeft {
             padding-left: 10px;
         }
-        .reportPdfFooterReg{
-            padding-right: 10px;
+
+        .reportPdfFooterReg {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            font-weight: 700;
+            width: 150px;
+            text-align: right;
         }
-        .reportPdfSubHeaderAddress{
-            font-size: 12px;
-            font-weight: normal;
+
+        .reportPdfSubHeaderAddress {
+            font-size: 13px;
             margin-top: 5px;
+            font-weight: 500;
         }
-        .reportPdfPage{
-            color: #8A8A8C;
-            font-weight: normal;
-            margin-right: 10px;
+
+        .reportPdfDetails {
+            font-size: 16px;
+            font-weight: 600;
         }
+
+        .reportPdfIcon {
+            margin-right: 15px;
+        }
+
+        .reportPdfSubHeaderRightSingle {
+            padding-left: 9px;
+            width: 100px;
+            float: right;
+            text-align: right;
+
+        }
+
+        .reportPdfSubHeaderRight td {
+            width: 100%;
+        }
+
+        .reportPdfHeaderRight {
+            position: absolute;
+            top: 24px;
+            right: 30px;
+            font-weight: 400;
+        }
+
     </style>
 </head>
 <body>
@@ -175,7 +238,10 @@
                         MaitseTuur
                     </div>
                     <div class="reportPdfReportNo">
-                        Receipt #533454
+                        Receipt
+                        <span class="reportPdfReportNoNumber">
+                            #533454
+                        </span>
                     </div>
                     <div class="reportPdfDescription">
                         Receipt description
@@ -194,12 +260,13 @@
                     Bill to:
                 </div>
                 <div class="reportPdfSubHeaderDate">
-                    Kitaec Akim
+                    Artijom Davicock
                 </div>
                 <div class="reportPdfSubHeaderAddress">
                     Sõstra 4 40, Tallinn, Estonia
                 </div>
             </div>
+
             <div class="reportPdfSubHeaderRight">
                 <div class="reportPdfSubHeaderRightSingle">
                     <div class="reportPdfSubHeaderTittle">
@@ -209,6 +276,7 @@
                         01-01-2023
                     </div>
                 </div>
+
                 <div class="reportPdfSubHeaderRightSingle">
                     <div class="reportPdfSubHeaderTittle">
                         Receipt No.:
@@ -224,7 +292,7 @@
                 Details
             </div>
             <div class="reportPdfTotalAmount">
-                Certificates: 99
+                Certificates: 1
             </div>
         </div>
         <div class="reportPdfTable">
@@ -365,26 +433,13 @@
                     <td>500€</td>
                     <td>genryeiter@gmail.com</td>
                 </tr>
-                <tr>
-                    <td>Coupon #1</td>
-                    <td>January 1, 2023</td>
-                    <td>January 1, 2024</td>
-                    <td>500€</td>
-                    <td>genryeiter@gmail.com</td>
-                </tr>
-                <tr>
-                    <td>Coupon #1</td>
-                    <td>January 1, 2023</td>
-                    <td>January 1, 2024</td>
-                    <td>500€</td>
-                    <td>genryeiter@gmail.com</td>
-                </tr>
                 </tbody>
             </table>
         </div>
         <div class="reportPdfFooter">
             <div class="reportPdfFooterLeft">
-                MaitseTuur
+                MaitseTuur OÜ
+
             </div>
             <div class="reportPdfFooterReg">
                 Reg. Num: 2281337666
@@ -392,3 +447,6 @@
         </div>
     </div>
 </div>
+
+</body>
+</html>

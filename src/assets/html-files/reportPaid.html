@@ -1,118 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReportPaid</title>
     <style>
-        .reportPdf{
+
+        .reportPdf {
             font-family: 'Mulish', sans-serif;
             font-weight: bold;
             margin: 0 auto;
             background-color: #ffffff;
-            height: 1096px;
-            width: 800px;
-            display: flex;
-            flex-direction: column;
+            position: relative;
         }
-        .reportContent{
-            padding: 60px 60px 20px 60px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+
+        .reportPdfHeaderValues {
+            width: 100%;
+            position: absolute;
+            left: 83px;
+            top: 3px;
         }
-        .reportPdfHeader{
-            display: flex;
-            justify-content: space-between;
-        }
-        .reportPdfHeaderLeft{
-            display: flex;
+
+        .reportPdfHeaderLeft {
             gap: 20px;
         }
-        .roundedImg{
+
+        .roundedImg {
             width: 65px;
             height: 65px;
             background-color: #5541D7;
             border-radius: 10px;
         }
-        .reportPdfCompany{
+
+        .reportPdfCompany {
+            margin-bottom: 5px;
+            font-weight: 800;
+            line-height: 11px;
             font-size: 12px;
             color: #8A8A8C;
         }
-        .reportPdfReportNo{
-            font-size: 26px;
+
+        .reportPdfReportNoNumber {
+            font-weight: 400 !important;
+        }
+
+        .reportPdfReportNo {
+            margin-bottom: 3px;
+            font-weight: 800;
+            font-size: 27px;
             color: #252229;
+            line-height: 28px;
         }
-        .reportPdfHeaderRight{
-            align-self: center;
+
+        .reportPdfDescription {
+            font-weight: 700;
         }
-        .reportPdfStatus{
-            font-size: 12px;
+
+        .reportPdfSubHeaderTittle {
+            font-size: 13px;
+            font-weight: 700;
             color: #8A8A8C;
+            margin-bottom: 7px;
         }
-        .reportPdfPaid{
-            color: #4DB73B;
-            font-size: 30px;
-            font-weight: bolder;
+
+        .reportPdfSubHeader {
+            margin-top: 60px;
+            position: relative;
         }
-        .reportPdfSubHeaderTittle{
-            font-size: 12px;
-            color: #8A8A8C;
+
+
+        .reportPdfSubHeaderDate {
+            margin-top: 5px;
+            font-weight: 700;
         }
-        .reportPdfSubHeader{
-            margin-top: 50px;
-            display: flex;
-            justify-content: space-between;
+
+        .reportPdfSubHeaderRight {
+            top: 1px;
+            right: -30px;
+            position: absolute;
         }
-        .reportPdfSubHeaderLeft{
-            width: 50%;
-        }
-        .reportPdfSubHeaderDate{
+
+        .reportPdfSubHeaderValue {
+            font-weight: 500;
             margin-top: 5px;
         }
-        .reportPdfSubHeaderRight{
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            align-self: center;
-        }
-        .reportPdfSubHeaderValue{
-            font-weight: normal;
-            margin-top: 5px;
-        }
-        .reportPdfAmount{
-            margin-top: 80px;
-            display: flex;
-            justify-content: space-between;
+
+        .reportPdfAmount {
+            position: relative;
+            font-weight: 700;
+            margin-top: 60px;
             padding-bottom: 20px;
-            border-bottom: 2px solid black;
+            border-bottom: 1px solid black;
         }
-        .reportPdfTotalAmount{
-            font-size: 12px;
+
+        .reportPdfTotalAmount {
             color: #8A8A8C;
-            align-self: center;
+            font-size: 13px;
+            font-weight: 600;
+            position: absolute;
+            right: 0;
+            top: 1.5px;
+            width: 150px;
+            text-align: right;
         }
-        .reportPdfTable{
+
+        .reportPdfBillAbsolute {
+            position: absolute;
+            right: 0;
+        }
+
+        .reportPdfTable {
+            margin-top: 20px;
             border-collapse: collapse;
             width: 100%;
         }
-        .reportPdfTablePersonal{
-            border-collapse: collapse;
-            width: 100%;
-        }
+
+
         .reportPdfTablePersonal tr {
             display: table;
             table-layout: fixed;
             width: 100%;
         }
+
         .reportPdfTablePersonal th {
             font-size: 12px;
-            border-bottom: 2px solid #C5C5C5;
+            border-bottom: 1px solid #C5C5C5;
             padding-bottom: 10px;
             text-align: left;
             padding-left: 10px;
         }
+
         .reportPdfTablePersonal td {
             color: #8A8A8C;
             font-weight: normal;
@@ -122,84 +135,173 @@
             text-align: left;
             padding-left: 10px;
         }
+
+
         .reportPdfTable th {
             font-size: 12px;
-            border-bottom: 2px solid #C5C5C5;
+            border-bottom: 1px solid #C5C5C5;
             padding-bottom: 10px;
             text-align: left;
             padding-left: 10px;
+            font-weight: 600;
         }
+
         .reportPdfTable td {
             color: #8A8A8C;
             font-weight: normal;
             font-size: 12px;
-            padding-bottom: 7px;
-            padding-top: 7px;
+            padding-bottom: 10px;
+            padding-top: 10px;
             text-align: left;
             padding-left: 10px;
         }
-        .reportPdfTable{
-            margin-top: 20px;
+
+        .reportPdfFooter {
+            margin-top: auto;
+            font-size: 12px;
+            color: #8A8A8C;
+            border-top: 1px solid black;
+            padding-top: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 680px;
+            left: 50%;
+            margin-left: -340px
         }
-        .reportPdfBill{
+
+        .reportPdfFooterLeft {
+            padding-left: 10px;
+        }
+
+        .reportPdfFooterReg {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            font-weight: 700;
+            width: 150px;
+            text-align: right;
+        }
+
+        .reportPdfSubHeaderAddress {
+            font-size: 13px;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .reportPdfDetails {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .reportPdfIcon {
+            margin-right: 15px;
+        }
+
+        .reportPdfSubHeaderRightSingle {
+            padding-left: 9px;
+            width: 120px;
+            float: left;
+            text-align: left;
+        }
+
+        .reportPdfSubHeaderRight td {
+            width: 100%;
+        }
+
+        .reportPdfHeaderRight {
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            font-weight: 400;
+        }
+
+        .reportPdfStatus {
+            color: #8A8A8C;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
+        .reportPdfPaid {
+            font-weight: 800;
+            font-size: 30px;
+            color: #4DB73B;
+        }
+
+        .reportPdfBill {
+            position: relative;
             margin-top: 70px;
+            height: 150px;
         }
-        .reportPdfSubTotal{
-            display: flex;
-            gap: 20px;
-            justify-content: right;
+
+        .reportPdfSubTotal {
+            width: 300px;
+            position: relative;
         }
-        .reportPdfVat{
-            display: flex;
-            gap: 20px;
-            justify-content: right;
+
+        .reportPdfVat {
+            width: 300px;
+            position: relative;
             margin-top: 20px;
         }
-        .reportPdfGrandTotal{
-            display: flex;
-            gap: 20px;
-            justify-content: right;
+
+        .reportPdfGrandTotal {
+            width: 300px;
+            position: relative;
             margin-top: 20px;
         }
-        .reportPdfSubTotalText{
+
+        .reportPdfSubTotalText {
             font-size: 12px;
             color: #8A8A8C;
             align-self: center;
         }
+
         .reportPdfVatText {
             font-size: 12px;
             color: #8A8A8C;
             align-self: center;
         }
-        .reportPdfSubTotalValue{
-            font-weight: normal;
+
+
+        .reportPdfVatValue {
+            position: absolute;
+            top: -3px;
+            right: 0;
+            width: 150px;
+            text-align: right;
         }
-        .reportPdfVatValue{
-            font-weight: normal;
-        }
-        .reportPdfGrandTotalText{
+
+        .reportPdfGrandTotalText {
             font-size: 18px;
             color: #8A8A8C;
         }
-        .reportPdfGrandTotalValue{
+
+        .reportPdfGrandTotalValue {
             align-self: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            text-align: right;
         }
-        .reportPdfFooter{
-            display: flex;
-            justify-content: space-between;
-            margin-top: auto;
-            font-size: 12px;
-            color: #8A8A8C;
-            border-top: 2px solid black;
-            padding-top: 20px;
+
+
+        .reportPdfSubTotalValue {
+            position: absolute;
+            top: -3px;
+            right: 0;
+            width: 150px;
+            text-align: right;
         }
-        .reportPdfFooterLeft{
-            padding-left: 10px;
+
+        .reportPdfTablePersonal {
+            margin-top: 20px;
         }
-        .reportPdfFooterReg{
-            padding-right: 10px;
-        }
+
+
     </style>
+
+
 </head>
 <body>
 <div class="reportPdf">
@@ -355,28 +457,31 @@
             </table>
         </div>
         <div class="reportPdfBill">
-            <div class="reportPdfSubTotal">
-                <div class="reportPdfSubTotalText">
-                    Sub total
+            <div class="reportPdfBillAbsolute">
+
+                <div class="reportPdfSubTotal">
+                    <div class="reportPdfSubTotalText">
+                        Sub total
+                    </div>
+                    <div class="reportPdfSubTotalValue">
+                        500.00€
+                    </div>
                 </div>
-                <div class="reportPdfSubTotalValue">
-                    500.00€
+                <div class="reportPdfVat">
+                    <div class="reportPdfVatText">
+                        Vat 20%
+                    </div>
+                    <div class="reportPdfVatValue">
+                        100.00€
+                    </div>
                 </div>
-            </div>
-            <div class="reportPdfVat">
-                <div class="reportPdfVatText">
-                    Vat 20%
-                </div>
-                <div class="reportPdfVatValue">
-                    100.00€
-                </div>
-            </div>
-            <div class="reportPdfGrandTotal">
-                <div class="reportPdfGrandTotalText">
-                    GRAND TOTAL
-                </div>
-                <div class="reportPdfGrandTotalValue">
-                    600.00€
+                <div class="reportPdfGrandTotal">
+                    <div class="reportPdfGrandTotalText">
+                        GRAND TOTAL
+                    </div>
+                    <div class="reportPdfGrandTotalValue">
+                        600.00€
+                    </div>
                 </div>
             </div>
         </div>
