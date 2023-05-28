@@ -13,60 +13,66 @@
     opacity: 1;
 }
 
-.react-daterange-picker__wrapper{
+.react-daterange-picker__wrapper {
     background-color: #E6E6FA;
     padding: 8px 15px;
-    border: 1px solid #E6E6FA!important;
+    border: 1px solid #E6E6FA !important;
     border-radius: 10px;
     color: #5541D7;
 }
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-    background:  #8B2CF5!important;
+    background: #8B2CF5 !important;
 }
-.arrowTable{
+
+.arrowTable {
     padding: 0 10px;
     margin-bottom: -2px;
 }
-.buttonTable{
-    padding: 12px 30px;
+
+.buttonTable {
+    padding: 8px 12px;
     border-radius: 10px;
     align-self: center;
     cursor: pointer;
+    width: max-content;
+    font-size: 14px;
     transition: 0.3s;
     text-align: center;
-    max-width: 120px;
+    margin: 0 auto;
 }
-.unpaid{
-    color: #DA2063;
-    background: #FFB7D1;
+
+.unpaid {
+color: #DA2063;
+background: #FFB7D1;
 }
-.paid{
-    color: #3A8A07;
-    background: #B4FF99;
+
+.paid {
+color: #3A8A07;
+background: #B4FF99;
 }
 
 
 .date-picker-fake-btn-wrapper:hover {
-    border-color: hsl(0, 0%, 70%);
+border-color: hsl(0, 0%, 70%);
 }
 
 .date-picker-fake-btn-wrapper {
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    min-height: 38px;
-    position: relative;
-    transition: all 100ms;
-    background-color: #E6E6FA;
-    border-radius: 10px;
-    border: 1px solid;
-    box-shadow: none;
-    box-sizing: border-box;
-    color: #5541D7;
-    width: 250px;
-    padding: 11px 30px;
-    border: 1px solid #E6E6FA;
-    font-weight: bold;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+min-height: 38px;
+position: relative;
+transition: all 100ms;
+background-color: #E6E6FA;
+border-radius: 10px;
+border: 1px solid;
+box-shadow: none;
+box-sizing: border-box;
+color: #5541D7;
+width: 250px;
+padding: 11px 30px;
+border: 1px solid #E6E6FA;
+font-weight: bold;
 }

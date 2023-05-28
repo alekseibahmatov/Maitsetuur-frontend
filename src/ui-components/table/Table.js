@@ -2,6 +2,7 @@ import React from "react";
 import {LoadingAnimationCircular} from "../loading-animation/loading-animaiton-circular/LoadingAnimationCircular";
 import {useNavigate} from "react-router-dom";
 import arrow from "../../assets/img/Arrow 9.png";
+import {scrollTop} from "../../pages/business-coupon-order/tools";
 
 function Table({filteredItems, columnSizes, search}) {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ function Table({filteredItems, columnSizes, search}) {
                             <th scope="col" className="th" style={{width: columnSizes[2]}}>Turnover</th>
                             <th scope="col" className="th" style={{width: columnSizes[3]}}>MaitseTuur Share</th>
                             <th scope="col" className="th" style={{width: columnSizes[4]}}>Report period</th>
-                            <th scope="col" className="th" style={{width: columnSizes[5]}}>Status</th>
+                            <th scope="col" className="th" style={{width: columnSizes[5], textAlign: "center"}}>Status</th>
 
                         </tr>
                         </thead>
@@ -31,7 +32,10 @@ function Table({filteredItems, columnSizes, search}) {
 
                         {filteredItems.map((item, index) => (
 
-                            <tr onClick={() => navigate(`/dashboard/report/${item.id}`)} key={index}>
+                            <tr onClick={() => {
+                                scrollTop()
+                                navigate(`/dashboard/report/${item.id}`)
+                            }} key={index}>
                                 <th className="td" scope="row">
                                     {index}.
                                 </th>
@@ -41,7 +45,7 @@ function Table({filteredItems, columnSizes, search}) {
                                 <td className="td">{item.reportFrom} <img src={arrow} alt="" className="arrowTable"/> {item.reportTo}
                                 </td>
                                 <td className="td">
-                                    <div className='buttonTable paid'>{item.status}</div>
+                                    <div className={item.status === 'PAID' ? 'buttonTable paid' : 'buttonTable unpaid'}>{item.status}</div>
                                 </td>
                             </tr>
 

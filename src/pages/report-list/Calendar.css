@@ -62,7 +62,6 @@
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
     background-color: #e6e6e6;
-    border-radius: 10px;
 }
 
 .react-calendar__month-view__weekdays {
@@ -113,7 +112,6 @@
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
     background-color: #e6e6e6;
-    border-radius: 10px;
 }
 
 .react-calendar__tile--now {

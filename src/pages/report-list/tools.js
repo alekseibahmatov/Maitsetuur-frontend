@@ -17,8 +17,8 @@ export const generatePastMonthsOptions = () => {
         const startDate = new Date(endDate);
         startDate.setDate(endDate.getDate() - ((endDate.getDay() + 7 - startDay) % 7));
 
-        // Add one day to the end date to include the whole Thursday
-        endDate.setDate(endDate.getDate() + 1);
+        // Add six days to the startDate to get the whole week's endDate (Wednesday)
+        endDate.setDate(startDate.getDate() + 6);
 
         // Break the loop if the start date goes before January 2022
         if (
@@ -39,6 +39,8 @@ export const generatePastMonthsOptions = () => {
 
         i++;
     }
+
+    console.log(options)
 
     return options;
 };

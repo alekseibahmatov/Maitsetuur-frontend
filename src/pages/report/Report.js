@@ -8,11 +8,12 @@ import dots from "../../assets/img/dots.png";
 import Select from "react-select";
 import Table from "../../ui-components/table/Table";
 import {useState} from "react";
-import { options, options2, customStyles, headers, columnSizes, table } from './constants';
+import {options, options2, customStyles, headers, columnSizes, table} from './constants';
 import {useNavigate, useParams} from "react-router-dom";
 import accountantServices from "../../services/accountant";
 import toast from "react-hot-toast";
 import {initialValuesCreate} from "../admin/resto-business-info/formikInitialValues";
+import arrow from "../../assets/img/Arrow 9.png";
 
 export default function Report() {
     const navigate = useNavigate();
@@ -41,13 +42,19 @@ export default function Report() {
     }
 
 
-    return(
+    return (
         <>
             <div className="rightBlock1">
                 <div className="reportMain">
                     <div className="reportHeader">
-                        <div className="leftReportHeader">
-                            Report Generator
+                        <div className="leftReportHeaderWrapper">
+                            <div className="reportGoBack" onClick={() => navigate('/dashboard/report-list')}>
+                                <img src={arrow} alt="" className="arrowGoBack"/>
+                                Go back
+                            </div>
+                            <div className="leftReportHeader">
+                                Report #2345
+                            </div>
                         </div>
                         <div className="rightReportHeader">
                             <div className="reportDownload">
@@ -147,14 +154,14 @@ export default function Report() {
                     </div>
                     <div className="reportMainContentList">
                         <div className="searchAndDots">
-                        <div className="search">
-                            <button type="submit" className="searchButton">
-                                <i className="fa fa-search"/>
-                            </button>
-                            <input type="text" className="searchTerm"
-                                   onChange={(e) => setSearch(e.target.value)}
-                                   placeholder="What are you looking for?"/>
-                        </div>
+                            <div className="search">
+                                <button type="submit" className="searchButton">
+                                    <i className="fa fa-search"/>
+                                </button>
+                                <input type="text" className="searchTerm"
+                                       onChange={(e) => setSearch(e.target.value)}
+                                       placeholder="What are you looking for?"/>
+                            </div>
                             <img src={dots} alt="" className='searchDots'/>
                         </div>
                         <Table headers={headers} items={table} columnSizes={columnSizes}/>

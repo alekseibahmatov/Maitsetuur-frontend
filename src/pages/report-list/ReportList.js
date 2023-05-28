@@ -52,58 +52,50 @@ export default function ReportList() {
 
     const filteredItems = listData?.filter(item => {
         const searchTerm = search?.toLowerCase();
-        if (searchTerm === "") {
-            return true;
+        const reportFromDate = new Date(item.reportFrom).getTime();
+        const reportToDate = new Date(item.reportTo).getTime();
+
+        // Filter by search term
+        if (searchTerm && !Object.values(item).some(value =>
+            value && value.toString()?.toLowerCase().includes(searchTerm))) {
+            return false;
         }
 
-        if (searchTerm !== "" && !Object.values(item).some(
-            value => value && value.toString()?.toLowerCase().includes(searchTerm)
+        // Filter by date range
+        if (selectedPeriod && (
+            (reportFromDate < selectedPeriod[0] || reportFromDate > selectedPeriod[1]) ||
+            (reportToDate < selectedPeriod[0] || reportToDate > selectedPeriod[1])
         )) {
             return false;
         }
 
-        console.log('ebana')
-
-        const reportFromDate = new Date(item.reportFrom);
-        const reportToDate = new Date(item.reportTo);
-
-        if ((reportFromDate < selectedPeriod[0] || reportFromDate > selectedPeriod[1]) ||
-            (reportToDate < selectedPeriod[0] || reportToDate > selectedPeriod[1])) {
-            console.log('in the range')
-            return false;
-        }
-
-        console.log(selectedPeriod)
-
         return true;
     });
+
 
     useEffect(() => {
         getAllReportsOnMount()
     }, []);
 
 
-    const handleSelectChange = selectedOption => {
+    const handleSelectChange = (selectedOption) => {
+        console.log(selectedOption)
         if (selectedOption.value !== 'custom') {
-            setSelectedPeriod(selectedOption.value?.split(" - "))
+            let period = selectedOption.value?.split(" - ").map(date => new Date(date).getTime());
+            setSelectedPeriod(period);
         }
         setShowDatePicker(selectedOption.value === 'custom');
     };
 
     const handleDateChange = (selectedDates) => {
-        const currentDate = new Date();
-        const isFutureDate = selectedDates?.some(date => date && date > currentDate);
-        const isBeforeMinimumYear = selectedDates?.some(date => date && date.getFullYear() < 2022);
-
-        if (isFutureDate) {
+        if (selectedDates) {
+            let period = selectedDates.map(date => date.getTime());
+            console.log(selectedDates)
+            console.log(period)
+            setSelectedPeriod(period);
+            onChange(selectedDates);
             return;
         }
-
-        if (isBeforeMinimumYear) {
-            return;
-        }
-        const dateStrings = selectedDates.map(date => date.toISOString().slice(0,10));
-        console.log(dateStrings)
         setSelectedPeriod(selectedDates)
         onChange(selectedDates);
     };
@@ -115,7 +107,7 @@ export default function ReportList() {
                 <div className="reportMain">
                     <div className="reportHeader">
                         <div className="leftReportHeader">
-                            List of Financial Reports
+                            Financial Reports
                         </div>
                         <div className="rightReportHeader">
                             <div className="reportDownload">

@@ -1,21 +1,26 @@
-.reportMain{
+.reportMain {
     padding: 40px;
 }
-.reportHeader{
+
+.reportHeader {
     display: flex;
     justify-content: space-between;
     padding-bottom: 40px;
     border-bottom: 1px solid #D5AFFF;
 }
-.leftReportHeader{
+
+.leftReportHeader {
     font-size: 24px;
+    align-self: center;
 }
-.rightReportHeader{
+
+.rightReportHeader {
     display: flex;
     gap: 20px;
     align-self: center;
 }
-.reportDownload{
+
+.reportDownload {
     color: #ffffff;
     background: #5541D7;
     font-weight: 500;
@@ -24,7 +29,40 @@
     cursor: pointer;
     transition: 0.3s;
 }
-.reportContactUs{
+
+.arrowGoBack {
+    rotate: -180deg;
+    padding-left: 10px;
+    margin-bottom: -2px;
+    transition: 0.3s;
+    position: absolute;
+    top: 10px;
+    left: 23px;
+}
+
+.leftReportHeaderWrapper {
+    gap: 20px;
+    display: flex;
+}
+
+.reportGoBack:hover .arrowGoBack {
+    left: 15px;
+}
+
+.reportGoBack {
+    position: relative;
+    text-align: right;
+    color: #5541D7;
+    background: #E6E6FA;
+    font-weight: bolder;
+    padding: 8px 20px 8px 55px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: max-content;
+}
+
+.reportContactUs {
     color: #5541D7;
     background: #E6E6FA;
     font-weight: bolder;
@@ -33,63 +71,78 @@
     cursor: pointer;
     transition: 0.3s;
 }
-.reportMainContentHeaderSection{
+
+.reportMainContentHeaderSection {
     padding: 40px 0;
     display: flex;
     gap: 20px;
     justify-content: space-between;
 }
-.reportMainContentHeader{
+
+.reportMainContentHeader {
     width: 100%;
     align-self: center;
 }
-.reportMainContentHeaderUpperPart{
+
+.reportMainContentHeaderUpperPart {
     font-size: 24px;
 }
-.reportMainContentHeaderLowerPart{
+
+.reportMainContentHeaderLowerPart {
     font-size: 20px;
     color: #8B2CF5;
 }
-.reportMainContentSingleSection{
+
+.reportMainContentSingleSection {
     background-color: #ffffff;
     width: 100%;
     padding: 20px;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
 }
-.reportMainContentSingleSectionContent{
+
+.reportMainContentSingleSectionContent {
     display: flex;
     gap: 20px;
     align-items: center;
 }
-.singleSectionUpperText{
+
+.singleSectionUpperText {
     font-size: 22px;
 }
-.singleSectionText{
+
+.singleSectionText {
     margin-top: 5px;
 }
-.pink{
+
+.pink {
     color: #8B2CF5;
 }
-.green{
+
+.green {
     color: #48742C;
 }
-.ruby{
+
+.ruby {
     color: #EB3223;
 }
-.singleSectionLowerText{
+
+.singleSectionLowerText {
     font-size: 16px;
 }
-.reportMainContentDropDownSection{
+
+.reportMainContentDropDownSection {
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
 }
-.reportMainContentDropDowns{
+
+.reportMainContentDropDowns {
     display: flex;
     gap: 20px;
 }
-.reportMainContentResetButton{
+
+.reportMainContentResetButton {
     color: #DA2063;
     background: #FFB7D1;
     padding: 12px 25px;
@@ -104,48 +157,57 @@
     background: #e71860;
 
 }
-.reportMainContentList{
+
+.reportMainContentList {
     background: #ffffff;
     border-radius: 10px;
     padding: 20px;
 }
-.searchDots{
+
+.searchDots {
     align-self: center;
 }
-.unshown{
+
+.unshown {
     display: none;
 }
 
-@media (max-width: 940px){
-    .reportMainContentHeader{
+@media (max-width: 940px) {
+    .reportMainContentHeader {
         display: none;
     }
 }
-@media (max-width: 840px){
-    .reportMainContentDropDownSection{
+
+@media (max-width: 840px) {
+    .reportMainContentDropDownSection {
         flex-direction: column;
         gap: 20px;
     }
-    .reportMainContentDropDowns{
+
+    .reportMainContentDropDowns {
         flex-direction: column;
         gap: 20px;
     }
-    .reportMainContentResetButton{
+
+    .reportMainContentResetButton {
         margin-right: auto;
     }
 }
-@media (max-width: 730px){
-    .reportMainContentHeaderSection{
+
+@media (max-width: 730px) {
+    .reportMainContentHeaderSection {
         flex-direction: column;
     }
 }
-@media (max-width: 640px){
-    .reportHeader{
+
+@media (max-width: 640px) {
+    .reportHeader {
         flex-direction: column;
         gap: 20px;
         margin-right: auto;
     }
-    .rightReportHeader{
+
+    .rightReportHeader {
         margin-right: auto;
     }
 }
