@@ -5,7 +5,7 @@ import paid from '../../assets/img/Transaction Approved.png'
 import bursts from '../../assets/img/Bursts.png'
 import dots from "../../assets/img/dots.png";
 import Select from "react-select";
-import Table from "../../ui-components/table/Table";
+import Table from "../../ui-components/report-list-table/Table";
 import './Calendar.css'
 import './DateRangePicker.css'
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
@@ -20,7 +20,7 @@ import {
 
 export default function ReportList() {
     const [search, setSearch] = useState('');
-    const [value, onChange] = useState([new Date(), new Date()]);
+    const [value, onChange] = useState(null);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const selectInputRef = useRef();
     const [listData, setListData] = useState(null);
@@ -32,12 +32,14 @@ export default function ReportList() {
     const resetFilters = () => {
         setSearch('');
         selectInputRef.current.setValue('');
+        onChange(null);
         setShowDatePicker(false);
     };
 
     const getAllReportsOnMount = async () => {
         try {
             const result = await accountantServices.getAllReports()
+            console.log(result)
             setListData(result.data)
             setPaidReportsCount(
                 result?.data?.filter((item) => item.status === "PAID")
@@ -83,8 +85,11 @@ export default function ReportList() {
         if (selectedOption.value !== 'custom') {
             let period = selectedOption.value?.split(" - ").map(date => new Date(date).getTime());
             setSelectedPeriod(period);
+        } else {
+            setSelectedPeriod(null);
         }
         setShowDatePicker(selectedOption.value === 'custom');
+        onChange(null);
     };
 
     const handleDateChange = (selectedDates) => {
@@ -96,6 +101,7 @@ export default function ReportList() {
             onChange(selectedDates);
             return;
         }
+        console.log(selectedDates)
         setSelectedPeriod(selectedDates)
         onChange(selectedDates);
     };
@@ -110,9 +116,6 @@ export default function ReportList() {
                             Financial Reports
                         </div>
                         <div className="rightReportHeader">
-                            <div className="reportDownload">
-                                Download All Reports
-                            </div>
                             <div className="reportContactUs">
                                 Contact Us
                             </div>

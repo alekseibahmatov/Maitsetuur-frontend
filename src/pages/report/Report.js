@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './Report.css'
 import euro from '../../assets/img/Exchange Euro.png'
 import bill from '../../assets/img/Paid Bill.png'
@@ -6,22 +6,35 @@ import unpaid from '../../assets/img/Payment History.png'
 import paid from '../../assets/img/Transaction Approved.png'
 import dots from "../../assets/img/dots.png";
 import Select from "react-select";
-import Table from "../../ui-components/table/Table";
-import {useState} from "react";
+import Table from "../../ui-components/report-transactions-table/Table";
 import {options, options2, customStyles, headers, columnSizes, table} from './constants';
 import {useNavigate, useParams} from "react-router-dom";
 import accountantServices from "../../services/accountant";
 import toast from "react-hot-toast";
-import {initialValuesCreate} from "../admin/resto-business-info/formikInitialValues";
 import arrow from "../../assets/img/Arrow 9.png";
+import {
+    LoadingAnimationCircular
+} from "../../ui-components/loading-animation/loading-animaiton-circular/LoadingAnimationCircular";
+import DateRangePicker from "@wojtekmaj/react-daterange-picker";
+import {downloadReportBlobFile} from "./utils";
 
 export default function Report() {
     const navigate = useNavigate();
     const {reportId} = useParams();
-    const [reportData, setReportData] = useState(null);
-    const [search, setSearch] = useState('');
 
-    console.log(reportId)
+    const [search, setSearch] = useState('');
+    const [value, onChange] = useState(null);
+    const [reportData, setReportData] = useState(null);
+    const [turnover, setTurnover] = useState(null);
+    const [maitsetuurShare, setMaitsetuurShare] = useState(null);
+    const [status, setStatus] = useState(null);
+    const [selectedPeriod, setSelectedPeriod] = useState(null);
+
+
+    const resetFilters = () => {
+        setSearch('');
+        onChange(null);
+    };
 
     useEffect(() => {
         if (reportId) {
@@ -31,8 +44,12 @@ export default function Report() {
 
     const getReportDataOnMount = async () => {
         try {
-            const result = await accountantServices.getReportData(reportId)
+            const result = await accountantServices.getReportTransactionsData(reportId)
             setReportData(result.data)
+            setTurnover(result.data?.turnover)
+            setMaitsetuurShare(result.data?.maitsetuurShare)
+            setStatus(result.data?.status)
+
             console.log(result)
 
         } catch (error) {
@@ -41,6 +58,38 @@ export default function Report() {
         }
     }
 
+    const filteredItems = reportData?.transactions?.filter(item => {
+        const searchTerm = search?.toLowerCase();
+        const transactionDate = new Date(item.activationDate).getTime();
+
+        // Filter by search term
+        if (searchTerm && !Object.values(item).some(value =>
+            value && value.toString()?.toLowerCase().includes(searchTerm))) {
+            return false;
+        }
+
+        // Filter by date range
+        if (selectedPeriod && (transactionDate < selectedPeriod[0] || transactionDate > selectedPeriod[1])) {
+            return false;
+        }
+
+        return true;
+    });
+
+
+    const handleDateChange = (selectedDates) => {
+        if (selectedDates) {
+            let period = selectedDates.map(date => date.getTime());
+            console.log(selectedDates)
+            console.log(period)
+            setSelectedPeriod(period);
+            onChange(selectedDates);
+            return;
+        }
+        console.log(selectedDates)
+        setSelectedPeriod(selectedDates)
+        onChange(selectedDates);
+    };
 
     return (
         <>
@@ -53,11 +102,11 @@ export default function Report() {
                                 Go back
                             </div>
                             <div className="leftReportHeader">
-                                Report #2345
+                                Report #{reportId?.split('-')[0]}
                             </div>
                         </div>
                         <div className="rightReportHeader">
-                            <div className="reportDownload">
+                            <div className="reportDownload" onClick={() => downloadReportBlobFile(reportId)}>
                                 Download report
                             </div>
                             <div className="reportContactUs">
@@ -82,7 +131,11 @@ export default function Report() {
                                     </div>
                                     <div className="singleSectionText">
                                         <div className="singleSectionUpperText green">
-                                            €50.000
+                                            {turnover ?
+                                                '€' + turnover
+                                                :
+                                                <LoadingAnimationCircular/>
+                                            }
                                         </div>
                                         <div className="singleSectionLowerText">
                                             Turnover
@@ -97,7 +150,11 @@ export default function Report() {
                                     </div>
                                     <div className="singleSectionText">
                                         <div className="singleSectionUpperText pink">
-                                            €20.000
+                                            {maitsetuurShare ?
+                                                '€' + maitsetuurShare
+                                                :
+                                                <LoadingAnimationCircular/>
+                                            }
                                         </div>
                                         <div className="singleSectionLowerText">
                                             MaitseTuur Share
@@ -106,19 +163,28 @@ export default function Report() {
                                 </div>
                             </div>
                             <div className="reportMainContentSingleSection">
+
                                 <div className="reportMainContentSingleSectionContent">
                                     <div className="singleSectionIcon">
-                                        <img src={unpaid} alt="" className='singleSectionIconImage'/>
+                                        <img src={status === 'PAID' ? paid : unpaid} alt=""
+                                             className='singleSectionIconImage'/>
                                     </div>
                                     <div className="singleSectionText">
-                                        <div className="singleSectionUpperText ruby">
-                                            Unpaid
-                                        </div>
+                                        {status ?
+                                            status === 'PAID' ?
+                                                <div className="singleSectionUpperText green">{status}</div>
+                                                :
+                                                <div className="singleSectionUpperText ruby">{status}</div>
+                                            :
+                                            <LoadingAnimationCircular/>
+                                        }
                                         <div className="singleSectionLowerText">
                                             Status
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
                             <div className="reportMainContentSingleSection unshown">
                                 <div className="reportMainContentSingleSectionContent">
@@ -138,17 +204,16 @@ export default function Report() {
                         </div>
                         <div className="reportMainContentDropDownSection">
                             <div className="reportMainContentDropDowns">
-                                <Select className='myselect' options={options}
-                                        defaultValue={options[0]}
-                                        styles={customStyles}
-                                        components={{IndicatorSeparator: () => null}}/>
-                                <Select className='myselect' options={options2}
-                                        defaultValue={options2[0]}
-                                        styles={customStyles}
-                                        components={{IndicatorSeparator: () => null}}/>
+                                <DateRangePicker
+                                    minDetail={'year'}
+                                    minDate={new Date(2023, 0, 1)}
+                                    maxDate={new Date()}
+                                    rangeDivider={' to '}
+                                    onChange={handleDateChange}
+                                    value={value}/>
                             </div>
-                            <div className="reportMainContentResetButton">
-                                Reset Settings
+                            <div onClick={resetFilters} className="reportMainContentResetButton">
+                                Reset Filters
                             </div>
                         </div>
                     </div>
@@ -158,13 +223,14 @@ export default function Report() {
                                 <button type="submit" className="searchButton">
                                     <i className="fa fa-search"/>
                                 </button>
-                                <input type="text" className="searchTerm"
+                                <input type="text" className="searchTerm" value={search}
                                        onChange={(e) => setSearch(e.target.value)}
                                        placeholder="What are you looking for?"/>
                             </div>
                             <img src={dots} alt="" className='searchDots'/>
                         </div>
-                        <Table headers={headers} items={table} columnSizes={columnSizes}/>
+                        <Table filteredItems={filteredItems} search={search} headers={headers} items={table}
+                               columnSizes={columnSizes}/>
                     </div>
                 </div>
             </div>

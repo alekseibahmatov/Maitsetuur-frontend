@@ -1,45 +1,51 @@
 html {
     background-color: #F7F7FC;
 }
-.loginContent{
+
+.loginContent {
     margin-top: 80px;
     padding: 40px 0;
 }
-.loginHeader{
+
+.loginHeader {
     text-align: center;
     font-size: 31px;
     padding-bottom: 40px;
 }
-.loginFormForm{
+
+.loginFormForm {
     display: flex;
     justify-content: center;
-
 }
-.loginForm{
+
+.loginForm {
     background-color: #ffffff;
     width: 608px;
     height: 100%;
     padding: 40px 60px;
     border-radius: 10px;
 }
-.loginFormHeader{
+
+.loginFormHeader {
     text-align: center;
     color: #92929D;
 }
 
-.inputAuthenticationInput{
+.inputAuthenticationInput {
     width: 100%;
     border: 1px solid #5541D7;
     padding: 15px 20px;
     border-radius: 10px;
     margin-bottom: 40px;
 }
-.inputHeader{
+
+.inputHeader {
     padding-bottom: 5px;
     padding-left: 20px;
 }
-.loginButton{
-    background-color: #5541D7!important;
+
+.loginButton {
+    background-color: #5541D7 !important;
     color: white;
     text-align: center;
     padding: 15px 30px;
@@ -49,20 +55,23 @@ html {
     border: 0;
     margin-top: 40px;
 }
-.fullWidth{
+
+.fullWidth {
     width: 100%;
 
 }
-.marginBottom{
+
+.marginBottom {
     margin-bottom: 60px;
 }
-.loginButton:hover{
+
+.loginButton:hover {
     transition: 0.3s;
-    background-color: #6E54D6!important;
+    background-color: #6E54D6 !important;
 }
 
 
-.forgetPass{
+.forgetPass {
     font-size: 14px;
     float: right;
     color: #9A9AB0;
@@ -71,24 +80,26 @@ html {
     transition: 0.3s;
     cursor: pointer;
 }
-.forgetPass:hover{
+
+.forgetPass:hover {
     transition: 0.3s;
     color: #373a47;
 }
 
-@media (max-width: 648px){
-    .loginForm{
+@media (max-width: 648px) {
+    .loginForm {
         width: 460px;
     }
 }
-@media (max-width: 490px){
-    .loginForm{
+
+@media (max-width: 490px) {
+    .loginForm {
         width: 300px;
         padding: 20px 30px;
     }
 }
 
-.error{
+.error {
     margin-top: 5px;
     color: red;
 }

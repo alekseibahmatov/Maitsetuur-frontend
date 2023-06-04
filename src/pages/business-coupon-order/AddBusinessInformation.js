@@ -57,7 +57,7 @@ export const AddBusinessInformation = () => {
     return (
 
         <>
-            <div className="loginContent">
+            <div className="loginContent mobileWrapper">
                 <div className="loginHeader">
                     Add Business Information
                 </div>

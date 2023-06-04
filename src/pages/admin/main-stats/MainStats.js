@@ -3,7 +3,7 @@ import Select from "react-select";
 import dots from "../../../assets/img/dots.png";
 import {Data, options, table, headers , columnSizes} from "./data";
 import {CustomChart} from '../../../ui-components/chart/CustomChart'
-import Table from "../../../ui-components/table/Table";
+import Table from "../../../ui-components/report-list-table/Table";
 
 export const MainStats = () => {
     const [totalEarning, setTotalEarnings] = useState(0);

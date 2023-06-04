@@ -88,7 +88,7 @@ export const AddCouponData = () => {
 
     return (
         <>
-            <div className="loginContent">
+            <div className="loginContent mobileWrapper">
                 <div className="loginHeader">
                     Add Coupon Data
                 </div>

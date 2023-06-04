@@ -1,26 +1,22 @@
 import http from "../utils/http-client";
 
 
-const getReportData = (data) => {
-    return http.get('/admin/report/' + data);
+const getReportTransactionsData = (data) => {
+    return http.get('/accountant/report/' + data + '/transactions');
 }
 
 const getAllReports = () => {
     return http.get('/accountant/report');
 }
 
-const downloadReport = (fileId) => {
-    return http.get(`/file/download/${fileId}`);
+const downloadReport = (reportId) => {
+    return http.get('/accountant/download/report/' + reportId);
 }
 
-const downloadAllReports = (userId) => {
-    return http.get(`/file/download-all/${userId}`);
-}
 
 const methods = {
-    getReportData,
+    getReportTransactionsData,
     getAllReports,
-    downloadAllReports,
     downloadReport
 }
 

@@ -37,7 +37,7 @@ function Table({filteredItems, columnSizes, search}) {
                                 navigate(`/dashboard/report/${item.id}`)
                             }} key={index}>
                                 <th className="td" scope="row">
-                                    {index}.
+                                    {item.id?.split('-')[0]}
                                 </th>
                                 <td className="td">{item.transactionsAmount}</td>
                                 <td className="td">{item.turnover}</td>

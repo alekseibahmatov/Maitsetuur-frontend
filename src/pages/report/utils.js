@@ -2,10 +2,11 @@ import accountantServices from "../../services/accountant";
 import toast from "react-hot-toast";
 
 
-export const downloadReportBlobFile = async (reportData, endPointType) => {
+export const downloadReportBlobFile = async (reportId) => {
     try {
-        const result = await accountantServices.downloadReport(reportData[endPointType], endPointType);
-        const blob = new Blob([result.reportData], {type: 'application/pdf'});
+        const result = await accountantServices.downloadReport(reportId);
+        console.log(result)
+        const blob = new Blob([result.data], {type: 'application/pdf'});
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;

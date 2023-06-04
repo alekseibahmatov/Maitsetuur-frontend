@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import './BusinessAuth.css'
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
@@ -63,7 +64,7 @@ export const AddBusinessRepresentative = () => {
 
     return (
         <>
-            <div className="loginContent">
+            <div className="loginContent mobileWrapper">
                 <div className="loginHeader">
                     Add Business Representative
                 </div>

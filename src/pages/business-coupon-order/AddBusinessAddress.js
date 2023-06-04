@@ -60,7 +60,7 @@ export const AddBusinessAddress = () => {
 
     return (
         <>
-            <div className="loginContent">
+            <div className="loginContent mobileWrapper">
                 <div className="loginHeader">Add Business Address</div>
                 <div className="loginFormForm">
                     <div className="loginFormBusiness">

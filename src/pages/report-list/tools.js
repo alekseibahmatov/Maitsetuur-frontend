@@ -40,7 +40,6 @@ export const generatePastMonthsOptions = () => {
         i++;
     }
 
-    console.log(options)
 
     return options;
 };
