@@ -7,6 +7,7 @@ import {waiters} from "../restaurant/list-of-waiters/data";
 import {useNavigate} from "react-router-dom";
 import {table} from '../single-restaraunt/data'
 import Footer from "../../ui-components/footer/Footer";
+import {Header} from "../../ui-components/header/Header";
 
 export const AllRestaurant = () => {
     const navigate = useNavigate();
@@ -81,20 +82,7 @@ export const AllRestaurant = () => {
                 <div className="realBg1">
                     <div className='container'>
                         <div className="preview">
-                            <div className="header">
-                                <div className="burger">
-                                    <img src={burx} className='burx_img'></img>
-                                </div>
-                                <div className="logoLanding">
-                                    MENU
-                                </div>
-                                <div className="share">
-                                    <div className="share_text">
-                                        Share
-                                    </div>
-                                    <img src={share} className='share_img'></img>
-                                </div>
-                            </div>
+                            <Header/>
                             <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
                                 <div className="closeBurger">
                                     +

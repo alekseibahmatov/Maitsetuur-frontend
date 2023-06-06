@@ -77,14 +77,11 @@ export const Certificate = () => {
                             </div>
                             <div className="main">
                                 <div className="left">
-
                                     <CertificatePersonalForm
                                         selectedNominal={selectedNominal}
                                         setSelectedNominal={setSelectedNominal}
                                         togglePrivacy={togglePrivacy} />
-
                                 </div>
-
                                 <div className="right">
                                     <div className="block">
                                         <div className="description">
@@ -98,17 +95,16 @@ export const Certificate = () => {
                                                 <div className="nominal_value">
                                                     Nominal
                                                 </div>
-                                                <div className="nominalValue" id='1'>
-                                                    {selectedNominal}
+                                                <div className="date">
+                                                    Valid until
                                                 </div>
-
                                             </div>
                                             <div className="values">
                                                 <div className="validDate">
                                                     {date}{month}{year}
                                                 </div>
-                                                <div className="date">
-                                                    Valid until
+                                                <div className="nominalValue" id='1'>
+                                                    {selectedNominal + '€'}
                                                 </div>
                                             </div>
                                         </div>
@@ -116,20 +112,13 @@ export const Certificate = () => {
                                 </div>
                             </div>
                         </div>
-
-
                         <div>
-
                             <div className="explainForCompany">
                                 <h3>Thank your employees with gift certificates and an unforgettable experience!</h3>
                             </div>
-
                             <div className="main">
-
                                 <div className="left">
-
                                     <CertificateBusinessForm togglePrivacy={togglePrivacy}/>
-
                                 </div>
 
 

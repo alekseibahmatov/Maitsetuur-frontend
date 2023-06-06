@@ -55,8 +55,7 @@ export const Faq = () =>{
         },
         {
             question: 'How can i check the balance?',
-            answer: 'Balance can be checked via the link on your email, with the name ' +
-                'Check the balance ->',
+            answer: 'After each of the visits to the restaurants, there will a new email sent, containing remaining balance',
             open: false
         },
         {

@@ -2,8 +2,8 @@ import './Landing.css';
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 import ImageCarousel from "../../ui-components/carousel/Carousel";
-import burx from '../../assets/img/burx.svg'
-import share from '../../assets/img/share.svg';
+import burx from '../../assets/img/icons8-квадратное-меню-30.png'
+import insta from '../../assets/img/icons8-instagram-30.png'
 import card from '../../assets/img/Gift Card.svg';
 import heart from '../../assets/img/Heart.svg';
 import meal from '../../assets/img/Meal.svg';
@@ -17,6 +17,7 @@ import Footer from "../../ui-components/footer/Footer";
 import Explanation from "../../ui-components/explanation/Explanation";
 import Faq from "../../ui-components/faq/Faq";
 import PrivacyPolicy from "../../ui-components/privacy-policy/Privacy-policy";
+import {Header} from "../../ui-components/header/Header";
 
 export default function Landing() {
     const navigate = useNavigate();
@@ -72,20 +73,7 @@ export default function Landing() {
             <div className="realBg">
                 <div className='container'>
                     <div className="preview">
-                        <div className="header">
-                            <div className="burger">
-                                <img src={burx} className='burx_img'/>
-                            </div>
-                            <div className="logoLanding">
-                                MENU
-                            </div>
-                            <div className="share">
-                                <div className="share_text">
-                                    Share
-                                </div>
-                                <img src={share} className='share_img'/>
-                            </div>
-                        </div>
+                        <Header/>
                         <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
                             <div className="closeBurger">
                                 +

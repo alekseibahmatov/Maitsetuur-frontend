@@ -234,7 +234,7 @@
 .nominal {
     color: #A8A8A8;
     background-color: #EEEEEE;
-    padding: 15px 25px;
+    padding: 8px 25px;
     text-align: center;
     border-radius: 15px;
     cursor: pointer;
@@ -255,7 +255,7 @@
     color: white;
     font-weight: bold;
     background-color: #EB4C43;
-    padding: 15px 25px;
+    padding: 8px 25px;
 
     border-radius: 15px;
     cursor: pointer;
@@ -704,6 +704,8 @@
     padding: 40px;
     border: 1px solid white;
     border-radius: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .faq {
@@ -761,6 +763,14 @@
     /* Style the toggle icon */
     font-size: 1.2rem;
     color: #333;
+}
+.share_img {
+    cursor: pointer;
+    align-self: center;
+    background-color: #F7F7FC;
+    padding: 3px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .who {
@@ -879,9 +889,7 @@
         padding: 20px;
     }
 
-    .share_img {
-        display: none;
-    }
+
 
     .main {
         display: block;
@@ -962,19 +970,13 @@
         padding-bottom: 10px;
     }
 
-    .active {
-        padding: 15px 25px;
-
-    }
-
-    .nominal {
-        padding: 15px 25px;
-
-    }
 }
 
 
 @media (max-width: 620px) {
+    .choose{
+        font-size: 14px;
+    }
 
     .salutation {
         font-size: 30px;
@@ -1009,7 +1011,7 @@
     }
 
     .explain {
-        font-size: 12px;
+        font-size: 14px;
         margin-top: 20px;
 
     }
@@ -1028,7 +1030,7 @@
     }
 
     .faq-item button {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .faq-item p {
@@ -1044,11 +1046,26 @@
     }
 
     .askInfoMain {
-        font-size: 15px;
+        font-size: 22px;
+    }
+    .askInfo{
+        font-size: 18px;
     }
 }
-
-@media (max-width: 394px) {
+@media (max-width: 460px){
+    .certificateButtons{
+        column-gap: 8px;
+    }
+    .nominal{
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    .active{
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+}
+@media (max-width: 388px) {
     .client {
         font-size: 10px;
     }

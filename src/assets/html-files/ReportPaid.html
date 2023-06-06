@@ -12,23 +12,19 @@
             background-color: #ffffff;
             height: 1096px;
             width: 800px;
-            display: flex;
-            flex-direction: column;
         }
         .reportContent{
             padding: 60px 60px 20px 60px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
         .reportPdfHeader{
-            display: flex;
-            justify-content: space-between;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: justify;
         }
         .reportPdfHeaderLeft{
-            display: flex;
-            gap: 20px;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: start;
         }
         .roundedImg{
             width: 65px;
@@ -45,7 +41,8 @@
             color: #252229;
         }
         .reportPdfHeaderRight{
-            align-self: center;
+            -webkit-box-flex: 1;
+            text-align: right;
         }
         .reportPdfStatus{
             font-size: 12px;
@@ -62,8 +59,9 @@
         }
         .reportPdfSubHeader{
             margin-top: 50px;
-            display: flex;
-            justify-content: space-between;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: justify;
         }
         .reportPdfSubHeaderLeft{
             width: 50%;
@@ -72,19 +70,22 @@
             margin-top: 5px;
         }
         .reportPdfSubHeaderRight{
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            align-self: center;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: justify
         }
         .reportPdfSubHeaderValue{
             font-weight: normal;
             margin-top: 5px;
         }
+        .reportPdfHeaderValues{
+            margin-left: 20px;
+        }
         .reportPdfAmount{
             margin-top: 80px;
-            display: flex;
-            justify-content: space-between;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: justify;
             padding-bottom: 20px;
             border-bottom: 2px solid black;
         }
@@ -129,6 +130,9 @@
             text-align: left;
             padding-left: 10px;
         }
+        .reportPdfSubHeaderRightSingle{
+            margin-right: 20px;
+        }
         .reportPdfTable td {
             color: #8A8A8C;
             font-weight: normal;
@@ -145,31 +149,33 @@
             margin-top: 70px;
         }
         .reportPdfSubTotal{
-            display: flex;
-            gap: 20px;
-            justify-content: right;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: end;
         }
         .reportPdfVat{
-            display: flex;
-            gap: 20px;
-            justify-content: right;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: end;
             margin-top: 20px;
         }
         .reportPdfGrandTotal{
-            display: flex;
-            gap: 20px;
-            justify-content: right;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: end;
             margin-top: 20px;
         }
         .reportPdfSubTotalText{
             font-size: 12px;
             color: #8A8A8C;
             align-self: center;
+            margin-right: 10px;
         }
         .reportPdfVatText {
             font-size: 12px;
             color: #8A8A8C;
             align-self: center;
+            margin-right: 10px;
         }
         .reportPdfSubTotalValue{
             font-weight: normal;
@@ -180,18 +186,19 @@
         .reportPdfGrandTotalText{
             font-size: 18px;
             color: #8A8A8C;
+            margin-right: 10px;
         }
         .reportPdfGrandTotalValue{
             align-self: center;
         }
         .reportPdfFooter{
-            display: flex;
-            justify-content: space-between;
-            margin-top: auto;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: justify;
             font-size: 12px;
             color: #8A8A8C;
-            border-top: 2px solid black;
             padding-top: 20px;
+            margin-top: 200px;
         }
         .reportPdfFooterLeft{
             padding-left: 10px;
@@ -381,11 +388,16 @@
             </div>
         </div>
         <div class="reportPdfFooter">
+            <div class="reportPdfLine">
+
+            </div>
+            <div class="reportPdfLower">
             <div class="reportPdfFooterLeft">
                 MaitseTuur
             </div>
             <div class="reportPdfFooterReg">
                 Reg. Num: 2281337666
+            </div>
             </div>
         </div>
     </div>
