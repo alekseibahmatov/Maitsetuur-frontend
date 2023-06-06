@@ -38,14 +38,19 @@
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 24px;
-    font-weight: bolder;
+    font-weight: bold;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: center;
 }
-
-.share {
-    display: flex;
+.logoLanding:hover{
+    transition: 0.3s;
+    font-size: 26px;
 }
+.burger{
 
+}
 .share_text {
     font-family: 'Raleway', sans-serif;
     color: white;
@@ -54,6 +59,58 @@
 
 .burx_img{
     cursor: pointer;
+    background-color: rgba(1,1,1,0);
+    border-radius: 10px;
+    padding: 5px;
+    align-self: center;
+    transition: 0.3s;
+}
+.burx_img:hover{
+    background-color: rgba(1,1,1,1);
+    transition: 0.3s;
+}
+
+.share {
+    background: #fcfcfc;
+    mix-blend-mode: screen;
+    display: block;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.instaBg {
+    background: #000;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    height: 34px;
+    width: 40px;
+    position: relative; /* This is necessary for the child ::before pseudo-element to position absolutely within .bg */
+}
+
+.instaBg::before {
+    content: "";
+    background: linear-gradient(
+            45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%
+    );
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.instaBg:hover::before {
+    opacity: 1;
 }
 
 .burger_closed {
@@ -767,10 +824,7 @@
 .share_img {
     cursor: pointer;
     align-self: center;
-    background-color: #F7F7FC;
-    padding: 3px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   margin-bottom: -3px;
 }
 
 .who {
@@ -984,6 +1038,10 @@
 
     .logoLanding {
         font-size: 18px;
+    }
+    .logoLanding:hover{
+        transition: 0.3s;
+        font-size: 20px;
     }
 
     .section_text {

@@ -4,6 +4,10 @@ import insta from "../../assets/img/icons8-instagram-30.png";
 
 export const Header = () => {
 
+    const openInstagram = () => {
+        window.open('https://www.instagram.com/maitsetuur/', '_blank', 'noopener,noreferrer');
+    };
+
     return (
 
         <>
@@ -14,8 +18,10 @@ export const Header = () => {
                 <div className="logoLanding">
                     MAITSETUUR
                 </div>
-                <div className="share">
+                <div className="instaBg">
+                <div className="share"  onClick={openInstagram}>
                     <img src={insta} className='share_img'/>
+                </div>
                 </div>
             </div>
         </>
