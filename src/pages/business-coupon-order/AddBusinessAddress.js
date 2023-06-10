@@ -12,6 +12,7 @@ import {
     BUSINESS_COUPON_ORDER_ADD_BUSINESS_INFORMATION, BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE,
     BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION
 } from "../../routes";
+import {BackToHomePage} from "../../ui-components/back-to-homepage/backToHomePage";
 
 const validationSchema = Yup.object().shape({
     country: Yup.string().required("Country is required"),
@@ -61,7 +62,9 @@ export const AddBusinessAddress = () => {
     return (
         <>
             <div className="loginContent mobileWrapper">
-                <div className="loginHeader">Add Business Address</div>
+                <div className="loginHeader">
+                    Add Business Address
+                </div>
                 <div className="loginFormForm">
                     <div className="loginFormBusiness">
                         <BusinessCouponOrderHeader step={step}/>
@@ -146,6 +149,7 @@ export const AddBusinessAddress = () => {
                                             Go back
                                         </button>
                                     </div>
+                                    <BackToHomePage/>
                                 </Form>
                             )}
                         </Formik>

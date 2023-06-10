@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import {scrollTop} from "./tools";
 import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
 import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order-header/BusinessCouponOrderHeader";
+import {BackToHomePage} from "../../ui-components/back-to-homepage/backToHomePage";
 const europeanMobilePhoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
 export const validationSchemaBusinessRepresentativeData = Yup.object().shape({
@@ -145,6 +146,7 @@ export const AddBusinessRepresentative = () => {
                                                 </div>
                                             </div>
                                         </>
+                                        <BackToHomePage/>
                                     </Form>
                                 )}
                             </Formik>

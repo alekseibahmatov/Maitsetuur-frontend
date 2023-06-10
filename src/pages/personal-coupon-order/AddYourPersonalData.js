@@ -10,6 +10,8 @@ import {
 import * as Yup from "yup";
 import {scrollTop} from "../business-coupon-order/tools";
 import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
+import {BackToHomePage, backToHomePage} from "../../ui-components/back-to-homepage/backToHomePage";
+
 const europeanMobilePhoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
 
 export const validationSchemaFromPersonalData = Yup.object().shape({
@@ -55,12 +57,12 @@ export const AddYourPersonalData = () => {
 
     return (
         <>
-            <div className="loginContent">
+            <div className="loginContent mobileWrapper">
                 <div className="loginHeader">
                     Add Your Personal Data
                 </div>
                 <div className="loginFormForm">
-                    <div className="loginForm">
+                    <div className="loginFormBusiness">
                         <PersonalCouponOrderHeader step={1}/>
                         <div className="authentication">
                             <Formik
@@ -87,46 +89,50 @@ export const AddYourPersonalData = () => {
                                 {(props: FormikProps<any>) => (
                                     <Form>
 
-                                            <>
-                                                <div className="inputBoards">
-                                                    <div className="inputHeader">
-                                                        Your Full Name
+                                        <>
+                                            <div className="inputBoards">
+                                                <div className="inputHeader">
+                                                    Your Full Name
+                                                </div>
+                                                <div className="inputAuthentication">
+                                                    <Field className="inputAuthenticationInput" type="text"
+                                                           name="fromFullName"
+                                                           placeholder="Input your full name"/>
+                                                    <div className="error">
+                                                        <ErrorMessage name="fromFullName"/>
                                                     </div>
-                                                    <div className="inputAuthentication">
-                                                        <Field className="inputAuthenticationInput" type="text"
-                                                               name="fromFullName"
-                                                               placeholder="Input your full name"/>
-                                                        <div className="error">
-                                                            <ErrorMessage name="fromFullName"/>
-                                                        </div>
+                                                </div>
+                                                <div className="inputHeader">
+                                                    Your Mobile Phone
+                                                </div>
+                                                <div className="inputAuthentication">
+                                                    <Field className="inputAuthenticationInput" type="text"
+                                                           name="fromPhone"
+                                                           placeholder="Input your mobile phone"/>
+                                                    <div className="error">
+                                                        <ErrorMessage name="fromPhone"/>
                                                     </div>
-                                                    <div className="inputHeader">
-                                                        Your Mobile Phone
+                                                </div>
+                                                <div className="inputHeader">
+                                                    Your email
+                                                </div>
+                                                <div className="inputAuthentication">
+                                                    <Field className="inputAuthenticationInput" type="text"
+                                                           name="fromEmail"
+                                                           placeholder="Input your email"/>
+                                                    <div className="error">
+                                                        <ErrorMessage name="fromEmail"/>
                                                     </div>
-                                                    <div className="inputAuthentication">
-                                                        <Field className="inputAuthenticationInput" type="text"
-                                                               name="fromPhone"
-                                                               placeholder="Input your mobile phone"/>
-                                                        <div className="error">
-                                                            <ErrorMessage name="fromPhone"/>
-                                                        </div>
-                                                    </div>
-                                                    <div className="inputHeader">
-                                                        Your email
-                                                    </div>
-                                                    <div className="inputAuthentication">
-                                                        <Field className="inputAuthenticationInput" type="text"
-                                                               name="fromEmail"
-                                                               placeholder="Input your email"/>
-                                                        <div className="error">
-                                                            <ErrorMessage name="fromEmail"/>
-                                                        </div>
-                                                    </div>
+                                                </div>
+                                                <div className="alignFlexBottom">
                                                     <button className="loginButton fullWidth" type="submit">
                                                         {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
                                                     </button>
                                                 </div>
-                                            </>
+
+                                                <BackToHomePage/>
+                                            </div>
+                                        </>
                                     </Form>
                                 )}
                             </Formik>

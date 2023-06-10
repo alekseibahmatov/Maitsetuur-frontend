@@ -18,6 +18,7 @@ import {
     BUSINESS_COUPON_ORDER_ADD_COUPON_DATA
 } from "../../routes";
 import {AddCouponData} from "./AddCouponData";
+import {BackToHomePage} from "../../ui-components/back-to-homepage/backToHomePage";
 
 const CouponConfiguratorValidationSchema = Yup.object().shape({
     couponsAmount: Yup.number()
@@ -421,6 +422,7 @@ export const AddCouponConfiguration = () => {
                                             Go back
                                         </button>
                                     </div>
+                                    <BackToHomePage/>
                                 </div>
                             </Form>
                         )}

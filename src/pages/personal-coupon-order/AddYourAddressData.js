@@ -12,6 +12,7 @@ import {
 import * as Yup from "yup";
 import {scrollTop} from "../business-coupon-order/tools";
 import {LoadingAnimationDots} from "../../ui-components/loading-animation/loading-animation-dots/LoadingAnimationDots";
+import {BackToHomePage, backToHomePage} from "../../ui-components/back-to-homepage/backToHomePage";
 
 export const validationSchemaFromAddressData = Yup.object().shape({
     country: Yup.string()
@@ -62,13 +63,12 @@ export const AddYourAddressData = () => {
 
     return (
         <>
-            <div className="loginContent">
+            <div className="loginContent mobileWrapper">
                 <div className="loginHeader">
                     Add Your Address
                 </div>
                 <div className="loginFormForm">
-                    <div className="loginForm">
-                        <img src={cross} alt="goBack" className='goBackPayment' onClick={() => navigate('/')}/>
+                    <div className="loginFormBusiness">
                         <PersonalCouponOrderHeader step={2}/>
                         <div className="authentication">
                             <Formik
@@ -163,15 +163,20 @@ export const AddYourAddressData = () => {
                                                     </div>
                                                 </div>
 
-                                                <div className="alignFlex">
+                                                <div className="alignFlexBottom">
                                                     <button className="loginButton" type="submit">
                                                         {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
                                                     </button>
-                                                    <button type="button" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA)}
+                                                    <button type="button" onClick={() => {
+                                                        navigate(PERSONAL_COUPON_ORDER_ADD_YOUR_PERSONAL_DATA)
+                                                        scrollTop()
+                                                    }}
                                                             className="loginButtonBack">
                                                         Go back
                                                     </button>
                                                 </div>
+
+                                                <BackToHomePage/>
                                             </div>
                                         </>
                                     </Form>

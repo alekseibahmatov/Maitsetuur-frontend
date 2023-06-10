@@ -10,6 +10,7 @@ import BusinessCouponOrderHeader from "../../ui-components/business-coupon-order
 import {
     BUSINESS_COUPON_ORDER_ADD_BUSINESS_REPRESENTATIVE
 } from "../../routes";
+import {BackToHomePage} from "../../ui-components/back-to-homepage/backToHomePage";
 
 const validationSchema = Yup.object().shape({
     businessName: Yup.string()
@@ -126,6 +127,7 @@ export const AddBusinessInformation = () => {
                                     <button className="loginButtonBusiness" type="submit">
                                         {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
                                     </button>
+                                    <BackToHomePage/>
                                 </Form>
                             )}
                         </Formik>

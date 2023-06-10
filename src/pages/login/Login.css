@@ -10,7 +10,7 @@ html {
 .loginHeader {
     text-align: center;
     font-size: 31px;
-    padding-bottom: 40px;
+    padding: 0 10px 40px 10px;
 }
 
 .loginFormForm {

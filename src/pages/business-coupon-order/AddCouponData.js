@@ -15,6 +15,7 @@ import {Tooltip} from 'react-tooltip'
 import {validationSchema} from "./BusinessCouponOrderValidationSchema";
 import {BUSINESS_COUPON_ORDER_ADD_COUPON_CONFIGURATION, BUSINESS_COUPON_ORDER_DETAILS} from "../../routes";
 import customerServices from "../../services/customer";
+import {BackToHomePage} from "../../ui-components/back-to-homepage/backToHomePage";
 
 
 export const AddCouponData = () => {
@@ -242,15 +243,15 @@ export const AddCouponData = () => {
                                                     {props.isSubmitting ?
                                                         <LoadingAnimationDots/> : "Proceed to personal-coupon-order"}
                                                 </button>
-                                                {couponStep === coupons.length - 1 ?
-                                                    <Tooltip
-                                                        anchorId="tooltip-proceed"
-                                                        place="top"
-                                                        content={"You can proceed with personal-coupon-order if you have filled the form correctly!"}
-                                                    />
-                                                    :
-                                                    null
-                                                }
+                                                {/*{couponStep === coupons.length - 1 ?*/}
+                                                {/*    <Tooltip*/}
+                                                {/*        anchorId="tooltip-proceed"*/}
+                                                {/*        place="top"*/}
+                                                {/*        content={"You can proceed with personal-coupon-order if you have filled the form correctly!"}*/}
+                                                {/*    />*/}
+                                                {/*    :*/}
+                                                {/*    null*/}
+                                                {/*}*/}
                                                 {props.isValid ?
                                                     null
                                                     :
@@ -267,6 +268,7 @@ export const AddCouponData = () => {
                                                 </button>
 
                                             </div>
+                                            <BackToHomePage/>
 
                                         </div>
                                     </Form>

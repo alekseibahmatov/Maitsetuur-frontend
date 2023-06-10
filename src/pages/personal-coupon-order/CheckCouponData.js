@@ -12,6 +12,7 @@ import {
     PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA,
 } from "../../routes";
 import customerServices from "../../services/customer";
+import {BackToHomePage} from "../../ui-components/back-to-homepage/backToHomePage";
 
 export const validationSchemaCouponData = Yup.object().shape({
     value: Yup.number()
@@ -54,13 +55,12 @@ export const CheckCouponData = () => {
 
     return (
         <>
-            <div className="loginContent">
+            <div className="loginContent mobileWrapper">
                 <div className="loginHeader">
                     Check Coupon Data
                 </div>
                 <div className="loginFormForm">
-                    <div className="loginForm">
-                        <img src={cross} alt="goBack" className='goBackPayment' onClick={() => navigate('/')}/>
+                    <div className="loginFormBusiness">
                         <PersonalCouponOrderHeader step={4}/>
                         <div className="authentication">
                             <Formik
@@ -128,15 +128,19 @@ export const CheckCouponData = () => {
                                                 </div>
 
 
-                                                <div className="alignFlex">
+                                                <div className="alignFlexBottom">
                                                     <button className="loginButton" type="submit">
                                                         {props.isSubmitting ? <LoadingAnimationDots/> : 'Next step'}
                                                     </button>
-                                                    <button type="button" onClick={() => navigate(PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA)}
+                                                    <button type="button" onClick={() => {
+                                                        navigate(PERSONAL_COUPON_ORDER_ADD_RECIPIENT_PERSONAL_DATA)
+                                                        scrollTop()
+                                                    }}
                                                             className="loginButtonBack">
                                                         Go back
                                                     </button>
                                                 </div>
+                                                <BackToHomePage/>
                                             </div>
                                         </>
                                     </Form>
