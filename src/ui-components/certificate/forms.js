@@ -58,7 +58,7 @@ export const CertificateBusinessForm = ({togglePrivacy}) => {
                             <div className="confirmCheckbox">
                                 <Field className="termsCheckbox" type="checkbox"
                                        name="termsCheckbox"/>
-                                <div>
+                                <div className='agreeCertif'>
                                     I agree with the <span className="blue"
                                                            onClick={togglePrivacy}>Terms of personal data processing</span>.
                                     <div className="error">
@@ -204,7 +204,7 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                                            props.handleSubmit();
                                        }}
                                 />
-                                <div>
+                                <div className='agreeCertif'>
                                     I agree with the
                                     <span className="blue"
                                           onClick={togglePrivacy}> Terms of personal data processing</span>

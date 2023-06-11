@@ -13,6 +13,10 @@ export const Faq = () =>{
     function contentNext1 (){
         handleClick1();
         reactSwipeEl2.next()
+        setFAQ(faq.map((item) => {
+            item.open = false;
+            return item;
+        }));
     }
 
     function contentPrevious1 (){
@@ -79,6 +83,8 @@ export const Faq = () =>{
         }
     ]);
 
+
+
     return (
 
         <>
@@ -93,7 +99,7 @@ export const Faq = () =>{
                         </div>
                     </div>
                 </div>
-                <div className="content">
+                <div className="contentFaq">
                     <div>
                         <ReactSwipe
                             className="carousel"
