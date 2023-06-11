@@ -120,8 +120,6 @@ export const Certificate = () => {
                                 <div className="left">
                                     <CertificateBusinessForm togglePrivacy={togglePrivacy}/>
                                 </div>
-
-
                                 <div className="right">
                                     <div className="block">
                                         <div className="description">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800&family=Playfair+Display:wght@400;800&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
     padding: 0;
@@ -7,7 +7,6 @@
     list-style: none;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
-    font-weight: bold;
 }
 
 .realBg {
@@ -38,7 +37,7 @@
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 400;
     text-transform: uppercase;
     cursor: pointer;
     transition: 0.3s;
@@ -164,7 +163,7 @@
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 47px;
-    font-weight: bold;
+    font-weight: 500;
     text-transform: uppercase;
 }
 
@@ -192,20 +191,19 @@
     font-size: 18.5px;
     padding-left: 20px;
     padding-top: 5px;
-    font-weight: bolder;
+    font-weight: 400;
 }
 
 .buttons {
     display: flex;
     padding-bottom: 200px;
-
 }
 
 .present {
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 18.5px;
-    font-weight: bold;
+    font-weight: 700;
     border: 1px solid #EB4C43;
     background: #EB4C43;
     padding: 8px;
@@ -225,7 +223,7 @@
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 18.5px;
-    font-weight: bold;
+    font-weight: 700;
     border: 1px solid #232555;
     background: #232555;
     padding: 8px;
@@ -372,7 +370,7 @@
 
 .explain {
     width: 60%;
-    font-weight: bolder;
+    font-weight: 600;
     color: black;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -421,7 +419,7 @@
 }
 
 .certificateInputValue {
-    font-weight: bold;
+    font-weight: 600;
     width: 100%;
     border-radius: 5px;
     border: 2px solid rgba(0, 0, 0, 0.2);
@@ -542,6 +540,7 @@
 
 .nominalAndDate {
     margin-top: 10px;
+    font-weight: bold;
     display: flex;
     gap: 50px;
 }
@@ -557,21 +556,25 @@
 }
 
 .blockHeaderCertificateSide {
+    font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .blockNameCertificateSide {
     font-size: 20px;
+    font-weight: 800;
 }
 
 .validDate {
     font-size: 20px;
+    font-weight: bold;
 }
 
 .nominalValue {
     font-size: 20px;
+    font-weight: bold;
     position: fixed;
 }
 
@@ -590,6 +593,7 @@
 .carouselHeader {
     color: white;
     font-size: 25px;
+    font-weight: bold;
 }
 
 .carouselDescription {
@@ -599,6 +603,7 @@
     margin-top: 20px;
     margin-bottom: 40px;
     font-family: 'Raleway', sans-serif;
+    font-weight: 600;
 }
 
 .allRestaurants {
@@ -628,6 +633,7 @@
     font-size: 25px;
     margin-top: 100px;
     font-family: 'Raleway', sans-serif;
+    font-weight: bold;
 }
 
 .advantagesMain {
@@ -685,14 +691,14 @@
 
 .advHeader {
     font-size: 25px;
-    font-weight: bolder;
+    font-weight: bold;
     font-family: 'Raleway', sans-serif;
 }
 
 .advDescription {
     font-size: 18px;
     color: #999999;
-    font-weight: bold;
+    font-weight: 600;
     margin-top: 5px;
     font-family: 'Raleway', sans-serif;
 }
@@ -743,6 +749,7 @@
 .explainDescription {
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
+    font-weight: 600;
 }
 
 .explainButtons {
@@ -764,7 +771,9 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
+.contentFaq{
 
+}
 .faq {
     /* Add some style to the FAQ section */
     display: flex;
@@ -846,6 +855,7 @@
     color: white;
     margin-top: 5px;
     font-family: 'Raleway', sans-serif;
+    font-weight: 600;
 }
 
 .numberMail {
@@ -854,6 +864,7 @@
     margin-top: 5px;
     text-align: right;
     font-family: 'Raleway', sans-serif;
+    font-weight: 600;
 }
 
 .contentForCompany {

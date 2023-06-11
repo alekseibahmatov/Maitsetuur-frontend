@@ -45,10 +45,16 @@
 .blueLink{
     color: #00B4CC;
 }
+.agreeCertif{
+    font-weight: 500;
+    font-size: 13px;
+}
 .blue{
     color: #00B4CC;
     transition: 0.3s;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 13px;
 }
 .blue:hover{
     transition: 0.3s;
