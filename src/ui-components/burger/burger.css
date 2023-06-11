@@ -82,8 +82,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     padding-left: 5px;
 }
 .buttonImage{
-    width: 40px;
-    height: 40px;
+    width: 30px;
 }
 .buttonText{
     align-self: center;

@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import "./SideBar.css"
 import classnames from "classnames";
-import menu from "../../assets/img/menu.png";
-import graph from "../../assets/img/graph.png";
 import color from "../../assets/img/color.png";
 import vector from "../../assets/img/vector.png";
 import group from "../../assets/img/group.png";
-import icon from "../../assets/img/icon.png";
 import sausage from '../../assets/img/smallKolbaska.png'
 import cross from '../../assets/img/Less Than.png'
 import {useNavigate, useLocation} from "react-router-dom";
@@ -36,26 +33,28 @@ export const SideBar = () => {
     }
 
     const [isOpen, setIsOpen] = useState(false);
-    const [hasTimeoutOccurred, setHasTimeoutOccurred] = useState(false);
 
     const onHover = () => {
         setIsOpen(true);
+        document.getElementById('bm-overlay-sideBar').classList.remove('shadowNotActive');
         document.getElementById('bm-overlay-sideBar').classList.add('shadowActive');
         document.getElementById('navbar').classList.remove('navbar');
         document.getElementById('navbar').classList.add('navbarZindex');
-            setTimeout(() => {
-                document.getElementById('sidebar').classList.add('pointerEventsNone');
-            }, 1);
         setTimeout(() => {
-                document.getElementById('hiddenObject').classList.add('opacity0');
-                }, 660);
+            document.getElementById('sidebar').classList.add('pointerEventsNone');
+        }, 1);
+        setTimeout(() => {
+            document.getElementById('hiddenObject').classList.add('opacity0');
+        }, 500);
     };
 
     const onHoverRemove = () => {
         setIsOpen(false);
-        document.getElementById('bm-overlay-sideBar').classList.remove('shadowActive');
+        document.getElementById('bm-overlay-sideBar').classList.add('shadowNotActive');
         document.getElementById('navbar').classList.add('navbar');
-        document.getElementById('navbar').classList.remove('navbarZindex');
+        setTimeout(() => {
+            document.getElementById('navbar').classList.remove('navbarZindex');
+        }, 300);
         document.getElementById('hiddenObject').classList.remove('opacity0');
         document.getElementById('sidebar').classList.remove('pointerEventsNone');
     };
@@ -72,7 +71,7 @@ export const SideBar = () => {
                      })}>
                     <img src={cross} alt="" className={classnames({
                         'buttonImage': true,
-                        'translateX' : true,
+                        'translateX': true,
                     })}/>
                 </div>
                 <div
@@ -143,23 +142,23 @@ export const SideBar = () => {
                 </div>
             </div>
 
-                <div className={`contentBurger ${isOpen ? 'open' : ''}`}>
+            <div className={`contentBurger ${isOpen ? 'open' : ''}`}>
 
-                    <div className="sideBar1" onMouseLeave={() => onHoverRemove()}>
-                        <div
-                            className={classnames({
-                                'sideButtons1': true,
-                            })}
-                        >
-                            <div className="sausageHeader">
-                                <div className="sausageImageHeader">
-                                    <img src={sausage} alt="" className='menuLogoImage'/>
-                                </div>
-                                <div className="closeCrossImage">
-                                    <img src={cross} alt=""/>
-                                </div>
+                <div className="sideBar1" onMouseLeave={() => onHoverRemove()}>
+                    <div
+                        className={classnames({
+                            'sideButtons1': true,
+                        })}
+                    >
+                        <div className="sausageHeader">
+                            <div className="sausageImageHeader">
+                                <img src={sausage} alt="" className='menuLogoImage'/>
                             </div>
-                            <div className="allTheButtons">
+                            <div className="closeCrossImage">
+                                <img src={cross} alt=""/>
+                            </div>
+                        </div>
+                        <div className="allTheButtons">
                             <div onClick={() => handleClick(MAIN_DASHBOARD)}
                                  className={classnames({
                                      'singleButton1': true,
@@ -205,10 +204,10 @@ export const SideBar = () => {
                                  })}>
                                 <div className='buttonText'>Log Out</div>
                             </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
 
         </>

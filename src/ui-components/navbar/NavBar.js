@@ -17,15 +17,13 @@ export const NavBar = () => {
         <>
             <div className="navbar" id='navbar'>
                 <div className="menuLogo">
+
                     <img src={logo} alt="" className='menuLogoImage'/>
                 </div>
                 <div className="burgerMenu">
                     <Burger/>
                 </div>
                 <div className="scanAndUser">
-                    <div className="scan">
-                        Scan QR code
-                    </div>
                     <div className="user">
                         <div className="userImage">
                             <div className="userImg">

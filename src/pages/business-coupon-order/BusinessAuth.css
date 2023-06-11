@@ -430,6 +430,10 @@
     .loginFormBusiness {
         padding: 40px 40px;
     }
+
+    .loginButtonBusiness, .loginButton, .loginButtonBack, .proceedPaymentButton, .loginButtonBusinessSmall {
+        font-size: 15px;
+    }
 }
 
 @media (max-width: 787px) {

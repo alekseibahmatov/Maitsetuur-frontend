@@ -559,7 +559,6 @@
 .rightBlock3{
     width: 100%;
     background-color: #F7F7FC;
-    border-left: 2px solid rgba(235, 235, 235, .8);
     min-height: 1200px;
     margin-left: 88px;
     margin-top: 88px;
@@ -822,7 +821,7 @@ body.no-scroll {
     left: -100%;
     transform: translateY(-110%);
     width: 15%;
-    transition: left 0.7s ease-in-out;
+    transition: 0.6s ease-out;
     z-index: 100;
     margin-top: 40px;
     min-width: 250px;

@@ -31,6 +31,11 @@
     padding: 20px 10px 16px 10px;
 }
 
+.menuLogoImage {
+    width: 60px;
+}
+
+
 .user {
     display: flex;
     gap: 20px;
