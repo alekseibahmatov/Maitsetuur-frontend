@@ -106,11 +106,11 @@ export const MainStats = () => {
                     </div>
                 </div>
             </div>
-            <div className="chartWrapper">
-                <div className="chart">
-                    <CustomChart updateTotal={updateTotal}/>
-                </div>
-            </div>
+            {/*<div className="chartWrapper">*/}
+            {/*    <div className="chart">*/}
+            {/*        <CustomChart updateTotal={updateTotal}/>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
         <div className="couponList">
             <div className="couponListHeader">

@@ -1,9 +1,7 @@
-import './Landing.css';
-import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import './Landing.css';
 import ImageCarousel from "../../ui-components/carousel/Carousel";
-import burx from '../../assets/img/icons8-квадратное-меню-30.png'
-import insta from '../../assets/img/icons8-instagram-30.png'
 import card from '../../assets/img/Gift Card.svg';
 import heart from '../../assets/img/Heart.svg';
 import meal from '../../assets/img/Meal.svg';
@@ -30,28 +28,27 @@ export default function Landing() {
     }
 
     const handleClick123 = event => {
-        if (event.target.className === 'burx_img'){
+        if (event.target.className === 'burx_img') {
             setIsBurger(true)
-        }
-        else {
+        } else {
             setIsBurger(false)
         }
     }
 
-    const scrollToCertificate = () =>{
+    const scrollToCertificate = () => {
         document.getElementById('certificate').scrollIntoView({behavior: "smooth", block: "start"});
     }
 
-    const scrollToFaq = () =>{
+    const scrollToFaq = () => {
         document.getElementById('faq').scrollIntoView({behavior: "smooth", block: "start"});
     }
 
 
     const advantages = [
         {
-           img: l1,
-           header: 'Unique experience',
-           description: 'A gift that has not been made before you - the recipient will definitely be delighted.'
+            img: l1,
+            header: 'Unique experience',
+            description: 'A gift that has not been made before you - the recipient will definitely be delighted.'
 
         },
         {
@@ -75,9 +72,6 @@ export default function Landing() {
                     <div className="preview">
                         <Header/>
                         <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
-                            <div className="closeBurger">
-                                +
-                            </div>
                             <div className="next" onClick={() => navigate('/connect')}>
                                 Join us
                             </div>
@@ -94,12 +88,11 @@ export default function Landing() {
                                 Privacy policy
                             </div>
                         </div>
-                        <PrivacyPolicy isOpen={isModalOpen} toggleModal={toggleModal} />
-                        <div className="salutation">
-                            Gift Certificate to the
-                        </div>
-                        <div className="salutation">
-                            best restaurants in Estonia
+                        <PrivacyPolicy isOpen={isModalOpen} toggleModal={toggleModal}/>
+                        <div className="salutation-wrapper">
+                            <div className="salutation">
+                                Gift Certificate to the best restaurants in Estonia
+                            </div>
                         </div>
                         <div className="four_section">
                             <div className="single_section">
@@ -107,7 +100,8 @@ export default function Landing() {
                                     <img src={heart} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>Give the best</span> experience to those you love: the perfect gift for friends and loved ones for the New Year.
+                                    <span className='dashed'>Give the best: </span> experience to those you love: the
+                                    perfect gift for friends and loved ones for the New Year.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -115,7 +109,8 @@ export default function Landing() {
                                     <img src={card} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>Easy to give: </span> buy online and email the recipient with personalized wishes.
+                                    <span className='dashed'>Easy to give: </span> buy online and email the recipient
+                                    with personalized wishes.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -123,7 +118,8 @@ export default function Landing() {
                                     <img src={meal} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>Convenient to use: </span> just give the certificate number to pay the bill in the restaurant.
+                                    <span className='dashed'>Convenient to use: </span> just give the certificate number
+                                    to pay the bill in the restaurant.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -131,7 +127,8 @@ export default function Landing() {
                                     <img src={waiter} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>More than 100 restaurants </span>, cafes and bars in Tallinn. We add new ones every week.
+                                    <span className='dashed'>More than 100 restaurants </span>, cafes and bars in
+                                    Tallinn. We add new ones every week.
                                 </div>
                             </div>
                         </div>
@@ -156,14 +153,16 @@ export default function Landing() {
                             Connected restaurants
                         </div>
                         <div className="carouselDescription">
-                            Certificate gives an opportunity to visit the most popular and breathtaking restaurants of Tallinn
+                            Certificate gives an opportunity to visit the most popular and breathtaking restaurants of
+                            Tallinn
                         </div>
                         <div className="carouselMain">
                             <ImageCarousel images={table} interval={2000}/>
                             <ImageCarousel images={table} interval={2000}/>
                             <ImageCarousel images={table} interval={2000}/>
                         </div>
-                        <div className="allRestaurants" onClick={() => {navigate('/allrestaurants');
+                        <div className="allRestaurants" onClick={() => {
+                            navigate('/allrestaurants');
                             window.scrollTo(0, 0);
                         }}>
                             Whole restaurants list
@@ -175,10 +174,10 @@ export default function Landing() {
                             Our advantages
                         </div>
                         <div className="advantagesMain">
-                            {advantages.map((item,i) => (
+                            {advantages.map((item, i) => (
                                 <div className="singleAdvantage">
                                     <div className="advantageImg"
-                                         style={{ backgroundImage: `linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url(${item.img})`}}
+                                         style={{backgroundImage: `linear-gradient(to bottom,rgba(245, 246, 252, 0),rgba(27, 36, 105, 1)90%),url(${item.img})`}}
                                     >
                                     </div>
                                     <div className="advantageDescription">

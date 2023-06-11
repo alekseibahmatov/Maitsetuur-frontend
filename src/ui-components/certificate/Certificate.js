@@ -114,7 +114,7 @@ export const Certificate = () => {
                         </div>
                         <div>
                             <div className="explainForCompany">
-                                <h3>Thank your employees with gift certificates and an unforgettable experience!</h3>
+                                Thank your employees with gift certificates and an unforgettable experience!
                             </div>
                             <div className="main">
                                 <div className="left">

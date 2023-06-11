@@ -20,7 +20,7 @@ export const validationSchemaBusinessRepresentativeData = Yup.object().shape({
         .max(100, 'Full Name seems to be incorrect, please contact us')
         .typeError("Input correct Full Name"),
     representativePhone: Yup.string()
-        .matches(europeanMobilePhoneRegex, "Invalid phone number")
+        .matches(europeanMobilePhoneRegex, "Invalid phone number (use country code as well)")
         .required('Mobile phone is required'),
     representativeEmail: Yup.string()
         .email('Invalid email')

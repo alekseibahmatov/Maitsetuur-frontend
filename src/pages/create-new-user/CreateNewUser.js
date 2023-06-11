@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
     fullName: Yup.string()
         .required('Full Name is required'),
     phoneNumber: Yup.string()
-        .matches(europeanMobilePhoneRegex, "Invalid mobile phone number")
+        .matches(europeanMobilePhoneRegex, "Invalid phone number (use country code as well)")
         .required('Phone Number is required'),
     email: Yup.string()
         .email('Invalid email')

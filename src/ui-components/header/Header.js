@@ -1,8 +1,10 @@
 import React from "react-dom";
-import burx from "../../assets/img/icons8-квадратное-меню-30.png";
-import insta from "../../assets/img/icons8-instagram-30.png";
+import headerMenuIcon from "../../assets/img/landing/header-menu-icon.svg";
+import instagramHeaderIcon from "../../assets/img/landing/header-instagram-icon.svg";
+import {useNavigate} from "react-router-dom";
 
 export const Header = () => {
+    const navigate = useNavigate();
 
     const openInstagram = () => {
         window.open('https://www.instagram.com/maitsetuur/', '_blank', 'noopener,noreferrer');
@@ -13,15 +15,15 @@ export const Header = () => {
         <>
             <div className="header">
                 <div className="burger">
-                    <img src={burx} className='burx_img'/>
+                    <img src={headerMenuIcon} className='burx_img'/>
                 </div>
-                <div className="logoLanding">
+                <div className="logoLanding" onClick={() => navigate('/')}>
                     MAITSETUUR
                 </div>
                 <div className="instaBg">
-                <div className="share"  onClick={openInstagram}>
-                    <img src={insta} className='share_img'/>
-                </div>
+                    <div className="share" onClick={openInstagram}>
+                        <img src={instagramHeaderIcon} className='share_img'/>
+                    </div>
                 </div>
             </div>
         </>

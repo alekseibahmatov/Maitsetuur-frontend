@@ -9,7 +9,7 @@ export const PersonalInfoSchema = Yup.object().shape({
         .matches(/^[^\d]+$/, 'Full name must not contain numbers')
         .min(2, "Full name must be at least 2 characters"),
     mobilePhone: Yup.string()
-        .matches(europeanMobilePhoneRegex, "Invalid mobile phone number")
+        .matches(europeanMobilePhoneRegex, "Invalid phone number (use country code as well)")
         .required("Mobile phone is a required field"),
     idCode: Yup.string()
         .required("ID Code is a required field")
