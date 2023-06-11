@@ -491,9 +491,6 @@ export const AdminRestaurant = () => {
                                                     components={{ IndicatorSeparator:() => null }}/>
                                         </div>
 
-                                        <div className="features">
-                                            <img src={dots} alt="features"/>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -529,9 +526,6 @@ export const AdminRestaurant = () => {
                                 <div className="couponListHeader">
                                     <div className="couponListHeaderName">
                                         Latest Coupons
-                                    </div>
-                                    <div className="features">
-                                        <img src={dots} alt="features"/>
                                     </div>
                                 </div>
 

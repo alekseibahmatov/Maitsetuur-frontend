@@ -343,9 +343,6 @@ export const WaiterSingle = () => {
                         <div className="couponListHeaderName">
                             List of waiter’s submited coupons
                         </div>
-                        <div className="features">
-                            <img src={dots} alt="features"/>
-                        </div>
                     </div>
                     <div className="overflownContent">
                         {!waiterData.transactions ?
@@ -395,9 +392,6 @@ export const WaiterSingle = () => {
                         <div className="couponListHeader">
                             <div className="couponListHeaderName">
                                 List of logged devices
-                            </div>
-                            <div className="features">
-                                <img src={dots} alt="features"/>
                             </div>
                         </div>
                         <div className="overflownContent">

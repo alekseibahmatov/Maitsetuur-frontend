@@ -386,9 +386,6 @@ export const CouponSingle = () => {
                             Transactions List
                         </h2>
                     </div>
-                    <div className="features">
-                        <img src={dots} alt="features"/>
-                    </div>
                 </div>
                 <div className="overflownContent">
                     {!couponData ?

@@ -83,9 +83,6 @@ export const MainStats = () => {
                                 styles={customStyles}
                                 components={{IndicatorSeparator: () => null}}/>
                     </div>
-                    <div className="features">
-                        <img src={dots} alt="features"/>
-                    </div>
                 </div>
             </div>
             <div className="income">
@@ -116,9 +113,6 @@ export const MainStats = () => {
             <div className="couponListHeader">
                 <div className="couponListHeaderName">
                     Latest Coupons
-                </div>
-                <div className="features">
-                    <img src={dots} alt="features"/>
                 </div>
             </div>
             <div className="overflownContent">
