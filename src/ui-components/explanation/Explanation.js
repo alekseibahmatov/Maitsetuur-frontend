@@ -47,7 +47,7 @@ export const Explanation = () => {
                             04
                         </div>
                         <div className="explainDescription">
-                            The restaurant accepts a certificate from the guest by six digit number.
+                            The restaurant accepts a certificate from the guest by six digit number or a qr code.
                         </div>
                     </div>
                     <div className="singleExplainWithoutBorder">

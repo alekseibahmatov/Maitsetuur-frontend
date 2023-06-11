@@ -5,6 +5,7 @@ import share from "../../assets/img/share.svg";
 import {useNavigate} from "react-router-dom";
 import Footer from "../../ui-components/footer/Footer";
 import Explanation from "../../ui-components/explanation/Explanation";
+import {Header} from "../../ui-components/header/Header";
 
 export const Connect = () =>{
     const navigate = useNavigate();
@@ -77,20 +78,7 @@ export const Connect = () =>{
                 <div className="realBg">
                     <div className='container'>
                         <div className="preview">
-                            <div className="header">
-                                <div className="burger">
-                                    <img src={burx} className='burx_img'></img>
-                                </div>
-                                <div className="logoLanding">
-                                    MENU
-                                </div>
-                                <div className="share">
-                                    <div className="share_text">
-                                        Share
-                                    </div>
-                                    <img src={share} className='share_img'></img>
-                                </div>
-                            </div>
+                            <Header/>
                             <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
                                 <div className="closeBurger">
                                     +
@@ -172,7 +160,7 @@ export const Connect = () =>{
                                         </div>
                                         <div className="leaverForApplySteps">
                                             <div className="leaveForApplySingleStep">
-                                                <div className="leaverForApplyNumber">
+                                                <div className="leaverForApplyNumber" >
                                                     01
                                                 </div>
                                                 <div className="leaveForApplyAnswer">
@@ -188,7 +176,7 @@ export const Connect = () =>{
                                                 </div>
                                             </div>
                                             <div className="leaveForApplySingleStep">
-                                                <div className="leaverForApplyNumber">
+                                                <div className="leaverForApplyNumber" id='explain'>
                                                     03
                                                 </div>
                                                 <div className="leaveForApplyAnswer">

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;900&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 'Mulish', sans-serif;
+    }
+    .billContent{
+      margin: 0 auto;
+      width: 481px;
+    }
+    .billHeader{
+      background-color: #14086A;
+      color: #FFFFFF;
+      padding: 35px;
+    }
+    .billUpperPart{
+      display: flex;
+      justify-content: space-between;
+    }
+    .billLogo{
+      font-weight: 900;
+      font-size: 25px;
+      align-self: center;
+    }
+    .billUpperRightPart{
+      font-size: 10px;
+      font-weight: 400;
+      align-self: center;
+    }
+    .billTotalSmall{
+      text-align: right;
+    }
+    .billMainPart{
+      margin-top: 50px;
+      font-weight: 900;
+      font-size: 25px;
+    }
+    .billLowerPart{
+      margin-top: 32px;
+      font-weight: 400;
+      font-size: 16px;
+      padding-bottom: 10px;
+    }
+    .billMainContent{
+      background-color: #ffffff;
+      color: #2F313E;
+      padding: 35px;
+    }
+    .billMainContentTotal{
+      display: flex;
+      justify-content: space-between;
+      font-size: 25px;
+      font-weight: 900;
+    }
+    .billMainContentCoupons{
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 20px;
+    }
+    .billMainContentCard{
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 900;
+      margin-top: 40px;
+    }
+    .billCreditCard{
+      display: flex;
+      gap: 5px;
+      margin-top: 20px;
+    }
+    .dots{
+      display: flex;
+      gap: 3px;
+    }
+    .creditCardImg{
+      margin-top: 2px;
+    }
+    .creditCardNumbers{
+      align-self: center;
+      margin-top: -4px;
+    }
+    .billPrivacyPolicy{
+      margin-top: 40px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .blueBill{
+      color: #1B00DF;
+      cursor: pointer;
+    }
+    .billGetPdf{
+      margin-top: 40px;
+      color: #0050FF;
+      font-size: 17px;
+      font-weight: 500;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #E9E9E9;
+    }
+    .billGetInTouch{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      color: #1B00DF;
+      font-weight: 500;
+      font-size: 17px;
+    }
+    .billAutoLetter{
+      margin-top: 30px;
+      font-size: 14px;
+      font-weight: 400;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #E9E9E9;
+    }
+    .billContentFooter{
+      margin-top: 25px;
+      text-align: center;
+      color: #ACAEBA;
+      font-size: 15px;
+      font-weight: 500;
+      padding-bottom: 25px;
+    }
+
+  </style>
+  <title>BillCertificate</title>
+</head>
+<body>
+<div class="billContent">
+  <div class="billHeader">
+    <div class="billUpperPart">
+      <div class="billLogo">
+        MaitseTuur
+      </div>
+      <div class="billUpperRightPart">
+        <div class="billDateSMall">
+          Esmaspäev, 29. mai 2023
+        </div>
+      </div>
+    </div>
+    <div class="billMainPart">
+      Teile on saadetud sertifikaat
+    </div>
+    <div class="billLowerPart">
+      Teile on saadetud Jopa Nosoroga OÜ tõend
+    </div>
+  </div>
+  <div class="billMainContent">
+    <div class="billMainContentTotal">
+      <div class="billTotalBig">
+        Nominaal
+      </div>
+      <div class="billTotalPrice">
+        33.80€
+      </div>
+    </div>
+    <div class="billMainContentCoupons">
+      <div class="billTotalCoupons">
+        Kogus
+      </div>
+      <div class="billTotalAmount">
+        2tk.
+      </div>
+    </div>
+    <div class="billPrivacyPolicy">
+      Sertifikaadi ostmisega nõustusite meie privaatsuspoliitika ja kasutustingimustega. <span class="blueBill"> Lisateabe saamiseks </span>
+    </div>
+    <div class="billGetPdf">
+      Laadige kviitung alla PDF-vormingus
+    </div>
+    <div class="billGetInTouch">
+      <div class="billGetIn">
+        Võtke ühendust tugiteenusega
+      </div>
+      <div class="billArrow">
+        <img src="../img/billArrow.svg" alt="arrow" class="billArrowImg">
+      </div>
+    </div>
+    <div class="billAutoLetter">
+      See on automaatne kiri. Kui vajate abi, võite sellele meilile vastamise asemel <span class="blueBill"> ühendust võtta toega. </span>
+    </div>
+    <div class="billContentFooter">
+      <div class="billCompany">
+        OÜ MaitseTuur
+      </div>
+      <div class="billAddress">
+        Sõbra 4-40, 13567
+      </div>
+      <div class="billRegNum">
+        10616344
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

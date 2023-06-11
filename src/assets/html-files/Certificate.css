@@ -3,19 +3,18 @@
     font-weight: bold;
     margin: 0 auto;
     background-color: #ffffff;
-    height: 600px;
-    width: 846px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    align-items: center;
 }
 .certificatePdfContent{
-    padding: 38px;
+    padding: 10px 30px 30px 30px;
     display: flex;
-    gap: 30px;
+    gap: 40px;
 }
 .certificatePdfLeft{
-    width: 324px;
+    width: 50%;
 }
 .certificatePdfHeader{
     display: flex;
@@ -63,7 +62,7 @@
     color: #769EF3;
 }
 .certificatePdfRight{
-    width: 402px;
+    width: 50%;
     height: 535px;
     border-radius: 20px;
     margin-left: 10px;
@@ -74,7 +73,7 @@
 }
 .certificatePdfRightHeader{
     font-size: 13px;
-    margin-top: 260px;
+    margin-top: 280px;
 }
 .certificatePdfRightTittle{
     margin-top: 3px;
@@ -95,3 +94,5 @@
 .marginned{
     margin-top: 20px;
 }
+
+/* MEDIA */

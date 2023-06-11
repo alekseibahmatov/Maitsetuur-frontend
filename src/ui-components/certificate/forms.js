@@ -119,11 +119,13 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
             >
                 {(props: FormikProps<any>) => (
                     <Form>
-                        <div className="certificateButtons">
-                            {nominals.map((value, key) => (
-                                <Select key={key} status={selectedNominal === nominals[key]}
-                                        click={() => handleSelect(key, props)} value={value}/>
-                            ))}
+                        <div className="certificateButtonsParent">
+                            <div className="certificateButtons">
+                                {nominals.map((value, key) => (
+                                    <Select key={key} status={selectedNominal === nominals[key]}
+                                            click={() => handleSelect(key, props)} value={value}/>
+                                ))}
+                            </div>
                             <div className="error">
                                 <ErrorMessage name="nominal"/>
                             </div>
@@ -209,3 +211,4 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
         </>
     )
 }
+
