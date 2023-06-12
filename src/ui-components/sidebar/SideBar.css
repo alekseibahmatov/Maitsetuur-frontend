@@ -34,7 +34,9 @@
     cursor: pointer;
     position: relative;
     border-bottom: 1px solid rgba(235, 235, 235, 0.8);
-
+}
+.allTheButtons{
+    margin-top: 0.5px;
 }
 
 .singleButton1 {
