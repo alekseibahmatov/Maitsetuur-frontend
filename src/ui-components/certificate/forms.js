@@ -9,6 +9,7 @@ import {
 import {submitBusinessForm, submitPersonalForm} from "./tools";
 import {LoadingAnimationDots} from "../loading-animation/loading-animation-dots/LoadingAnimationDots";
 import {useNavigate} from "react-router-dom";
+import {scrollTop} from "../../pages/business-coupon-order/tools";
 
 export const CertificateBusinessForm = ({togglePrivacy}) => {
     const navigate = useNavigate();
@@ -25,8 +26,8 @@ export const CertificateBusinessForm = ({togglePrivacy}) => {
                 {(props: FormikProps<any>) => (
                     <Form>
                         <div className="explainForCompany">
-                            <h3> Since ordering more than one certificates can be a little
-                                inconvenient, we created automated certificate order form!</h3>
+                            <h4> Since ordering more than one certificates can be a little
+                                inconvenient, we created automated certificate order form!</h4>
                         </div>
                         <div className="form">
 
@@ -52,6 +53,7 @@ export const CertificateBusinessForm = ({togglePrivacy}) => {
 
                         <div className="confirm">
                             <button className={props.isValid ? "pay filled" : "pay"}
+                                    onClick={() => scrollTop()}
                                     type="submit">
                                 {props.isSubmitting ? <LoadingAnimationDots/> : 'Continue'}
                             </button>
@@ -175,6 +177,7 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
 
                         <div className="confirm">
                             <button className={props.isValid ? "pay filled" : "pay"}
+                                    onClick={() => scrollTop()}
                                     type="submit">
                                 {props.isSubmitting ? <LoadingAnimationDots/> : 'Continue'}
                             </button>

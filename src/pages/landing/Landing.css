@@ -218,24 +218,55 @@
     padding-bottom: 200px;
 }
 
+@keyframes shine {
+    0% {
+        left: -100%;
+        transition-property: left;
+    }
+    11.5%,
+    100% {
+        left: 100%;
+        transition-property: left;
+    }
+}
+
 .present {
+    position: relative;
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 23px;
     font-weight: 700;
-    border: 1px solid #EB4C43;
-    background: #EB4C43;
+    background: #cc150b;
     padding: 8px;
     border-radius: 30px;
     text-align: center;
     width: 200px;
     cursor: pointer;
     transition: 0.3s;
+    overflow: hidden;
 }
+
+.present::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shine 2s ease-in-out infinite;
+}
+
 
 .present:hover {
     transition: 0.3s;
-    background: #b70f05;
+    background: #EB4C43;
+}
+
+.allRestaurantsMobile {
+    margin: 0 auto;
+    font-size: 20px;
+    width: 300px;
 }
 
 .business {
@@ -360,6 +391,18 @@
     height: 100vh;
 }
 
+.agreeCertif, .blue {
+    font-size: 16px;
+}
+
+.blue{
+    color: #00B4CC;
+    transition: 0.3s;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+
 .box {
     position: relative;
     width: 50%;
@@ -388,18 +431,19 @@
 }
 
 .explain {
-    width: 60%;
     font-weight: 600;
     color: black;
     margin-top: 10px;
     margin-bottom: 20px;
+    font-size: 23px;
 }
 
 .explainForCompany {
-    width: 100%;
+    font-weight: 600;
     margin-top: 10px;
     margin-bottom: 30px;
     color: #11142D;
+    font-size: 23px;
 }
 
 .choose {
@@ -441,6 +485,7 @@
     font-weight: 600;
     width: 100%;
     border-radius: 5px;
+    font-size: 16px;
     border: 2px solid rgba(0, 0, 0, 0.2);
     padding: 20px 20px;
     margin-bottom: 10px;
@@ -579,11 +624,11 @@
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 10px;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .blockNameCertificateSide {
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 800;
 }
 
@@ -612,13 +657,14 @@
 
 .carouselHeader {
     color: white;
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 30px;
+    font-weight: 900;
+    font-family: 'Raleway', sans-serif;
 }
 
 .carouselDescription {
     color: white;
-    font-size: 20px;
+    font-size: 21px;
     width: 50%;
     margin-top: 20px;
     margin-bottom: 40px;
@@ -650,10 +696,10 @@
 
 .advantagesHeader {
     color: #EEEEEE;
-    font-size: 25px;
+    font-size: 30px;
     margin-top: 100px;
     font-family: 'Raleway', sans-serif;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .advantagesMain {
@@ -732,8 +778,9 @@
 
 .explainHeader {
     color: white;
-    font-size: 25px;
+    font-size: 30px;
     font-family: 'Raleway', sans-serif;
+    font-weight: 800;
 }
 
 .explainMain {
@@ -768,6 +815,7 @@
 
 .explainDescription {
     font-size: 20px;
+    line-height: 25px;
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
 }
@@ -836,7 +884,7 @@
     display: none;
     margin: 0;
     padding: 1rem;
-    background-color: #f1f1f1;
+    /*background-color: #f1f1f1;*/
     border-radius: 5px;
     color: grey;
     font-family: 'Raleway', sans-serif;
@@ -906,7 +954,7 @@
 .askInfo {
     font-size: 20px;
     margin-top: 20px;
-    color: #78A4F8;
+    color: #0517b7;
 }
 
 .askInfoMain {
@@ -935,10 +983,6 @@
         padding: 0 40px;
     }
 
-    .explainButtons {
-        justify-content: space-between;
-        padding-bottom: 20px;
-    }
 
     .four_section {
         display: block;
@@ -1016,11 +1060,13 @@
 
     .carouselHeader {
         text-align: center;
+        font-size: 30px;
     }
 
     .carouselDescription {
         text-align: center;
         margin: 40px auto;
+        min-width: 300px;
     }
 
     .advantagesHeader {
@@ -1030,6 +1076,7 @@
     }
 
     .block {
+        height: 300px;
         width: 100%;
         margin: 0;
     }
@@ -1057,7 +1104,7 @@
     }
 
     .singleExplain {
-        padding-bottom: 10px;
+        padding-bottom: 20px;
     }
 
     .singleExplainWithoutBorder {
@@ -1069,6 +1116,10 @@
 
 @media (max-width: 620px) {
 
+    .allRestaurantsMobile {
+        width: 80% !important;
+    }
+
     .certificateInputValue {
         font-size: 18px;
     }
@@ -1078,7 +1129,8 @@
     }
 
     .termsCheckbox {
-        width: 45px;
+        width: 60px;
+        height: 35px;
     }
 
     .pay {
@@ -1088,7 +1140,7 @@
     }
 
     .agreeCertif, .blue {
-        font-size: 20px!important;
+        font-size: 20px !important;
     }
 
     .four_section {
@@ -1133,6 +1185,9 @@
         font-size: 23px;
         line-height: 30px;
     }
+    .explainButtons {
+        display: block;
+    }
 
     .present, .business {
         width: 100%;
@@ -1167,7 +1222,7 @@
     }
 
     .explainDescription {
-        font-size: 12px;
+        font-size: 20px;
     }
 
     .number {
@@ -1175,19 +1230,19 @@
     }
 
     .faq-item button {
-        font-size: 12px;
+        font-size: 18px;
     }
 
     .faq-item p {
-        font-size: 12px;
+        font-size: 18px;
     }
 
     .companyName {
-        font-size: 10px;
+        font-size: 20px;
     }
 
     .numberMail {
-        font-size: 10px;
+        font-size: 20px;
     }
 
     .askInfoMain {

@@ -6,7 +6,7 @@ import {CertificateBusinessForm, CertificatePersonalForm} from "./forms";
 
 
 export const Certificate = () => {
-    const [selectedNominal, setSelectedNominal] = useState(null);
+    const [selectedNominal, setSelectedNominal] = useState('€€');
     const [isActive, setIsActive] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     let reactSwipeEl;
@@ -89,7 +89,7 @@ export const Certificate = () => {
                                                 gift certificate
                                             </div>
                                             <div className="blockNameCertificateSide">
-                                                To the best restaurants in Tallinn
+                                                To the best restaurants in Estonia
                                             </div>
                                             <div className="nominalAndDate">
                                                 <div className="nominal_value">

@@ -16,6 +16,7 @@ import Explanation from "../../ui-components/explanation/Explanation";
 import Faq from "../../ui-components/faq/Faq";
 import PrivacyPolicy from "../../ui-components/privacy-policy/Privacy-policy";
 import {Header} from "../../ui-components/header/Header";
+import {scrollTop} from "../business-coupon-order/tools";
 
 export default function Landing() {
     const navigate = useNavigate();
@@ -127,7 +128,7 @@ export default function Landing() {
                                     <img src={waiter} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>More than 100 restaurants </span>, cafes and bars in
+                                    <span className='dashed'>More than 100 restaurants</span>, cafes and bars in
                                     Tallinn. We add new ones every week.
                                 </div>
                             </div>
@@ -157,15 +158,15 @@ export default function Landing() {
                             Tallinn
                         </div>
                         <div className="carouselMain">
-                            <ImageCarousel images={table} interval={2000}/>
-                            <ImageCarousel images={table} interval={2000}/>
-                            <ImageCarousel images={table} interval={2000}/>
+                            <ImageCarousel images={table} interval={4000}/>
+                            <ImageCarousel images={table} interval={4000}/>
+                            <ImageCarousel images={table} interval={4000}/>
                         </div>
-                        <div className="allRestaurants" onClick={() => {
+                        <div className="present allRestaurantsMobile" onClick={() => {
+                            scrollTop();
                             navigate('/allrestaurants');
-                            window.scrollTo(0, 0);
                         }}>
-                            Whole restaurants list
+                            Check all restaurants
                         </div>
                     </div>
 

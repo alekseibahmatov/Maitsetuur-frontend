@@ -92,7 +92,7 @@ export const Faq = () =>{
                 <div className="faqHeader">
                     <div className="from">
                         <div className={isActive1 ? 'company' : "client"} onClick={contentPrevious1}>
-                            Answers to the questions
+                            FAQ
                         </div>
                         <div className={isActive1 ? 'client' : "company"} onClick={contentNext1}>
                             Ask a question
