@@ -43,38 +43,38 @@ export const Faq = () =>{
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
-        console.log('asd')
     }
 
     const [faq, setFAQ] = React.useState([
         {
-            question: 'How long does the certificate lasts?',
-            answer: 'Certificate lasts for one years after the purchase, it can always be checked on the certificate',
+            question: 'Kui kaua sertifikaat kestab?',
+            answer: 'Sertifikaadi kehtivusaeg on üks aasta pärast ostu sooritamist, seda saab alati kontrollida sertifikaadil.',
             open: false
         },
         {
-            question: 'Can i make my own budget for certificate?',
-            answer: 'With any of your own preferences we are waiting for your email, after what we can provide the best solution',
+            question: 'Kas ma saan teha oma sertifikaadi eelarve?',
+            answer: 'Mis tahes oma eelistusi ootame teie e-kirja, pärast mida saame pakkuda parimat lahendust.',
             open: false
         },
         {
-            question: 'How can i check the balance?',
-            answer: 'After each of the visits to the restaurants, there will a new email sent, containing remaining balance',
+            question: 'Kuidas ma saan kontrollida jääki?',
+            answer: 'Pärast iga restorani külastust saadetakse uus e-kiri, mis sisaldab järelejäänud saldot.',
             open: false
         },
         {
-            question: 'Can i buy a few certificates for my company?',
-            answer: 'Of course, by leaving the order we will be able to contact you and make everything you wanted within 2-3 days!',
+            question: 'Kas ma saan osta paar sertifikaati oma ettevõttele?',
+            answer: 'Loomulikult, jättes tellimuse, saame teiega ühendust võtta ja teha kõik, mida soovisite 2-3 päeva jooksul!',
             open: false
         },
         {
-            question: 'How does the certificate look like?',
+            question: 'Kuidas näeb sertifikaat välja?',
             answer: (
                 <div>
                     <div>
-                        You can check by clicking on this link{" "}
+                        Saate kontrollida, klõpsates sellel lingil
+                        <br/>
                         <button className="blue" onClick={toggleModal} style={{ display: "inline" }}>
-                            Certificate.pdf
+                            Sertifikaadi näide
                         </button>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ export const Faq = () =>{
                             FAQ
                         </div>
                         <div className={isActive1 ? 'client' : "company"} onClick={contentNext1}>
-                            Ask a question
+                            Esita küsimus
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@ export const Faq = () =>{
                             <div>
                                 <div className="infoAsk">
                                     <div className="askInfoMain">
-                                        If you have any questions which were not answered yet you can always contact us!
+                                        Kui teil on küsimusi, millele ei ole veel vastatud, võite alati meiega ühendust võtta!
                                     </div>
                                     <div className="askInfo">
                                         maitsetuur@gmail.com
@@ -132,7 +132,7 @@ export const Faq = () =>{
                                         +372 5887 8456
                                     </div>
                                     <div className="askInfo">
-                                        Kikri 2/1 Monday-Sunday 24/7
+                                        Kikri 2/1 Esmaspäev-Pühapaäev 24/7
                                     </div>
                                 </div></div>
                         </ReactSwipe>

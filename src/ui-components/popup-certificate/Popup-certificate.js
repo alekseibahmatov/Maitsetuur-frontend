@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import './Popup-certificate.css'
 import cross from '../../assets/img/cross.png'
 import qrcodeImg from '../../assets/img/qrCodeCertificate.png'
 import qrcode from "../../assets/img/qrCodeCertificate.png";
-import certificate from '../../assets/img/certif.jpg'
+import certificate from '../../assets/img/certificate/certificate-example.svg'
 
 function PopupCertificate({isOpen, toggleModal}) {
     useEffect(() => {
@@ -21,13 +21,13 @@ function PopupCertificate({isOpen, toggleModal}) {
                     <div className="modal-contentCertificate">
                         <div>
                             <div className="certificatePdf">
-                                <img src={cross} style={{float : 'right'}} className='crossClose' onClick={toggleModal}/>
+                                <img src={cross} style={{float: 'right'}} className='crossClose' onClick={toggleModal}/>
                                 <div className="certificateExample">
-                                    <img src={certificate} className='certificateImageExample'></img>
+                                    <img height={500} src={certificate} className='certificateImageExample'/>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             )}
         </>

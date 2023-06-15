@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import cross from "../../assets/img/cross.png";
 import '../privacy-policy/Privacy-policy.css'
 
-export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
+export const PrivacyPolicy = ({isOpen, toggleModal}) => {
     useEffect(() => {
         if (isOpen) {
             document.body.classList.add("no-scroll");
@@ -17,10 +17,10 @@ export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
                 <div className="modal-overlay">
                     <div className="modalPrivacy">
                         <div className="policySticky">
-                        <img src={cross} style={{float : 'right'}} className='crossClose' onClick={toggleModal}/>
-                        <div className="policyHeader">
-                            Ostu- ning lepingu muud tingimused
-                        </div>
+                            <div className="policyHeader">
+                                Ostu- ning lepingu muud tingimused
+                            </div>
+                                <img src={cross} className='crossClose' onClick={toggleModal}/>
                         </div>
                         <div className='policyContent'>
                             <div className="policyDate">
@@ -36,16 +36,20 @@ export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
                                     (edaspidi Leping) allolevatel tingimustel.
                                 </div>
                                 <div className="policySingleText">
-                                    I.2. Ostu tehes kinnitab Ostja, et ta on Lepingu tingimustega tutvunud, nendega nõus ja
-                                    täidab neid. Kindlasti peate tekitama selle kohta, kus klient peab panema linnukese, et
+                                    I.2. Ostu tehes kinnitab Ostja, et ta on Lepingu tingimustega tutvunud, nendega nõus
+                                    ja
+                                    täidab neid. Kindlasti peate tekitama selle kohta, kus klient peab panema linnukese,
+                                    et
                                     ta on nõus tingimustega ja kohe juurde link antud tingimustele
                                 </div>
                                 <div className="policySingleText">
-                                    I.3. Ostja kinnitab, et ta on teadlik ja aktsepteerib, et Müüja on vaid teenuse ja kauba
+                                    I.3. Ostja kinnitab, et ta on teadlik ja aktsepteerib, et Müüja on vaid teenuse ja
+                                    kauba
                                     vahendaja.
                                 </div>
                                 <div className="policySingleText">
-                                    I.4. Müüja töötleb Ostja ja Ostja poolt märgitud muude isikute andmeid vastavalt punktis
+                                    I.4. Müüja töötleb Ostja ja Ostja poolt märgitud muude isikute andmeid vastavalt
+                                    punktis
                                     5 märgitule ja privaatsuspoliitikale.
                                 </div>
                                 <div className="policySingleText">
@@ -56,7 +60,8 @@ export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
                                     II. Kinkekaardi ostmise ja kasutamise tingimused
                                 </div>
                                 <div className="policySingleText">
-                                    II.1. Kinkekaardi ostmiseks tuleb sooritada ost lehel XXXXX. Kinkekaardi eest tasumisel
+                                    II.1. Kinkekaardi ostmiseks tuleb sooritada ost lehel XXXXX. Kinkekaardi eest
+                                    tasumisel
                                     suunatakse Ostja makseviisi lehele, kus tuleb valida sobiv makseviis ja teostada
                                     makse. Kindlasti tuleb ära oodata pärast makset suunamist tagasi kaupmehe lehele.
                                 </div>
@@ -65,8 +70,9 @@ export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
                                     arvelduskontole.
                                 </div>
                                 <div className="policySingleText">
-                                    II.3. Ostetud kinkekaart edastatakse Ostjale või Ostja poolt märgitud isikule e-posti teel
-                                    pärast selle eest tasu laekumist.  Ostu tegemise ja makse kättesaamise kohta saadab
+                                    II.3. Ostetud kinkekaart edastatakse Ostjale või Ostja poolt märgitud isikule
+                                    e-posti teel
+                                    pärast selle eest tasu laekumist. Ostu tegemise ja makse kättesaamise kohta saadab
                                     Müüja Ostjale automaatse e-kirja.
                                 </div>
                                 <div className="policySingleText">
@@ -76,27 +82,32 @@ export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
                                     eest.
                                 </div>
                                 <div className="policySingleText">
-                                    II.5. Kinkekaart ei ole nimeline ja selle kasutajate ring ei ole piiratud ning eeldatakse, et
+                                    II.5. Kinkekaart ei ole nimeline ja selle kasutajate ring ei ole piiratud ning
+                                    eeldatakse, et
                                     kinkekaardi esitajal on õigus seda kasutada.
                                 </div>
                                 <div className="policySingleText">
-                                    II.6. Ostja ostab kinkekaardi soovitud summa ulatuses, mida on võimalik kasutada lehel
+                                    II.6. Ostja ostab kinkekaardi soovitud summa ulatuses, mida on võimalik kasutada
+                                    lehel
                                     XXXXX märgitud koostööpartnerite juures ostes kaupu või teenuseid kasutades
                                     maksevahendina kinkekaarti. Kinkekaarti on võimalik kasutada korduvalt
                                     kinkekaardil oleva saldo ulatuses kuni summa on ära kulutatud.
                                 </div>
                                 <div className="policySingleText">
-                                    II.7. Kinkekaardi kehtivus on 12 kuud alates ostu kuupäevast ja kehtivust ei pikendata.
+                                    II.7. Kinkekaardi kehtivus on 12 kuud alates ostu kuupäevast ja kehtivust ei
+                                    pikendata.
                                 </div>
                                 <div className="policySingleText">
                                     II.8. Kinkekaardi kaotamisel uut kinkekaarti ei väljastata.
                                 </div>
                                 <div className="policySingleText">
-                                    II.9. Kinkekaardil rahaliste vahendite jääki ja kinkekaardi kehtivusaega saab kontrollida
+                                    II.9. Kinkekaardil rahaliste vahendite jääki ja kinkekaardi kehtivusaega saab
+                                    kontrollida
                                     lehel XXXXX.
                                 </div>
                                 <div className="policySingleText">
-                                    II.10. Kinkekaarti ei vahetata raha vastu ning kasutamata kinkekaardi eest raha Müüja ei
+                                    II.10. Kinkekaarti ei vahetata raha vastu ning kasutamata kinkekaardi eest raha
+                                    Müüja ei
                                     tagasta.
                                 </div>
                                 <div className="policySingleHeader">
@@ -109,18 +120,22 @@ export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
                                     vaid vahendajana.
                                 </div>
                                 <div className="policySingleText">
-                                    III.2. Teenusepakkuja tegevuse või tegevusetuse ja sellega kaasnevate asjaolude eest ei
+                                    III.2. Teenusepakkuja tegevuse või tegevusetuse ja sellega kaasnevate asjaolude eest
+                                    ei
                                     vastuta Müüja ning vastutab täielikult teenusepakkuja ise. Kõik pretensioonid
-                                    teenusele või kaubale, selle kvantiteedile või kvaliteedile vms tuleb esitada koheselt ja
+                                    teenusele või kaubale, selle kvantiteedile või kvaliteedile vms tuleb esitada
+                                    koheselt ja
                                     otse Teenusepakkujale.
                                 </div>
                                 <div className="policySingleText">
-                                    III.3. Ostjal on õigus esitada pretensioonid Müüjale vaid kinkekaardi osas, milleks on
+                                    III.3. Ostjal on õigus esitada pretensioonid Müüjale vaid kinkekaardi osas, milleks
+                                    on
                                     eelkõige kinkekaardil oleva QR-koodi viga, kinkekaardil olev summa või tähtaeg ei
                                     vasta ostu-müügilepingu summale.
                                 </div>
                                 <div className="policySingleText">
-                                    III.4. Poolte vastutusele kohaldatakse Eesti Vabariigi õigusakte, eelkõige võlaõigusseaduse
+                                    III.4. Poolte vastutusele kohaldatakse Eesti Vabariigi õigusakte, eelkõige
+                                    võlaõigusseaduse
                                     sätteid.
                                 </div>
                                 <div className="policySingleHeader">
@@ -151,8 +166,10 @@ export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
                                 </div>
                                 <div className="policySingleText">
                                     V.1. Müüja tagab Ostja ja Ostja poolt märgitud kolmandate isikute andmete sh.
-                                    isikuandmete kaitse ja kasutamise privaatsuspoliitika tingimuste kohaselt ette nähtud
-                                    korras. Ostja kinnitab, et on tutvunud ja nõus privaatsuspoliitika tingimustega, mis on
+                                    isikuandmete kaitse ja kasutamise privaatsuspoliitika tingimuste kohaselt ette
+                                    nähtud
+                                    korras. Ostja kinnitab, et on tutvunud ja nõus privaatsuspoliitika tingimustega, mis
+                                    on
                                     kätte saadavad igal hetkel Müüja kodulehel.
                                 </div>
                                 <div className="policySingleText">
@@ -186,8 +203,8 @@ export const PrivacyPolicy = ({isOpen, toggleModal}) =>{
                                 <div className="policySingleText">
                                     VI.2. Müüja ja Ostja vahel tekkivad vaidlused lahendavad pooled läbirääkimiste teel.
                                     Kokkuleppe mittesaavutamisel on Ostjal õigus pöörduda Tarbijakaitse ja Tehnilise
-                                    Järelevalve Ametisse (Pronksi 12 Tallinn 10117, https://www.ttja.ee) ja
-                                    Tarbijavaidluste komisjoni (Pronksi 12 Tallinn 10117, http://www.komisjon.ee)
+                                    Järelevalve Ametisse (Pronksi 12 Tallinn 10117, https://www.ttja.ee) ja
+                                    Tarbijavaidluste komisjoni (Pronksi 12 Tallinn 10117, http://www.komisjon.ee)
                                     vaidluse kohtuväliseks lahendamiseks või Harju Maakohtusse.
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-import React from "react-dom";
+import React, {useState} from "react";
 import headerMenuIcon from "../../assets/img/landing/header-menu-icon.svg";
 import instagramHeaderIcon from "../../assets/img/landing/header-instagram-icon.svg";
 import {useNavigate} from "react-router-dom";

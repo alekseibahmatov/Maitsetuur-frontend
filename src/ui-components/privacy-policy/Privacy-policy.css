@@ -1,4 +1,6 @@
 .modalPrivacy{
+    border-radius: 15px;
+    padding: 40px;
     width: 80%;
     position: absolute;
     top: 20%;
@@ -10,15 +12,23 @@
     overflow-y: hidden;
     height: 70%;
 }
+.crossClose {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
 .policySticky{
-    position: fixed;
     background: #ffffff;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
 }
 .policyContent{
     padding: 20px 40px;
-    height: 100%;
+    height: calc(100% - 70px);
     overflow-y: auto;
+    width: 100%;
 }
 .policyContent::-webkit-scrollbar {
     width: 6px;
@@ -40,8 +50,7 @@
 }
 .policyDate{
     font-weight: bold;
-    font-size: 10px;
-    margin-top: 50px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 .policySingleHeader{

@@ -241,7 +241,7 @@ export const AddCouponData = () => {
                                                 <button disabled={props.isSubmitting} type="submit" id="tooltip-proceed"
                                                         className={props.isValid ? "proceedPaymentButton done" : "proceedPaymentButton"}>
                                                     {props.isSubmitting ?
-                                                        <LoadingAnimationDots/> : "Proceed to personal-coupon-order"}
+                                                        <LoadingAnimationDots/> : "Proceed to payment"}
                                                 </button>
                                                 {/*{couponStep === coupons.length - 1 ?*/}
                                                 {/*    <Tooltip*/}

@@ -20,6 +20,7 @@ import {scrollTop} from "../business-coupon-order/tools";
 
 export default function Landing() {
     const navigate = useNavigate();
+    let reactSwipeEl;
 
     const [isBurger, setIsBurger] = useState(false);
 
@@ -28,15 +29,7 @@ export default function Landing() {
         setIsModalOpen(!isModalOpen);
     }
 
-    const handleClick123 = event => {
-        if (event.target.className === 'burx_img') {
-            setIsBurger(true)
-        } else {
-            setIsBurger(false)
-        }
-    }
-
-    const scrollToCertificate = () => {
+    const scrollToCertificate = (index) => {
         document.getElementById('certificate').scrollIntoView({behavior: "smooth", block: "start"});
     }
 
@@ -49,50 +42,52 @@ export default function Landing() {
         {
             img: l1,
             header: 'Unique experience',
-            description: 'A gift that has not been made before you - the recipient will definitely be delighted.'
+            description: 'Kingitus, mida ei ole tehtud enne teid - saaja on kindlasti rõõmus.'
 
         },
         {
             img: l2,
-            header: 'Any holiday',
-            description: 'For a birthday, wedding, or even for the successful closing of a deal for a business partner.'
+            header: 'Mis tahes puhkus',
+            description: 'Sünnipäeva, pulmade või isegi äripartneri eduka tehingu sõlmimise puhul.'
 
         },
         {
             img: l3,
-            header: 'Reusable card',
-            description: 'The recipient will be able to use the same certificate multiple times.'
+            header: 'Korduvkasutatav sertifikaat',
+            description: 'Sertifikaadi omanik saab sama sertifikaati kasutada mitu korda.'
 
         },
     ]
 
+    const handleClickMenu = event => {
+        if (event.target.className === 'burx_img' && !isBurger) {
+            setIsBurger(true)
+        } else {
+            setIsBurger(false)
+        }
+    }
+
     return (
-        <div className='bg' onClick={handleClick123}>
+        <div className='bg' onClick={handleClickMenu}>
             <div className="realBg">
                 <div className='container'>
                     <div className="preview">
                         <Header/>
                         <div className={isBurger ? 'burger_opened' : 'burger_closed'}>
-                            <div className="next" onClick={() => navigate('/connect')}>
-                                Join us
-                            </div>
                             <div className="next" onClick={scrollToCertificate}>
-                                Certificate
-                            </div>
-                            <div className="next" onClick={() => navigate('/allrestaurants')}>
-                                All the restaraunts
+                                Sertifikaat
                             </div>
                             <div className="next" onClick={scrollToFaq}>
-                                Contact us
+                                Võtke meiega ühendust
                             </div>
                             <div className='next' onClick={toggleModal}>
-                                Privacy policy
+                                Privaatsuspoliitika
                             </div>
                         </div>
                         <PrivacyPolicy isOpen={isModalOpen} toggleModal={toggleModal}/>
                         <div className="salutation-wrapper">
                             <div className="salutation">
-                                Gift Certificate to the best restaurants in Estonia
+                                KINGITUS SERTIFIKAAT PARIMATESSE RESTORANIDESSE EESTIS
                             </div>
                         </div>
                         <div className="four_section">
@@ -101,8 +96,8 @@ export default function Landing() {
                                     <img src={heart} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>Give the best: </span> experience to those you love: the
-                                    perfect gift for friends and loved ones for the New Year.
+                                    <span className='dashed'>Kingi parim: </span>kogemus neile, keda armastad:
+                                    ideaalne kingitus sõpradele ja lähedastele uueks aastaks.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -110,8 +105,8 @@ export default function Landing() {
                                     <img src={card} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>Easy to give: </span> buy online and email the recipient
-                                    with personalized wishes.
+                                    <span className='dashed'>Lihtne kinkida: </span>
+                                    ostke veebist ja saatke saajale e-posti teel isiklikud soovid.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -119,8 +114,9 @@ export default function Landing() {
                                     <img src={meal} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>Convenient to use: </span> just give the certificate number
-                                    to pay the bill in the restaurant.
+
+                                    <span className='dashed'>Mugav kasutada: </span>
+                                    anna lihtsalt QR-kood sertifikaadilt, et maksta restoranis arve.
                                 </div>
                             </div>
                             <div className="single_section">
@@ -128,17 +124,18 @@ export default function Landing() {
                                     <img src={waiter} className='section_ion_img'/>
                                 </div>
                                 <div className="section_text">
-                                    <span className='dashed'>More than 100 restaurants</span>, cafes and bars in
-                                    Tallinn. We add new ones every week.
+
+                                    <span className='dashed'>Rohkem kui 100 restorani</span>
+                                    , kohvikut ja baari Tallinnas. Lisame iga nädal uusi.
                                 </div>
                             </div>
                         </div>
                         <div className="buttons">
-                            <div className="present" onClick={scrollToCertificate}>
-                                Make a gift
+                            <div className="present" onClick={() => scrollToCertificate()}>
+                      Tee kingitus
                             </div>
-                            <div className="business" onClick={scrollToCertificate}>
-                                For business
+                            <div className="business" onClick={() => scrollToCertificate(1)}>
+                                Ettevõttele
                             </div>
                         </div>
                     </div>
@@ -151,28 +148,24 @@ export default function Landing() {
 
                     <div className="infiniteCarousel">
                         <div className="carouselHeader">
-                            Connected restaurants
+                            Ühendatud restoranid
                         </div>
                         <div className="carouselDescription">
-                            Certificate gives an opportunity to visit the most popular and breathtaking restaurants of
-                            Tallinn
+                            Sertifikaat annab võimaluse külastada Eesti populaarseimaid ja hingematvaimaid restorane
                         </div>
                         <div className="carouselMain">
                             <ImageCarousel images={table} interval={4000}/>
                             <ImageCarousel images={table} interval={4000}/>
                             <ImageCarousel images={table} interval={4000}/>
                         </div>
-                        <div className="present allRestaurantsMobile" onClick={() => {
-                            scrollTop();
-                            navigate('/allrestaurants');
-                        }}>
-                            Check all restaurants
+                        <div className="present allRestaurantsMobile">
+                            Kõik Restoranid
                         </div>
                     </div>
 
                     <div className="advantages">
                         <div className="advantagesHeader">
-                            Our advantages
+                            Meie eeliseid
                         </div>
                         <div className="advantagesMain">
                             {advantages.map((item, i) => (

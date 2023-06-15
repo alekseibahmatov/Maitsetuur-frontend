@@ -15,7 +15,7 @@ export const Explanation = () => {
         <>
             <div className="explainSection">
                 <div className="explainHeader">
-                    How does it work
+                    Kuidas see töötab
                 </div>
                 <div className="explainMain">
                     <div className="singleExplain">
@@ -23,7 +23,7 @@ export const Explanation = () => {
                             01
                         </div>
                         <div className="explainDescription">
-                            You choose the denomination of the certificate and pay for a gift by card or in internet banking.
+                            Te valite sertifikaadi nimiväärtuse ja maksate kingituse eest kaardiga või internetipangas.
                         </div>
                     </div>
                     <div className="singleExplain">
@@ -31,7 +31,7 @@ export const Explanation = () => {
                             02
                         </div>
                         <div className="explainDescription">
-                            We send the certificate to your email or recipient. If you decide for yourself hand over the certificate, print it out or send a link in the messenger.
+                            Me saadame sertifikaadi teie e-postile või saajale. Kui otsustate ise sertifikaadi üle anda, printige see välja või saatke linki messengeris.
                         </div>
                     </div>
                     <div className="singleExplain">
@@ -39,7 +39,7 @@ export const Explanation = () => {
                             03
                         </div>
                         <div className="explainDescription">
-                            The recipient selects any restaurant you want to go to by certificate.
+                            Saaja valib sertifikaadi alusel mis tahes restorani, kuhu soovite minna.
                         </div>
                     </div>
                     <div className="singleExplain">
@@ -47,7 +47,7 @@ export const Explanation = () => {
                             04
                         </div>
                         <div className="explainDescription">
-                            The restaurant accepts a certificate from the guest by six digit number or a qr code.
+                            Restoran võtab külalistelt sertifikaadi vastu kuuekohalise numbri või qr-koodi abil.
                         </div>
                     </div>
                     <div className="singleExplainWithoutBorder">
@@ -55,16 +55,16 @@ export const Explanation = () => {
                             05
                         </div>
                         <div className="explainDescription">
-                            The recipient visits one or several restaurants - and rejoices your gift.
+                            Saaja külastab ühte või mitut restorani - ja rõõmustab teie kingituse üle.
                         </div>
                     </div>
                     <div className="singleExplainMargin">
                         <div className="explainButtons">
                             <div className="present" onClick={scrollToCertificate}>
-                                Make a gift
+                Tee Kingitus
                             </div>
                             <div className="business" onClick={scrollToCertificate}>
-                                For business
+                           Ettevõttele
                             </div>
                         </div>
                     </div>

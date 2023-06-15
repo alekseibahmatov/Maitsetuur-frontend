@@ -173,6 +173,10 @@
     transition: 0.3s;
 }
 
+.certificateBusiness {
+    height: 590px;
+}
+
 .salutation-wrapper {
 
 }
@@ -296,6 +300,8 @@
     border: 1px solid white;
     border-radius: 20px;
     padding: 30px;
+    transition: 0.3s;
+    overflow: hidden;
 }
 
 .certificate_header {
@@ -395,7 +401,7 @@
     font-size: 16px;
 }
 
-.blue{
+.blue {
     color: #00B4CC;
     transition: 0.3s;
     cursor: pointer;
@@ -503,13 +509,12 @@
 }
 
 .pay {
-    font-size: 17px;
+    font-size: 23px;
     outline: none;
     border: none;
-    border-radius: 20px;
-    padding: 7px 15px;
+    border-radius: 30px;
+    padding: 15px 20px;
     background-color: #999999;
-    width: 100px;
     text-align: center;
     font-weight: bold;
     color: #EEEEEE;
@@ -526,8 +531,7 @@
 
 .pay.filled:hover {
     transition: 0.5s;
-    background-color: #D81159;
-    font-weight: bolder;
+    background-color: #f10049;
 }
 
 .order {
@@ -748,7 +752,7 @@
 
 .advantageDescription {
     background-color: #EEEEEE;
-    height: 120px;
+    height: 140px;
     padding: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -962,7 +966,11 @@
     margin-top: 10px;
 }
 
+
 @media (max-width: 1024px) {
+    .certificateBusiness {
+        height: 990px;
+    }
 
     .burger_opened {
         top: 74px;
@@ -1113,6 +1121,32 @@
 
 }
 
+@media (max-width: 886px) {
+    .certificateBusiness {
+        height: 1000px !important;
+    }
+}
+
+@media (max-width: 706px) {
+    .certificateBusiness {
+        height: 1040px !important;
+    }
+}
+
+
+@media (max-width: 620px) {
+    .certificateBusiness {
+        height: 1100px !important;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .certificateBusiness {
+        height: 1140px !important;
+    }
+}
+
 
 @media (max-width: 620px) {
 
@@ -1185,6 +1219,7 @@
         font-size: 23px;
         line-height: 30px;
     }
+
     .explainButtons {
         display: block;
     }
@@ -1311,35 +1346,29 @@ body.no-scroll {
 }
 
 .carouselMain::-webkit-scrollbar {
-    height: 4px;
-    width: 4px;
+    display: none;
 }
 
 .carouselMain::-webkit-scrollbar-track {
-    background-color: #E2E2EA;
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 400px;
+    display: none;
+
 }
 
 .carouselMain::-webkit-scrollbar-thumb {
-    background: #5541D7;
-    border-radius: 400px;
+    display: none;
+
 }
 
 .advantagesMain::-webkit-scrollbar {
-    height: 4px;
-    width: 4px;
+    display: none;
 }
 
 .advantagesMain::-webkit-scrollbar-track {
-    background-color: #E2E2EA;
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 400px;
+    display: none;
 }
 
 .advantagesMain::-webkit-scrollbar-thumb {
-    background: #5541D7;
-    border-radius: 400px;
+    display: none;
 }
 
 

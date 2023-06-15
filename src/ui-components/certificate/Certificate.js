@@ -1,18 +1,22 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import PopupCertificate from "../popup-certificate/Popup-certificate";
 import ReactSwipe from "react-swipe";
 import PrivacyPolicy from "../privacy-policy/Privacy-policy";
 import {CertificateBusinessForm, CertificatePersonalForm} from "./forms";
 
-
-export const Certificate = () => {
+export const Certificate = ({reactSwipeEl}) => {
     const [selectedNominal, setSelectedNominal] = useState('€€');
     const [isActive, setIsActive] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    let reactSwipeEl;
+    const certificateBlock = document.getElementById("certificate");
 
     const handleClick = () => {
-        console.log(isActive)
+        if (reactSwipeEl.getPos() === 0) {
+            console.log('jopa')
+            certificateBlock?.classList?.add("certificateBusiness")
+        } else if (reactSwipeEl.getPos() === 1) {
+            certificateBlock?.classList?.remove("certificateBusiness")
+        }
         setIsActive(current => !current);
     }
 
@@ -41,7 +45,6 @@ export const Certificate = () => {
     let month = newDate.getMonth() + 1 + '.';
     let year = newDate.getFullYear() + 1;
 
-
     return (
         <>
             <div className="certificate" id='certificate'>
@@ -49,14 +52,14 @@ export const Certificate = () => {
                 <div className="certificate_header">
                     <div className="from">
                         <div className={isActive ? 'company' : "client"} onClick={contentPrevious}>
-                            From me
+                            Minu poolt
                         </div>
-                        <div className={isActive ? 'client' : "company"} onClick={contentNext}>
-                            From Company
+                        <div className={isActive ? 'client' : "company"} id="business" onClick={contentNext}>
+                            Ettevõtte poolt
                         </div>
                     </div>
                     <div className="certificate_example" onClick={toggleModal}>
-                        Example of certificate
+                        Sertifikaadi näide
                     </div>
                     <PopupCertificate isOpen={isModalOpen} toggleModal={toggleModal}/>
                 </div>
@@ -64,39 +67,46 @@ export const Certificate = () => {
                 <div className="content">
 
                     <ReactSwipe
+                        id="slider"
                         className="carousel"
-                        swipeOptions={{continuous: false, disableScroll: true, speed: 550}}
-                        ref={el => (reactSwipeEl = el)}
+                        swipeOptions={{
+                            continuous: false,
+                            disableScroll: true,
+                            speed: 550,
+                        }}
+                        ref={el => {
+                            reactSwipeEl = el
+                        }}
                     >
                         <div>
                             <div className="explain">
-                                Write a congratulation and indicate the address of the recipient!
+                                Kirjutage õnnitlus ja märkige saaja aadress!
                             </div>
                             <div className="choose">
-                                Choose your own nominal
+                                Valige sertifikaadi nominaal
                             </div>
                             <div className="main">
                                 <div className="left">
                                     <CertificatePersonalForm
                                         selectedNominal={selectedNominal}
                                         setSelectedNominal={setSelectedNominal}
-                                        togglePrivacy={togglePrivacy} />
+                                        togglePrivacy={togglePrivacy}/>
                                 </div>
                                 <div className="right">
                                     <div className="block">
                                         <div className="description">
                                             <div className="blockHeaderCertificateSide">
-                                                gift certificate
+                                                kingitussertifikaat
                                             </div>
                                             <div className="blockNameCertificateSide">
-                                                To the best restaurants in Estonia
+                                                Eesti parimatesse restoranidesse
                                             </div>
                                             <div className="nominalAndDate">
                                                 <div className="nominal_value">
-                                                    Nominal
+                                                    Nominaal
                                                 </div>
                                                 <div className="date">
-                                                    Valid until
+                                                    Kehtib kuni
                                                 </div>
                                             </div>
                                             <div className="values">
@@ -114,20 +124,20 @@ export const Certificate = () => {
                         </div>
                         <div>
                             <div className="explainForCompany">
-                                Thank your employees with gift certificates and an unforgettable experience!
+                                Tänage oma töötajaid kinkekaartide ja unustamatu elamusega!
                             </div>
                             <div className="main">
                                 <div className="left">
                                     <CertificateBusinessForm togglePrivacy={togglePrivacy}/>
                                 </div>
                                 <div className="right">
-                                    <div className="block">
-                                        <div className="description">
+                                    <div className="block" style={{height: 410}}>
+                                        <div className="description" style={{padding: 0}}>
                                             <div className="blockHeaderCertificateSide">
-                                                gift certificate
+                                                kingitussertifikaat
                                             </div>
                                             <div className="blockNameCertificateSide">
-                                                To the best restaurants in Tallinn
+                                                Eesti parimatesse restoranidesse
                                             </div>
                                         </div>
                                     </div>

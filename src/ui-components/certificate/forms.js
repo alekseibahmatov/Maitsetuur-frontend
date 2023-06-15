@@ -26,15 +26,14 @@ export const CertificateBusinessForm = ({togglePrivacy}) => {
                 {(props: FormikProps<any>) => (
                     <Form>
                         <div className="explainForCompany">
-                            <h4> Since ordering more than one certificates can be a little
-                                inconvenient, we created automated certificate order form!</h4>
+                            <h4>Kuna rohkem kui ühe sertifikaadi tellimine võib olla veidi ebamugav, oleme loonud automatiseeritud sertifikaadi tellimise vormi!</h4>
                         </div>
                         <div className="form">
 
                             <div className="from_who">
                                 <Field className="certificateInputValue" type="text"
                                        name="businessName"
-                                       placeholder="Business Name"/>
+                                       placeholder="Ärinimi"/>
                                 <div className="error">
                                     <ErrorMessage name="businessName"/>
                                 </div>
@@ -43,7 +42,7 @@ export const CertificateBusinessForm = ({togglePrivacy}) => {
                             <div className="from_who">
                                 <Field className="certificateInputValue" type="text"
                                        name="businessCode"
-                                       placeholder="Registration Business Code"/>
+                                       placeholder="Registrikood"/>
                                 <div className="error">
                                     <ErrorMessage name="businessCode"/>
                                 </div>
@@ -53,16 +52,15 @@ export const CertificateBusinessForm = ({togglePrivacy}) => {
 
                         <div className="confirm">
                             <button className={props.isValid ? "pay filled" : "pay"}
-                                    onClick={() => scrollTop()}
                                     type="submit">
-                                {props.isSubmitting ? <LoadingAnimationDots/> : 'Continue'}
+                                {props.isSubmitting ? <LoadingAnimationDots/> : 'Jätka'}
                             </button>
                             <div className="confirmCheckbox">
                                 <Field className="termsCheckbox" type="checkbox"
                                        name="termsCheckbox"/>
                                 <div className='agreeCertif'>
-                                    I agree with the <span className="blue"
-                                                           onClick={togglePrivacy}>Terms of personal data processing</span>.
+                                    Nõustun<span className="blue"
+                                                           onClick={togglePrivacy}> isikuandmete töötlemise tingimustega</span>
                                     <div className="error">
                                         <ErrorMessage name="termsCheckbox"/>
                                     </div>
@@ -137,7 +135,7 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                             <div className="from_who">
                                 <Field className="certificateInputValue" type="text"
                                        name="fromFullName"
-                                       placeholder="Your Full name"/>
+                                       placeholder="Teie täisnimi"/>
                                 <div className="error">
                                     <ErrorMessage name="fromFullName"/>
                                 </div>
@@ -146,7 +144,7 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                             <div className="from_who">
                                 <Field className="certificateInputValue" type="text"
                                        name="toFullName"
-                                       placeholder="Recipient's Full Name"/>
+                                       placeholder="Saaja täisnimi"/>
                                 <div className="error">
                                     <ErrorMessage name="toFullName"/>
                                 </div>
@@ -155,7 +153,7 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                             <div className="from_who">
                                 <Field className="certificateInputValue" type="text"
                                        name="toEmail"
-                                       placeholder="Recipient's email"/>
+                                       placeholder="Saaja e-posti aadress"/>
                                 <div className="error">
                                     <ErrorMessage name="toEmail"/>
                                 </div>
@@ -166,7 +164,7 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                                     className="certificateInputValue fullHeight"
                                     name="congratsMessage"
                                     component="textarea"
-                                    placeholder='Congratulations text...'
+                                    placeholder='Õnnitlustekst...'
                                 />
                                 <div className="error">
                                     <ErrorMessage name="congratsMessage"/>
@@ -177,9 +175,8 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
 
                         <div className="confirm">
                             <button className={props.isValid ? "pay filled" : "pay"}
-                                    onClick={() => scrollTop()}
                                     type="submit">
-                                {props.isSubmitting ? <LoadingAnimationDots/> : 'Continue'}
+                                {props.isSubmitting ? <LoadingAnimationDots/> : 'Jätka'}
                             </button>
                             <div className="confirmCheckbox">
                                 <Field className="termsCheckbox"
@@ -197,9 +194,9 @@ export const CertificatePersonalForm = ({selectedNominal, setSelectedNominal, to
                                        }}
                                 />
                                 <div className='agreeCertif'>
-                                    I agree with the
+                                    Nõustun
                                     <span className="blue"
-                                          onClick={togglePrivacy}> Terms of personal data processing</span>
+                                          onClick={togglePrivacy}> isikuandmete töötlemise tingimustega</span>
                                     <div className="error">
                                         <ErrorMessage name="termsCheckbox"/>
                                     </div>
