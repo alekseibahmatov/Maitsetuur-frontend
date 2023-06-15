@@ -64,6 +64,12 @@
     margin-top: 10px;
 }
 
+@media (max-width: 600px) {
+    .policyHeader {
+        margin-top: 50px;
+    }
+}
+
 .policyDate {
     font-weight: bold;
     font-size: 18px;
