@@ -1,4 +1,4 @@
-.modalPrivacy{
+.modalPrivacy {
     border-radius: 15px;
     padding: 40px;
     width: 80%;
@@ -12,52 +12,70 @@
     overflow-y: hidden;
     height: 70%;
 }
+
+@media (max-width: 600px) {
+    .modalPrivacy {
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 .crossClose {
     position: absolute;
     right: 15px;
     top: 15px;
 }
-.policySticky{
+
+.policySticky {
     background: #ffffff;
     width: 100%;
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
 }
-.policyContent{
+
+.policyContent {
     padding: 20px 40px;
     height: calc(100% - 70px);
     overflow-y: auto;
     width: 100%;
 }
+
 .policyContent::-webkit-scrollbar {
     width: 6px;
     height: 6px;
 }
+
 .policyContent::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
 }
+
 .policyContent::-webkit-scrollbar-track {
     border-radius: 10px;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
-.policyHeader{
+
+.policyHeader {
     text-align: center;
     font-weight: bold;
     font-size: 20px;
     margin-top: 10px;
 }
-.policyDate{
+
+.policyDate {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 10px;
 }
-.policySingleHeader{
+
+.policySingleHeader {
     font-size: 16px;
     font-weight: bold;
 }
-.policySingleText{
+
+.policySingleText {
     font-weight: normal;
     margin: 5px 0;
 }

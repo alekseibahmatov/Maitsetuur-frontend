@@ -132,8 +132,8 @@
 }
 @media (max-width: 426px){
     .crossClose{
-        width: 16px;
-        height: 16px;
+        width: 36px;
+        height: 36px;
         margin-top: 5px;
         margin-right: 5px;
     }
