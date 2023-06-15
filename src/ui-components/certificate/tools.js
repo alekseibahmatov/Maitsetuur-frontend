@@ -8,7 +8,6 @@ import {scrollTop} from "../../pages/business-coupon-order/tools";
 import toast from "react-hot-toast";
 
 export const submitBusinessForm = (values, actions, navigate) => {
-
     actions.setSubmitting(true);
     setTimeout(async () => {
         try {
@@ -16,7 +15,7 @@ export const submitBusinessForm = (values, actions, navigate) => {
                 {
                     businessInformation: {
                         businessName: values.businessName,
-                        businessEmail: values.businessEmail,
+                        businessCode: values.businessCode,
                     }
                 }
             ));

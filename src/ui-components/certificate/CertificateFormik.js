@@ -22,7 +22,7 @@ export const validationSchemaPersonal = Yup.object().shape({
 
 export const initialValuesBusiness = {
     businessName: '',
-    businessEmail: '',
+    businessCode: '',
     termsCheckbox: false,
 };
 
@@ -31,8 +31,9 @@ export const validationSchemaBusiness = Yup.object().shape({
         .required('Business name is required')
         .max(100, 'Business name seems to be incorrect, please contact us')
         .typeError("Input correct business name"),
-    businessEmail: Yup.string()
-        .email('Invalid email')
-        .required('Business email is required'),
+    businessCode: Yup.string()
+        .matches(/^\d{8}$/, 'Invalid Business Code (ID)')
+        .required('Business code is required')
+        .typeError("Input correct business code"),
     termsCheckbox: Yup.boolean().oneOf([true], 'You must agree to the Terms of personal data processing'),
 });

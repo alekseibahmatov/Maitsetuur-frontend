@@ -100,13 +100,13 @@ export const AddBusinessInformation = () => {
                                             <ErrorMessage name="businessName"/>
                                         </div>
                                     </div>
-                                    <div className="inputHeader">Business Code</div>
+                                    <div className="inputHeader">Registration Business Code</div>
                                     <div className="inputAuthentication">
                                         <Field
                                             className="inputAuthenticationInput"
                                             type="text"
                                             name="businessCode"
-                                            placeholder="Input business code"
+                                            placeholder="Input registration business code"
                                         />
                                         <div className="error">
                                             <ErrorMessage name="businessCode"/>

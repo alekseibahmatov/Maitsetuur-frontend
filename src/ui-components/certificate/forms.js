@@ -42,10 +42,10 @@ export const CertificateBusinessForm = ({togglePrivacy}) => {
 
                             <div className="from_who">
                                 <Field className="certificateInputValue" type="text"
-                                       name="businessEmail"
-                                       placeholder="Business Email"/>
+                                       name="businessCode"
+                                       placeholder="Registration Business Code"/>
                                 <div className="error">
-                                    <ErrorMessage name="businessEmail"/>
+                                    <ErrorMessage name="businessCode"/>
                                 </div>
                             </div>
 
