@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import './Qrcode.css'
 import logoout from '../../assets/img/logout.svg'
-import camera from '../../assets/img/Camera.png'
-import code from '../../assets/img/code.png'
+import scanQrGif from '../../assets/img/qrcode/scan-qr-code.gif'
+import code from '../../assets/img/qrcode/big-qr.svg'
 import qr from '../../assets/img/qrcode.png'
 import {useNavigate} from "react-router-dom";
 import {QrScanner} from '@yudiel/react-qr-scanner';
@@ -54,14 +54,6 @@ export const Qrcode = () => {
 
             {!showForm ?
                 <div className="qrcodeContent">
-                    <div className="qrcodeContentHeader">
-                        <div className="qrcodeLogoutButton">
-                            <img src={logoout} alt=""/>
-                        </div>
-                        <div className="qrcodeLogoutText">
-                            Log out
-                        </div>
-                    </div>
                     <div className="qrcodeMain">
                         <div className="qcodeMainContent">
                             <div className="qrcodeMainHeader">
@@ -69,12 +61,11 @@ export const Qrcode = () => {
                             </div>
 
                             <div className="qrcodeMainHeaderImage">
-                                <img src={camera} alt=""/>
+                                <img src={scanQrGif} alt=""/>
                             </div>
 
                             <div className="qrcodeMainText">
-                                Please scan point camera on
-                                QR code from the certificate
+                                Please point camera on QR code from the certificate
                             </div>
 
                             <div className="qrcodeScanner">
