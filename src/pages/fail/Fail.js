@@ -16,13 +16,13 @@ export const Fail = () => {
                 </div>
 
                 <div className="scanSuccess">
-                    Oops...
+                    Error
                 </div>
                 <div className="scanDescription">
                     Certificate is not valid anymore
                 </div>
 
-                <div onClick={() => navigate(-1)} className="confirmQrButton">
+                <div onClick={() => navigate('/qrcode')} className="confirmQrButton">
                     Go back
                 </div>
                 <div className="scanDescription">

@@ -1,9 +1,11 @@
 import React from "react";
 import './Success.css'
 import salami from '../../assets/img/Salami.png'
+import {useNavigate} from "react-router-dom";
 
 
 export const Success = () =>{
+    const navigate = useNavigate();
 
     return(
 
@@ -22,7 +24,7 @@ export const Success = () =>{
                     our certificate
                 </div>
 
-                <div className="confirmQrButton">
+                <div className="confirmQrButton" onClick={() => navigate('/qrcode')}>
                     Go back
                 </div>
             </div>

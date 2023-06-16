@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import './Qrcodesuccess.css'
-import qre from '../../assets/img/qrc.png'
+import qrCodeSuccess from '../../assets/img/qrcode/qrcode-sucess.pdf'
 import PopupSumbit from "../../ui-components/popup-sumbit/Popup-sumbit";
 import {Form, Field, Formik, FormikProps, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import waiterServices from "../../services/waiter";
-import authService from "../../services/auth";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 
@@ -34,16 +33,15 @@ export const Qrcodesuccess = ({data}) => {
                     Success!
                 </div>
                 <div className="qrcodeSuccessHeader">
-                    You’ve scanned QR code
+                    Olete edukalt <br/> skaneerinud QR-koodi
                 </div>
 
                 <div className="qrcodeSuccessImage">
-                    <img src={qre} alt=""/>
+                    <img src={qrCodeSuccess} alt=""/>
                 </div>
 
                 <div className="qrcodeMainText">
-                    You’ve successfully scanned QR code!
-                    <br/> Please write down the real dinner price
+                    Palun kirjutage üles arve summa
                 </div>
 
                 <Formik
@@ -79,20 +77,20 @@ export const Qrcodesuccess = ({data}) => {
 
                             <div className="qrcodeFormBlock">
                                 <div className="qrcodeFormName">
-                                    Coupon Owner Name:
+                                    Kupongi omaniku nimi:
                                 </div>
                                 <input type="text" className='qrcodeInput' value={data?.name} disabled/>
                             </div>
                             <div className="qrcodeFormBlock">
                                 <div className="qrcodeFormName">
-                                    Remaining amount:
+                                    Ülejäänud summa:
                                 </div>
                                 <input type="text" className='qrcodeInput' value={'$' + data?.remainingValue} disabled/>
                             </div>
 
                             <div className="qrcodeFormBlock">
                                 <div className="qrcodeFormName">
-                                    Restaurant Bill:
+                                    Restorani arve:
                                 </div>
                                 <Field
                                     className="qrcodeInput"
@@ -115,7 +113,7 @@ export const Qrcodesuccess = ({data}) => {
                                     }}
 
                                     name="amount"
-                                    placeholder="Input the Restaurant Bill..."
+                                    placeholder="Sisestage restorani arve..."
                                 />
 
                                 <div className="error">
@@ -125,7 +123,7 @@ export const Qrcodesuccess = ({data}) => {
 
 
                             <div className="confirmQrButton" onClick={toggleModal}>
-                                Confirm
+                                Kinnitus
                             </div>
 
                         </Form>

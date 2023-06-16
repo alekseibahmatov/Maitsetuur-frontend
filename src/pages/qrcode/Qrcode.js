@@ -1,10 +1,8 @@
 import React, {useState} from "react";
 import './Qrcode.css'
-import logoout from '../../assets/img/logout.svg'
 import scanQrGif from '../../assets/img/qrcode/scan-qr-code.gif'
 import code from '../../assets/img/qrcode/big-qr.svg'
 import qr from '../../assets/img/qrcode.png'
-import {useNavigate} from "react-router-dom";
 import {QrScanner} from '@yudiel/react-qr-scanner';
 import {
     LoadingAnimationCircular
@@ -13,7 +11,6 @@ import toast from "react-hot-toast";
 import Qrcodesuccess from "../qrcodesuccess/Qrcodesuccess";
 
 export const Qrcode = () => {
-    const navigate = useNavigate();
     const [showCamera, setShowCamera] = useState(false);
     const [showForm, setShowForm] = useState(false);
     const [scanned, setScanned] = useState(false);
@@ -57,7 +54,7 @@ export const Qrcode = () => {
                     <div className="qrcodeMain">
                         <div className="qcodeMainContent">
                             <div className="qrcodeMainHeader">
-                                Scan QR Code
+                                Skaneeri QR-koodi
                             </div>
 
                             <div className="qrcodeMainHeaderImage">
@@ -65,7 +62,7 @@ export const Qrcode = () => {
                             </div>
 
                             <div className="qrcodeMainText">
-                                Please point camera on QR code from the certificate
+                                Palun suunake kaamera sertifikaadi QR-koodile
                             </div>
 
                             <div className="qrcodeScanner">
@@ -86,7 +83,7 @@ export const Qrcode = () => {
                                             <div className="qrLoadingBlockWrapper">
                                                 <div className="qrLoadingWrapper">
                                                     <LoadingAnimationCircular/>
-                                                    <div className="qrLoadingText">Processing QR code...</div>
+                                                    <div className="qrLoadingText">QR-koodi töötlemine...</div>
                                                 </div>
                                                 <div className="qrLoadingBackground"/>
                                             </div>
@@ -113,7 +110,7 @@ export const Qrcode = () => {
                                 <div className="qrcodeScanButton" onClick={() => toggleCamera()}>
                                     <img src={qr} alt="" className='qrcodeScanButtonImage'/>
                                     <div className="qrcodeScanButtonText" id='qrButton'>
-                                        Scan QR Code
+                                        Skaneeri QR-koodi
                                     </div>
                                 </div>
 
@@ -121,7 +118,7 @@ export const Qrcode = () => {
 
                                 <div className='qrcodeScanButton' onClick={() => toggleCamera()}>
                                     <div className="qrcodeScanButtonText" id='qrButton'>
-                                        Get back
+                                        Mine tagasi
                                     </div>
                                 </div>
 

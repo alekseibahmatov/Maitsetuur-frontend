@@ -84,6 +84,7 @@
     font-size: 18px ;
 }
 .qrcodeScanButtonText{
+    font-weight: 700;
     align-self: center;
 }
 .none{
