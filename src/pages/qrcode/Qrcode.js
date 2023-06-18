@@ -73,7 +73,7 @@ export const Qrcode = () => {
                                     <div className="qrcodeScannerCamera">
 
                                         <QrScanner
-                                            scanDelay={3000}
+                                            scanDelay={1000}
                                             onDecode={handleScan}
                                             style={{width: "100%"}}
                                             stopStream={scanned}

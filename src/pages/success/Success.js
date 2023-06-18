@@ -4,10 +4,10 @@ import salami from '../../assets/img/Salami.png'
 import {useNavigate} from "react-router-dom";
 
 
-export const Success = () =>{
+export const Success = () => {
     const navigate = useNavigate();
 
-    return(
+    return (
 
         <>
             <div className="qrcodeContent">
@@ -17,15 +17,14 @@ export const Success = () =>{
                 </div>
 
                 <div className="scanSuccess">
-                    Success
+                    Success!
                 </div>
                 <div className="scanDescription">
-                    You’ve successfully activated
-                    our certificate
+                    Olete edukalt aktiveerinud meie sertifikaadi
                 </div>
 
                 <div className="confirmQrButton" onClick={() => navigate('/qrcode')}>
-                    Go back
+                    Tagasi
                 </div>
             </div>
         </>

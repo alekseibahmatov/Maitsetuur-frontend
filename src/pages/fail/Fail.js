@@ -19,15 +19,14 @@ export const Fail = () => {
                     Error
                 </div>
                 <div className="scanDescription">
-                    Certificate is not valid anymore
+                    Sertifikaat ei ole enam kehtiv
                 </div>
 
                 <div onClick={() => navigate('/qrcode')} className="confirmQrButton">
-                    Go back
+                    Tagasi
                 </div>
                 <div className="scanDescription">
-                    Please don’t hesitate to contact us,
-                    and write on our email:
+                    Palun võtke meiega julgelt ühendust, ja kirjutage meie e-posti aadressile:
                 </div>
                 <div className="support">
                     support@mustvorst.ee
